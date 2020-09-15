@@ -13,10 +13,21 @@
             <nav>left</nav>
             <main>
             <%= link_to "＼！！質問する！！／", new_room_path %>
-            <% @rooms.each do |room| %>
+            <p>--------------------あなたに関連する質問です！--------------------</p>
+            <% @questions.each do |question| %>
                 <div class="room">
                     <div class="room-name">
-                        <a href="#"><%= room.question_title%></a>
+                        <a href="#"><%= question.question_title%></a>
+                    </div>
+                </div>
+            <% end %>
+            <p>-----------------------------------------------------------------------------</p>
+            <p>↓↓新着の質問↓↓</p>
+            <% @another_questions .each do |question| %>
+               
+                <div class="room">
+                    <div class="room-name">
+                        <a href="#"><%= question.question_title%></a>
                     </div>
                 </div>
             <% end %>
