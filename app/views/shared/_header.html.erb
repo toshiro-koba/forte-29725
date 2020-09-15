@@ -2,7 +2,7 @@
 <header >
   <ul class="user-management-lists" >
     <% if user_signed_in? %>
-      <li class="user-management-list" ><%= link_to current_user.nickname, "#" %></li>
+      <li class="user-management-list" ><%= link_to current_user.nickname, edit_user_path(current_user) %></li>
       <li class="user-management-list" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li class="user-management-list" ><%= link_to 'ログイン', new_user_session_path %></li>
