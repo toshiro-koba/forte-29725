@@ -11,7 +11,16 @@
         <h1>top page</h1>
         <div class="all-contents">
             <nav>left</nav>
-            <main>center</main>
+            <main>
+            
+            <% @rooms.each do |room| %>
+                <div class="room">
+                    <div class="room-name">
+                        <a href="#"><%= room.question_title%></a>
+                    </div>
+                </div>
+            <% end %>
+            </main>
             <aside>right</aside>
         </div>
 
