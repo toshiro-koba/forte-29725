@@ -31,6 +31,9 @@
                             <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
                           <% end %>
                         <% end %>
+                        <% if check == 1 %>
+                            <%= link_to '回答する！', room_messages_path(question) %>
+                        <% end %>
                     </div>
                 </div>
             <% end %>
@@ -41,10 +44,24 @@
             
             <p>↓↓新着の質問↓↓</p>
             <% @another_questions .each do |question| %>
-               
                 <div class="room">
                     <div class="room-name">
                         <%= link_to question.question_title, room_messages_path(question) %>
+                        <% check = 0 %>
+                        <% question.messages.includes(:user).each do |message| %>
+                          <% check += 1 %>
+                          <% if check == 1 %>
+                            <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
+                          <%# <% binding.pry %> 
+                          <% elsif check == 2 %>
+                            <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
+                          <% else %>
+                            <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                          <% end %>
+                        <% end %>
+                        <% if check == 1 %>
+                            <%= link_to '回答する！', room_messages_path(question) %>
+                        <% end %>
                     </div>
                 </div>
             <% end %>
