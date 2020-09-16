@@ -7,22 +7,16 @@ class MessagesController < ApplicationController
     @user_ids = []
     @entries = Entry.all
     @entries.each do |entry|
-      if entry.room_id == @room.id
-        @user_ids << entry.user_id
-      end
+      @user_ids << entry.user_id if entry.room_id == @room.id
     end
     check = 0
     @user_ids.each do |user|
-      if user == current_user.id
-        check += 1
-      end
+      check += 1 if user == current_user.id
     end
-    unless @room.messages.size == 0  #現在のユーザーが質問に関連してかつ、未回答の場合のみ回答ページに飛ぶ
-        if check == 1 && @room.messages.size == 1
-          if @room.messages[0].user.id == current_user.id
-            redirect_to root_path
-          end
-        end
+    unless @room.messages.size == 0  # 現在のユーザーが質問に関連してかつ、未回答の場合のみ回答ページに飛ぶ
+      if check == 1 && @room.messages.size == 1
+        redirect_to root_path if @room.messages[0].user.id == current_user.id
+      end
     end
   end
 
