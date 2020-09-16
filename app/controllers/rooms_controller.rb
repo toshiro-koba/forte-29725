@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
           if entry.user_id == current_user.id
             @questions << room
             @question_ids << room.id
+           
           end
         end
       end
@@ -25,6 +26,7 @@ class RoomsController < ApplicationController
     else
       @another_questions = @rooms
     end
+    # binding.pry
   end
 
   def new

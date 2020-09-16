@@ -1,0 +1,5 @@
+<a href="#"><%= "[質問タイトル]#{@room.question_title}"%></a>
+<%= form_with model: [@room, @message], local: true do |f|%>
+    <%= f.text_field :content, placeholder: 'type a message' %>
+    <%= f.submit '送信!' %>
+<% end %>
