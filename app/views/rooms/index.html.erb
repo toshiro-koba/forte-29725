@@ -28,7 +28,7 @@
                           <% elsif check == 2 %>
                             <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
                           <% else %>
-                            <p><%= "--------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                            <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
                           <% end %>
                         <% end %>
                     </div>
