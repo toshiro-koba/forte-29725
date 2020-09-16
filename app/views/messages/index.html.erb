@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Forte</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-
-    <body>
-        <%= render "shared/header" %> 
-        <h1>top page</h1>
-        <div class="all-contents">
-            <nav>left</nav>
-            <main>
-        <% if user_signed_in? %>
-            <%= link_to "＼！！質問する！！／", new_room_path %>
-            <p>--------------------あなたに関連する質問です！--------------------</p>
-            <% @questions.each do |question| %>
-                <div class="room">
-                    <div class="room-name">
-                        <a href="#"><%= question.question_title%></a>
-                    </div>
-                </div>
-            <% end %>
-            <p>-----------------------------------------------------------------------------</p>
-        <% else %>
-            <%= link_to "＼！！質問する！！／", new_user_session_path %>
-        <% end %>
-            
-            <p>↓↓新着の質問↓↓</p>
-            <% @another_questions .each do |question| %>
-               
-                <div class="room">
-                    <div class="room-name">
-                        <a href="#"><%= question.question_title%></a>
-                    </div>
-                </div>
-            <% end %>
-            </main>
-            <aside>right</aside>
-        </div>
-
-        <%= render "shared/footer" %> 
-    </body>
-</html>
+<% if @room.messages.size == 0 %>
+    <a href="#"><%= "[質問タイトル]#{@room.question_title}"%></a>
+    <%= form_with model: [@room, @message], local: true do |f|%>
+        <%= f.text_field :content, placeholder: 'type a message' %>
+        <%= f.submit '送信!' %>
+    <% end %>
+<% elsif @room.messages.size == 1 %>
+    <a href="#"><%= "[質問タイトル]#{@room.question_title}"%></a>
+    <p><%= "[質問文][#{@room.messages[0].user.nickname}]#{@room.messages[0].content}"%></p>
+    <%= form_with model: [@room, @message], local: true do |f|%>
+        <%= f.text_field :content, placeholder: 'type a message' %>
+        <%= f.submit '回答する!' %>
+    <% end %>
+<% end %>

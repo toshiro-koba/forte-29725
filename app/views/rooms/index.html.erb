@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Forte</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <%= render "shared/header" %> 
+        <h1>top page</h1>
+        <div class="all-contents">
+            <nav>left</nav>
+            <main>
+        <% if user_signed_in? %>
+            <%= link_to "＼！！質問する！！／", new_room_path %>
+            <p>--------------------あなたに関連する質問です！--------------------</p>
+            <% @questions.each do |question| %>
+                <div class="room">
+                    <div class="room-name">
+                        <div class="question-title">
+                          <%= question.question_title %>
+                        </div>
+                        <% check = 0 %>
+                        <div class="question-contents">
+                        <% question.messages.includes(:user).each do |message| %>
+                          <% check += 1 %>
+                          <% if check == 1 %>
+                            <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
+                          <%# <% binding.pry %> 
+                          <% elsif check == 2 %>
+                            <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
+                          <% else %>
+                            <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                          <% end %>
+                        <% end %>
+                        <% if check == 1 %>
+                            <%= link_to '回答する！', room_messages_path(question) %>
+                        <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            <p>-----------------------------------------------------------------------------</p>
+        <% else %>
+            <%= link_to "＼！！質問する！！／", new_user_session_path %>
+        <% end %>
+            
+            <p>↓↓新着の質問↓↓</p>
+            <% @another_questions .each do |question| %>
+                <div class="room">
+                    <div class="room-name">
+                        <div class="question-title">
+                          <%= question.question_title %>
+                        </div>
+                        <% check = 0 %>
+                        <div class="question-contents">
+                          <% question.messages.includes(:user).each do |message| %>
+                            <% check += 1 %>
+                            <% if check == 1 %>
+                              <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
+                            <%# <% binding.pry %> 
+                            <% elsif check == 2 %>
+                              <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
+                            <% else %>
+                              <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            </main>
+            <aside>right</aside>
+        </div>
+
+        <%= render "shared/footer" %> 
+    </body>
+</html>
