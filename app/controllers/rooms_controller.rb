@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def new
-    # redirect_to root_path unless user_signed_in?
+    redirect_to root_path unless user_signed_in?
     @room = Room.new
   end
 
@@ -16,6 +16,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:question_title, user_ids:[])
+    params.require(:room).permit(:question_title, user_ids: [])
   end
 end

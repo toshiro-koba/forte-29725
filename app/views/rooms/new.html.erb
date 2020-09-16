@@ -1,6 +1,8 @@
 <div class='chat-room-form'>
   <h1>新しく質問する</h1>
   <%=form_with model: @room, local: true do |f|%>
+  <%= render 'shared/error_messages', model: f.object %> 
+  
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
         <%= f.label :質問タイトル, class: 'chat-room-form__label'%>
