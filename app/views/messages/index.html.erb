@@ -12,6 +12,7 @@
         <div class="all-contents">
             <nav>left</nav>
             <main>
+        <% if user_signed_in? %>
             <%= link_to "＼！！質問する！！／", new_room_path %>
             <p>--------------------あなたに関連する質問です！--------------------</p>
             <% @questions.each do |question| %>
@@ -22,6 +23,10 @@
                 </div>
             <% end %>
             <p>-----------------------------------------------------------------------------</p>
+        <% else %>
+            <%= link_to "＼！！質問する！！／", new_user_session_path %>
+        <% end %>
+            
             <p>↓↓新着の質問↓↓</p>
             <% @another_questions .each do |question| %>
                

@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   def new
+    # redirect_to root_path unless user_signed_in?
     @room = Room.new
   end
 
