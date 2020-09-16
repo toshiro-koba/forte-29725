@@ -17,8 +17,13 @@ class MessagesController < ApplicationController
         check += 1
       end
     end
-    binding.pry
-    redirect_to root_path unless check == 1 && @room.messages.size == 1  #現在のユーザーが質問に関連してかつ、未回答の場合のみ回答ページに飛ぶ
+    unless @room.messages.size == 0  #現在のユーザーが質問に関連してかつ、未回答の場合のみ回答ページに飛ぶ
+        if check == 1 && @room.messages.size == 1
+          if @room.messages[0].user.id == current_user.id
+            redirect_to root_path
+          end
+        end
+    end
   end
 
   def create
@@ -28,7 +33,8 @@ class MessagesController < ApplicationController
       redirect_to root_path
     else
       @messages = @room.messages.includes(:user)
-      render :index
+      # render :index
+      redirect_to room_messages_path
     end
   end
 
@@ -38,5 +44,3 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content).merge(user_id: current_user.id)
   end
 end
-
-
