@@ -132,3 +132,11 @@ select {
   background-color: #f5ffdd;
   border: 1px solid rgb(144, 237, 14);
 }
+
+.question-title {
+  color: #f09b08;
+}
+
+.question-contents {
+  margin-left: 18px; 
+}
