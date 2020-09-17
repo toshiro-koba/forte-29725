@@ -17,18 +17,22 @@ class UsersController < ApplicationController
     @users = User.all
 
     @all_gifts_in_table = Gift.all
-    
+  
+
     @giftings = []
+    @receivers = []
+
+    @receivings = []
+    @givers = []
+
     @all_gifts_in_table.each do |gift|
       if gift.giver_id == current_user.id
         @giftings << gift
+        @receivers << User.find(gift.user_id)
       end
-    end
-
-    @receivings = []
-    @all_gifts_in_table.each do |gift|
       if gift.user_id == current_user.id
         @receivings << gift
+        @givers << User.find(gift.giver_id)
       end
     end
   end
