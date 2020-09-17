@@ -27,7 +27,6 @@ class MessagesController < ApplicationController
       redirect_to root_path
     else
       @messages = @room.messages.includes(:user)
-      # render :index
       redirect_to room_messages_path
     end
   end
