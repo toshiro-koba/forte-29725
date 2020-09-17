@@ -22,7 +22,7 @@ class GiftsController < ApplicationController
   private
 
   def order_params
-    params.require(:gift).permit(:price).merge(user_id: @reciver.id, giver_id: current_user.id)
+    params.require(:gift).permit(:price).merge(user_id: @reciver.id, giver_id: current_user.id, token: params[:token])
   end
 
   def pay_item

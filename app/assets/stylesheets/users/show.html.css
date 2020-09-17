@@ -1,0 +1,14 @@
+.gift-action {
+  background-color: #f5ffdd;
+  border: 1px solid rgb(144, 237, 14);
+}
+
+.gift-action-title {
+  color: #f09b08;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.gift {
+  margin: 5px 18px;
+}

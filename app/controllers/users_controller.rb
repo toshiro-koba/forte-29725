@@ -10,6 +10,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    redirect_to root_path unless user_signed_in?
+    @user = User.find(params[:id])
+    redirect_to root_path unless @user.id == current_user.id
+    @users = User.all
+
+    @all_gifts_in_table = Gift.all
+    
+    @giftings = []
+    @all_gifts_in_table.each do |gift|
+      if gift.giver_id == current_user.id
+        @giftings << gift
+      end
+    end
+
+    @receivings = []
+    @all_gifts_in_table.each do |gift|
+      if gift.user_id == current_user.id
+        @receivings << gift
+      end
+    end
+  end
+
   private
 
   def user_params
