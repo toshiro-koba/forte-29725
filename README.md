@@ -13,8 +13,10 @@
 - has_many :entries
 - has_many :rooms, through: :entries
 - has_many :messages
-- has_many :gift_entries
-- has_many :gifts, through: :gift_entries
+- has_many :gifts
+- has_many :giftings, through: :gifts, source: :giver
+- has_many :reverse_of_gifts, class_name: 'Gift', foreign_key: 'giver_id'
+- has_many :receivings, through: :reverse_of_gifts, source: :user
 - has_many :bookmarks
 - has_many :game_tags, through: :bookmarks
 - has_many :relationships
@@ -69,30 +71,17 @@
 - has_one :notification
 
 
-## gift_entries テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| gift   | references | null: false, foreign_key: true |
-
-### Association 
-
-- belongs_to :user
-- belongs_to :gift
-
-
 ## gifts テーブル
 
 | Column | Type       | Options                                        |
 | ------ | ---------- | ---------------------------------------------- |
+| user   | references | null: false, foreign_key: true                 |
 | giver  | references | null: false, foreign_key: { to_table: :users } |
 | price  | integer    | null: false                                    |
 
 ### Association 
-
-- has_many :gift_entries
-- has_one :giver, class_name: 'User', through: :gift_entries
+- belongs_to :user
+- belongs_to :giver, class_name: 'User'
 - has_one :notification
 
 
