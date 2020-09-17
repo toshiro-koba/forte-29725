@@ -1,0 +1,27 @@
+<%= render "shared/second-header"%>
+<%# <h2>マイページ</h2> %>
+<%= "#{@user.nickname}の詳細ページ" %>
+
+<div class="gift-action">
+  <div class="gift-action-title">
+    <p>自分がしたギフト</p>
+  </div>
+  <% @giftings.each do |gift| %>
+    <div class="gift">
+      <p><%= "#{@users[gift.user_id - 1].nickname}に#{gift.price}円をギフトした！" %></p>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="gift-action">
+  <div class="gift-action-title">
+    <p>自分に送られたギフト</p>
+  </div>
+  <% @receivings.each do |gift| %>
+    <div class="gift">
+
+      <p><%= "#{@users[gift.giver_id - 1].nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
+    </div>
+  <% end %>
+</div>
