@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :gifts, only: [:index, :new, :create]
   end
   resources :rooms, only: [:new, :create] do
+    collection do
+      get 'search'
+    end
     resources :messages, only: [:index, :create]
   end
 end
