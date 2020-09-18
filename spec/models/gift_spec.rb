@@ -26,7 +26,7 @@ RSpec.describe Gift, type: :model do
         @gift.valid?
         expect(@gift.errors.full_messages).to include('Giver muast exist')
       end
-  
+
       it 'userが紐付いていないと保存できないこと' do
         @gift.user = nil
         @gift.valid?

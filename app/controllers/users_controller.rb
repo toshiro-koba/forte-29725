@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @users = User.all
 
     @all_gifts_in_table = Gift.all
-  
 
     @giftings = []
     @receivers = []
