@@ -162,3 +162,37 @@ select {
   width: 30px;
   height: 30px;
 }
+
+
+.more {
+  cursor: pointer;
+}
+
+.more:hover ul.more_list {
+  display: block;
+}
+
+.more ul.more_list {
+  text-align: left;
+  width: 80px;
+  right: 0;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.more ul.more_list li {
+  border-bottom: 1px solid #ddd;
+}
+
+.more ul.more_list {
+  border-bottom: 0;
+}
+
+.more ul.more_list li {
+  background-color: #57C3E9;
+  color: #fff;
+} 
