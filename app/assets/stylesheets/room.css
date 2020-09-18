@@ -170,6 +170,7 @@ select {
 
 .more:hover ul.more_list {
   display: block;
+  width: 110%;
 }
 
 .more ul.more_list {
