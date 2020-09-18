@@ -13,7 +13,6 @@
             <nav>left</nav>
             <main>
         <% if user_signed_in? %>
-            <%= link_to "＼！！質問する！！／", new_room_path %>
             <p>--------------------あなたに関連する質問です！--------------------</p>
             <% @questions.each do |question| %>
                 <div class="room">
@@ -85,6 +84,14 @@
             <% end %>
             </main>
             <aside>right</aside>
+        </div>
+        <div class='purchase-btn'>
+          <span class='purchase-btn-text'>質問する</span>
+            <% if user_signed_in? %>
+                <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_room_path %>
+            <% else %>
+              <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_user_session_path %>
+            <% end %>
         </div>
 
         <%= render "shared/footer" %> 
