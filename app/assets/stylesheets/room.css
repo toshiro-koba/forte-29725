@@ -148,3 +148,17 @@ select {
 .user-management-list {
   margin-right: 10px;
 }
+
+.question-lists {
+  display: flex;
+}
+
+.question-user-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.answer-user-icon {
+  width: 30px;
+  height: 30px;
+}

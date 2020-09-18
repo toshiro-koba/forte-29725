@@ -22,20 +22,39 @@
                         </div>
                         <% check = 0 %>
                         <div class="question-contents">
-                        <% question.messages.includes(:user).each do |message| %>
-                          <% check += 1 %>
-                          <% if check == 1 %>
-                            <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
-                          <% elsif check == 2 %>
-                            <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
-                            <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %>
-                          <% else %>
-                            <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
-                          <% end %>
-                        <% end %>
-                        <% if check == 1 %>
-                            <%= link_to '回答する！', room_messages_path(question) %>
-                        <% end %>
+
+                          
+                            <% question.messages.includes(:user).each do |message| %>
+                              <% check += 1 %>
+                              <% if check == 1 && message.user == current_user %> <%# 自分が登録した質問%>
+                                <ul class="question-lists">
+                                  <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
+                                  <li><%= "[質問文][#{message.user.nickname}]#{message.content}"%></li>
+                                </ul>
+                              <% elsif check == 1 %> <%# 自分宛ての質問だよ！%>
+                                <ul class="question-lists">
+                                  <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
+                                  <li><%= "[質問文][#{message.user.nickname}]#{message.content}"%></li>
+                                </ul>
+                                <ul class="question-lists">
+                                  <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                  <li><%= link_to '回答する！', room_messages_path(question) %></li>
+                                </ul>
+                              <% elsif check == 2 && message.user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
+                                <ul class="question-lists">
+                                  <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                  <li><%= "[回答文][#{message.user.nickname}]#{message.content}"%></li>
+                                </ul>
+                              <% elsif check == 2 %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
+                                <ul class="question-lists">
+                                  <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                  <li><%= "[回答文][#{message.user.nickname}]#{message.content}"%></li>
+                                </ul>
+                                <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %>
+                              <% else %>
+                                <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                              <% end %>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -57,10 +76,16 @@
                           <% question.messages.includes(:user).each do |message| %>
                             <% check += 1 %>
                             <% if check == 1 %>
-                              <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
+                              <ul class="question-lists">
+                                <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
+                                <li><%= "[質問文][#{message.user.nickname}]#{message.content}"%></li>
+                              </ul>
                               <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
                             <% elsif check == 2 %>
-                              <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
+                              <ul class="question-lists">
+                                <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                <li><%= "[回答文][#{message.user.nickname}]#{message.content}"%></li>
+                              </ul>
                               <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
                             <% else %>
                               <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
