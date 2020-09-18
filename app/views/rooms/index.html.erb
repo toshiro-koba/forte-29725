@@ -20,6 +20,9 @@
                         <div class="question-title">
                           <%= question.question_title %>
                         </div>
+                        <% question.game_tags.each do |game| %>
+                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
+                        <% end%>
                         <% check = 0 %>
                         <div class="question-contents">
                             <% question.messages.includes(:user).each do |message| %>
@@ -84,6 +87,9 @@
                         <div class="question-title">
                           <%= question.question_title %>
                         </div>
+                        <% question.game_tags.each do |game| %>
+                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
+                        <% end%>
                         <% check = 0 %>
                         <div class="question-contents">
                           <% question.messages.includes(:user).each do |message| %>
