@@ -140,3 +140,66 @@ select {
 .question-contents {
   margin-left: 18px; 
 }
+
+.user-management-lists {
+  display: flex;
+}
+
+.user-management-list {
+  margin-right: 10px;
+}
+
+.question-lists {
+  display: flex;
+}
+
+.question-user-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.answer-user-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+.more {
+  cursor: pointer;
+}
+
+.more:hover ul.more_list {
+  display: block;
+  width: 110%;
+}
+
+.more ul.more_list {
+  text-align: left;
+  width: 80px;
+  right: 0;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.more ul.more_list li {
+  border-bottom: 1px solid #ddd;
+}
+
+.more ul.more_list {
+  border-bottom: 0;
+}
+
+.more ul.more_list li {
+  background-color: #57C3E9;
+  color: #fff;
+} 
+
+body {
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  color: #666;
+}

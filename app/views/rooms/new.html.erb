@@ -27,6 +27,22 @@
         <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
       </div>
     </div>
+
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>
+        <label class='chat-room-form__label' for='chat_room_ゲームタイトル'>ゲームタイトル</label>
+      </div>
+      <div class='chat-room-form__field--right'>
+        
+        <select name="room[game_tag_ids][]">
+          <option value="">ゲームタイトルを選んでね！</option>
+          <% GameTag.all.each do |tag| %>
+             <option value=<%=tag.id%>><%= tag.game_title %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'></div>
       <div class='chat-room-form__field--right'>

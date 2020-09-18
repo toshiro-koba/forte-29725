@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
       @rooms.each do |room|
         @entries.each do |entry|
           next unless entry.room_id == room.id
+
           if entry.user_id == current_user.id
             @questions << room
             @question_ids << room.id
@@ -51,6 +52,7 @@ class RoomsController < ApplicationController
       @rooms.each do |room|
         @entries.each do |entry|
           next unless entry.room_id == room.id
+
           if entry.user_id == current_user.id
             @questions << room
             @question_ids << room.id
@@ -71,6 +73,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:question_title, user_ids: [])
+    params.require(:room).permit(:question_title, user_ids: [], game_tag_ids: [])
   end
 end
