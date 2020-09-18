@@ -140,3 +140,11 @@ select {
 .question-contents {
   margin-left: 18px; 
 }
+
+.user-management-lists {
+  display: flex;
+}
+
+.user-management-list {
+  margin-right: 10px;
+}

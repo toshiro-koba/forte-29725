@@ -26,15 +26,9 @@
                           <% check += 1 %>
                           <% if check == 1 %>
                             <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
-                            <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                            </a>
                           <% elsif check == 2 %>
                             <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
                             <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %>
-                            <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                            </a>
                           <% else %>
                             <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
                           <% end %>
@@ -65,15 +59,9 @@
                             <% if check == 1 %>
                               <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
                               <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
-                              <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                              </a>
                             <% elsif check == 2 %>
                               <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
                               <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
-                              <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                              </a>
                             <% else %>
                               <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
                             <% end %>

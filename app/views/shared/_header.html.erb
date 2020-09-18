@@ -2,8 +2,16 @@
 <header >
   <ul class="user-management-lists" >
     <% if user_signed_in? %>
-      <li class="user-management-list" ><%= link_to current_user.nickname, edit_user_path(current_user) %></li>
+      <li class="user-management-list" ><%= current_user.nickname %></li>
+      <li class="user-management-list" >
+        <a href="/users/<%= current_user.id %>">
+          <%= "マイページ" %>
+        </a>
+      </li>
+      
       <li class="user-management-list" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      
+      
     <% else %>
       <li class="user-management-list" ><%= link_to 'ログイン', new_user_session_path %></li>
       <li class="user-management-list" ><%= link_to '新規登録', new_user_registration_path %></li>
@@ -11,7 +19,7 @@
   </ul>
 
   <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
+    <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+  <% end %>
 </header>
