@@ -9,4 +9,9 @@
       <li class="user-management-list" ><%= link_to '新規登録', new_user_registration_path %></li>
     <% end %>
   </ul>
+
+  <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
 </header>
