@@ -71,6 +71,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:question_title, user_ids: [])
+    params.require(:room).permit(:question_title, user_ids: [], game_tag_ids: [])
   end
 end
