@@ -47,13 +47,14 @@
 | Column         | Type       | Options                                        |
 | -------------- | ---------- | ---------------------------------------------- |
 | question_title | string     | null: false                                    |
-| game_tag       | references | null: false, foreign_key: true                 |
 
 ### Association
 
 - has_many :entries
 - has_many :users, through: :entries
 - has_many :messages
+- has_many :room_game_tags
+- has_many :game_tags, through: :room_game_tags
 - has_one :notification
 
 
@@ -98,14 +99,28 @@
 - belongs_to :game_tag
 
 
-## game_tags テーブル
+## room_game_tags テーブル
 
-| Column    | Type   | Options     |
-| --------- | ------ | ----------- |
-| game_name | string | null: false |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| room     | references | null: false, foreign_key: true |
+| game_tag | references | null: false, foreign_key: true |
 
 ### Association 
 
+- belongs_to :room
+- belongs_to :game_tag
+
+## game_tags テーブル
+
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| game_title | string | null: false |
+
+### Association 
+
+- has_many :room_game_tags
+- has_many :rooms, through: :room_game_tags
 - has_many :bookmarks
 - has_many :users, through: :bookmarks
 
