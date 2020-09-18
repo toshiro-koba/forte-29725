@@ -1,2 +1,4 @@
 class GameTag < ApplicationRecord
+  has_many :room_game_tags
+  has_many :rooms, through: :room_game_tags
 end
