@@ -41,12 +41,25 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to root_path unless @user.id == current_user.id
 
-    @bookmark = Bookmark.new
+    
+   
+    @bookmark = Bookmark.new(bookmark_params)
+    binding.pry
+    if @bookmark.save
+      redirect_to root_path
+    else
+      render :bookmark
+    end
   end
+  
 
   private
 
   def user_params
     params.require(:user).permit(:nickname, :email)
+  end
+
+  def bookmark_params
+    params.permit(:game_tag_id).merge(user_id: current_user.id)
   end
 end
