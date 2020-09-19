@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :giftings, through: :gifts, source: :giver
   has_many :reverse_of_gifts, class_name: 'Gift', foreign_key: 'giver_id'
   has_many :receivings, through: :reverse_of_gifts, source: :user
+  has_many :bookmarks
+  has_many :game_tags, through: :bookmarks
 end

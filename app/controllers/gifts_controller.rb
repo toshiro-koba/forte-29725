@@ -6,8 +6,7 @@ class GiftsController < ApplicationController
     @gift = Gift.new
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @reciver = User.find(params[:user_id])
