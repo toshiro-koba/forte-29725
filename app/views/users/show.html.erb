@@ -2,6 +2,7 @@
 <%# <h2>マイページ</h2> %>
 <%= "#{@user.nickname}の詳細ページ" %>
 <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
+<%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
 <div class="gift-action">
   <div class="gift-action-title">
     <p>自分がしたギフト</p>

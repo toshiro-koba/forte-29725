@@ -36,6 +36,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def bookmark
+    redirect_to root_path unless user_signed_in?
+    @user = User.find(params[:id])
+    redirect_to root_path unless @user.id == current_user.id
+
+    @bookmark = Bookmark.new
+  end
+
   private
 
   def user_params
