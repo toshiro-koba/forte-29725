@@ -34,6 +34,8 @@ class UsersController < ApplicationController
         @givers << User.find(gift.giver_id)
       end
     end
+
+    @bookmarked_games = Bookmark.where(user_id: current_user.id)
   end
 
   def bookmark
