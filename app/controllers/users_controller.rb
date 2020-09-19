@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  def edit
-  end
+  def edit; end
 
   def update
     if current_user.update(user_params)
@@ -42,18 +41,13 @@ class UsersController < ApplicationController
     redirect_to root_path unless user_signed_in?
     @user = User.find(params[:id])
     redirect_to root_path unless @user.id == current_user.id
-
-    
-   
     @bookmark = Bookmark.new(bookmark_params)
-    binding.pry
     if @bookmark.save
       redirect_to root_path
     else
       render :bookmark
     end
   end
-  
 
   private
 
