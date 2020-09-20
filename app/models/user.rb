@@ -19,4 +19,19 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
+
+  def follow(other_user) #フォローする！！
+    unless self == other_user #フォローしようとしているユーザーが自分自身か！
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user) #フォローを外す＞＜
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationships.destroy if relationship
+  end
+
+  def following?(other_user) #そのユーザーは既にフォローしてる？かを確認する！
+    self.followings.include?(other_user)
+  end
 end
