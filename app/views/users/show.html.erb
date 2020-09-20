@@ -1,8 +1,6 @@
 <%= render "shared/second-header"%>
-<%# <h2>マイページ</h2> %>
 <%= "#{@user.nickname}の詳細ページ" %>
 <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
-
 <p>--ブックマークしたゲーム--</p>
 <% @bookmarked_games.each do |game| %>
   <p><%= game.game_tag.game_title %></p>
@@ -15,7 +13,6 @@
 <% current_user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
-
 <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
 <div class="gift-action">
   <div class="gift-action-title">
@@ -29,8 +26,6 @@
     </div>
   <% end %>
 </div>
-
-
 <div class="gift-action">
   <div class="gift-action-title">
     <p>自分に送られたギフト</p>

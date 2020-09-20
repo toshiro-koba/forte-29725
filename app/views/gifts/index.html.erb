@@ -4,22 +4,17 @@
     <h1 class='transaction-title-text'>
       ギフティングの確認
     </h1>
-    <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @reciver.nickname %>
         </h2>
       </div>
     </div>
-    <%# /購入内容の表示 %>
 
     <%= render 'relationships/follow_button', user: @user %>
     <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
       <%= render 'shared/error_messages', model: f.object %>
-
-      <%# カード情報の入力 %>
       <div class='credit-card-form'>
         <h1 class='info-input-haedline'>
           クレジットカード情報入力
@@ -57,12 +52,8 @@
           <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
         </div>
       </div>
-      <%# /カード情報の入力 %>
-    
-      <%# 配送先の入力 %>
       <div class='shipping-address-form'>
         <h1 class='info-input-haedline'> 
-          <%# 配送先入力 %>
         </h1>
         <div class="form-group">
           <div class='form-text-wrap'>
@@ -71,8 +62,7 @@
           </div>
           <%= f.text_field :price, class:"input-default", id:"postal-code", placeholder:"ギフトしたい金額を入力してね！" %>
         </div>
-      </div>  
-      <%# /配送先の入力 %>
+      </div> 
       <div class='buy-btn'>
         <%= f.submit "購入" ,class:"buy-red-btn" %>
       </div>

@@ -33,7 +33,6 @@ class UsersController < ApplicationController
         @givers << User.find(gift.giver_id)
       end
     end
-
     @bookmarked_games = Bookmark.where(user_id: current_user.id)
   end
 
@@ -41,11 +40,10 @@ class UsersController < ApplicationController
     redirect_to root_path unless user_signed_in?
     @user = User.find(params[:id])
     redirect_to root_path unless @user.id == current_user.id
-
     @bookmarked_games = Bookmark.where(user_id: current_user.id)
-    @bookmarked_game_tags = [] #現在のユーザーがすでにお気に入り登録した(bookmarkの)レコード一覧！！
+    @bookmarked_game_tags = [] # 現在のユーザーがすでにお気に入り登録した(bookmarkの)レコード一覧！！
     @bookmarked_games.each do |tag|
-        @bookmarked_game_tags << tag.game_tag.id
+      @bookmarked_game_tags << tag.game_tag.id
     end
 
     @bookmark = Bookmark.new(bookmark_params)
