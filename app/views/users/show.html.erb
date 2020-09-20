@@ -7,6 +7,15 @@
 <% @bookmarked_games.each do |game| %>
   <p><%= game.game_tag.game_title %></p>
 <% end %>
+<p>--フォローした人--</p>
+<% current_user.followings.each do |following| %>
+  <p><%= following.nickname %></p>
+<% end %>
+<p>--フォローしてくれてる人--</p>
+<% current_user.followers.each do |follower| %>
+  <p><%= follower.nickname %></p>
+<% end %>
+
 <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
 <div class="gift-action">
   <div class="gift-action-title">
