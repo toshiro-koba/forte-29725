@@ -13,6 +13,4 @@ Rails.application.routes.draw do
     end
     resources :messages, only: %i[index create]
   end
-
-  resources :relationships, only: [:create, :destroy]
 end
