@@ -12,7 +12,7 @@
         <div class="all-contents">
             <nav>left</nav>
             <main>
-        <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <p>--------------あなたに関連する質問です！--------------</p>
             <% @questions.each do |question| %>
                 <div class="room">
