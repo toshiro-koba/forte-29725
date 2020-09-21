@@ -36,7 +36,7 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[0].user) %>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
                                         </li>
                                       </ul>
                                     </div>
@@ -54,8 +54,7 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[0].user) %>
-                                        </li>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
                                       </ul>
                                     </div>
                                   </li>
@@ -76,7 +75,7 @@
                                       <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[1].user) %>
+                                          <%= link_to "#{question.messages[1].user.nickname}の詳細ページ", user_path(question.messages[1].user) %>
                                         </li>
                                       </ul>
                                     </div>
@@ -114,7 +113,7 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(message.user) %>
+                                          <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
                                         </li>
                                       </ul>
                                     </div>
@@ -128,7 +127,7 @@
                                     <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
                                     <ul class="more_list">
                                       <li>
-                                        <%= link_to 'ギフトする！', user_gifts_path(message.user) %>
+                                        <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
                                       </li>
                                     </ul>
                                   </div>
