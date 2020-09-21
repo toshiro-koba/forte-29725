@@ -10,10 +10,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_path unless user_signed_in?
     @user = User.find(params[:id])
-    @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
-    @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
+    if user_signed_in?
+      @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
+      @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
+    end
   end
 
   def bookmark

@@ -23,6 +23,10 @@
       </div>
     <% end %> 
   </div> 
+<% elsif user_signed_in? %>
+  <%= link_to 'ギフトする！', user_gifts_path(@user) %>
+<% else %>
+  <%= link_to 'ギフトする！', new_user_session_path %>
 <% end %>
 <p>--ブックマークしたゲーム--</p>
 <% Bookmark.where(user_id: @user.id).each do |game| %>
