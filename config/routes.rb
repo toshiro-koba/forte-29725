@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :rooms, only: %i[new create] do
     collection do
       get 'search'
+      get 'lets_gift'
     end
     resources :messages, only: %i[index create]
   end
