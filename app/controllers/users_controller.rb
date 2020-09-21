@@ -13,27 +13,8 @@ class UsersController < ApplicationController
     redirect_to root_path unless user_signed_in?
     @user = User.find(params[:id])
     redirect_to root_path unless @user.id == current_user.id
-    @users = User.all
-
-    @all_gifts_in_table = Gift.all
-
-    @giftings = []
-    @receivers = []
-
-    @receivings = []
-    @givers = []
-
-    @all_gifts_in_table.each do |gift|
-      if gift.giver_id == current_user.id
-        @giftings << gift
-        @receivers << User.find(gift.user_id)
-      end
-      if gift.user_id == current_user.id
-        @receivings << gift
-        @givers << User.find(gift.giver_id)
-      end
-    end
-    @bookmarked_games = Bookmark.where(user_id: current_user.id)
+    @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
+    @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
   end
 
   def bookmark

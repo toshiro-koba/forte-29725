@@ -2,7 +2,7 @@
 <%= "#{@user.nickname}の詳細ページ" %>
 <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
 <p>--ブックマークしたゲーム--</p>
-<% @bookmarked_games.each do |game| %>
+<% Bookmark.where(user_id: current_user.id).each do |game| %>
   <p><%= game.game_tag.game_title %></p>
 <% end %>
 <p>--フォローした人--</p>
@@ -18,11 +18,9 @@
   <div class="gift-action-title">
     <p>自分がしたギフト</p>
   </div>
-  <% check = 0 %>
   <% @giftings.each do |gift| %>
     <div class="gift">
-      <p><%= "#{@receivers[check].nickname}に#{gift.price}円をギフトした！" %></p>
-      <% check += 1 %>
+      <p><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
     </div>
   <% end %>
 </div>
@@ -30,11 +28,9 @@
   <div class="gift-action-title">
     <p>自分に送られたギフト</p>
   </div>
-  <% check = 0 %>
   <% @receivings.each do |gift| %> 
     <div class="gift">
-      <p><%= "#{@givers[check].nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
-      <% check += 1 %>
+      <p><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
     </div>
   <% end %> 
 </div> 
