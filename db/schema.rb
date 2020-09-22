@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_053117) do
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "link_to_sns"
     t.string "link_to_webcast"
+    t.text "self_introduction"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
