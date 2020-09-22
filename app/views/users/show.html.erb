@@ -42,7 +42,7 @@
 <% @user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
-<% unless @profile =! nil %>
+<% unless @profile == nil %>
   <p><%= "↓#{@profile.user.nickname}のプロフィール！↓" %></p>
   <p><%= link_to "SNS", @profile.link_to_sns %></p>
   <p><%= link_to "配信サイト", @profile.link_to_webcast %></p>
