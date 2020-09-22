@@ -6,10 +6,12 @@ Rails.application.routes.draw do
       get 'bookmark'
     end
     resources :gifts, only: %i[index new create]
+    resources :profiles, only: %i[new create]
   end
   resources :rooms, only: %i[new create] do
     collection do
       get 'search'
+      get 'lets_gift'
     end
     resources :messages, only: %i[index create]
   end

@@ -12,7 +12,7 @@
         <div class="all-contents">
             <nav>left</nav>
             <main>
-        <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <p>--------------あなたに関連する質問です！--------------</p>
             <% @questions.each do |question| %>
                 <div class="room">
@@ -27,7 +27,7 @@
                               <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
                                 <ul class="question-lists">
                                   <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                               <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
                                 <ul class="question-lists">
@@ -36,12 +36,12 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[0].user) %>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
                                         </li>
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
@@ -54,12 +54,11 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[0].user) %>
-                                        </li>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
@@ -68,7 +67,7 @@
                               <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
                                 <ul class="question-lists">
                                   <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li>
@@ -76,12 +75,12 @@
                                       <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(question.messages[1].user) %>
+                                          <%= link_to "#{question.messages[1].user.nickname}の詳細ページ", user_path(question.messages[1].user) %>
                                         </li>
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}"%></li>
+                                  <li><%= safe_join("[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                               <% end %>
                         </div>
@@ -114,12 +113,12 @@
                                       <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
                                       <ul class="more_list">
                                         <li>
-                                          <%= link_to 'ギフトする！', user_gifts_path(message.user) %>
+                                          <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
                                         </li>
                                       </ul>
                                     </div>
                                   </li>
-                                <li><%= "[質問文][#{message.user.nickname}]#{message.content}"%></li>
+                                <li><%= safe_join("[質問文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
                               </ul>
                             <% elsif check == 2 %>
                               <ul class="question-lists">
@@ -128,15 +127,13 @@
                                     <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
                                     <ul class="more_list">
                                       <li>
-                                        <%= link_to 'ギフトする！', user_gifts_path(message.user) %>
+                                        <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
                                       </li>
                                     </ul>
                                   </div>
                                 </li>
-                                <li><%= "[回答文][#{message.user.nickname}]#{message.content}"%></li>
-                              </ul> 
-                            <% else %>
-                              <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                                <li><%= safe_join("[回答文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+                              </ul>
                             <% end %>
                           <% end %>
                         </div>

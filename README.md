@@ -140,11 +140,12 @@
 
 ## profiles テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| link_to_sns     | string     |             |
-| link_to_webcast | string     |             |
-| user            | references | null: false |
+| Column            | Type       | Options     |
+| ----------------- | ---------- | ----------- |
+| link_to_sns       | string     |             |
+| link_to_webcast   | string     |             |
+| self_introduction | text       |             |
+| user              | references | null: false |
 
 ### Association 
 

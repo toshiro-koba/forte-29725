@@ -1,0 +1,9 @@
+プロフィールを新しく設定する
+<%= form_with(url: user_profiles_path(current_user), model: @profile, local: true, method: :post) do |f| %>
+  <div class="form-input">
+    <%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'SNSのURLを貼ってね！' %>
+    <%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '配信しているサイトのURLを貼ってね！' %>
+  </div>
+  <%= f.text_area :self_introduction, placeholder: '自由に自己紹介してね！' %>
+  <%= f.submit '登録する', class: 'form-submit' %>
+<% end %>

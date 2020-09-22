@@ -1,40 +1,48 @@
 <%= render "shared/second-header"%>
 <%= "#{@user.nickname}の詳細ページ" %>
-<%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
+
+<% if @user == current_user %>
+  <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
+  <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+  <p><%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %></p>
+  <div class="gift-action">
+    <div class="gift-action-title">
+      <p>自分がしたギフト</p>
+    </div>
+    <% @giftings.each do |gift| %>
+      <div class="gift">
+        <p><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="gift-action">
+    <div class="gift-action-title">
+      <p>自分に送られたギフト</p>
+    </div>
+    <% @receivings.each do |gift| %> 
+      <div class="gift">
+        <p><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
+      </div>
+    <% end %> 
+  </div> 
+<% elsif user_signed_in? %>
+  <%= link_to 'ギフトする！', user_gifts_path(@user) %>
+<% else %>
+  <%= link_to 'ギフトする！', new_user_session_path %>
+<% end %>
 <p>--ブックマークしたゲーム--</p>
-<% @bookmarked_games.each do |game| %>
+<% Bookmark.where(user_id: @user.id).each do |game| %>
   <p><%= game.game_tag.game_title %></p>
 <% end %>
 <p>--フォローした人--</p>
-<% current_user.followings.each do |following| %>
+<% @user.followings.each do |following| %>
   <p><%= following.nickname %></p>
 <% end %>
 <p>--フォローしてくれてる人--</p>
-<% current_user.followers.each do |follower| %>
+<% @user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
-<%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
-<div class="gift-action">
-  <div class="gift-action-title">
-    <p>自分がしたギフト</p>
-  </div>
-  <% check = 0 %>
-  <% @giftings.each do |gift| %>
-    <div class="gift">
-      <p><%= "#{@receivers[check].nickname}に#{gift.price}円をギフトした！" %></p>
-      <% check += 1 %>
-    </div>
-  <% end %>
-</div>
-<div class="gift-action">
-  <div class="gift-action-title">
-    <p>自分に送られたギフト</p>
-  </div>
-  <% check = 0 %>
-  <% @receivings.each do |gift| %> 
-    <div class="gift">
-      <p><%= "#{@givers[check].nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
-      <% check += 1 %>
-    </div>
-  <% end %> 
-</div> 
+<p><%= "↓#{@profile.user.nickname}のプロフィール！↓" %></p>
+<p><%= link_to "SNS", @profile.link_to_sns %></p>
+<p><%= link_to "配信サイト", @profile.link_to_webcast %></p>
+<p><%= safe_join(@profile.self_introduction.split("\n"),tag(:br))%></p>

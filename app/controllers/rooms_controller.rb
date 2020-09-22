@@ -1,26 +1,13 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all.order('created_at DESC')
-    @another_questions = []
     if user_signed_in?
-      @entries = Entry.all.order('created_at DESC')
       @questions = []
-      @question_ids = []
-      @rooms.each do |room|
-        @entries.each do |entry|
-          next unless entry.room_id == room.id
-          if entry.user_id == current_user.id
-            @questions << room
-            @question_ids << room.id
-          end
-        end
+      @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
+      @questions_related_to_current_user.each do |entry|
+        @questions << entry.room
       end
-      @another_question_ids = @rooms.ids - @question_ids
-      @rooms.each do |room|
-        @another_question_ids.each do |another_question_id|
-          @another_questions << room if room.id == another_question_id
-        end
-      end
+      @another_questions = @rooms - @questions
     else
       @another_questions = @rooms
     end
@@ -28,6 +15,9 @@ class RoomsController < ApplicationController
 
   def new
     redirect_to root_path unless user_signed_in?
+    if Gift.where(giver_id: current_user.id).size == 0 # 一度でもギフトしたことがあれば、質問できる！！このアプリの肝！！！
+      redirect_to lets_gift_rooms_path
+    end
     @room = Room.new
   end
 
@@ -42,30 +32,18 @@ class RoomsController < ApplicationController
 
   def search
     @rooms = Room.search(params[:keyword])
-    @another_questions = []
     if user_signed_in?
-      @entries = Entry.all.order('created_at DESC')
       @questions = []
-      @question_ids = []
       @rooms.each do |room|
-        @entries.each do |entry|
-          next unless entry.room_id == room.id
-          if entry.user_id == current_user.id
-            @questions << room
-            @question_ids << room.id
-          end
-        end
+        @questions << room if room.user_ids.include?(current_user.id)
       end
-      @another_question_ids = @rooms.ids - @question_ids
-      @rooms.each do |room|
-        @another_question_ids.each do |another_question_id|
-          @another_questions << room if room.id == another_question_id
-        end
-      end
+      @another_questions = @rooms - @questions
     else
       @another_questions = @rooms
     end
   end
+
+  def lets_gift; end
 
   private
 
