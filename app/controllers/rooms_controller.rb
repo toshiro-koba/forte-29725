@@ -9,13 +9,15 @@ class RoomsController < ApplicationController
       end
       @another_questions = @rooms - @questions
     else
-      @another_questions = @rooms 
+      @another_questions = @rooms
     end
   end
 
   def new
     redirect_to root_path unless user_signed_in?
-    redirect_to lets_gift_rooms_path if Gift.where(giver_id: current_user.id).size == 0 #一度でもギフトしたことがあれば、質問できる！！このアプリの肝！！！
+    if Gift.where(giver_id: current_user.id).size == 0 # 一度でもギフトしたことがあれば、質問できる！！このアプリの肝！！！
+      redirect_to lets_gift_rooms_path
+    end
     @room = Room.new
   end
 
@@ -31,11 +33,9 @@ class RoomsController < ApplicationController
   def search
     @rooms = Room.search(params[:keyword])
     if user_signed_in?
-      @questions = []  
+      @questions = []
       @rooms.each do |room|
-        if  room.user_ids.include?(current_user.id)
-          @questions << room
-        end
+        @questions << room if room.user_ids.include?(current_user.id)
       end
       @another_questions = @rooms - @questions
     else
@@ -43,8 +43,7 @@ class RoomsController < ApplicationController
     end
   end
 
-  def lets_gift
-  end
+  def lets_gift; end
 
   private
 

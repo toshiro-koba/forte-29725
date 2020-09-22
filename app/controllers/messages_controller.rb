@@ -3,12 +3,13 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:room_id])
     @messages = @room.messages.includes(:user)
-    @xxx2_entries = Entry.where(room_id: @room).where.not(user_id: @room.messages[0].user) unless @room.messages.size == 0 #質問がroomsテーブルに既に存在していて、質問文がmessagesテーブルにある時、entriesテーブルから回答者の情報をインスタンス変数に代入している
-    
-    if @room.messages.size == 0 #質問する前(正常系)
-    elsif @room.messages.size == 1 && @xxx2_entries[0].user == current_user #質問が存在し、まだ回答する前かつ、質問者にお願いされた回答者が現在のユーザーと一致する(正常系)
-    else #不適合なユーザーが直接リンクを踏んだ場合、トップページに遷移させる(異常系)
-      redirect_to root_path 
+    unless @room.messages.size == 0 # 質問がroomsテーブルに既に存在していて、質問文がmessagesテーブルにある時、entriesテーブルから回答者の情報をインスタンス変数に代入している
+      @entries = Entry.where(room_id: @room).where.not(user_id: @room.messages[0].user)
+    end
+    if @room.messages.size == 0 # 質問する前(正常系)
+    elsif @room.messages.size == 1 && @entries[0].user == current_user # 質問が存在し、まだ回答する前かつ、質問者にお願いされた回答者が現在のユーザーと一致する(正常系)
+    else # 不適合なユーザーが直接リンクを踏んだ場合、トップページに遷移させる(異常系)
+      redirect_to root_path
     end
   end
 
