@@ -27,7 +27,7 @@
                               <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
                                 <ul class="question-lists">
                                   <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                               <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
                                 <ul class="question-lists">
@@ -41,7 +41,7 @@
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
@@ -58,7 +58,7 @@
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
@@ -67,7 +67,7 @@
                               <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
                                 <ul class="question-lists">
                                   <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
-                                  <li><%= "[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}"%></li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li>
@@ -80,7 +80,7 @@
                                       </ul>
                                     </div>
                                   </li>
-                                  <li><%= "[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}"%></li>
+                                  <li><%= safe_join("[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                               <% end %>
                         </div>
@@ -118,7 +118,7 @@
                                       </ul>
                                     </div>
                                   </li>
-                                <li><%= "[質問文][#{message.user.nickname}]#{message.content}"%></li>
+                                <li><%= safe_join("[質問文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
                               </ul>
                             <% elsif check == 2 %>
                               <ul class="question-lists">
@@ -132,10 +132,8 @@
                                     </ul>
                                   </div>
                                 </li>
-                                <li><%= "[回答文][#{message.user.nickname}]#{message.content}"%></li>
-                              </ul> 
-                            <% else %>
-                              <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                                <li><%= safe_join("[回答文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+                              </ul>
                             <% end %>
                           <% end %>
                         </div>
