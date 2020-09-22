@@ -42,3 +42,7 @@
 <% @user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
+<p><%= "↓#{@profile.user.nickname}のプロフィール！↓" %></p>
+<p><%= link_to "SNS", @profile.link_to_sns %></p>
+<p><%= link_to "配信サイト", @profile.link_to_webcast %></p>
+<p><%= safe_join(@profile.self_introduction.split("\n"),tag(:br))%></p>
