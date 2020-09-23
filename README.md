@@ -145,6 +145,7 @@
 | link_to_sns       | string     |             |
 | link_to_webcast   | string     |             |
 | self_introduction | text       |             |
+| image             | string     |             |
 | user              | references | null: false |
 
 ### Association 
