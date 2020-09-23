@@ -3,7 +3,11 @@
 
 <% if @user == current_user %>
   <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
-  <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+  <% if @user.profile == nil %>
+    <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+  <% else %>
+    <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
+  <% end %>
   <p><%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %></p>
   <div class="gift-action">
     <div class="gift-action-title">
