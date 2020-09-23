@@ -13,6 +13,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.permit(:link_to_sns, :link_to_webcast, :self_introduction).merge(user_id: current_user.id)
+    params.permit(:link_to_sns, :link_to_webcast, :self_introduction, :image).merge(user_id: current_user.id)
   end
 end
