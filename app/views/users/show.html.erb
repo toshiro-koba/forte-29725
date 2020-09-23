@@ -3,7 +3,11 @@
 
 <% if @user == current_user %>
   <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
-  <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+  <% if @user.profile == nil %>
+    <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+  <% else %>
+    <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
+  <% end %>
   <p><%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %></p>
   <div class="gift-action">
     <div class="gift-action-title">
@@ -42,9 +46,29 @@
 <% @user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
-<% unless @profile == nil %>
-  <p><%= "↓#{@profile.user.nickname}のプロフィール！↓" %></p>
-  <p><%= link_to "SNS", @profile.link_to_sns %></p>
-  <p><%= link_to "配信サイト", @profile.link_to_webcast %></p>
-  <p><%= safe_join(@profile.self_introduction.split("\n"),tag(:br))%></p>
+
+<% unless @user.profile == nil %>
+
+  <p><%= "↓#{@user.nickname}のプロフィール！↓" %></p>
+  <% if @user.profile.image? %>
+    <p><%= image_tag(@user.profile.image.thumb100.url) %></p>
+  <% else %>
+    <%= image_tag "default.jpg", :size => '50x50' %>
+  <% end %>
+  <% if @user.profile.link_to_sns? %>
+    <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
+  <% else %>
+    <p><%= "SNSは設定されていません" %></p>
+  <% end %>
+  <% if @user.profile.link_to_webcast? %>
+    <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
+  <% else %>
+    <p><%= "配信サイトは設定されていません" %></p>
+  <% end %>
+  <% if @user.profile.self_introduction? %>
+    <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
+  <% else %>
+    <p><%= "自己紹介分は設定されていません" %></p>
+  <% end %>
+  <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
 <% end %>
