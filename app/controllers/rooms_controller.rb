@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all.order('created_at DESC')
+    @users = User.all
     if user_signed_in?
       @questions = []
       @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')

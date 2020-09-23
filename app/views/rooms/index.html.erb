@@ -141,7 +141,15 @@
                 </div>
             <% end %>
             </main>
-            <aside>right</aside>
+
+            <aside>
+              <% if user_signed_in? %>
+                <%= "ユーザー一覧" %> <%# デプロイ時のチェックの為に一覧表示している %>
+                <% @users.where.not(id: current_user.id).each do |user| %>
+                  <p><%= link_to "#{user.nickname}の詳細ページ", user_path(user) %></p>
+                <% end %>
+              <% end %>
+            </aside>
         </div>
         <div class='purchase-btn'>
           <span class='purchase-btn-text'>質問する</span>
