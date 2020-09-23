@@ -5,7 +5,7 @@
       <p>
         クリックしてファイルをアップロード
       </p>
-      <%= f.file_field :image, id:"item-image" %>
+      <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id:"item-image" %>
     </div>
     <%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'SNSのURLを貼ってね！' %>
     <%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '配信しているサイトのURLを貼ってね！' %>
