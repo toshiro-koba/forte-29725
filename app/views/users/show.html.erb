@@ -48,7 +48,7 @@
 <% end %>
 <% unless @user.profile == nil %>
   <p><%= "↓#{@user.nickname}のプロフィール！↓" %></p>
-    <p><%= image_tag(@user.profile.image.url, size: "100x100") unless @user.profile.image.file.nil? %></p>
+    <p><%= image_tag(@user.profile.image.thumb100.url) unless @user.profile.image.file.nil? %></p>
   <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
   <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
   <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
