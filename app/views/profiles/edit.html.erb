@@ -2,16 +2,18 @@
 <%= form_with(url: user_profile_path(current_user), model: @profile, local: true, method: :patch) do |f| %>
   <div class="form-input">
     <div class="click-upload">
-      <p>現在のアイコン</p>
-      <% if @profile.image? %>
-        <%= image_tag(@profile.image.url, size: "100x100")%> 
-      <% else %> 
-        <%= image_tag "/assets/default.jpg", :size => '100x100' %> 
-      <% end %> 
+      <div id="image-list">
+        <p id="before_image">現在のアイコン</p>
+        <% if @profile.image? %>
+          <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
+        <% else %> 
+          <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
+        <% end %> 
+      </div>
       <p> 
         クリックしてファイルをアップロード
       </p>
-      <%= f.file_field :image, id:"item-image" %>
+      <%= f.file_field :image, id:"profile-image" %>
     </div>
     <%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'SNSのURLを貼ってね！' %>
     <%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '配信しているサイトのURLを貼ってね！' %>
