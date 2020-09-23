@@ -46,10 +46,29 @@
 <% @user.followers.each do |follower| %>
   <p><%= follower.nickname %></p>
 <% end %>
+
 <% unless @user.profile == nil %>
+
   <p><%= "↓#{@user.nickname}のプロフィール！↓" %></p>
-    <p><%= image_tag(@user.profile.image.thumb100.url) unless @user.profile.image.file.nil? %></p>
-  <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
-  <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
+  <% if @user.profile.image? %>
+    <p><%= image_tag(@user.profile.image.thumb100.url) %></p>
+  <% else %>
+    <%= image_tag "default.jpg", :size => '50x50' %>
+  <% end %>
+  <% if @user.profile.link_to_sns? %>
+    <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
+  <% else %>
+    <p><%= "SNSは設定されていません" %></p>
+  <% end %>
+  <% if @user.profile.link_to_webcast? %>
+    <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
+  <% else %>
+    <p><%= "配信サイトは設定されていません" %></p>
+  <% end %>
+  <% if @user.profile.self_introduction? %>
+    <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
+  <% else %>
+    <p><%= "自己紹介分は設定されていません" %></p>
+  <% end %>
   <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
 <% end %>
