@@ -68,3 +68,4 @@ gem 'pry-rails'
 gem 'payjp'
 
 gem 'carrierwave'
+gem 'mini_magick'
