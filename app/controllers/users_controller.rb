@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
       @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
     end
-    @profile = Profile.find_by(user: @user)
   end
 
   def bookmark
