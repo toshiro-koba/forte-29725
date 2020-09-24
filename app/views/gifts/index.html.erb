@@ -12,7 +12,6 @@
       </div>
     </div>
 
-    <%= render 'relationships/follow_button', user: @user %>
     <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
       <%= render 'shared/error_messages', model: f.object %>
       <div class='credit-card-form'>
