@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: forte_29725_production
-  username: forte_29725
-  password: <%= ENV['FORTE_29725_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
