@@ -2,6 +2,13 @@
 <header >
   <ul class="user-management-lists" >
     <% if user_signed_in? %>
+      <% unless current_user.profile == nil %>
+        <% if current_user.profile.image? %>
+          <div >
+            <p><%= image_tag(current_user.profile.image.thumb50.url)%></p>
+          </div>
+        <% end %>
+      <% end %>
       <li class="user-management-list" ><%= current_user.nickname %></li>
       <li class="user-management-list" >
         <a href="/users/<%= current_user.id %>">

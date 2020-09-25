@@ -24,16 +24,36 @@
                           <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
                         <% end%>
                         <div class="question-contents">
-                              <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
+                              <% if question.messages.size == 1 && question.messages[0] == current_user %> <%# 自分が登録した質問%>
                                 <ul class="question-lists">
-                                  <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
+                                  <li>
+                                  <% unless question.messages[0].user.profile == nil %>
+                                    <% if question.messages[0].user.profile.image? %>
+                                      <div >
+                                        <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                      </div>
+                                    <% end %>
+                                  <% else %>
+                                    <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                  <% end %>
+                                  </li>
                                   <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                               <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
                                 <ul class="question-lists">
                                   <li>
                                     <div class="more">
-                                      <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
+                                      <span>
+                                        <% unless question.messages[0].user.profile == nil %>
+                                          <% if question.messages[0].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
                                       <ul class="more_list">
                                         <li>
                                           <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
@@ -44,14 +64,34 @@
                                   <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
-                                  <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                  <li>
+                                    <% unless current_user.profile == nil %>
+                                      <% if current_user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
                                   <li><%= link_to '回答する！', messages_path(question) %></li> 
                                 </ul>
                               <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
                                 <ul class="question-lists">
                                   <li>
                                     <div class="more">
-                                      <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
+                                      <span>
+                                        <% unless question.messages[0].user.profile == nil %>
+                                          <% if question.messages[0].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
                                       <ul class="more_list">
                                         <li>
                                           <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
@@ -61,18 +101,48 @@
                                   <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
-                                  <li><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></li>
+                                  <li>
+                                    <% unless question.messages[1].user.profile == nil %>
+                                      <% if question.messages[1].user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
                                   <li><%= "[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}"%></li>
                                 </ul>
                               <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
                                 <ul class="question-lists">
-                                  <li><%= image_tag "question_user_icon.png", class:"question-user-icon" %></li>
+                                  <li>
+                                    <% unless current_user.profile == nil %>
+                                      <% if current_user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
                                   <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
                                 </ul>
                                 <ul class="question-lists">
                                   <li>
                                     <div class="more">
-                                      <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
+                                      <span>
+                                        <% unless question.messages[1].user.profile == nil %>
+                                          <% if question.messages[1].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                        <% end %>
+                                      </span>
                                       <ul class="more_list">
                                         <li>
                                           <%= link_to "#{question.messages[1].user.nickname}の詳細ページ", user_path(question.messages[1].user) %>
@@ -110,7 +180,17 @@
                               <ul class="question-lists">
                                 <li>
                                     <div class="more">
-                                      <span><%= image_tag "question_user_icon.png", class:"question-user-icon" %></span>
+                                      <span>
+                                        <% unless message.user.profile == nil %>
+                                          <% if message.user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
                                       <ul class="more_list">
                                         <li>
                                           <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
@@ -124,7 +204,17 @@
                               <ul class="question-lists">
                                 <li>
                                   <div class="more">
-                                    <span><%= image_tag "answer_user_icon.png", class:"answer-user-icon" %></span>
+                                    <span>
+                                      <% unless message.user.profile == nil %>
+                                        <% if message.user.profile.image? %>
+                                          <div >
+                                            <p ><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                                          </div>
+                                        <% end %>
+                                      <% else %>
+                                        <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                      <% end %>
+                                    </span>
                                     <ul class="more_list">
                                       <li>
                                         <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>

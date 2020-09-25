@@ -156,11 +156,13 @@ select {
 .question-user-icon {
   width: 25px;
   height: 25px;
+  border-radius: 50% ; /*画像を丸くする！！*/
 }
 
 .answer-user-icon {
   width: 30px;
   height: 30px;
+  border-radius: 50%; /*画像を丸くする！！*/
 }
 
 
