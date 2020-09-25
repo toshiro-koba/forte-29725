@@ -19,13 +19,14 @@ class RoomsController < ApplicationController
     if Gift.where(giver_id: current_user.id).size == 0 # 一度でもギフトしたことがあれば、質問できる！！このアプリの肝！！！
       redirect_to lets_gift_rooms_path
     end
-    @room = Room.new
+    @room = RoomMessage.new
   end
 
   def create
-    @room = Room.new(room_params)
-    if @room.save
-      redirect_to room_messages_path(@room)
+    @room = RoomMessage.new(room_params)
+    if @room.valid?
+      @room.save
+      return redirect_to root_path
     else
       render :new
     end
@@ -49,6 +50,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:question_title, user_ids: [], game_tag_ids: [])
+    params.require(:room_message).permit(:question_title, :content).merge(user_ids: params[:room][:user_ids], game_tag_ids: params[:room][:game_tag_ids], user_id: current_user.id)
   end
 end

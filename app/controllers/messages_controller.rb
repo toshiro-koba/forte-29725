@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @message = Message.new
-    @room = Room.find(params[:room_id])
+    @room = Room.find(params[:format])
     @messages = @room.messages.includes(:user)
     unless @room.messages.size == 0 # 質問がroomsテーブルに既に存在していて、質問文がmessagesテーブルにある時、entriesテーブルから回答者の情報をインスタンス変数に代入している
       @entries = Entry.where(room_id: @room).where.not(user_id: @room.messages[0].user)
@@ -13,6 +13,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def new
+    @room = Room.find(params[:room_id])
+    @message = @room.messages.new(message_params)
+  end
+
   def create
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
@@ -20,7 +25,7 @@ class MessagesController < ApplicationController
       redirect_to root_path
     else
       @messages = @room.messages.includes(:user)
-      redirect_to room_messages_path
+      redirect_to messages_path(@room)
     end
   end
 

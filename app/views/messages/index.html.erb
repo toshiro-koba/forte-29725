@@ -7,8 +7,9 @@
 <% elsif @room.messages.size == 1 %>
     <a href="#"><%= "[質問タイトル]#{@room.question_title}"%></a>
     <p><%= safe_join("[質問文][#{@room.messages[0].user.nickname}]#{@room.messages[0].content}".split("\n"),tag(:br))%></p>
-    <%= form_with model: [@room, @message], local: true do |f|%>
+    <%= form_with model: @message, local: true do |f|%>
         <%= f.text_area :content, placeholder: 'type a message' %>
+        <input name="room_id" type="hidden" value=<%=params[:format]%>>
         <%= f.submit '回答する!' %>
     <% end %>
 <% end %>
