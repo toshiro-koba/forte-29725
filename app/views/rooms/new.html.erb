@@ -1,8 +1,7 @@
 <div class='chat-room-form'>
   <h1>新しく質問する</h1>
-  <%=form_with model: @room, local: true do |f|%>
-  <%= render 'shared/error_messages', model: f.object %> 
-  
+  <%= form_with(url: rooms_path, model: @room, local: true, method: :post) do |f| %>
+  <%= render 'error_messages', room: @room %> 
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
         <%= f.label :質問タイトル, class: 'chat-room-form__label'%>
@@ -40,6 +39,14 @@
              <option value=<%=tag.id%>><%= tag.game_title %></option>
           <% end %>
         </select>
+      </div>
+    </div>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>
+        <%= f.label :質問本文, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_area :content, class: 'chat__room_name chat-room-form__input', placeholder: '質問本文を入力してね！' %>
       </div>
     </div>
 

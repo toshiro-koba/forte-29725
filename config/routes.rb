@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       get 'search'
       get 'lets_gift'
     end
-    resources :messages, only: %i[index create]
   end
+  resources :messages, only: %i[index create]
 
   resources :relationships, only: %i[create destroy]
 end
