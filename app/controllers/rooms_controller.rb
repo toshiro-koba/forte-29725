@@ -24,12 +24,24 @@ class RoomsController < ApplicationController
   end
 
   def create
+    @rooms = Room.all.order('created_at DESC')
+    @users = User.all
+    if user_signed_in?
+      @questions = []
+      @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
+      @questions_related_to_current_user.each do |entry|
+        @questions << entry.room
+      end
+      @another_questions = @rooms - @questions
+    else
+      @another_questions = @rooms
+    end
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save
-      return redirect_to root_path
+      render json:{ room: @room ,tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content}
     else
-      render :new
+      render json:{ title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0]}
     end
   end
 

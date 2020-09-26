@@ -31,14 +31,16 @@
             <% if user_signed_in? %>
               <div class='chat-room-form'>
                 <h1>新しく質問する</h1>
-                <%= form_with(url: rooms_path, model: @room, local: true, method: :post) do |f| %>
+                <%= form_with(url: rooms_path, model: @room, local: true, method: :post, id: 'form') do |f| %>
+                <div id="error">
+                </div>
                 <%= render 'error_messages', room: @room %> 
                   <div class='chat-room-form__field'>
                     <div class='chat-room-form__field--left'>
                       <%= f.label :質問タイトル, class: 'chat-room-form__label'%>
                     </div>
                     <div class='chat-room-form__field--right'>
-                      <%= f.text_field :question_title, class: 'chat__room_name chat-room-form__input', placeholder: '質問タイトルを入力してね！'%>
+                      <%= f.text_field :question_title, class: 'chat__room_name chat-room-form__input', placeholder: '質問タイトルを入力してね！', id: "question_title"%>
                     </div>
                   </div>
                   <div class='chat-room-form__field'>
@@ -48,7 +50,7 @@
                       <label class='chat-room-form__label' for='chat_room_回答して欲しい人'>回答して欲しい人</label>
                     </div>
                     <div class='chat-room-form__field--right'>
-                      <select name="room[user_ids][]">
+                      <select name="room[user_ids][]", id="user">
                         <option value="">回答して欲しいユーザーを選んでね！</option>
                         <% User.all.where.not(id: current_user.id).each do |user| %>
                           <option value=<%=user.id%>><%= user.nickname %></option>
@@ -62,7 +64,7 @@
                       <label class='chat-room-form__label' for='chat_room_ゲームタイトル'>ゲームタイトル</label>
                     </div>
                     <div class='chat-room-form__field--right'>
-                      <select name="room[game_tag_ids][]">
+                      <select name="room[game_tag_ids][]", id="game-tag">
                         <option value="">ゲームタイトルを選んでね！</option>
                         <% GameTag.all.each do |tag| %>
                           <option value=<%=tag.id%>><%= tag.game_title %></option>
@@ -75,18 +77,20 @@
                       <%= f.label :質問本文, class: 'chat-room-form__label'%>
                     </div>
                     <div class='chat-room-form__field--right'>
-                      <%= f.text_area :content, class: 'chat__room_name chat-room-form__input', placeholder: '質問本文を入力してね！' %>
+                      <%= f.text_area :content, class: 'chat__room_name chat-room-form__input', placeholder: '質問本文を入力してね！' , id: "content"%>
                     </div>
                   </div>
                   <div class='chat-room-form__field'>
                     <div class='chat-room-form__field--left'></div>
                     <div class='chat-room-form__field--right'>
-                      <%= f.submit value="Create Question", class: 'chat-room-form__action-btn'%>
+                      <%= f.submit value="Create Question", class: 'chat-room-form__action-btn', id: "submit" %>
                     </div>
                   </div>
                 <% end %>
               </div>
             <p>--------------あなたに関連する質問です！--------------</p>
+            <div id="list">
+            </div>
             <% @questions.each do |question| %>
                 <div class="room">
                     <div class="room-name">
