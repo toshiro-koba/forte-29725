@@ -24,18 +24,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @rooms = Room.all.order('created_at DESC')
-    @users = User.all
-    if user_signed_in?
-      @questions = []
-      @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
-      @questions_related_to_current_user.each do |entry|
-        @questions << entry.room
-      end
-      @another_questions = @rooms - @questions
-    else
-      @another_questions = @rooms
-    end
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save

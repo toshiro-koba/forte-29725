@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
       # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
     end
+    @room = RoomMessage.new
   end
 
   def bookmark
