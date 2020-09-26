@@ -37,6 +37,10 @@ function question() {
         formText.value = "";
         formUser.value = "";
         formTag.value = "";
+        if (document.getElementById("errors") != null) {
+          const errors = document.getElementById("errors");
+          errors.remove()
+        }
       } else {
         const HTML = `
         <ul id='errors'>
