@@ -141,14 +141,6 @@ select {
   margin-left: 18px; 
 }
 
-.user-management-lists {
-  display: flex;
-}
-
-.user-management-list {
-  margin-right: 10px;
-}
-
 .question-lists {
   display: flex;
 }
@@ -204,4 +196,62 @@ body {
   letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
+   /* margin: 0; ブラウザのcssの余白を消す */
+  display: flex; 
+}
+
+main {
+  flex: 1;
+  min-height: 100vh;
+}
+
+aside {
+  width: 25%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.side-footer {
+  height: 300px;
+  margin-top: auto;
+  display: none;
+}
+footer {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    height: 1500px;
+    flex-direction: column;
+  }
+  main {
+    width: 100%;
+    flex: 1;
+    margin-bottom: 200px;
+  }
+  footer {
+    display: block;
+    bottom: 24px;
+  }
+  .side-footer {
+    display: none;
+  }
+  aside {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  ul {
+    display: flex;
+    
+  }
+  .bottom-nav {
+    flex: 1;
+    background-color: azure;
+    font-size: 20px;
+    height: 50px;
+  }
 }

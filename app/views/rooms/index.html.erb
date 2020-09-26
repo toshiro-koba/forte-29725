@@ -7,11 +7,27 @@
     </head>
 
     <body>
-        <%= render "shared/header" %> 
-        <h1>Top page</h1>
-        <div class="all-contents">
-            <nav>left</nav>
-            <main>
+        <aside>
+          <nav>
+            <ul>
+              <% if user_signed_in? %>
+                <li class="bottom-nav"><%= current_user.nickname %></li>
+                <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
+                <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li class="bottom-nav"><%= link_to 'ログイン', new_user_session_path %></li>
+                <li class="bottom-nav"><%= link_to '新規登録', new_user_registration_path %></li>
+              <% end %>
+            </ul>
+          </nav>
+          <div class="side-footer">side footer</div>
+        </aside>
+        
+        <main>
+              <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+                <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
+                <%= form.submit "検索", class: "search-btn" %>
+              <% end %>
             <% if user_signed_in? %>
             <p>--------------あなたに関連する質問です！--------------</p>
             <% @questions.each do |question| %>
@@ -228,18 +244,17 @@
                           <% end %>
                         </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
             </main>
 
-            <aside>
+            <footer>
               <% if user_signed_in? %>
                 <%= "ユーザー一覧" %> <%# デプロイ時のチェックの為に一覧表示している %>
                 <% @users.where.not(id: current_user.id).each do |user| %>
                   <p><%= link_to "#{user.nickname}の詳細ページ", user_path(user) %></p>
                 <% end %>
               <% end %>
-            </aside>
+            </footer>
         </div>
         <div class='purchase-btn'>
           <span class='purchase-btn-text'>質問する</span>
