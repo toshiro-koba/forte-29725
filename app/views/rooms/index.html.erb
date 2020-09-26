@@ -32,7 +32,9 @@
               <div class='chat-room-form'>
                 <h1>新しく質問する</h1>
                 <%= form_with(url: rooms_path, model: @room, local: true, method: :post, id: 'form') do |f| %>
-                <div id="error">
+                <div id="error-lists">
+                  <div id="error">
+                  </div>
                 </div>
                 <%= render 'error_messages', room: @room %> 
                   <div class='chat-room-form__field'>

@@ -39,13 +39,17 @@ function question() {
         formTag.value = "";
       } else {
         const HTML = `
-        <ul>
+        <ul id='errors'>
           <li>${XHR.response.title_error}</li>
           <li>${XHR.response.user_error}</li>
           <li>${XHR.response.tag_error}</li>
           <li>${XHR.response.content_error}</li>
         </ul>`;
         const error = document.getElementById("error");
+        if (document.getElementById("errors") != null) {
+          const errors = document.getElementById("errors");
+          errors.remove()
+        }
         error.insertAdjacentHTML("afterend", HTML);
       }
     };
