@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
     else
       @another_questions = @rooms
     end
+    @room = RoomMessage.new
   end
 
   def new
