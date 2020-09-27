@@ -4,10 +4,12 @@
       <meta charset="UTF-8" />
       <title>Forte</title>
       <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
   </head>
 
   <body>
     <%= render partial: "navigation_menu" %>
+    <div class="animate__animated animate__fadeInUp">フェードインするよ</div>
     <main>
       <%= render partial: "search_form" %>
       <% if user_signed_in? %>
