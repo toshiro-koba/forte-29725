@@ -103,7 +103,7 @@
                           <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
                         <% end%>
                         <div class="question-contents">
-                              <% if question.messages.size == 1 && question.messages[0] == current_user %> <%# 自分が登録した質問%>
+                              <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
                                 <ul class="question-lists">
                                   <li>
                                   <% unless question.messages[0].user.profile == nil %>
