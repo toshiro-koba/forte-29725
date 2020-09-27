@@ -14,40 +14,153 @@
             <main>
         <% if user_signed_in? %>
             <%= link_to "＼！！質問する！！／", new_room_path %>
-            <p>--------------------あなたに関連する質問です！--------------------</p>
+            <p>--------------あなたに関連する質問です！--------------</p>
+            <div id="list">
+            </div>
             <% @questions.each do |question| %>
                 <div class="room">
                     <div class="room-name">
                         <div class="question-title">
                           <%= question.question_title %>
                         </div>
-                        <% check = 0 %>
+                        <% question.game_tags.each do |game| %>
+                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
+                        <% end%>
                         <div class="question-contents">
-                        <% question.messages.includes(:user).each do |message| %>
-                          <% check += 1 %>
-                          <% if check == 1 %>
-                            <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
-                            <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                            </a>
-                          <% elsif check == 2 %>
-                            <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
-                            <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %>
-                            <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                            </a>
-                          <% else %>
-                            <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
-                          <% end %>
-                        <% end %>
-                        <% if check == 1 %>
-                            <%= link_to '回答する！', messages_path(question) %>
-                        <% end %>
+                              <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
+                                <ul class="question-lists">
+                                  <li>
+                                  <% unless question.messages[0].user.profile == nil %>
+                                    <% if question.messages[0].user.profile.image? %>
+                                      <div >
+                                        <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                      </div>
+                                    <% end %>
+                                  <% else %>
+                                    <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                  <% end %>
+                                  </li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
+                                </ul>
+                              <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
+                                <ul class="question-lists">
+                                  <li>
+                                    <div class="more">
+                                      <span>
+                                        <% unless question.messages[0].user.profile == nil %>
+                                          <% if question.messages[0].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
+                                      <ul class="more_list">
+                                        <li>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
+                                </ul>
+                                <ul class="question-lists">
+                                  <li>
+                                    <% unless current_user.profile == nil %>
+                                      <% if current_user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
+                                  <li><%= link_to '回答する！', messages_path(question) %></li> 
+                                </ul>
+                              <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
+                                <ul class="question-lists">
+                                  <li>
+                                    <div class="more">
+                                      <span>
+                                        <% unless question.messages[0].user.profile == nil %>
+                                          <% if question.messages[0].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
+                                      <ul class="more_list">
+                                        <li>
+                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
+                                </ul>
+                                <ul class="question-lists">
+                                  <li>
+                                    <% unless question.messages[1].user.profile == nil %>
+                                      <% if question.messages[1].user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
+                                  <li><%= "[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}"%></li>
+                                </ul>
+                              <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
+                                <ul class="question-lists">
+                                  <li>
+                                    <% unless current_user.profile == nil %>
+                                      <% if current_user.profile.image? %>
+                                        <div >
+                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
+                                        </div>
+                                      <% end %>
+                                    <% else %>
+                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                    <% end %>
+                                  </li>
+                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
+                                </ul>
+                                <ul class="question-lists">
+                                  <li>
+                                    <div class="more">
+                                      <span>
+                                        <% unless question.messages[1].user.profile == nil %>
+                                          <% if question.messages[1].user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                        <% end %>
+                                      </span>
+                                      <ul class="more_list">
+                                        <li>
+                                          <%= link_to "#{question.messages[1].user.nickname}の詳細ページ", user_path(question.messages[1].user) %>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                  <li><%= safe_join("[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}".split("\n"),tag(:br))%></li>
+                                </ul>
+                              <% end %>
                         </div>
                     </div>
                 </div>
             <% end %>
-            <p>-----------------------------------------------------------------------------</p>
+            <p>-----------------------------------------------------------</p>
         <% else %>
             <%= link_to "＼！！質問する！！／", new_user_session_path %>
         <% end %>
@@ -59,32 +172,75 @@
                         <div class="question-title">
                           <%= question.question_title %>
                         </div>
+                        <% question.game_tags.each do |game| %>
+                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
+                        <% end%>
                         <% check = 0 %>
                         <div class="question-contents">
                           <% question.messages.includes(:user).each do |message| %>
                             <% check += 1 %>
                             <% if check == 1 %>
-                              <p><%= "[質問文][#{message.user.nickname}]#{message.content}"%></p>
-                              <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
-                              <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                              </a>
+                              <ul class="question-lists">
+                                <li>
+                                    <div class="more">
+                                      <span>
+                                        <% unless message.user.profile == nil %>
+                                          <% if message.user.profile.image? %>
+                                            <div >
+                                              <p><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                                        <% end %>
+                                      </span>
+                                      <ul class="more_list">
+                                        <li>
+                                          <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                <li><%= safe_join("[質問文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+                              </ul>
                             <% elsif check == 2 %>
-                              <p><%= "[回答文][#{message.user.nickname}]#{message.content}"%></p>
-                              <%= link_to "#{message.user.nickname}にギフトする", user_gifts_path(message.user) %> 
-                              <a href="/users/<%= message.user.id %>">
-                                <%= "#{message.user.nickname}の詳細ページ" %>
-                              </a>
-                            <% else %>
-                              <p><%= "----------[#{message.user.nickname}]#{message.content}"%></p> <%# 1つのルームにメッセージが3つ以上保存されてたら、3つ目以降も表示される！本番はいらないやつ！！！ %>
+                              <ul class="question-lists">
+                                <li>
+                                  <div class="more">
+                                    <span>
+                                      <% unless message.user.profile == nil %>
+                                        <% if message.user.profile.image? %>
+                                          <div >
+                                            <p ><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                                          </div>
+                                        <% end %>
+                                      <% else %>
+                                        <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                                      <% end %>
+                                    </span>
+                                    <ul class="more_list">
+                                      <li>
+                                        <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </li>
+                                <li><%= safe_join("[回答文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+                              </ul>
                             <% end %>
                           <% end %>
                         </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
             </main>
-            <aside>right</aside>
+        
+        <div class='purchase-btn'>
+          <span class='purchase-btn-text'>質問する</span>
+            <% if user_signed_in? %>
+                <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_room_path %>
+            <% else %>
+              <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_user_session_path %>
+            <% end %>
         </div>
 
         <%= render "shared/footer" %> 
