@@ -7,9 +7,6 @@
   </div>
   <%= render 'error_messages', room: @room %> 
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <%= f.label :質問タイトル, class: 'chat-room-form__label'%>
-      </div>
       <div class='chat-room-form__field--right'>
         <%= f.text_field :question_title, class: 'chat__room_name chat-room-form__input', placeholder: '質問タイトルを入力してね！', id: "question_title"%>
       </div>
@@ -17,9 +14,6 @@
     <div class='chat-room-form__field'>
     </div>
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label' for='chat_room_回答して欲しい人'>回答して欲しい人</label>
-      </div>
       <div class='chat-room-form__field--right'>
         <select name="room[user_ids][]", id="user">
           <option value="">回答して欲しいユーザーを選んでね！</option>
@@ -31,9 +25,6 @@
       </div>
     </div>
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label' for='chat_room_ゲームタイトル'>ゲームタイトル</label>
-      </div>
       <div class='chat-room-form__field--right'>
         <select name="room[game_tag_ids][]", id="game-tag">
           <option value="">ゲームタイトルを選んでね！</option>
@@ -44,15 +35,11 @@
       </div>
     </div>
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <%= f.label :質問本文, class: 'chat-room-form__label'%>
-      </div>
       <div class='chat-room-form__field--right'>
         <%= f.text_area :content, class: 'chat__room_name chat-room-form__input', placeholder: '質問本文を入力してね！' , id: "content"%>
       </div>
     </div>
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'></div>
       <div class='chat-room-form__field--right'>
         <%= f.submit value="Create Question", class: 'chat-room-form__action-btn', id: "submit" %>
       </div>

@@ -23,13 +23,23 @@ li {
   font-size: 13px;
 }
 
+a {
+  text-decoration: none;
+  color: rgb(232, 232, 232);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+p {
+  color: rgb(232, 232, 232);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .chat-room-form {
-  width: 980px;
-  margin: 60px auto;
-  padding: 40px;
+  margin: 20px auto;
+  padding: 20px;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   box-sizing: border-box;
 }
 .chat-room-form__errors {
@@ -40,14 +50,13 @@ li {
   text-align: center;
 }
 .chat-room-form__label {
-  display: block;
   line-height: 50px;
   font-weight: bold;
   text-align: right;
 }
 .chat-room-form__input {
   float: left;
-  width: 100%;
+  width: 66%;
   line-height: 30px;
   padding: 10px 15px;
   box-sizing: border-box;
@@ -56,7 +65,7 @@ li {
   display: inline-block;
   padding: 12px 20px;
   color: #fff;
-  background-color: #38aef0;
+  background-color: rgb(47, 154, 41);
   border: 0;
 }
 .chat-room-form__field {
@@ -75,15 +84,14 @@ li {
   box-sizing: border-box;
 }
 .chat-room-form__field--right {
-  float: right;
-  width: 70%;
+  margin: auto;
+  /* width: 100%; */
 }
 
 .chat-room-user {
   padding: 0 15px;
   line-height: 50px;
   font-size: 14px;
-  border-bottom: 1px solid #ddd;
   width: 500px;
   margin: 0 auto;
 }
@@ -129,8 +137,9 @@ select {
 
 .room-name {
   margin: 5px;
-  background-color: #f5ffdd;
-  border: 1px solid rgb(144, 237, 14);
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* border: 1px solid rgb(144, 237, 14); */
   /* border-radius: 5%; */
 }
 
@@ -192,11 +201,14 @@ select {
   background-color: #57C3E9;
   color: #fff;
 } 
-
+html {
+  background-color: rgb(148, 41, 154);
+}
 body {
   letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
+  background-color: rgb(148, 41, 154);
    /* margin: 0; ブラウザのcssの余白を消す */
   display: flex; 
 }
@@ -211,6 +223,7 @@ aside {
   min-width: 250px;
   display: flex;
   flex-direction: column;
+  color: #ffffff;
 
 }
 

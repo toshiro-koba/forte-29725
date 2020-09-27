@@ -2,6 +2,11 @@
   <nav>
     <ul>
       <% if user_signed_in? %>
+        <% unless current_user.profile == nil %>
+          <% if current_user.profile.image? %>
+              <p><%= image_tag(current_user.profile.image.thumb50.url)%></p>
+          <% end %>
+        <% end %>
         <li class="bottom-nav"><%= current_user.nickname %></li>
         <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
         <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

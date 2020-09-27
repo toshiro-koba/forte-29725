@@ -1,5 +1,5 @@
 <%= render "shared/second-header"%>
-<%= "#{@user.nickname}の詳細ページ" %>
+<p><%= "#{@user.nickname}の詳細ページ" %></p>
 
 <% if @user == current_user %>
   <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
@@ -10,22 +10,18 @@
   <% end %>
   <p><%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %></p>
   <div class="gift-action">
-    <div class="gift-action-title">
-      <p>自分がしたギフト</p>
-    </div>
+    <p class="gift-action-title">自分がしたギフト</p>
     <% @giftings.each do |gift| %>
-      <div class="gift">
-        <p><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
+      <div class="gifts">
+        <p class="gift"><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
       </div>
     <% end %>
   </div>
   <div class="gift-action">
-    <div class="gift-action-title">
-      <p>自分に送られたギフト</p>
-    </div>
+    <p class="gift-action-title">自分に送られたギフト</p>
     <% @receivings.each do |gift| %> 
-      <div class="gift">
-        <p><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
+      <div class="gifts">
+        <p class="gift"><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
       </div>
     <% end %> 
   </div> 
