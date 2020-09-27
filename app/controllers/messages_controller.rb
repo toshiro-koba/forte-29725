@@ -23,9 +23,9 @@ class MessagesController < ApplicationController
     @message = @room.messages.new(message_params)
     if @message.valid?
       @message.save
-      render json:{ message: @message.content, user: User.find(@message.user_id) }
+      render json: { message: @message.content, user: User.find(@message.user_id) }
     else
-      render json:{ content_error: @message.errors[:content][0]}
+      render json: { content_error: @message.errors[:content][0] }
     end
   end
 

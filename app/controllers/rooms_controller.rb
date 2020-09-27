@@ -28,9 +28,9 @@ class RoomsController < ApplicationController
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save
-      render json:{ room: @room ,tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content}
+      render json: { room: @room, tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content}
     else
-      render json:{ title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0]}
+      render json: { title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0]}
     end
   end
 

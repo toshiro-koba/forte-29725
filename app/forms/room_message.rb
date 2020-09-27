@@ -1,5 +1,4 @@
 class RoomMessage
-
   include ActiveModel::Model
   attr_accessor :question_title, :user_ids, :game_tag_ids, :content, :user_id, :room_id
 
