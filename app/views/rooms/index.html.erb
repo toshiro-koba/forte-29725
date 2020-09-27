@@ -1,335 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Forte</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+  <head>
+      <meta charset="UTF-8" />
+      <title>Forte</title>
+      <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <aside>
-          <nav>
-            <ul>
-              <% if user_signed_in? %>
-                <li class="bottom-nav"><%= current_user.nickname %></li>
-                <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
-                <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                <li class="bottom-nav"><%= link_to 'ログイン', new_user_session_path %></li>
-                <li class="bottom-nav"><%= link_to '新規登録', new_user_registration_path %></li>
-              <% end %>
-            </ul>
-          </nav>
-          <div class="side-footer">side footer</div>
-        </aside>
-        
-        <main>
-              <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-                <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
-                <%= form.submit "検索", class: "search-btn" %>
-              <% end %>
-            <% if user_signed_in? %>
-              <div class='chat-room-form'>
-                <h1>新しく質問する</h1>
-                <%= form_with(url: rooms_path, model: @room, local: true, method: :post, id: 'form') do |f| %>
-                <div id="error-lists">
-                  <div id="error">
-                  </div>
-                </div>
-                <%= render 'error_messages', room: @room %> 
-                  <div class='chat-room-form__field'>
-                    <div class='chat-room-form__field--left'>
-                      <%= f.label :質問タイトル, class: 'chat-room-form__label'%>
-                    </div>
-                    <div class='chat-room-form__field--right'>
-                      <%= f.text_field :question_title, class: 'chat__room_name chat-room-form__input', placeholder: '質問タイトルを入力してね！', id: "question_title"%>
-                    </div>
-                  </div>
-                  <div class='chat-room-form__field'>
-                  </div>
-                  <div class='chat-room-form__field'>
-                    <div class='chat-room-form__field--left'>
-                      <label class='chat-room-form__label' for='chat_room_回答して欲しい人'>回答して欲しい人</label>
-                    </div>
-                    <div class='chat-room-form__field--right'>
-                      <select name="room[user_ids][]", id="user">
-                        <option value="">回答して欲しいユーザーを選んでね！</option>
-                        <% User.all.where.not(id: current_user.id).each do |user| %>
-                          <option value=<%=user.id%>><%= user.nickname %></option>
-                        <% end %>
-                      </select>
-                      <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
-                    </div>
-                  </div>
-                  <div class='chat-room-form__field'>
-                    <div class='chat-room-form__field--left'>
-                      <label class='chat-room-form__label' for='chat_room_ゲームタイトル'>ゲームタイトル</label>
-                    </div>
-                    <div class='chat-room-form__field--right'>
-                      <select name="room[game_tag_ids][]", id="game-tag">
-                        <option value="">ゲームタイトルを選んでね！</option>
-                        <% GameTag.all.each do |tag| %>
-                          <option value=<%=tag.id%>><%= tag.game_title %></option>
-                        <% end %>
-                      </select>
-                    </div>
-                  </div>
-                  <div class='chat-room-form__field'>
-                    <div class='chat-room-form__field--left'>
-                      <%= f.label :質問本文, class: 'chat-room-form__label'%>
-                    </div>
-                    <div class='chat-room-form__field--right'>
-                      <%= f.text_area :content, class: 'chat__room_name chat-room-form__input', placeholder: '質問本文を入力してね！' , id: "content"%>
-                    </div>
-                  </div>
-                  <div class='chat-room-form__field'>
-                    <div class='chat-room-form__field--left'></div>
-                    <div class='chat-room-form__field--right'>
-                      <%= f.submit value="Create Question", class: 'chat-room-form__action-btn', id: "submit" %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            <p>--------------あなたに関連する質問です！--------------</p>
-            <div id="list">
-            </div>
-            <% @questions.each do |question| %>
-                <div class="room">
-                    <div class="room-name">
-                        <div class="question-title">
-                          <%= question.question_title %>
-                        </div>
-                        <% question.game_tags.each do |game| %>
-                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
-                        <% end%>
-                        <div class="question-contents">
-                              <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
-                                <ul class="question-lists">
-                                  <li>
-                                  <% unless question.messages[0].user.profile == nil %>
-                                    <% if question.messages[0].user.profile.image? %>
-                                      <div >
-                                        <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
-                                      </div>
-                                    <% end %>
-                                  <% else %>
-                                    <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-                                  <% end %>
-                                  </li>
-                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
-                                </ul>
-                              <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
-                                <ul class="question-lists">
-                                  <li>
-                                    <div class="more">
-                                      <span>
-                                        <% unless question.messages[0].user.profile == nil %>
-                                          <% if question.messages[0].user.profile.image? %>
-                                            <div >
-                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
-                                            </div>
-                                          <% end %>
-                                        <% else %>
-                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-                                        <% end %>
-                                      </span>
-                                      <ul class="more_list">
-                                        <li>
-                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
-                                </ul>
-                                <ul class="question-lists">
-                                  <li>
-                                    <% unless current_user.profile == nil %>
-                                      <% if current_user.profile.image? %>
-                                        <div >
-                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
-                                        </div>
-                                      <% end %>
-                                    <% else %>
-                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-                                    <% end %>
-                                  </li>
-                                  <div id="error-lists-answer">
-                                    <div id="error-answer">
-                                    </div>
-                                  </div>
-                                  <div id="list-answer">
-                                  </div>
-                                  <%= form_with(url: messages_path, model: @message, local: true, method: :post, id: 'form-answer') do |f| %>
-                                    <%= f.text_area :content, placeholder: 'type a message', id: "content-answer" %>
-                                    <input name="room_id" type="hidden" value=<%= question.id %>>
-                                    <%= f.submit '回答する!' , id: "submit-answer" %>
-                                  <% end %>
-                                </ul>
-                              <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
-                                <ul class="question-lists">
-                                  <li>
-                                    <div class="more">
-                                      <span>
-                                        <% unless question.messages[0].user.profile == nil %>
-                                          <% if question.messages[0].user.profile.image? %>
-                                            <div >
-                                              <p><%= image_tag(question.messages[0].user.profile.image.thumb50.url)%></p>
-                                            </div>
-                                          <% end %>
-                                        <% else %>
-                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-                                        <% end %>
-                                      </span>
-                                      <ul class="more_list">
-                                        <li>
-                                          <%= link_to "#{question.messages[0].user.nickname}の詳細ページ", user_path(question.messages[0].user) %>
-                                      </ul>
-                                    </div>
-                                  </li>
-                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
-                                </ul>
-                                <ul class="question-lists">
-                                  <li>
-                                    <% unless question.messages[1].user.profile == nil %>
-                                      <% if question.messages[1].user.profile.image? %>
-                                        <div >
-                                          <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
-                                        </div>
-                                      <% end %>
-                                    <% else %>
-                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-                                    <% end %>
-                                  </li>
-                                  <li><%= "[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}"%></li>
-                                </ul>
-                              <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
-                                <ul class="question-lists">
-                                  <li>
-                                    <% unless current_user.profile == nil %>
-                                      <% if current_user.profile.image? %>
-                                        <div >
-                                          <p><%= image_tag(current_user.profile.image.thumb50.url) %></p>
-                                        </div>
-                                      <% end %>
-                                    <% else %>
-                                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-                                    <% end %>
-                                  </li>
-                                  <li><%= safe_join("[質問文][#{question.messages[0].user.nickname}]#{question.messages[0].content}".split("\n"),tag(:br))%></li>
-                                </ul>
-                                <ul class="question-lists">
-                                  <li>
-                                    <div class="more">
-                                      <span>
-                                        <% unless question.messages[1].user.profile == nil %>
-                                          <% if question.messages[1].user.profile.image? %>
-                                            <div >
-                                              <p><%= image_tag(question.messages[1].user.profile.image.thumb50.url) %></p>
-                                            </div>
-                                          <% end %>
-                                        <% else %>
-                                          <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-                                        <% end %>
-                                      </span>
-                                      <ul class="more_list">
-                                        <li>
-                                          <%= link_to "#{question.messages[1].user.nickname}の詳細ページ", user_path(question.messages[1].user) %>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                                  <li><%= safe_join("[回答文][#{question.messages[1].user.nickname}]#{question.messages[1].content}".split("\n"),tag(:br))%></li>
-                                </ul>
-                              <% end %>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-            <p>-----------------------------------------------------------</p>
-        <% else %>
-            <%= link_to "＼！！質問する！！／", new_user_session_path %>
-        <% end %>
-            
-            <p>↓↓新着の質問↓↓</p>
-            <% @another_questions .each do |question| %>
-                <div class="room">
-                    <div class="room-name">
-                        <div class="question-title">
-                          <%= question.question_title %>
-                        </div>
-                        <% question.game_tags.each do |game| %>
-                          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
-                        <% end%>
-                        <% check = 0 %>
-                        <div class="question-contents">
-                          <% question.messages.includes(:user).each do |message| %>
-                            <% check += 1 %>
-                            <% if check == 1 %>
-                              <ul class="question-lists">
-                                <li>
-                                    <div class="more">
-                                      <span>
-                                        <% unless message.user.profile == nil %>
-                                          <% if message.user.profile.image? %>
-                                            <div >
-                                              <p><%= image_tag(message.user.profile.image.thumb50.url) %></p>
-                                            </div>
-                                          <% end %>
-                                        <% else %>
-                                          <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-                                        <% end %>
-                                      </span>
-                                      <ul class="more_list">
-                                        <li>
-                                          <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                                <li><%= safe_join("[質問文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
-                              </ul>
-                            <% elsif check == 2 %>
-                              <ul class="question-lists">
-                                <li>
-                                  <div class="more">
-                                    <span>
-                                      <% unless message.user.profile == nil %>
-                                        <% if message.user.profile.image? %>
-                                          <div >
-                                            <p ><%= image_tag(message.user.profile.image.thumb50.url) %></p>
-                                          </div>
-                                        <% end %>
-                                      <% else %>
-                                        <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-                                      <% end %>
-                                    </span>
-                                    <ul class="more_list">
-                                      <li>
-                                        <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </li>
-                                <li><%= safe_join("[回答文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
-                              </ul>
-                            <% end %>
-                          <% end %>
-                        </div>
-                    </div>
-                <% end %>
-            </main>
-
-            <footer>
-              <% if user_signed_in? %>
-                <%= "ユーザー一覧" %> <%# デプロイ時のチェックの為に一覧表示している %>
-                <% @users.where.not(id: current_user.id).each do |user| %>
-                  <p><%= link_to "#{user.nickname}の詳細ページ", user_path(user) %></p>
-                <% end %>
-              <% end %>
-            </footer>
+  <body>
+    <%= render partial: "navigation_menu" %>
+    <main>
+      <%= render partial: "search_form" %>
+      <% if user_signed_in? %>
+        <%= render partial: "question" %>
+        <p>--------------あなたに関連する質問です！--------------</p>
+        <div id="list">
         </div>
-
-        <%= render "shared/footer" %> 
-    </body>
+        <% @questions.each do |question| %>
+          <%= render partial: "questions_related_to_current_user", locals: { question: question } %>
+        <% end %>
+        <p>-----------------------------------------------------------</p>
+      <% else %>
+          <%= link_to "＼！！質問する！！／", new_user_session_path %>
+      <% end %>
+      <p>↓↓新着の質問↓↓</p>
+      <% @another_questions.each do |question| %>
+        <%= render partial: "another_questions", locals: { question: question } %>
+      <% end %>
+    </main>
+    <footer>
+      <% if user_signed_in? %>
+        <%= "ユーザー一覧" %> <%# デプロイ時のチェックの為に一覧表示している %>
+        <% @users.where.not(id: current_user.id).each do |user| %>
+          <p><%= link_to "#{user.nickname}の詳細ページ", user_path(user) %></p>
+        <% end %>
+      <% end %>
+    </footer>
+  </body>
 </html>

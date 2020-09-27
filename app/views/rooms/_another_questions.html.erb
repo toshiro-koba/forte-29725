@@ -1,0 +1,64 @@
+<div class="room">
+  <div class="room-name">
+      <div class="question-title">
+        <%= question.question_title %>
+      </div>
+      <% question.game_tags.each do |game| %>
+        <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
+      <% end%>
+      <% check = 0 %>
+      <div class="question-contents">
+        <% question.messages.includes(:user).each do |message| %>
+          <% check += 1 %>
+          <% if check == 1 %>
+            <ul class="question-lists">
+              <li>
+                  <div class="more">
+                    <span>
+                      <% unless message.user.profile == nil %>
+                        <% if message.user.profile.image? %>
+                          <div >
+                            <p><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                          </div>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                      <% end %>
+                    </span>
+                    <ul class="more_list">
+                      <li>
+                        <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              <li><%= safe_join("[質問文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+            </ul>
+          <% elsif check == 2 %>
+            <ul class="question-lists">
+              <li>
+                <div class="more">
+                  <span>
+                    <% unless message.user.profile == nil %>
+                      <% if message.user.profile.image? %>
+                        <div >
+                          <p ><%= image_tag(message.user.profile.image.thumb50.url) %></p>
+                        </div>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                    <% end %>
+                  </span>
+                  <ul class="more_list">
+                    <li>
+                      <%= link_to "#{message.user.nickname}の詳細ページ", user_path(message.user) %>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li><%= safe_join("[回答文][#{message.user.nickname}]#{message.content}".split("\n"),tag(:br))%></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+  </div>

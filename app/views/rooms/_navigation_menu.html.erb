@@ -1,0 +1,15 @@
+<aside>
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <li class="bottom-nav"><%= current_user.nickname %></li>
+        <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
+        <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li class="bottom-nav"><%= link_to 'ログイン', new_user_session_path %></li>
+        <li class="bottom-nav"><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <div class="side-footer">side footer</div>
+</aside>
