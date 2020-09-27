@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
       @another_questions = @rooms
     end
     @room = RoomMessage.new
+    @message = Message.new
   end
 
   def new

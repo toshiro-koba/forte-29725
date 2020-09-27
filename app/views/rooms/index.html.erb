@@ -154,7 +154,11 @@
                                       <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
                                     <% end %>
                                   </li>
-                                  <li><%= link_to '回答する！', messages_path(question) %></li> 
+                                  <%= form_with model: @message, local: true do |f|%>
+                                    <%= f.text_area :content, placeholder: 'type a message' %>
+                                    <input name="room_id" type="hidden" value=<%= question.id %>>
+                                    <%= f.submit '回答する!' %>
+                                  <% end %>
                                 </ul>
                               <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
                                 <ul class="question-lists">
