@@ -24,6 +24,8 @@ function answer() {
           const errors = document.getElementById("errors");
           errors.remove()
         }
+        const formAnswer = document.getElementById("form-answer");
+        formAnswer.remove()
       } else {
         const HTML = `
           <div id='errors'>${XHR.response.content_error}</div>
