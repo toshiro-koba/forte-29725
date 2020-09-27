@@ -154,10 +154,16 @@
                                       <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
                                     <% end %>
                                   </li>
-                                  <%= form_with model: @message, local: true do |f|%>
-                                    <%= f.text_area :content, placeholder: 'type a message' %>
+                                  <div id="error-lists-answer">
+                                    <div id="error-answer">
+                                    </div>
+                                  </div>
+                                  <div id="list-answer">
+                                  </div>
+                                  <%= form_with(url: messages_path, model: @message, local: true, method: :post, id: 'form-answer') do |f| %>
+                                    <%= f.text_area :content, placeholder: 'type a message', id: "content-answer" %>
                                     <input name="room_id" type="hidden" value=<%= question.id %>>
-                                    <%= f.submit '回答する!' %>
+                                    <%= f.submit '回答する!' , id: "submit-answer" %>
                                   <% end %>
                                 </ul>
                               <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>

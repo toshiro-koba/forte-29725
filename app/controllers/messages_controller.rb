@@ -21,11 +21,11 @@ class MessagesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
-    if @message.save
-      redirect_to root_path
+    if @message.valid?
+      @message.save
+      render json:{ message: @message.content, user: User.find(@message.user_id) }
     else
-      @messages = @room.messages.includes(:user)
-      redirect_to messages_path(@room)
+      render json:{ content_error: @message.errors[:content][0]}
     end
   end
 
