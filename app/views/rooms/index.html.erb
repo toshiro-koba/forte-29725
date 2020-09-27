@@ -329,14 +329,6 @@
               <% end %>
             </footer>
         </div>
-        <div class='purchase-btn'>
-          <span class='purchase-btn-text'>質問する</span>
-            <% if user_signed_in? %>
-                <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_room_path %>
-            <% else %>
-              <%= link_to image_tag('question.png' , size: '185x50' ,class: "purchase-btn-icon"), new_user_session_path %>
-            <% end %>
-        </div>
 
         <%= render "shared/footer" %> 
     </body>
