@@ -122,10 +122,12 @@ header {
   background-color: rgb(220, 66, 228);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header-left {
   display: flex;
+  align-items: center;
 }
 
 .app-name {
@@ -141,6 +143,7 @@ header {
 
 .hover-icons {
   display: flex;
+  align-items: center;
 }
 
 .more {
@@ -173,8 +176,8 @@ header {
 }
 
 .more ul.more_list li {
-  background-color: #57C3E9;
-  color: rgb(154, 154, 154);
+  background-color: rgb(154, 154, 154);
+  color: rgb(69, 68, 68);
 } 
 
 

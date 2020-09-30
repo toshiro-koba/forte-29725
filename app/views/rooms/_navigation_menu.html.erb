@@ -1,11 +1,13 @@
 
 <div class="header-left">
   <div class="app-name">Trace</div>
-  <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-  <% end %>
-</div>
+    <div class="search-form">
+    <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
+      <%= form.submit "検索", type: "hidden", class: "search-btn" %>
+    <% end %>
+    </div>
+  </div>
 <div class="header-right">
 
       <% if user_signed_in? %>
@@ -14,7 +16,7 @@
         <div class="hover-icons">
           <% unless current_user.profile == nil %>
             <% if current_user.profile.image? %>
-                <p><%= image_tag(current_user.profile.image.thumb50.url)%></p>
+                <%= image_tag(current_user.profile.image.thumb50.url)%>
             <% end %>
           <% else %>
             <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
