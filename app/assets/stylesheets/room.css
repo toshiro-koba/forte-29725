@@ -99,64 +99,83 @@ html {
   background-color: rgb(244, 244, 244);
 }
 
+body {
+  width: 800px; 
+  margin: 0 auto;
+}
 
 
 main {
   letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
-  flex: 1;
+  flex: 1; 
   min-height: 100vh;
 }
-nav {
-  display: flex;
-  /* justify-content: space-between; */
-}
 
-.nav-lists {
-  display: flex;
-  height: 55px;
-  width:  300px;
-}
+
 
 header {
   height: 55px;
-  width:  100vw;
+  /* width:  100vw; */
   /* background-color: rgb(206, 43, 214); */
   background-color: rgb(220, 66, 228);
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
-
-@media screen and (max-width: 1000px) {
-  body {
-    height: 1500px;
-    flex-direction: column;
-  }
-  main {
-    width: 100%;
-    flex: 1;
-    margin-bottom: 200px;
-  }
-  footer {
-    display: block;
-    bottom: 24px;
-  }
-  .side-footer {
-    display: none;
-  }
- 
-  ul {
-    display: flex;
-    
-  }
-  .bottom-nav {
-    /* flex: 1; */
-    background-color: azure;
-    font-size: 20px;
-    /* height: 50px; */
-  }
+.header-left {
+  display: flex;
 }
+
+.app-name {
+  font-size: 40px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+}
+
+.header-right {
+  display: flex;
+}
+
+.hover-icons {
+  display: flex;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.more:hover ul.more_list {
+  display: block;
+  width: 110%;
+}
+
+.more ul.more_list {
+  text-align: left;
+  width: 80px;
+  right: 0;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.more ul.more_list li {
+  border-bottom: 1px solid #ddd;
+}
+
+.more ul.more_list {
+  border-bottom: 0;
+}
+
+.more ul.more_list li {
+  background-color: #57C3E9;
+  color: rgb(154, 154, 154);
+} 
+
 
 
