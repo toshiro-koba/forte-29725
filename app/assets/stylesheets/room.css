@@ -25,13 +25,13 @@ li {
 
 a {
   text-decoration: none;
-  color: rgb(232, 232, 232);
+  color: rgb(154, 154, 154);
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
 }
 
 p {
-  color: rgb(232, 232, 232);
+  color: rgb(154, 154, 154);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -64,8 +64,8 @@ p {
 .chat-room-form__action-btn {
   display: inline-block;
   padding: 12px 20px;
-  color: #fff;
-  background-color: rgb(47, 154, 41);
+  color: rgb(154, 154, 154);
+  background-color: rgb(74, 228, 66);
   border: 0;
 }
 .chat-room-form__field {
@@ -135,9 +135,8 @@ select {
 }
 
 .room-name {
-  margin: 5px;
+  margin: 2px;
   background-color: #ffffff;
-  border-radius: 10px;
   /* border: 1px solid rgb(144, 237, 14); */
   /* border-radius: 5%; */
 }
@@ -210,18 +209,20 @@ select {
 
 .more ul.more_list li {
   background-color: #57C3E9;
-  color: #fff;
+  color: rgb(154, 154, 154);
 } 
+
+
 html {
-  background-color: rgb(148, 41, 154);
+  background-color: rgb(244, 244, 244);
 }
 body {
   letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
-  background-color: rgb(148, 41, 154);
+  
    /* margin: 0; ブラウザのcssの余白を消す */
-  display: flex; 
+  /* display: flex;  */
 }
 
 main {
@@ -229,12 +230,13 @@ main {
   min-height: 100vh;
 }
 
-aside {
-  width: 25%;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  color: #ffffff;
+.aside {
+  flex: 1;
+  /* width: 25%;
+  min-width: 250px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  color: rgb(154, 154, 154);
 
 }
 
@@ -274,9 +276,20 @@ footer {
     
   }
   .bottom-nav {
-    flex: 1;
+    /* flex: 1; */
     background-color: azure;
     font-size: 20px;
     height: 50px;
   }
 }
+
+.nav-lists {
+  display: flex;
+}
+
+header {
+  height: 55px;
+  /* background-color: rgb(206, 43, 214); */
+  background-color: rgb(220, 66, 228);
+}
+
