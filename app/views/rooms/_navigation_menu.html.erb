@@ -1,5 +1,9 @@
-<aside >
   <nav>
+  <%= image_tag "app-name.jpg", class:"app-name" %>
+  <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "質問を検索する", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+  <% end %>
     <ul class="nav-lists">
       <% if user_signed_in? %>
         <% unless current_user.profile == nil %>
@@ -7,16 +11,15 @@
               <p><%= image_tag(current_user.profile.image.thumb50.url)%></p>
           <% end %>
         <% end %>
-        <li class="bottom-nav"><%= current_user.nickname %></li>
-        <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
-        <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li><%= current_user.nickname %></li>
+        <li><%= link_to 'マイページ', user_path(current_user) %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li class="bottom-nav"><%= link_to 'ログイン', new_user_session_path %></li>
-        <li class="bottom-nav"><%= link_to '新規登録', new_user_registration_path %></li>
-        <li class="bottom-nav">
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+        <li>
         <%= link_to 'かんたんログイン', testsessions_path, method: :post %>
         </li>
       <% end %>
     </ul>
   </nav>
-</aside>
