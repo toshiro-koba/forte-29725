@@ -1,11 +1,11 @@
-<div class='chat-room-form'>
+<div class='question-form'>
   <h1>好きなゲームをお気に入り登録する！</h1>
   <%= form_with(url: bookmark_user_path(current_user), model: @bookmark, local: true, method: :get) do |f| %>
-    <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label' for='chat_room_回答して欲しい人'>好きなゲーム</label>
+    <div class='question-form__field'>
+      <div class='question-form__field--left'>
+        <label class='question-form__label' for='question_room_回答して欲しい人'>好きなゲーム</label>
       </div>
-      <div class='chat-room-form__field--right'>
+      <div class='question-form__field--right'>
         <select name="game_tag_id"> 
           <option value="">好きなゲームを選んでね！</option>
           <% GameTag.all.where.not(id: @bookmarked_game_tags).each do |tag| %> <%#同じゲームはお気に入り登録できない！%>
@@ -15,10 +15,10 @@
       </div>
     </div>
 
-    <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'></div>
-      <div class='chat-room-form__field--right'>
-        <%= f.submit value="I like!!", class: 'chat-room-form__action-btn'%>
+    <div class='question-form__field'>
+      <div class='question-form__field--left'></div>
+      <div class='question-form__field--right'>
+        <%= f.submit value="I like!!", class: 'question-btn'%>
       </div>
     </div>
   <% end %>
