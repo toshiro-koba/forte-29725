@@ -1,18 +1,11 @@
   <div class='question-form'>
-    <h1>新しく質問する</h1>
     <%= form_with(url: rooms_path, model: @room, local: true, method: :post, id: 'form') do |f| %>
     <div id="error-lists">
       <div id="error">
       </div>
     </div>
     <%= render 'error_messages', room: @room %> 
-      <div class='question-form__field'>
-        <div class='question-form__field--right'>
-          <%= f.text_field :question_title, class: 'question__room_name question-form__input', placeholder: '質問タイトルを入力してね！', id: "question_title"%>
-        </div>
-      </div>
-      <div class='question-form__field'>
-      </div>
+    <div class='question-form__pulldown'>
       <div class='question-form__field'>
         <div class='question-form__field--right'>
           <select name="room[user_ids][]", id="user">
@@ -34,6 +27,12 @@
           </select>
         </div>
       </div>
+      </div>
+      <div class='question-form__field'>
+        <div class='question-form__field--right'>
+          <%= f.text_field :question_title, class: 'question__room_name question-form__input', placeholder: '質問タイトルを入力してね！', id: "question_title"%>
+        </div>
+      </div>
       <div class='question-form__field'>
         <div class='question-form__field--right'>
           <%= f.text_area :content, class: 'question__room_name question-form__input', placeholder: '質問本文を入力してね！' , id: "content"%>
@@ -41,7 +40,7 @@
       </div>
       <div class='question-form__field'>
         <div class='question-form__field--right'>
-          <%= f.submit value="Create Question", class: 'question-btn', id: "submit" %>
+          <%= f.submit value="Question", class: 'question-btn', id: "submit" %>
         </div>
       </div>
     <% end %>

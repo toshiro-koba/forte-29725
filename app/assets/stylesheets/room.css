@@ -11,8 +11,8 @@ li {
 }
 
 .question-form {
-  margin: 20px auto;
-  padding: 20px;
+  margin: 35px 0;
+  padding: 5px;
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
@@ -27,9 +27,10 @@ li {
 .question-form__input {
   float: left;
   width: 66%;
-  line-height: 30px;
-  padding: 10px 15px;
-  box-sizing: border-box;
+  /* line-height: 30px; */
+  padding: 5px 10px;
+  /* box-sizing: border-box; */
+  border-color: rgb(240, 240, 240);
 }
 
 .question-btn {
@@ -38,10 +39,11 @@ li {
   color: rgb(255, 255, 255);
   background-color: rgb(74, 228, 66);
   border: 0;
+  border-radius:30px;
 }
 
 .question-form__field {
-  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .question-form__field:after {
@@ -51,8 +53,13 @@ li {
 }
 
 select {
-  width: 500px;
-  height: 50px;
+  width: 300px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.question-form__pulldown {
+  display: flex;
 }
 
 .room-name {
@@ -99,13 +106,11 @@ html {
   background-color: rgb(244, 244, 244);
 }
 
-body {
-  width: 800px; 
-  margin: 0 auto;
-}
 
 
 main {
+  width: 800px; 
+  margin: 0 auto;
   letter-spacing: 0.1em;
   font-size: 16px;
   color: #666;
@@ -123,6 +128,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0;
+  width: 800px; 
+  margin: 0 auto;
+}
+
+.header-line {
+  height: 55px;
+  width:  100vw;
+  background-color: rgb(220, 66, 228);
+
 }
 
 .header-left {

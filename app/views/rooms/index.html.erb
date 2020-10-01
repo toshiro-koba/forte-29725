@@ -8,11 +8,12 @@
   </head>
 
   <body>
-  <header>
+    <div class="header-line">
+      <header>
         <%= render partial: "navigation_menu" %>
       </header>
+    </div>
     <main>
-      
       <% if user_signed_in? %>
         <%= render partial: "question" %>
         <p>--------------あなたに関連する質問です！--------------</p>
