@@ -8,11 +8,9 @@
   </head>
 
   <body>
-    <div class="header-line">
-      <header>
+    
         <%= render partial: "navigation_menu" %>
-      </header>
-    </div>
+   
     <main>
       <% if user_signed_in? %>
         <%= render partial: "question" %>

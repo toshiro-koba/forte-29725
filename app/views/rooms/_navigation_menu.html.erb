@@ -1,15 +1,17 @@
+<div class="header-line">
+  <header>
 
-<div class="header-left">
-  <div class="app-name">Trace</div>
-    <div class="search-form">
-    <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
-      <%= form.submit "検索", type: "hidden", class: "search-btn" %>
-    <% end %>
+    <div class="header-left">
+      <div class="app-name">Trace</div>
+      <div class="search-form">
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
+          <%= form.submit "検索", type: "hidden", class: "search-btn" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-<div class="header-right">
 
+    <div class="header-right">
       <% if user_signed_in? %>
       <%= current_user.nickname %>
       <div class="more">
@@ -31,16 +33,12 @@
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
             </li>
           </ul>
-      
-
         </div>
-        
       <% else %>
-    <%= link_to 'ログイン', new_user_session_path %>
-     <%= link_to '新規登録', new_user_registration_path %>
-
+        <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to '新規登録', new_user_registration_path %>
         <%= link_to 'かんたんログイン', testsessions_path, method: :post %>
-
       <% end %>
-
+    </div>
+  </header>
 </div>
