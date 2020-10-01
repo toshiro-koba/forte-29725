@@ -46,8 +46,7 @@ RSpec.describe "質問回答機能", type: :system do
       expect(page).to have_content(post)
 
       # 回答して欲しいユーザーでログインし直す
-      find(".more").hover
-      find('.log-out').click
+      sign_out(@entry.user)
       sign_in(@user)
 
       # 値をテキストフォームに入力する
