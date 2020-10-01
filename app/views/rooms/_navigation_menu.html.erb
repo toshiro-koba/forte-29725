@@ -1,23 +1,44 @@
-<aside >
-  <nav>
-    <ul class="nav-lists">
-      <% if user_signed_in? %>
-        <% unless current_user.profile == nil %>
-          <% if current_user.profile.image? %>
-              <p><%= image_tag(current_user.profile.image.thumb50.url)%></p>
-          <% end %>
+<div class="header-line">
+  <header>
+
+    <div class="header-left">
+      <div class="app-name">Trace</div>
+      <div class="search-form">
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
+          <%= form.submit "検索", type: "hidden", class: "search-btn" %>
         <% end %>
-        <li class="bottom-nav"><%= current_user.nickname %></li>
-        <li class="bottom-nav"><%= link_to 'マイページ', user_path(current_user) %></li>
-        <li class="bottom-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <% if user_signed_in? %>
+      <%= current_user.nickname %>
+      <div class="more">
+        <div class="hover-icons">
+          <% unless current_user.profile == nil %>
+            <% if current_user.profile.image? %>
+                <%= image_tag(current_user.profile.image.thumb50.url)%>
+            <% end %>
+          <% else %>
+            <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+          <% end %>
+          <span><%= image_tag 'arrow_top.png' %></span>
+        </div>
+        <ul class="more_list">
+            <li>
+              <%= link_to 'マイページ', user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
       <% else %>
-        <li class="bottom-nav"><%= link_to 'ログイン', new_user_session_path %></li>
-        <li class="bottom-nav"><%= link_to '新規登録', new_user_registration_path %></li>
-        <li class="bottom-nav">
+        <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to '新規登録', new_user_registration_path %>
         <%= link_to 'かんたんログイン', testsessions_path, method: :post %>
-        </li>
       <% end %>
-    </ul>
-  </nav>
-  <div class="side-footer">side footer</div>
-</aside>
+    </div>
+  </header>
+</div>

@@ -1,16 +1,3 @@
-h1 {
-  letter-spacing: 2px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-}
-
-h2 {
-  margin-bottom: 10px;
-  color: #f05050;
-  font-size: 14px;
-}
-
 ul {
   margin: 0;
   padding: 0;
@@ -23,160 +10,225 @@ li {
   font-size: 13px;
 }
 
-a {
-  text-decoration: none;
-  color: rgb(154, 154, 154);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
-}
-
-p {
-  color: rgb(154, 154, 154);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.chat-room-form {
-  margin: 20px auto;
-  padding: 20px;
+.question-form {
+  margin: 35px 0;
+  padding: 5px;
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
 }
-.chat-room-form__errors {
-  margin: 30px 0;
-  padding: 20px 40px;
-  border: 1px solid #ddd;
-  border-radius: 2px;
-  text-align: center;
-}
-.chat-room-form__label {
+
+.question-form__label {
   line-height: 50px;
   font-weight: bold;
   text-align: right;
 }
-.chat-room-form__input {
+
+.question-form__input {
   float: left;
   width: 66%;
-  line-height: 30px;
-  padding: 10px 15px;
-  box-sizing: border-box;
+  /* line-height: 30px; */
+  padding: 5px 10px;
+  /* box-sizing: border-box; */
+  border-color: rgb(240, 240, 240);
 }
-.chat-room-form__action-btn {
+
+.question-btn {
   display: inline-block;
   padding: 12px 20px;
-  color: rgb(154, 154, 154);
+  color: rgb(255, 255, 255);
   background-color: rgb(74, 228, 66);
   border: 0;
+  border-radius:30px;
 }
-.chat-room-form__field {
-  margin-top: 30px;
+
+.question-form__field {
+  margin-bottom: 10px;
 }
-.chat-room-form__field:after {
+
+.question-form__field:after {
   content: "";
   clear: both;
   display: block;
-}
-.chat-room-form__field--left {
-  float: left;
-  width: 30%;
-  padding-right: 20px;
-  padding-left: 20px;
-  box-sizing: border-box;
-}
-.chat-room-form__field--right {
-  margin: auto;
-  /* width: 100%; */
-}
-
-.chat-room-user {
-  padding: 0 15px;
-  line-height: 50px;
-  font-size: 14px;
-  width: 500px;
-  margin: 0 auto;
-}
-.chat-room-user:after {
-  content: "";
-  clear: both;
-  display: block;
-}
-.chat-room-user__name {
-  float: left;
-}
-.chat-room-user__btn {
-  display: inline-block;
-  cursor: pointer;
-}
-.chat-room-user__btn--add {
-  color: #38aef0;
-}
-.chat-room-user__btn--remove {
-  color: #f05050;
-}
-
-.chat-room-user__name a {
-  text-decoration: none;
-  color: #38aef0;
 }
 
 select {
-  width: 500px;
-  height: 50px;
+  width: 300px;
+  height: 20px;
+  margin-right: 20px;
 }
 
-.top-header {
-  background-color: #434a54;
-  height: 80px;
-  width: 100%;
+.question-form__pulldown {
+  display: flex;
 }
 
-.field_with_errors{
-  display: contents;
+.search-input {
+  border: none;
+  border-radius: 5px;
+  margin-left: 15px;
+}
+
+/* ここから！　質問の一覧表示！ */
+.content {
+  margin: 5px;
+}
+
+.index {
+  display: flex;
+}
+
+.index__game_tag {
+  background-color: #fff;
+  padding: 2px 0px 0px 10px;
+  width: 280px;
+  height: 20px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+
+.index__triangle {
+  width: 20px;
+  height: 20px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ffffff;
+  border-left: 10px solid #ffffff;
 }
 
 .room-name {
-  margin: 2px;
   background-color: #ffffff;
-  /* border: 1px solid rgb(144, 237, 14); */
-  /* border-radius: 5%; */
 }
 
 .like {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 10px;
+  margin-left: 33px;
   width: 20px;
   height: 20px;
-  background-color: #38aef0;
+  background-color: #add7ee;
   border-radius: 50%;
 }
 
-
 .question-title {
   color: #f09b08;
+  padding: 5px;
 }
 
-.question-contents {
-  margin-left: 18px; 
+.icons-space {
+  width: 50px;
+  margin: 0 10px 0 20px;
+}
+
+.icons-space__answer {
+  width: 50px;
+  margin: 0 10px 0 20px;
 }
 
 .question-lists {
   display: flex;
 }
 
+.question-message-set {
+  min-height: 60px;
+}
+
+.question-user-nickname {
+  height: 50px;
+  padding: 10px 0;
+}
+
+.question-sentence {
+  display: flex;
+}
+
+.question-sentence-Q {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.question-sentence-A {
+  font-size: 20px;
+  margin-right: 10px;
+  color: rgb(220, 66, 228);
+}
+
+.question-sentence-message {
+  font-size: 14px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+}
+
 .question-user-icon {
-  width: 25px;
-  height: 25px;
-  border-radius: 50% ; /*画像を丸くする！！*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /*画像を丸くする！！*/
+  border: rgb(222, 222, 222) solid thin;
 }
 
 .answer-user-icon {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%; /*画像を丸くする！！*/
 }
 
+/* ここまで！　質問の一覧表示！ */
+
+html {
+  background-color: rgb(244, 244, 244);
+}
+
+
+
+main {
+  width: 800px; 
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  color: #666;
+  flex: 1; 
+  min-height: 100vh;
+}
+
+
+
+header {
+  height: 55px;
+  /* width:  100vw; */
+  /* background-color: rgb(206, 43, 214); */
+  background-color: rgb(220, 66, 228);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  width: 1000px; 
+  margin: 0 auto;
+}
+
+.header-line {
+  height: 55px;
+  width:  100vw;
+  background-color: rgb(220, 66, 228);
+
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.app-name {
+  font-size: 40px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+}
+
+.header-right {
+  display: flex;
+}
+
+.hover-icons {
+  display: flex;
+  align-items: center;
+}
 
 .more {
   cursor: pointer;
@@ -208,88 +260,9 @@ select {
 }
 
 .more ul.more_list li {
-  background-color: #57C3E9;
-  color: rgb(154, 154, 154);
+  background-color: rgb(154, 154, 154);
+  color: rgb(69, 68, 68);
 } 
 
 
-html {
-  background-color: rgb(244, 244, 244);
-}
-body {
-  letter-spacing: 0.1em;
-  font-size: 16px;
-  color: #666;
-  
-   /* margin: 0; ブラウザのcssの余白を消す */
-  /* display: flex;  */
-}
-
-main {
-  flex: 1;
-  min-height: 100vh;
-}
-
-.aside {
-  flex: 1;
-  /* width: 25%;
-  min-width: 250px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  color: rgb(154, 154, 154);
-
-}
-
-.side-footer {
-  height: 300px;
-  margin-top: auto;
-  display: none;
-}
-footer {
-  display: none;
-}
-
-@media screen and (max-width: 1000px) {
-  body {
-    height: 1500px;
-    flex-direction: column;
-  }
-  main {
-    width: 100%;
-    flex: 1;
-    margin-bottom: 200px;
-  }
-  footer {
-    display: block;
-    bottom: 24px;
-  }
-  .side-footer {
-    display: none;
-  }
-  aside {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  ul {
-    display: flex;
-    
-  }
-  .bottom-nav {
-    /* flex: 1; */
-    background-color: azure;
-    font-size: 20px;
-    height: 50px;
-  }
-}
-
-.nav-lists {
-  display: flex;
-}
-
-header {
-  height: 55px;
-  /* background-color: rgb(206, 43, 214); */
-  background-color: rgb(220, 66, 228);
-}
 
