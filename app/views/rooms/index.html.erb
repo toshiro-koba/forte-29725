@@ -14,17 +14,16 @@
     <main>
       <% if user_signed_in? %>
         <%= render partial: "question" %>
-        <p>--------------あなたに関連する質問です！--------------</p>
+        <p><%= "#{current_user.nickname}さんに関連する質問" %></p>
         <div id="list">
         </div>
         <% @questions.each do |question| %>
           <%= render partial: "questions_related_to_current_user", locals: { question: question } %>
         <% end %>
-        <p>-----------------------------------------------------------</p>
       <% else %>
           <%= link_to "＼！！質問する！！／", new_user_session_path %>
       <% end %>
-      <p>↓↓新着の質問↓↓</p>
+      <p><%= "新着の質問" %></p>
       <% @another_questions.each do |question| %>
         <%= render partial: "another_questions", locals: { question: question } %>
       <% end %>

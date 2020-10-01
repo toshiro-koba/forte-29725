@@ -2,15 +2,25 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.all.order('created_at DESC')
     @users = User.all
+    @another_questions = []
     if user_signed_in?
       @questions = []
       @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
       @questions_related_to_current_user.each do |entry|
         @questions << entry.room
       end
-      @another_questions = @rooms - @questions
+      @another_questions_pro = @rooms - @questions
+      @another_questions_pro.each do |room|
+        if room.messages.size == 2
+          @another_questions << room
+        end
+      end
     else
-      @another_questions = @rooms
+      @rooms.each do |room|
+        if room.messages.size == 2
+          @another_questions << room
+        end
+      end
     end
     @room = RoomMessage.new
     @message = Message.new

@@ -91,8 +91,8 @@ select {
   height: 20px;
   border-top: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #fff;
-  border-left: 10px solid #fff;
+  border-bottom: 10px solid #ffffff;
+  border-left: 10px solid #ffffff;
 }
 
 .room-name {
@@ -100,38 +100,72 @@ select {
 }
 
 .like {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 10px;
+  margin-left: 33px;
   width: 20px;
   height: 20px;
-  background-color: #38aef0;
+  background-color: #add7ee;
   border-radius: 50%;
 }
 
 .question-title {
   color: #f09b08;
-  padding: 10px;
+  padding: 5px;
 }
 
-.question-contents {
-  margin-left: 18px; 
+.icons-space {
+  width: 50px;
+  margin: 0 10px 0 20px;
+}
+
+.icons-space__answer {
+  width: 50px;
+  margin: 0 10px 0 20px;
 }
 
 .question-lists {
   display: flex;
 }
 
+.question-message-set {
+  min-height: 60px;
+}
+
+.question-user-nickname {
+  height: 50px;
+  padding: 10px 0;
+}
+
+.question-sentence {
+  display: flex;
+}
+
+.question-sentence-Q {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.question-sentence-A {
+  font-size: 20px;
+  margin-right: 10px;
+  color: rgb(220, 66, 228);
+}
+
+.question-sentence-message {
+  font-size: 14px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+}
+
 .question-user-icon {
-  width: 25px;
-  height: 25px;
-  border-radius: 50% ; /*画像を丸くする！！*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /*画像を丸くする！！*/
+  border: rgb(222, 222, 222) solid thin;
 }
 
 .answer-user-icon {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%; /*画像を丸くする！！*/
 }
 
