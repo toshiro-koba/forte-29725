@@ -11,15 +11,11 @@ class RoomsController < ApplicationController
       end
       @another_questions_pro = @rooms - @questions
       @another_questions_pro.each do |room|
-        if room.messages.size == 2
-          @another_questions << room
-        end
+        @another_questions << room if room.messages.size == 2
       end
     else
       @rooms.each do |room|
-        if room.messages.size == 2
-          @another_questions << room
-        end
+        @another_questions << room if room.messages.size == 2
       end
     end
     @room = RoomMessage.new
@@ -40,7 +36,7 @@ class RoomsController < ApplicationController
       @room.save
       render json: { room: @room, tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content }
     else
-      render json: { title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0]}
+      render json: { title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0] }
     end
   end
 
