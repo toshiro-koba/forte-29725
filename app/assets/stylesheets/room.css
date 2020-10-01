@@ -68,8 +68,34 @@ select {
   margin-left: 15px;
 }
 
+/* ここから！　質問の一覧表示！ */
+.content {
+  margin: 5px;
+}
+
+.index {
+  display: flex;
+}
+
+.index__game_tag {
+  background-color: #fff;
+  padding: 2px 0px 0px 10px;
+  width: 280px;
+  height: 20px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+
+.index__triangle {
+  width: 20px;
+  height: 20px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  border-left: 10px solid #fff;
+}
+
 .room-name {
-  margin: 2px;
   background-color: #ffffff;
 }
 
@@ -86,6 +112,7 @@ select {
 
 .question-title {
   color: #f09b08;
+  padding: 10px;
 }
 
 .question-contents {
@@ -107,6 +134,8 @@ select {
   height: 30px;
   border-radius: 50%; /*画像を丸くする！！*/
 }
+
+/* ここまで！　質問の一覧表示！ */
 
 html {
   background-color: rgb(244, 244, 244);

@@ -1,13 +1,26 @@
-<div class="animate__animated animate__bounceInLeft">
-  <div class="room">
-    <div class="room-name">
-        <div class="like"></div>
-        <div class="question-title">
-          <%= question.question_title %>
-        </div>
-        <% question.game_tags.each do |game| %>
-          <%=  "[ゲームタイトル(タグ)]#{game.game_title}" %>
-        <% end%>
+
+<div class="content">
+
+<%# ここから！　ゲームタグ！ %>
+  <div class="index">
+    <div class="index__game_tag">
+      <% unless question.game_tags[0] == nil %>
+        <%= question.game_tags[0].game_title %>
+      <% else %>
+        <%= "test_tag" %>
+      <% end %>
+    </div>
+    <div class="index__triangle"></div>
+  </div>
+<%# ここまで！　ゲームタグ！ %>
+
+  <div class="room-name">
+      <div class="like"></div>
+      <div class="question-title">
+        <%= question.question_title %>
+      </div>
+        
+
         <div class="question-contents">
               <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
                 <ul class="question-lists">
@@ -150,5 +163,4 @@
               <% end %>
         </div>
     </div>
-  </div>
 </div>
