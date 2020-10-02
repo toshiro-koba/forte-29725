@@ -27,10 +27,10 @@
         </div>
         <ul class="more_list">
             <li>
-              <%= link_to 'マイページ', user_path(current_user) %>
+              <%= link_to 'マイページ', user_path(current_user), class: "my-page" %>
             </li>
             <li>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %>
             </li>
           </ul>
         </div>
