@@ -214,6 +214,9 @@ header {
   align-items: center;
 }
 
+.link-to__top-page {
+  text-decoration: none;
+}
 .app-name {
   font-size: 40px;
   color: #fff;

@@ -2,7 +2,9 @@
   <header>
 
     <div class="header-left">
-      <div class="app-name">Trace</div>
+      <%= link_to root_path, class: "link-to__top-page" do %>
+        <div class="app-name">Trace</div>
+      <% end %>
       <div class="search-form">
         <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
           <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
