@@ -24,6 +24,7 @@
         <p><%= "自己紹介分は設定されていません" %></p>
       <% end %>
     <% end %>
+
     <% if @user == current_user %>
       <% if @user.profile == nil %>
         <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
@@ -31,52 +32,28 @@
         <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
       <% end %>
 
-      <div class="gift-action">
-        <p class="gift-action-title">自分がしたギフト</p>
-        <% @giftings.each do |gift| %>
-          <div class="gifts">
-            <p class="gift"><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
-          </div>
-        <% end %>
-      </div>
-      <div class="gift-action">
-        <p class="gift-action-title">自分に送られたギフト</p>
-        <% @receivings.each do |gift| %> 
-          <div class="gifts">
-            <p class="gift"><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
-          </div>
-        <% end %> 
-      </div> 
     <% elsif user_signed_in? %>
       <%= link_to 'ギフトする！', user_gifts_path(@user) %>
       <%= render 'relationships/follow_button', user: @user %>
     <% else %>
       <%= link_to 'ギフトする！', new_user_session_path %>
     <% end %>
-
-    <p><%= @user.followings.size %><%= link_to 'フォロー', following_user_path(@user) %></p>
-    <p><%= @user.followers.size %><%= link_to 'フォロワー', followers_user_path(@user) %></p>
+    <p>--フォローした人--</p>
+    <%= @user.followings.size %>
+    <% @user.followings.each do |following| %>
+      <p><%= following.nickname %></p>
+    <% end %>
+    <p>--フォローしてくれてる人--</p>
+    <%= @user.followers.size %>
+    <% @user.followers.each do |follower| %>
+      <p><%= follower.nickname %></p>
+    <% end %>
   </div>
 
-  
   <div class="user-question-contents">
-    <div class="user-bookmark">
-    <% Bookmark.where(user_id: @user.id).each do |game| %>
-      <p><%= game.game_tag.game_title %></p>
+    <% @user.followers.each do |follower| %>
+      <p><%= follower.nickname %></p>
     <% end %>
-    <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
-    </div>
-
-    <%= "#{@user.nickname}さんが回答した質問" %>
-    <% @questions.each do |question| %>
-          <%= render partial: "rooms/questions_related_to_current_user", locals: { question: question } %>
-    <% end %>
-    
-    <% if user_signed_in? && current_user != @user %>
-      <%= render partial: "question" %>
-    <% end %>
-    <div id="list">
-    </div>
 
   </div>
 </div>
