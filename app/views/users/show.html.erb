@@ -1,76 +1,88 @@
 <%= render partial: "rooms/navigation_menu" %>
-<p><%= "#{@user.nickname}の詳細ページ" %></p>
+<div class="main__user-profile">
+  <div class="user-profile">
+  <% unless @user.profile == nil %>
 
-<% if @user == current_user %>
-  <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
-  <% if @user.profile == nil %>
-    <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
-  <% else %>
-    <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
-  <% end %>
-  <p><%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %></p>
-  <div class="gift-action">
-    <p class="gift-action-title">自分がしたギフト</p>
-    <% @giftings.each do |gift| %>
-      <div class="gifts">
-        <p class="gift"><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
+      <% if @user.profile.image? %>
+        <p><%= image_tag(@user.profile.image.thumb100.url) %></p>
+      <% else %>
+        <%= image_tag "default.jpg", :size => '50x50' %>
+      <% end %>
+      <% if @user.profile.link_to_sns? %>
+        <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
+      <% else %>
+        <p><%= "SNSは設定されていません" %></p>
+      <% end %>
+      <% if @user.profile.link_to_webcast? %>
+        <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
+      <% else %>
+        <p><%= "配信サイトは設定されていません" %></p>
+      <% end %>
+      <% if @user.profile.self_introduction? %>
+        <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
+      <% else %>
+        <p><%= "自己紹介分は設定されていません" %></p>
+      <% end %>
+    <% end %>
+    <% if @user == current_user %>
+      <%= link_to "ユーザー情報を編集する", edit_user_path(current_user) %>
+      <% if @user.profile == nil %>
+        <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+      <% else %>
+        <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
+      <% end %>
+      <p></p>
+      <div class="gift-action">
+        <p class="gift-action-title">自分がしたギフト</p>
+        <% @giftings.each do |gift| %>
+          <div class="gifts">
+            <p class="gift"><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
+          </div>
+        <% end %>
       </div>
+      <div class="gift-action">
+        <p class="gift-action-title">自分に送られたギフト</p>
+        <% @receivings.each do |gift| %> 
+          <div class="gifts">
+            <p class="gift"><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
+          </div>
+        <% end %> 
+      </div> 
+    <% elsif user_signed_in? %>
+      <%= link_to 'ギフトする！', user_gifts_path(@user) %>
+      <%= render 'relationships/follow_button', user: @user %>
+    <% else %>
+      <%= link_to 'ギフトする！', new_user_session_path %>
+    <% end %>
+    <p>--フォローした人--</p>
+    <% @user.followings.each do |following| %>
+      <p><%= following.nickname %></p>
+    <% end %>
+    <p>--フォローしてくれてる人--</p>
+    <% @user.followers.each do |follower| %>
+      <p><%= follower.nickname %></p>
     <% end %>
   </div>
-  <div class="gift-action">
-    <p class="gift-action-title">自分に送られたギフト</p>
-    <% @receivings.each do |gift| %> 
-      <div class="gifts">
-        <p class="gift"><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
-      </div>
-    <% end %> 
-  </div> 
-<% elsif user_signed_in? %>
-  <%= link_to 'ギフトする！', user_gifts_path(@user) %>
-  <%= render 'relationships/follow_button', user: @user %>
-<% else %>
-  <%= link_to 'ギフトする！', new_user_session_path %>
-<% end %>
-<p>--ブックマークしたゲーム--</p>
-<% Bookmark.where(user_id: @user.id).each do |game| %>
-  <p><%= game.game_tag.game_title %></p>
-<% end %>
-<p>--フォローした人--</p>
-<% @user.followings.each do |following| %>
-  <p><%= following.nickname %></p>
-<% end %>
-<p>--フォローしてくれてる人--</p>
-<% @user.followers.each do |follower| %>
-  <p><%= follower.nickname %></p>
-<% end %>
 
-<% unless @user.profile == nil %>
+  
+  <div class="user-question-contents">
+    <div class="user-bookmark">
+    <% Bookmark.where(user_id: @user.id).each do |game| %>
+      <p><%= game.game_tag.game_title %></p>
+    <% end %>
+    <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
+    </div>
 
-  <p><%= "↓#{@user.nickname}のプロフィール！↓" %></p>
-  <% if @user.profile.image? %>
-    <p><%= image_tag(@user.profile.image.thumb100.url) %></p>
-  <% else %>
-    <%= image_tag "default.jpg", :size => '50x50' %>
-  <% end %>
-  <% if @user.profile.link_to_sns? %>
-    <p><%= link_to "SNS", @user.profile.link_to_sns %></p>
-  <% else %>
-    <p><%= "SNSは設定されていません" %></p>
-  <% end %>
-  <% if @user.profile.link_to_webcast? %>
-    <p><%= link_to "配信サイト", @user.profile.link_to_webcast %></p>
-  <% else %>
-    <p><%= "配信サイトは設定されていません" %></p>
-  <% end %>
-  <% if @user.profile.self_introduction? %>
-    <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
-  <% else %>
-    <p><%= "自己紹介分は設定されていません" %></p>
-  <% end %>
-<% end %>
+    <%= "#{@user.nickname}さんが回答した質問" %>
+    <% @questions.each do |question| %>
+          <%= render partial: "rooms/questions_related_to_current_user", locals: { question: question } %>
+    <% end %>
+    
+    <% if user_signed_in? && current_user != @user %>
+      <%= render partial: "question" %>
+    <% end %>
+    <div id="list">
+    </div>
 
-<% if user_signed_in? && current_user != @user %>
-  <%= render partial: "question" %>
-<% end %>
-<div id="list">
-            </div>
+  </div>
+</div>

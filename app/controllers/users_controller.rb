@@ -17,6 +17,14 @@ class UsersController < ApplicationController
       # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
     end
     @room = RoomMessage.new
+
+    @rooms = Room.all.order('created_at DESC')
+    @questions = []
+    @questions_related_to_current_user = Entry.where(user_id: @user.id).order('created_at DESC')
+    @questions_related_to_current_user.each do |entry|
+      @questions << entry.room if entry.room.messages.size == 2
+    end
+     
   end
 
   def bookmark

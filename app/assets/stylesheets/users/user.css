@@ -1,3 +1,38 @@
+.main__user-profile {
+  width: 1000px; 
+  margin: 35px auto;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  color: #666;
+  flex: 1; 
+  min-height: 100vh;
+  display: flex;
+}
+
+.user-profile {
+  width: 360px;
+  padding: 24px;
+  background: #fff;
+  text-align: center;
+  word-break: break-all;
+  height: fit-content;
+  margin-right: 16px;
+}
+
+.user-question-contents {
+  color: rgb(154, 154, 154);
+  padding: 0 24px;
+  width: 624px;
+}
+
+.user-bookmark {
+  background-color: #afff9f;
+  padding: 24px;
+  height: 200px;
+  height: fit-content;
+}
+
+
 .account-page .account-page__inner {
   width: 980px;
   margin: 60px auto;
