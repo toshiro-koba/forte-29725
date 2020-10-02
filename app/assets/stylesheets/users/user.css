@@ -19,6 +19,22 @@
   margin-right: 16px;
 }
 
+.user-profile-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.twitter-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.webcast-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .user-question-contents {
   color: rgb(154, 154, 154);
   padding: 0 24px;
