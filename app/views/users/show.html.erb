@@ -1,54 +1,9 @@
 <%= render partial: "rooms/navigation_menu" %>
+
 <div class="main__user-profile">
-  <div class="user-profile">
-  <% unless @user.profile == nil %>
 
-      <% if @user.profile.image? %>
-        <p><%= image_tag(@user.profile.image.thumb100.url, class: "user-profile-icon") %></p>
-      <% else %>
-        <%= image_tag "default.jpg", :size => '50x50' %>
-      <% end %>
-      <% if @user.profile.link_to_sns? %>
-        <%= link_to @user.profile.link_to_sns, target: "_blank" do %>
-          <%= image_tag "twitter_icon.png", class:"twitter-icon" %>
-        <% end %>
-      <% end %>
-      <% if @user.profile.link_to_webcast? %>
-        <%= link_to @user.profile.link_to_webcast, target: "_blank" do %>
-          <%= image_tag "webcast_icon.png", class:"webcast-icon" %>
-        <% end %>
-      <% end %>
-      <% if @user.profile.self_introduction? %>
-        <p><%= safe_join(@user.profile.self_introduction.split("\n"),tag(:br))%></p>
-      <% else %>
-        <p><%= "自己紹介分は設定されていません" %></p>
-      <% end %>
-    <% end %>
-    <% if @user == current_user %>
-      <% if @user.profile == nil %>
-        <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
-      <% else %>
-        <%= link_to "プロフィールを編集する", edit_user_profile_path(current_user), class: "profile-edit__btn" %>
-      <% end %>
-    
+  <%= render partial: "user-profile__left", locals: { user: @user } %>
 
-    <p><%= link_to 'ギフト情報', gift_history_user_path(@user) %></p>
-    <% elsif user_signed_in? %>
-      <%= render 'relationships/follow_button', user: @user %>
-      <div class="gift__hover-action">
-        <span class='gift-btn__normal'>ギフト</span>
-        <span><%= link_to 'ギフト', user_gifts_path(@user), class: 'gift-btn__hover' %></span>
-      </div>
-      
-    <% else %>
-      <%= link_to 'ギフトする！', new_user_session_path %>
-    <% end %>
-
-    <p><%= @user.followings.size %><%= link_to 'フォロー', following_user_path(@user) %></p>
-    <p><%= @user.followers.size %><%= link_to 'フォロワー', followers_user_path(@user) %></p>
-  </div>
-
-  
   <div class="user-question-contents">
     <div class="user-bookmark">
     <% Bookmark.where(user_id: @user.id).each do |game| %>
