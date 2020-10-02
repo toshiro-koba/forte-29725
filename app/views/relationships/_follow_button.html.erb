@@ -4,13 +4,16 @@
       <%= hidden_field_tag :follow_id, @user.id %>
       <div class="unfollow__hover-action">
         <span class='unfollow-btn__normal'>フォロー中</span>
-        <span ><%= f.submit '解除', class: 'unfollow-btn__hover' %></span>
+        <span><%= f.submit '解除', class: 'unfollow-btn__hover' %></span>
       </div>
     <% end %>
   <% else %>
     <%= form_for(current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit 'Follow', class: 'follow-btn' %>
+      <div class="follow__hover-action">
+        <span class='follow-btn__normal'>フォロー</span>
+        <span><%= f.submit 'フォロー', class: 'follow-btn__hover' %></span>
+      </div>
     <% end %>
   <% end %>
 <% end %>

@@ -35,6 +35,7 @@
   height: 20px;
 }
 
+/* ここから、フォロー解除ホバーアクション！ */
 .unfollow-btn__normal {
   display: inline-block;
   border: 2px solid #ccc;
@@ -43,9 +44,9 @@
   text-align: center;
   cursor: pointer;
   width: 100%;
-  background-color: #55c500;
+  background-color: rgb(29, 161, 242);
   color: #fff;
-  border-color: #55c500;
+  border-color: rgb(29, 161, 242);
   font-weight: bold;
 }
 
@@ -71,6 +72,48 @@
   border-color: #c9302c;
   color: #fff;
 }
+/* ここまで、フォロー解除ホバーアクション！ */
+
+
+/* ここから、フォローホバーアクション！ */
+.follow-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(29, 161, 242);
+  border-color: rgb(29, 161, 242);
+  font-weight: bold;
+}
+
+.follow__hover-action .follow-btn__hover {
+  display: none;
+}
+
+
+.follow__hover-action:hover .follow-btn__normal {
+  display: none;
+}
+
+.follow__hover-action:hover .follow-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(29, 161, 242, 0.1);
+  color: rgb(29, 161, 242);
+  border-color: rgb(29, 161, 242);
+  letter-spacing: 0.07em;
+}
+/* ここまで、フォローホバーアクション！ */
 
 
 .user-question-contents {
