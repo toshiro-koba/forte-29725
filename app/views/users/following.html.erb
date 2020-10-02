@@ -32,22 +32,16 @@
         <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
       <% end %>
 
+    <p><%= link_to 'ギフト情報', gifts_user_path(@user) %></p>
     <% elsif user_signed_in? %>
       <%= link_to 'ギフトする！', user_gifts_path(@user) %>
       <%= render 'relationships/follow_button', user: @user %>
     <% else %>
       <%= link_to 'ギフトする！', new_user_session_path %>
     <% end %>
-    <p>--フォローした人--</p>
-    <%= @user.followings.size %>
-    <% @user.followings.each do |following| %>
-      <p><%= following.nickname %></p>
-    <% end %>
-    <p>--フォローしてくれてる人--</p>
-    <%= @user.followers.size %>
-    <% @user.followers.each do |follower| %>
-      <p><%= follower.nickname %></p>
-    <% end %>
+
+    <p><%= @user.followings.size %><%= link_to 'フォロー', following_user_path(@user) %></p>
+    <p><%= @user.followers.size %><%= link_to 'フォロワー', followers_user_path(@user) %></p>
   </div>
 
   <div class="user-question-contents">
