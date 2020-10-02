@@ -53,6 +53,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def gifts
+    @user = User.find(params[:id])
+    if user_signed_in?
+      @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
+      @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
+      # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
+    end
+  end
+
   private
 
   def user_params

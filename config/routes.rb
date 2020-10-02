@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'bookmark'
       get 'following'
       get 'followers'
+      get 'gifts'
     end
     resources :gifts, only: %i[index new create]
     resources :profiles, only: %i[new create edit update]
