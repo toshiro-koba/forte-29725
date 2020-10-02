@@ -88,6 +88,7 @@
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .follow__hover-action .follow-btn__hover {
@@ -112,8 +113,52 @@
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
   letter-spacing: 0.07em;
+  margin-bottom: 10px;
 }
 /* ここまで、フォローホバーアクション！ */
+
+
+/* ここから、ギフトホバーアクション！ */
+.gift-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gift__hover-action .gift-btn__hover {
+  display: none;
+}
+
+.gift__hover-action:hover .gift-btn__normal {
+  display: none;
+}
+
+.gift__hover-action:hover .gift-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+/* ここまで、ギフトホバーアクション！ */
 
 
 .user-question-contents {

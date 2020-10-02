@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def gifts
+  def gift_history
     @user = User.find(params[:id])
     if user_signed_in?
       @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')

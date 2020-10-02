@@ -32,7 +32,7 @@
         <p><%= link_to "プロフィールを編集する", edit_user_profile_path(current_user) %></p>
       <% end %>
 
-    <p><%= link_to 'ギフト情報', gifts_user_path(@user) %></p>
+    <p><%= link_to 'ギフト情報', gift_history_user_path(@user) %></p>
     <% elsif user_signed_in? %>
       <%= link_to 'ギフトする！', user_gifts_path(@user) %>
       <%= render 'relationships/follow_button', user: @user %>

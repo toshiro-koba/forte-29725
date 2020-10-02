@@ -32,10 +32,13 @@
       <% end %>
     
 
-    <p><%= link_to 'ギフト情報', gifts_user_path(@user) %></p>
+    <p><%= link_to 'ギフト情報', gift_history_user_path(@user) %></p>
     <% elsif user_signed_in? %>
       <%= render 'relationships/follow_button', user: @user %>
-      <%= link_to 'ギフトする！', user_gifts_path(@user) %>
+      <div class="gift__hover-action">
+        <span class='gift-btn__normal'>ギフト</span>
+        <span><%= link_to 'ギフト', user_gifts_path(@user), class: 'gift-btn__hover' %></span>
+      </div>
       
     <% else %>
       <%= link_to 'ギフトする！', new_user_session_path %>
