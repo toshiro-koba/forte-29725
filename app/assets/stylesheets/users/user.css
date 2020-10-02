@@ -35,6 +35,44 @@
   height: 20px;
 }
 
+.unfollow-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #55c500;
+  color: #fff;
+  border-color: #55c500;
+  font-weight: bold;
+}
+
+.unfollow__hover-action .unfollow-btn__hover {
+  display: none;
+}
+
+
+.unfollow__hover-action:hover .unfollow-btn__normal {
+  display: none;
+}
+
+.unfollow__hover-action:hover .unfollow-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: #c9302c;
+  border-color: #c9302c;
+  color: #fff;
+}
+
+
 .user-question-contents {
   color: rgb(154, 154, 154);
   padding: 0 24px;

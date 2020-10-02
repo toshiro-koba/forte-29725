@@ -2,12 +2,15 @@
   <% if current_user.following?(@user) %>
     <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+      <div class="unfollow__hover-action">
+        <span class='unfollow-btn__normal'>フォロー中</span>
+        <span ><%= f.submit '解除', class: 'unfollow-btn__hover' %></span>
+      </div>
     <% end %>
   <% else %>
     <%= form_for(current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'Follow', class: 'follow-btn' %>
     <% end %>
   <% end %>
 <% end %>
