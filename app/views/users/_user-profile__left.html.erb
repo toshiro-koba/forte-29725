@@ -1,26 +1,37 @@
 <div class="user-profile">
   <% unless user.profile == nil %>
     <% if user.profile.image? %>
-      <p><%= image_tag(user.profile.image.thumb100.url, class: "user-profile-icon") %></p>
+      <%= image_tag(user.profile.image.thumb100.url, class: "user-profile-icon") %>
     <% else %>
       <%= image_tag "default.jpg", class: "user-profile-icon" %>
     <% end %>
 
-    <% if user.profile.link_to_sns? %>
-      <%= link_to user.profile.link_to_sns, target: "_blank" do %>
-        <%= image_tag "twitter_icon.png", class:"twitter-icon" %>
-      <% end %>
-    <% end %>
+    <div class="user-nickmane__space">
+      <span class="user-nickname"><%= user.nickname %></span>
+    </div>
 
-    <% if user.profile.link_to_webcast? %>
-      <%= link_to user.profile.link_to_webcast, target: "_blank" do %>
-        <%= image_tag "webcast_icon.png", class:"webcast-icon" %>
+    <div class="link-icons">
+      <% if user.profile.link_to_sns? %>
+        <%= link_to user.profile.link_to_sns, target: "_blank" do %>
+          <%= image_tag "twitter_icon.png", class:"twitter-icon" %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    
 
-    <% if user.profile.self_introduction? %>
-      <p><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></p>
-    <% end %>
+    <div class="link-icons">
+      <% if user.profile.link_to_webcast? %>
+        <%= link_to user.profile.link_to_webcast, target: "_blank" do %>
+          <%= image_tag "webcast_icon.png", class:"webcast-icon" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="self_introduction__space">
+      <% if user.profile.self_introduction? %>
+        <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+      <% end %>
+    </div>
   <% end %>
 
   <% if user == current_user %>
@@ -53,6 +64,30 @@
 
   <% end %>
 
-  <p><%= user.followings.size %><%= link_to 'フォロー', following_user_path(user) %></p>
-  <p><%= user.followers.size %><%= link_to 'フォロワー', followers_user_path(user) %></p>
+  <div class="follow-related__space">
+    <div class="followings__space">
+      <div class="number-of-followings">
+        <%= user.followings.size %>
+      </div>
+
+      <div class="followings__hover-action">
+        <%= link_to 'フォロー', following_user_path(user), class:"followings" %>
+      </div>
+
+
+    </div>
+
+    <div class="followers__space">
+      <div class="number-of-followers">
+        <%= user.followers.size %>
+      </div>
+
+      <div class="followers__hover-action">
+        <%= link_to 'フォロワー', followers_user_path(user), class:"followers" %>
+      </div>
+
+
+    </div>
+
+  </div>
 </div>

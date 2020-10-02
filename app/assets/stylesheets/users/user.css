@@ -25,14 +25,38 @@
   border-radius: 50px;
 }
 
+.user-nickmane__space {
+  height: 24px;
+  margin: 5px 0;
+}
+
+.user-nickname {
+  font-weight: bold;
+}
+
+.link-icons {
+  margin: 5px 0;
+}
+
 .twitter-icon {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 
 .webcast-icon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.self_introduction__space {
+  height: fit-content;
+  margin: 10px 0;
+  padding-bottom: 5px;
+}
+
+.self_introduction {
+  font-size: 14px;
 }
 
 /* ここから、フォロー解除ホバーアクション！ */
@@ -160,6 +184,44 @@
 }
 /* ここまで、ギフトホバーアクション！ */
 
+
+.follow-related__space {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.followings__space {
+  display: flex;
+}
+
+.followings__hover-action {
+  text-decoration: none;
+}
+
+.followings__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.followings {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
+
+.followers__space {
+  display: flex;
+}
+
+.followers__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.followers {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
 
 .user-question-contents {
   color: rgb(154, 154, 154);
