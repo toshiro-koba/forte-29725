@@ -35,11 +35,19 @@
   <% end %>
 
   <% if user == current_user %>
+
+
+       <div class="profile__hover-action">
     <% if user.profile == nil %>
-      <p><%= link_to "プロフィールを新しく設定する", new_user_profile_path(current_user) %></p>
+        <span class='profile-btn__normal'>プロフィールを登録</span>
+        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
     <% else %>
-      <%= link_to "プロフィールを編集する", edit_user_profile_path(current_user), class: "profile-edit__btn" %>
+      <span class='profile-btn__normal'>プロフィールを編集</span>
+      <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
     <% end %>
+    </div>
+
+
 
     <p><%= link_to 'ギフト情報', gift_history_user_path(user) %></p>
 
@@ -54,7 +62,7 @@
   <% else %>
     <div class="follow__hover-action">
       <span class='follow-btn__normal'>フォロー</span>
-      <span class='follow-btn__hover'>フォロー</span>
+      <span><%= link_to 'フォロー', new_user_session_path, class: 'follow-btn__hover' %></span>
     </div>
 
     <div class="gift__hover-action">

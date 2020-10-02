@@ -185,6 +185,49 @@
 /* ここまで、ギフトホバーアクション！ */
 
 
+/* ここから、プロフィール登録、編集ホバーアクション！ */
+.profile-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(181, 181, 181);
+  border-color:rgb(181, 181, 181);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile__hover-action .profile-btn__hover {
+  display: none;
+}
+
+
+.profile__hover-action:hover .profile-btn__normal {
+  display: none;
+}
+
+.profile__hover-action:hover .profile-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(198, 198, 198, 0.219);
+  color: rgb(181, 181, 181);
+  border-color: rgb(181, 181, 181);
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+/* ここまで、プロフィール登録、編集ホバーアクション！ */
+
 .follow-related__space {
   display: flex;
   justify-content: space-around;

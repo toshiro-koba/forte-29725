@@ -9,7 +9,11 @@
     <% Bookmark.where(user_id: @user.id).each do |game| %>
       <p><%= game.game_tag.game_title %></p>
     <% end %>
-    <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
+    
+    <% if user_signed_in? && current_user == @user %>
+      <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
+    <% end %>
+    
     </div>
 
     <%= "#{@user.nickname}さんが回答した質問" %>
