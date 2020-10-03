@@ -308,6 +308,7 @@
 
 .game_tag__registration__hover-action {
   padding: 5px 3px;
+  min-height: 31px;
 }
 
 .game_tag__registration__hover-action:hover {
@@ -319,6 +320,75 @@
   text-decoration: none;
   color: rgb(154, 154, 154);
 }
+
+.bookmark-action-title {
+  width: fit-content;
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.game-tag__form-space {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.game-tag__choose-space {
+  margin-right: 20px;
+}
+
+.game-tag__choose {
+  background-color: transparent;
+  width: 200px;
+  padding: 10px;
+  font-size: 14px;
+  margin: 15px 0 15px 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+
+
+/* ここから、お気に入り登録ホバーアクション！ */
+.game-tag__submit-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 6px 15px;
+  text-align: center;
+  cursor: pointer;
+  width: fit-content;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.game-tag__hover-action .game-tag__submit-btn__hover {
+  display: none;
+}
+
+.game-tag__hover-action:hover .game-tag__submit-btn__normal {
+  display: none;
+}
+
+.game-tag__hover-action:hover .game-tag__submit-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 6px 15px;
+  text-align: center;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 2px;
+}
+/* ここまで、お気に入り登録ホバーアクション！ */
+
 
 .account-page .account-page__inner {
   width: 980px;
