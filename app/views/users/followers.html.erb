@@ -3,9 +3,20 @@
   <%= render partial: "user-profile__left", locals: { user: @user } %>
 
   <div class="user-question-contents">
-    <% @user.followers.each do |follower| %>
-      <p><%= follower.nickname %></p>
-    <% end %>
-
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "フォロー" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <% @user.followers.each do |follower| %>
+            <%= render partial: "related_to_follow", locals: { user: follower } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
