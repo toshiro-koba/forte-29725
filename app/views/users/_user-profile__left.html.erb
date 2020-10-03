@@ -1,0 +1,102 @@
+<div class="user-profile">
+  <% unless user.profile == nil %>
+    <% if user.profile.image? %>
+      <%= image_tag(user.profile.image.thumb100.url, class: "user-profile-icon") %>
+    <% else %>
+      <%= image_tag "default.jpg", class: "user-profile-icon" %>
+    <% end %>
+
+    <div class="user-nickmane__space">
+      <span class="user-nickname"><%= user.nickname %></span>
+    </div>
+
+    <div class="link-icons">
+      <% if user.profile.link_to_sns? %>
+        <%= link_to user.profile.link_to_sns, target: "_blank" do %>
+          <%= image_tag "twitter_icon.png", class:"twitter-icon" %>
+        <% end %>
+      <% end %>
+    </div>
+    
+
+    <div class="link-icons">
+      <% if user.profile.link_to_webcast? %>
+        <%= link_to user.profile.link_to_webcast, target: "_blank" do %>
+          <%= image_tag "webcast_icon.png", class:"webcast-icon" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="self_introduction__space">
+      <% if user.profile.self_introduction? %>
+        <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if user == current_user %>
+
+
+       <div class="profile__hover-action">
+    <% if user.profile == nil %>
+        <span class='profile-btn__normal'>プロフィールを登録</span>
+        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+    <% else %>
+      <span class='profile-btn__normal'>プロフィールを編集</span>
+      <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+    <% end %>
+    </div>
+
+    <div class="gift__hover-action">
+      <span class='gift-btn__normal'>ギフト情報</span>
+      <span><%= link_to 'ギフト情報', gift_history_user_path(user), class: 'gift-btn__hover' %></span>
+    </div>
+
+  <% elsif user_signed_in? %>
+    <%= render 'relationships/follow_button', user: user %>
+
+    <div class="gift__hover-action">
+      <span class='gift-btn__normal'>ギフト</span>
+      <span><%= link_to 'ギフト', user_gifts_path(user), class: 'gift-btn__hover' %></span>
+    </div>
+    
+  <% else %>
+    <div class="follow__hover-action">
+      <span class='follow-btn__normal'>フォロー</span>
+      <span><%= link_to 'フォロー', new_user_session_path, class: 'follow-btn__hover' %></span>
+    </div>
+
+    <div class="gift__hover-action">
+      <span class='gift-btn__normal'>ギフト</span>
+      <span><%= link_to 'ギフト', new_user_session_path, class: 'gift-btn__hover' %></span>
+    </div>
+
+  <% end %>
+
+  <div class="follow-related__space">
+    <div class="followings__space">
+      <div class="number-of-followings">
+        <%= user.followings.size %>
+      </div>
+
+      <div class="followings__hover-action">
+        <%= link_to 'フォロー', following_user_path(user), class:"followings" %>
+      </div>
+
+
+    </div>
+
+    <div class="followers__space">
+      <div class="number-of-followers">
+        <%= user.followers.size %>
+      </div>
+
+      <div class="followers__hover-action">
+        <%= link_to 'フォロワー', followers_user_path(user), class:"followers" %>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

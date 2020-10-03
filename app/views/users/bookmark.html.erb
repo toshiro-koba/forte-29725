@@ -1,3 +1,4 @@
+<%= render partial: "rooms/navigation_menu" %>
 <div class='question-form'>
   <h1>好きなゲームをお気に入り登録する！</h1>
   <%= form_with(url: bookmark_user_path(current_user), model: @bookmark, local: true, method: :get) do |f| %>

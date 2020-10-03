@@ -1,0 +1,44 @@
+<%= render partial: "rooms/navigation_menu" %>
+<div class="main__user-profile">
+
+  <%= render partial: "user-profile__left", locals: { user: @user } %>
+
+  <div class="user-question-contents">
+<%# ここから、自分がしたギフト！ %>
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "自分がしたギフト" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <% @giftings.each do |gift| %>
+            <%= render partial: "giftings", locals: { gift: gift, user: gift.user } %>
+          <% end%>
+        </div>
+      </div>
+    </div>
+<%# ここまで、自分がしたギフト！ %>
+
+<%# ここから、自分に送られたギフト！ %>
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "自分に送られたギフト" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <% @receivings.each do |gift| %>
+            <%= render partial: "giftings", locals: { gift: gift, user: gift.giver } %>
+          <% end%>
+        </div>
+      </div>
+    </div>
+<%# ここまで、自分に送られたギフト！ %>
+
+  </div>
+</div>

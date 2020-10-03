@@ -12,7 +12,7 @@ li {
 
 .question-form {
   margin: 35px 0;
-  padding: 5px;
+  padding: 24px;
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
@@ -79,8 +79,8 @@ select {
 
 .index__game_tag {
   background-color: #fff;
-  padding: 2px 0px 0px 10px;
-  width: 280px;
+  padding: 2px 10px 0px 10px;
+  width: fit-content;
   height: 20px;
   font-size: 14px;
   letter-spacing: 0.2em;
@@ -214,6 +214,9 @@ header {
   align-items: center;
 }
 
+.link-to__top-page {
+  text-decoration: none;
+}
 .app-name {
   font-size: 40px;
   color: #fff;

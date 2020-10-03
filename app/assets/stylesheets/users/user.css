@@ -1,0 +1,434 @@
+.main__user-profile {
+  width: 1000px; 
+  margin: 35px auto;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  color: #666;
+  flex: 1; 
+  min-height: 100vh;
+  display: flex;
+}
+
+.user-profile {
+  width: 360px;
+  padding: 24px;
+  background: #fff;
+  text-align: center;
+  word-break: break-all;
+  height: fit-content;
+  margin-right: 16px;
+}
+
+.user-profile-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.user-nickmane__space {
+  height: 24px;
+  margin: 5px 0;
+}
+
+.user-nickname {
+  font-weight: bold;
+}
+
+.link-icons {
+  margin: 5px 0;
+}
+
+.twitter-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.webcast-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.self_introduction__space {
+  height: fit-content;
+  margin: 10px 0;
+  padding-bottom: 5px;
+}
+
+.self_introduction {
+  font-size: 14px;
+}
+
+/* ここから、フォロー解除ホバーアクション！ */
+.unfollow-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: rgb(29, 161, 242);
+  color: #fff;
+  border-color: rgb(29, 161, 242);
+  font-weight: bold;
+}
+
+.unfollow__hover-action .unfollow-btn__hover {
+  display: none;
+}
+
+
+.unfollow__hover-action:hover .unfollow-btn__normal {
+  display: none;
+}
+
+.unfollow__hover-action:hover .unfollow-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: #c9302c;
+  border-color: #c9302c;
+  color: #fff;
+}
+/* ここまで、フォロー解除ホバーアクション！ */
+
+
+/* ここから、フォローホバーアクション！ */
+.follow-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(29, 161, 242);
+  border-color: rgb(29, 161, 242);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.follow__hover-action .follow-btn__hover {
+  display: none;
+}
+
+
+.follow__hover-action:hover .follow-btn__normal {
+  display: none;
+}
+
+.follow__hover-action:hover .follow-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(29, 161, 242, 0.1);
+  color: rgb(29, 161, 242);
+  border-color: rgb(29, 161, 242);
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+/* ここまで、フォローホバーアクション！ */
+
+
+/* ここから、ギフトホバーアクション！ */
+.gift-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gift__hover-action .gift-btn__hover {
+  display: none;
+}
+
+.gift__hover-action:hover .gift-btn__normal {
+  display: none;
+}
+
+.gift__hover-action:hover .gift-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+/* ここまで、ギフトホバーアクション！ */
+
+
+/* ここから、プロフィール登録、編集ホバーアクション！ */
+.profile-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(181, 181, 181);
+  border-color:rgb(181, 181, 181);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile__hover-action .profile-btn__hover {
+  display: none;
+}
+
+
+.profile__hover-action:hover .profile-btn__normal {
+  display: none;
+}
+
+.profile__hover-action:hover .profile-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(198, 198, 198, 0.219);
+  color: rgb(181, 181, 181);
+  border-color: rgb(181, 181, 181);
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+/* ここまで、プロフィール登録、編集ホバーアクション！ */
+
+.follow-related__space {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.followings__space {
+  display: flex;
+}
+
+.followings__hover-action {
+  text-decoration: none;
+}
+
+.followings__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.followings {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
+
+.followers__space {
+  display: flex;
+}
+
+.followers__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.followers {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
+
+.gift-action-title {
+  padding: 2px 10px 5px 10px;
+  width: fit-content;
+  height: 20px;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.user-question-contents {
+  color: rgb(154, 154, 154);
+  padding: 0 24px;
+  width: 624px;
+}
+
+.index-name__bookmark {
+  padding: 2px 10px 5px 3px;
+  width: fit-content;
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.game_tag__space {
+  font-size: 14px;
+  padding: 10px 10px 0 10px;
+}
+
+.game_tag {
+  display: inline-block;
+  letter-spacing: 0.02em;
+  padding: 3px 5px;
+  margin: 0 6px 6px 0;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: rgb(85, 85, 85);
+  background-color: rgb(255, 226, 255);
+  border: 1px solid rgb(255, 246, 255);
+  border-radius: 5px;
+}
+
+.game_tag__registration__hover-action {
+  padding: 5px 3px;
+}
+
+.game_tag__registration__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.game_tag__registration {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
+
+.account-page .account-page__inner {
+  width: 980px;
+  margin: 60px auto;
+  padding: 60px;
+  background-color: #fff;
+}
+.account-page .account-page__inner .account-page__inner--left, .account-page .account-page__inner .account-page__inner--right {
+  float: left;
+  width: 50%;
+}
+.account-page .account-page__inner:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.account-page .account-page__header h2 {
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 40px;
+  font-weight: 200;
+}
+.account-page .account-page__header h2:after {
+  content: "";
+  display: block;
+  width: 60px;
+  margin-top: 5px;
+  border-bottom: 1px solid #38aef0;
+}
+.account-page .account-page__header h5 {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 200;
+}
+.account-page .account-page__header .btn {
+  margin-top: 20px;
+  color: #fff;
+  background-color: #ccc;
+  font-size: 14px;
+}
+.account-page .field {
+  margin-bottom: 10px;
+}
+.account-page .field .field-label {
+  padding: 10px 0;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 200;
+}
+.account-page .field .field-label i {
+  font-size: 11px;
+}
+.account-page .field .field-input input {
+  width: 100%;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+.account-page .btn {
+  display: inline-block;
+  height: 50px;
+  padding: 0 30px;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+.account-page input[type=submit] {
+  float: left;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #38aef0;
+}
+.account-page .field-label .field_with_errors {
+  display: inline-block;
+  color: #d65f4c;
+  font-weight: 400;
+}
+.account-page .field-input .field_with_errors {
+  position: relative;
+}
+.account-page .field-input .field_with_errors:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #d65f4c;
+}
+
+#error_explanation {
+  margin: 20px 0;
+  padding: 20px 30px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+#error_explanation h2 {
+  margin-bottom: 10px;
+  color: #d65f4c;
+  font-size: 14px;
+}
+#error_explanation ul {
+  margin: 0;
+  padding-left: 17px;
+  list-style: square;
+}
+#error_explanation li {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
