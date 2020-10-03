@@ -1,25 +1,68 @@
-----プロフィールを編集する！！----
-<%= form_with(url: user_profile_path(current_user), model: @profile, local: true, method: :patch) do |f| %>
-  <div class="form-input">
-    <div class="click-upload">
-      <div id="image-list">
-        <p id="before_image">現在のアイコン</p>
-        <% if @profile.image? %>
-          <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
-        <% else %> 
-          <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
-        <% end %> 
-      </div>
-      <p> 
-        クリックしてファイルをアップロード
-      </p>
-      <%= f.file_field :image, id:"profile-image" %>
-    </div>
-    <%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'SNSのURLを貼ってね！' %>
-    <%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '配信しているサイトのURLを貼ってね！' %>
-  </div>
-  <%= f.text_area :self_introduction, placeholder: '自由に自己紹介してね！' %>
-  <%= f.submit '登録する', class: 'form-submit' %>
-<% end %>
+<%= render partial: "rooms/navigation_menu" %>
+<div class="main__user-profile">
+  <%= render partial: "users/user-profile__left", locals: { user: @user } %>
 
-<%= link_to "ニックネームとメールアドレスを編集する", edit_user_path(current_user) %>
+  <div class="user-question-contents">
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "プロフィールを変更" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <%= form_with(url: user_profile_path(current_user), model: @profile, local: true, method: :patch) do |f| %>
+            <div class="user-profile-edit-form__space">
+              <div class="click-upload">
+                <div id="image-list">
+                  <% if @profile.image? %>
+                    <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
+                  <% else %> 
+                    <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
+                  <% end %> 
+                </div>
+                <label for="profile-image", class="image-file-field-label">画像を選択
+                  <%= f.file_field :image, id:"profile-image", class:"image-file-field" %>
+                </label>
+              </div>
+
+              <div class="user-nickname__space">
+                <span class="user-nickname__display"><%= current_user.nickname %></span>
+                <div class="user-nickname-edit__hover-action">
+                  <%= link_to "編集する", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                </div>
+              </div>
+            
+              <div class="link-to-sns__space">
+                <div class="link-to-sns"><%= "ツイッターのURL" %></div>
+                <div><%= f.text_field :link_to_sns, class: 'form-message', placeholder: '例: https://twitter.com/' %></div>
+              </div>
+
+              <div class="link-to-webcast__space">
+                <div class="link-to-webcast"><%= "配信サイトのURL" %></div>
+                <div><%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '例: https://www.twitch.tv/' %></div>
+              </div>
+
+              <div class="self-introduction__space">
+                <div class="self-introduction"><%= "自己紹介文" %></div>
+                <div><%= f.text_area :self_introduction, class: 'form-text-area', placeholder: '自由に自己紹介してね！' %></div>
+              </div>
+
+              <div class="user-edit__hover-action">
+                <span class='user-edit__normal'>更新</span>
+                <span><%= f.submit '更新', class: 'user-edit__hover' %></span>
+              </div>
+
+              <div class="user-nickname-edit__hover-action">
+                <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+              </div>
+            
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,14 +1,7 @@
 <%= render partial: "rooms/navigation_menu" %>
-
 <div class="main__user-profile">
-
   <%= render partial: "users/user-profile__left", locals: { user: @user } %>
-
   <div class="user-question-contents">
-
-
-
-    
     <div class="content">
       <div class="index">
         <div class="index__game_tag">
@@ -18,9 +11,8 @@
       </div>
       <div class="room-name">
         <div class="gift-form__space">
-        <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
-          <%= render 'shared/error_messages', model: f.object %>
-
+          <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
+            <%= render 'shared/error_messages', model: f.object %>
             <div class="gift-form__content">
               <div class='gift-form-text__price-space'>
                 <label class="gift-form-text">ギフトする金額</label>
@@ -63,26 +55,16 @@
                 <label class="gift-form-text">セキュリティコード</label>
               </div>
               <span><%= f.text_field :cvc,class:"input-default-cvc", id:"card-cvc", maxlength:"4" %></span>
-              
             </div>
 
-
-          <div class="confirmation-of-gift__hover-action">
-            <span class='confirmation-btn-of-gift__normal'>ギフトを確定</span>
-            <span><%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover" %></span>
-          </div>
-
-        <% end %>
-      </div>
- 
-</div>
-
+            <div class="confirmation-of-gift__hover-action">
+              <span class='confirmation-btn-of-gift__normal'>ギフトを確定</span>
+              <span><%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover" %></span>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-
-
-
-
-
   </div>
+</div>
 
