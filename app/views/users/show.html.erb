@@ -5,15 +5,29 @@
   <%= render partial: "user-profile__left", locals: { user: @user } %>
 
   <div class="user-question-contents">
-    <div class="user-bookmark">
-    <% Bookmark.where(user_id: @user.id).each do |game| %>
-      <p><%= game.game_tag.game_title %></p>
-    <% end %>
-    
-    <% if user_signed_in? && current_user == @user %>
-      <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user) %>
-    <% end %>
-    
+  
+     <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="index-name__bookmark"><%= "好きなゲーム" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="game_tag__space">
+          <% Bookmark.where(user_id: @user.id).each do |game| %>
+            <div class="game_tag">
+              <%= game.game_tag.game_title %>
+            </div>
+          <% end %>
+
+          <% if user_signed_in? && current_user == @user %>
+            <div class="game_tag__registration__hover-action">
+              <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user), class: 'game_tag__registration' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <%= "#{@user.nickname}さんが回答した質問" %>

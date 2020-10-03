@@ -280,13 +280,45 @@
   width: 624px;
 }
 
-.user-bookmark {
-  background-color: #afff9f;
-  padding: 24px;
-  height: 200px;
-  height: fit-content;
+.index-name__bookmark {
+  padding: 2px 10px 5px 3px;
+  width: fit-content;
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  letter-spacing: 0.2em;
 }
 
+.game_tag__space {
+  font-size: 14px;
+  padding: 10px 10px 0 10px;
+}
+
+.game_tag {
+  display: inline-block;
+  letter-spacing: 0.02em;
+  padding: 3px 5px;
+  margin: 0 6px 6px 0;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: rgb(85, 85, 85);
+  background-color: rgb(255, 226, 255);
+  border: 1px solid rgb(255, 246, 255);
+  border-radius: 5px;
+}
+
+.game_tag__registration__hover-action {
+  padding: 5px 3px;
+}
+
+.game_tag__registration__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.game_tag__registration {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
 
 .account-page .account-page__inner {
   width: 980px;
