@@ -31,6 +31,7 @@ li {
   padding: 5px 10px;
   /* box-sizing: border-box; */
   border-color: rgb(240, 240, 240);
+  resize: none;
 }
 
 .question-btn {
