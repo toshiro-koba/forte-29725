@@ -1,26 +1,68 @@
 <%= render partial: "rooms/navigation_menu" %>
-<div class='question-form'>
-  <h1>好きなゲームをお気に入り登録する！</h1>
-  <%= form_with(url: bookmark_user_path(current_user), model: @bookmark, local: true, method: :get) do |f| %>
-    <div class='question-form__field'>
-      <div class='question-form__field--left'>
-        <label class='question-form__label' for='question_room_回答して欲しい人'>好きなゲーム</label>
+
+<div class="main__user-profile">
+
+  <%= render partial: "user-profile__left", locals: { user: @user } %>
+
+  <div class="user-question-contents">
+
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="index-name__bookmark"><%= "好きなゲーム" %></span>
+        </div>
+        <div class="index__triangle"></div>
       </div>
-      <div class='question-form__field--right'>
-        <select name="game_tag_id"> 
-          <option value="">好きなゲームを選んでね！</option>
-          <% GameTag.all.where.not(id: @bookmarked_game_tags).each do |tag| %> <%#同じゲームはお気に入り登録できない！%>
-             <option value=<%=tag.id%>><%= tag.game_title %></option>
+      <div class="room-name">
+        <div class="game_tag__space">
+          <% Bookmark.where(user_id: @user.id).each do |game| %>
+            <div class="game_tag">
+              <%= game.game_tag.game_title %>
+            </div>
           <% end %>
-        </select>
+
+          <div class="game_tag__registration__hover-action">
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <div class='question-form__field'>
-      <div class='question-form__field--left'></div>
-      <div class='question-form__field--right'>
-        <%= f.submit value="I like!!", class: 'question-btn'%>
+
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="bookmark-action-title"><%= "ゲームを登録する" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <%= form_with(url: bookmark_user_path(current_user), model: @bookmark, local: true, method: :get) do |f| %>
+          <div class="game-tag__form-space">
+            <div class="game-tag__choose-space">
+              <select name="game_tag_id" , class="game-tag__choose"> 
+                <option value=""hidden disabled selected>---</option>
+                <% GameTag.all.where.not(id: @bookmarked_game_tags).each do |tag| %> <%#同じゲームはお気に入り登録できない！%>
+                    <option value=<%=tag.id%>><%= tag.game_title %></option>
+                <% end %>
+              </select>
+            </div>
+            
+            <div class="game-tag__hover-action">
+              <span class='game-tag__submit-btn__normal'>登録</span>
+              <span><%= f.submit value="登録", class: 'game-tag__submit-btn__hover'%></span>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
-  <% end %>
+
+
+
+
+
+  </div>
 </div>
+
+

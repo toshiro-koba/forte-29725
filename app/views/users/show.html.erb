@@ -23,7 +23,7 @@
 
           <% if user_signed_in? && current_user == @user %>
             <div class="game_tag__registration__hover-action">
-              <%= link_to "好きなゲームをお気に入り登録する", bookmark_user_path(current_user), class: 'game_tag__registration' %>
+              <%= link_to "ゲームを登録する", bookmark_user_path(current_user), class: 'game_tag__registration' %>
             </div>
           <% end %>
         </div>
