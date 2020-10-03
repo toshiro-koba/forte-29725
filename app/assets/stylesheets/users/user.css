@@ -448,6 +448,9 @@
   border-bottom: 1px solid rgba(0,0,0, 0.3);
 }
 
+.input-default:focus {
+  outline: 0;
+}
 
 .gift-form_expiration_date__space {
   display: flex;
@@ -467,6 +470,10 @@
   text-align: center;
 }
 
+.input-expiration-month:focus {
+  outline: 0;
+}
+
 .input-expiration-year {
   background-color: transparent;
   width: 50px;
@@ -477,12 +484,20 @@
   text-align: center;
 }
 
+.input-expiration-year:focus {
+  outline: 0;
+}
+
 .input-default-cvc {
   background-color: transparent;
   width: 40px;
   font-size: 14px;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+
+.input-default-cvc:focus {
+  outline: 0;
 }
 
 
@@ -527,6 +542,155 @@
   text-decoration: none;
 }
 /* ここまで、ギフト確定ホバーアクション！ */
+
+
+
+
+.user-profile-edit-form__space {
+  padding: 24px;
+}
+
+.click-upload {
+  padding: 10px 0;
+}
+
+.image-file-field-label {
+  display: block;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 2px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 18%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(182, 182, 182);
+  border-color: rgb(182, 182, 182);
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.image-file-field {
+  display: none;
+}
+
+.user-nickname__space {
+  padding: 10px 0;
+  display: flex;
+}
+
+.user-nickname__display {
+  font-size: 16px;
+  color: #666;
+  margin-right: 40px;
+  font-weight: bold;
+}
+
+.user-nickname-edit__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+  font-size: 13px;
+  padding-top: 4px;
+}
+
+.user-nickname-edit__hover {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+  font-size: 13px;
+}
+.link-to-sns__space {
+  padding: 20px 0;
+}
+
+.link-to-sns {
+  padding: 7px 0;
+}
+
+.link-to-webcast__space {
+  padding: 20px 0;
+}
+
+.link-to-webcast {
+  padding: 7px 0;
+}
+
+.self-introduction__space {
+  padding: 20px 0;
+}
+
+.self-introduction {
+  padding: 7px 0;
+}
+
+.form-message {
+  background-color: transparent;
+  width: 180px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.form-message:focus {
+  outline: 0;
+}
+
+.form-text-area {
+  resize: none;
+  min-height: 100px;
+  /* height: fit-content; */
+  width: 518px;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.form-text-area:focus {
+  outline: 0;
+}
+
+/* ここから、プロフィール更新ホバーアクション！ */
+.user-edit__normal {
+  display: block;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 20%;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+}
+
+.user-edit__hover-action .user-edit__hover {
+  display: none;
+}
+
+.user-edit__hover-action:hover .user-edit__normal {
+  display: none;
+}
+
+.user-edit__hover-action:hover .user-edit__hover {
+  display: block;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 20%;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  letter-spacing: 0.5rem;
+  text-decoration: none;
+}
+/* ここまで、プロフィール更新ホバーアクション！ */
 
 
 .account-page .account-page__inner {

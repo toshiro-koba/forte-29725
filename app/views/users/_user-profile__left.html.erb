@@ -17,7 +17,6 @@
         <% end %>
       <% end %>
     </div>
-    
 
     <div class="link-icons">
       <% if user.profile.link_to_webcast? %>
@@ -35,8 +34,6 @@
   <% end %>
 
   <% if user == current_user %>
-
-
        <div class="profile__hover-action">
     <% if user.profile == nil %>
         <span class='profile-btn__normal'>プロフィールを登録</span>
@@ -70,7 +67,6 @@
       <span class='gift-btn__normal'>ギフト</span>
       <span><%= link_to 'ギフト', new_user_session_path, class: 'gift-btn__hover' %></span>
     </div>
-
   <% end %>
 
   <div class="follow-related__space">
@@ -78,25 +74,18 @@
       <div class="number-of-followings">
         <%= user.followings.size %>
       </div>
-
       <div class="followings__hover-action">
         <%= link_to 'フォロー', following_user_path(user), class:"followings" %>
       </div>
-
-
     </div>
 
     <div class="followers__space">
       <div class="number-of-followers">
         <%= user.followers.size %>
       </div>
-
       <div class="followers__hover-action">
         <%= link_to 'フォロワー', followers_user_path(user), class:"followers" %>
       </div>
-
-
     </div>
-
   </div>
 </div>
