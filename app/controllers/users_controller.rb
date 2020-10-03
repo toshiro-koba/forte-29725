@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     @bookmark = Bookmark.new(bookmark_params)
     if @bookmark.save
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       render :bookmark
     end
