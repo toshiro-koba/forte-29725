@@ -266,6 +266,14 @@
   color: rgb(154, 154, 154);
 }
 
+.gift-action-title {
+  padding: 2px 10px 5px 10px;
+  width: fit-content;
+  height: 20px;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
 .user-question-contents {
   color: rgb(154, 154, 154);
   padding: 0 24px;

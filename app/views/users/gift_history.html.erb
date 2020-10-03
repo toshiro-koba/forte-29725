@@ -4,22 +4,41 @@
   <%= render partial: "user-profile__left", locals: { user: @user } %>
 
   <div class="user-question-contents">
-    <div class="gift-action">
-        <p class="gift-action-title">自分がしたギフト</p>
-        <% @giftings.each do |gift| %>
-          <div class="gifts">
-            <p class="gift"><%= "#{gift.user.nickname}に#{gift.price}円をギフトした！" %></p>
-          </div>
-        <% end %>
+<%# ここから、自分がしたギフト！ %>
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "自分がしたギフト" %></span>
+        </div>
+        <div class="index__triangle"></div>
       </div>
-      <div class="gift-action">
-        <p class="gift-action-title">自分に送られたギフト</p>
-        <% @receivings.each do |gift| %> 
-          <div class="gifts">
-            <p class="gift"><%= "#{gift.giver.nickname}から#{gift.price}円をギフトされた！感謝します！" %></p>
-          </div>
-        <% end %> 
-      </div> 
+      <div class="room-name">
+        <div class="question-space">
+          <% @giftings.each do |gift| %>
+            <%= render partial: "giftings", locals: { gift: gift, user: gift.user } %>
+          <% end%>
+        </div>
+      </div>
+    </div>
+<%# ここまで、自分がしたギフト！ %>
+
+<%# ここから、自分に送られたギフト！ %>
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "自分に送られたギフト" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <% @receivings.each do |gift| %>
+            <%= render partial: "giftings", locals: { gift: gift, user: gift.giver } %>
+          <% end%>
+        </div>
+      </div>
+    </div>
+<%# ここまで、自分に送られたギフト！ %>
 
   </div>
 </div>
