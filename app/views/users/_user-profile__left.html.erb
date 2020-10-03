@@ -47,9 +47,10 @@
     <% end %>
     </div>
 
-
-
-    <p><%= link_to 'ギフト情報', gift_history_user_path(user) %></p>
+    <div class="gift__hover-action">
+      <span class='gift-btn__normal'>ギフト情報</span>
+      <span><%= link_to 'ギフト情報', gift_history_user_path(user), class: 'gift-btn__hover' %></span>
+    </div>
 
   <% elsif user_signed_in? %>
     <%= render 'relationships/follow_button', user: user %>
