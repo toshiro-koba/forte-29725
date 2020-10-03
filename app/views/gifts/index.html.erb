@@ -1,70 +1,82 @@
-<%= render "shared/second-header"%>
-<div class='transaction-contents'>
-  <div class='transaction-main'>
-    <h1 class='transaction-title-text'>
-      ギフティングの確認
-    </h1>
-    <div class='buy-item-info'>
-      <div class='buy-item-right-content'>
-        <h2 class='buy-item-text'>
-          <%= @reciver.nickname %>
-        </h2>
+<%= render partial: "rooms/navigation_menu" %>
+
+<div class="main__user-profile">
+
+  <%= render partial: "users/user-profile__left", locals: { user: @user } %>
+
+  <div class="user-question-contents">
+
+
+
+    
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="bookmark-action-title"><%= "ギフトする" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="gift-form__space">
+        <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
+          <%= render 'shared/error_messages', model: f.object %>
+
+            <div class="gift-form__content">
+              <div class='gift-form-text__price-space'>
+                <label class="gift-form-text">ギフトする金額</label>
+              </div>
+              <span><%= f.text_field :price, class:"input-default", id:"postal-code", placeholder:"ギフトする金額を入力" %></span>
+            </div>
+
+            <div class="gift-form__content">
+              <div class='gift-form-text__card-space'>
+                <label class="gift-form-text">カード情報</label>
+              </div>
+              <span>
+                <%= f.text_field :number, class:"input-default", id:"card-number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
+                <div class='available-card'>
+                  <%= image_tag 'card-visa.gif', class: 'card-logo'%>
+                  <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
+                  <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
+                  <%= image_tag 'card-amex.gif', class: 'card-logo'%>
+                </div>
+              </span>
+            </div>
+
+            <div class="gift-form__content">
+              <div class='gift-form-text__expiration-date-space'>
+                <label class="gift-form-text">有効期限</label>
+              </div>
+              <div class='gift-form_expiration_date__space'>
+                <%= f.text_field :exp_month, class:"input-expiration-date", id:"card-exp-month" %>
+                <p>月</p>
+                <%= f.text_field :exp_year, class:"input-expiration-date", id:"card-exp-year" %>
+                <p>年</p>
+              </div>
+            </div>
+
+            <div class="gift-form__content">
+              <div class='gift-form-text__cvc-space'>
+                <label class="gift-form-text">セキュリティコード</label>
+              </div>
+              <span><%= f.text_field :cvc,class:"input-default", id:"card-cvc", maxlength:"4" %></span>
+              
+            </div>
+
+          <div class='buy-btn'>
+            <%= f.submit "ギフトを確定" ,class:"buy-red-btn" %>
+          </div>
+        <% end %>
+      </div>
+ 
+</div>
+
       </div>
     </div>
 
-    <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
-      <%= render 'shared/error_messages', model: f.object %>
-      <div class='credit-card-form'>
-        <h1 class='info-input-haedline'>
-          クレジットカード情報入力
-        </h1>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">カード情報</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_field :number, class:"input-default", id:"card-number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
-          <div class='available-card'>
-            <%= image_tag 'card-visa.gif', class: 'card-logo'%>
-            <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
-            <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
-            <%= image_tag 'card-amex.gif', class: 'card-logo'%>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">有効期限</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <div class='input-expiration-date-wrap'>
-            <%= f.text_area :exp_month, class:"input-expiration-date", id:"card-exp-month", placeholder:"例)3" %>
-            <p>月</p>
-            <%= f.text_area :exp_year, class:"input-expiration-date", id:"card-exp-year", placeholder:"例)23" %>
-            <p>年</p>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">セキュリティコード</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
-        </div>
-      </div>
-      <div class='shipping-address-form'>
-        <h1 class='info-input-haedline'> 
-        </h1>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">ギフトする金額！</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_field :price, class:"input-default", id:"postal-code", placeholder:"ギフトしたい金額を入力してね！" %>
-        </div>
-      </div> 
-      <div class='buy-btn'>
-        <%= f.submit "ギフト" ,class:"buy-red-btn" %>
-      </div>
-    <% end %>
+
+
+
+
   </div>
-</div>
+

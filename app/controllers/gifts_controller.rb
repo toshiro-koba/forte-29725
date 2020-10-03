@@ -2,6 +2,7 @@ class GiftsController < ApplicationController
   def index
     redirect_to new_user_session_path unless user_signed_in?
     @reciver = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     redirect_to root_path if @reciver == current_user
     @gift = Gift.new
   end
