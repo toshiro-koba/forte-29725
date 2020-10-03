@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     @questions_related_to_current_user.each do |entry|
       @questions << entry.room if entry.room.messages.size == 2
     end
-     
   end
 
   def bookmark

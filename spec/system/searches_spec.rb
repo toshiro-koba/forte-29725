@@ -13,20 +13,20 @@ RSpec.describe '検索', type: :system do
       sign_in(@entry.user)
 
       # 値をテキストフォームに入力する
-      post = "質問テスト"
-      select @user.nickname, from: "room[user_ids][]"
-      select @game_tag.game_title, from: "room[game_tag_ids][]"
+      post = '質問テスト'
+      select @user.nickname, from: 'room[user_ids][]'
+      select @game_tag.game_title, from: 'room[game_tag_ids][]'
       fill_in 'room_message[question_title]', with: post
       fill_in 'room_message[content]', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-        sleep 0.1 #指定した秒数だけ待ってくれる、神
-      }.to change { Message.count }.by(1)
+        sleep 0.1 # 指定した秒数だけ待ってくれる、神
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
 
       # 送信した値がブラウザに表示されていることを確認する
       expect(page).to have_content(post)
@@ -36,7 +36,7 @@ RSpec.describe '検索', type: :system do
       find('#keyword').native.send_keys(:return)
 
       # 入力したキーワードを含む質問が、ブラウザに表示されていることを確認する
-      within 'main' do #スコープを絞る
+      within 'main' do # スコープを絞る
         expect(page).to have_content(post)
       end
     end
@@ -48,20 +48,20 @@ RSpec.describe '検索', type: :system do
       sign_in(@entry.user)
 
       # 値をテキストフォームに入力する
-      post = "質問テスト"
-      select @user.nickname, from: "room[user_ids][]"
-      select @game_tag.game_title, from: "room[game_tag_ids][]"
+      post = '質問テスト'
+      select @user.nickname, from: 'room[user_ids][]'
+      select @game_tag.game_title, from: 'room[game_tag_ids][]'
       fill_in 'room_message[question_title]', with: post
       fill_in 'room_message[content]', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
         sleep 0.1
-      }.to change { Message.count }.by(1)
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
 
       # 送信した値がブラウザに表示されていることを確認する
       expect(page).to have_content(post)
@@ -73,7 +73,7 @@ RSpec.describe '検索', type: :system do
       sleep 1
 
       # 入力したキーワードを含む質問が、ブラウザに表示されないことを確認する
-      within 'main' do #スコープを絞る
+      within 'main' do # スコープを絞る
         expect(page).to have_no_content(post)
       end
     end

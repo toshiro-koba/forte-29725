@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "質問回答機能", type: :system do
+RSpec.describe '質問回答機能', type: :system do
   before do
     # 中間テーブルを作成して、usersテーブルとroomsテーブルのレコードを作成する
     @entry = FactoryBot.create(:entry)
@@ -13,11 +13,11 @@ RSpec.describe "質問回答機能", type: :system do
       # サインインする
       sign_in(@entry.user)
       # DBに保存されていないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.not_to change { Message.count }
+      end.not_to change { Message.count }
       # 元のページに戻ってくることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
     end
   end
 
@@ -27,20 +27,20 @@ RSpec.describe "質問回答機能", type: :system do
       sign_in(@entry.user)
 
       # 値をテキストフォームに入力する
-      post = "質問テスト"
-      select @user.nickname, from: "room[user_ids][]"
-      select @game_tag.game_title, from: "room[game_tag_ids][]"
+      post = '質問テスト'
+      select @user.nickname, from: 'room[user_ids][]'
+      select @game_tag.game_title, from: 'room[game_tag_ids][]'
       fill_in 'room_message[question_title]', with: post
       fill_in 'room_message[content]', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-        sleep 0.1 #指定した秒数だけ待ってくれる、神
-      }.to change { Message.count }.by(1)
+        sleep 0.1 # 指定した秒数だけ待ってくれる、神
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
 
       # 送信した値がブラウザに表示されていることを確認する
       expect(page).to have_content(post)
@@ -50,22 +50,22 @@ RSpec.describe "質問回答機能", type: :system do
       sign_in(@user)
 
       # 値をテキストフォームに入力する
-      post = "回答テスト"
+      post = '回答テスト'
       fill_in 'message[content]', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      within '.question-space' do #スコープを絞る
-        expect{
+      within '.question-space' do # スコープを絞る
+        expect do
           find('input[name="commit"]').click
           sleep 0.1
-        }.to change { Message.count }.by(1)
+        end.to change { Message.count }.by(1)
       end
-      
+
       # 投稿一覧画面に遷移していることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
 
       # 送信した値がブラウザに表示されていることを確認する
       expect(page).to have_content(post)
-    end   
+    end
   end
 end

@@ -12,25 +12,25 @@ RSpec.describe 'お気に入り登録', type: :system do
       sign_in(@user)
 
       # マイページに遷移する
-      find(".more").hover
+      find('.more').hover
       find('.my-page').click
 
       # お気に入り登録ページに遷移する
-      click_link "好きなゲームをお気に入り登録する"
+      click_link '好きなゲームをお気に入り登録する'
 
       # 登録したいゲームを選択する
-      select @game_tag.game_title, from: "game_tag_id"
+      select @game_tag.game_title, from: 'game_tag_id'
 
       # 送信した値がDBに保存されていることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { Bookmark.count }.by(1)
+      end.to change { Bookmark.count }.by(1)
 
       # トップページに遷移していることを確認する
-      expect(current_path).to eq  root_path
+      expect(current_path).to eq root_path
 
       # マイページに遷移する
-      find(".more").hover
+      find('.more').hover
       find('.my-page').click
 
       # 送信した値がブラウザに表示されていることを確認する
