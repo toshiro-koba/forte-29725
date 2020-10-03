@@ -428,9 +428,26 @@
   padding: 2px 10px;
 }
 
-.gift-form-text {
-
+.card-info {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 18px;
 }
+
+.card-logo {
+  width: 30px;
+  height: 18.75px;
+  margin: 5px 10px 0px 0px;
+}
+
+.input-default {
+  background-color: transparent;
+  width: 180px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+
 
 .gift-form_expiration_date__space {
   display: flex;
@@ -440,18 +457,76 @@
 
 
 
-.input-expiration-date {
+.input-expiration-month {
+  background-color: transparent;
   width: 30px;
-  margin-top: 5px;
-  height: 48px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 16px;
-  resize: none;
-  line-height: 45px;
+  font-size: 14px;
+  margin: 15px 0 15px 0;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
   text-align: center;
 }
+
+.input-expiration-year {
+  background-color: transparent;
+  width: 50px;
+  font-size: 14px;
+  margin: 15px 0 15px 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+  text-align: center;
+}
+
+.input-default-cvc {
+  background-color: transparent;
+  width: 40px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+
+
+/* ここから、ギフト確定ホバーアクション！ */
+.confirmation-btn-of-gift__normal {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+}
+
+.confirmation-of-gift__hover-action .confirmation-btn-of-gift__hover {
+  display: none;
+}
+
+.confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__normal {
+  display: none;
+}
+
+.confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  letter-spacing: 0.07em;
+  text-decoration: none;
+}
+/* ここまで、ギフト確定ホバーアクション！ */
 
 
 .account-page .account-page__inner {

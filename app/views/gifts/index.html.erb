@@ -25,15 +25,18 @@
               <div class='gift-form-text__price-space'>
                 <label class="gift-form-text">ギフトする金額</label>
               </div>
-              <span><%= f.text_field :price, class:"input-default", id:"postal-code", placeholder:"ギフトする金額を入力" %></span>
+              <span><%= f.text_field :price, class:"input-default", id:"postal-code" %></span>
             </div>
-
+            
+            <div class="card-info">
+              <span>カード情報</span>
+            </div>
             <div class="gift-form__content">
               <div class='gift-form-text__card-space'>
-                <label class="gift-form-text">カード情報</label>
+                <label class="gift-form-text">カード番号</label>
               </div>
               <span>
-                <%= f.text_field :number, class:"input-default", id:"card-number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
+                <%= f.text_field :number, class:"input-default", id:"card-number", maxlength:"16" %>
                 <div class='available-card'>
                   <%= image_tag 'card-visa.gif', class: 'card-logo'%>
                   <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
@@ -48,9 +51,9 @@
                 <label class="gift-form-text">有効期限</label>
               </div>
               <div class='gift-form_expiration_date__space'>
-                <%= f.text_field :exp_month, class:"input-expiration-date", id:"card-exp-month" %>
+                <%= f.text_field :exp_month, class:"input-expiration-month", id:"card-exp-month" %>
                 <p>月</p>
-                <%= f.text_field :exp_year, class:"input-expiration-date", id:"card-exp-year" %>
+                <%= f.text_field :exp_year, class:"input-expiration-year", id:"card-exp-year" %>
                 <p>年</p>
               </div>
             </div>
@@ -59,13 +62,16 @@
               <div class='gift-form-text__cvc-space'>
                 <label class="gift-form-text">セキュリティコード</label>
               </div>
-              <span><%= f.text_field :cvc,class:"input-default", id:"card-cvc", maxlength:"4" %></span>
+              <span><%= f.text_field :cvc,class:"input-default-cvc", id:"card-cvc", maxlength:"4" %></span>
               
             </div>
 
-          <div class='buy-btn'>
-            <%= f.submit "ギフトを確定" ,class:"buy-red-btn" %>
+
+          <div class="confirmation-of-gift__hover-action">
+            <span class='confirmation-btn-of-gift__normal'>ギフトを確定</span>
+            <span><%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover" %></span>
           </div>
+
         <% end %>
       </div>
  
