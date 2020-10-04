@@ -15,7 +15,8 @@
 
     <div class="header-right">
       <% if user_signed_in? %>
-      <%= current_user.nickname %>
+        <div class="more-test">
+        <span class="more-test-nickname"><%= current_user.nickname %></span>
       <div class="more">
         <div class="hover-icons">
           <% unless current_user.profile == nil %>
@@ -35,6 +36,7 @@
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %>
             </li>
           </ul>
+        </div>
         </div>
       <% else %>
         <%= link_to 'ログイン', new_user_session_path %>
