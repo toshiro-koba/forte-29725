@@ -39,9 +39,15 @@
         </div>
         </div>
       <% else %>
-        <%= link_to 'ログイン', new_user_session_path %>
-        <%= link_to '新規登録', new_user_registration_path %>
-        <%= link_to 'かんたんログイン', testsessions_path, method: :post %>
+      <div class="header-right__hover-action">
+        <%= link_to 'かんたんログイン', testsessions_path, class:"header-right__action", method: :post %>
+      </div>
+      <div class="header-right__hover-action">
+        <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
+      </div>
+      <div class="header-right__hover-action">
+        <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+      </div>
       <% end %>
     </div>
   </header>
