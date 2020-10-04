@@ -57,7 +57,7 @@
 - has_many :room_game_tags
 - has_many :game_tags, through: :room_game_tags
 - has_many :likes
-- has_many :users, through: :likes
+- has_many :likers, through: :likes, source: :user
 - has_one :notification
 
 
