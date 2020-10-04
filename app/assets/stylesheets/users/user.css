@@ -693,6 +693,98 @@
 /* ここまで、プロフィール更新ホバーアクション！ */
 
 
+.user-session__space {
+  width: 800px;
+  height: 400px;
+  /* fit contentに変更予定！ */
+  margin: 60px auto 0;
+  background-color: rgb(255, 255, 255);
+  padding: 20px 300px;
+}
+
+.login__space {
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-size: 30px;
+  color: rgb(131, 131, 131);
+  margin: 10px auto 30px;
+}
+
+.email-name__space {
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  color: #666;
+}
+
+.email__space {
+  background-color: transparent;
+  width: 100%;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.3);
+    margin-bottom: 30px;
+}
+
+.email__space:focus {
+  outline: 0;
+}
+
+
+/* ここから、ログインホバーアクション！ */
+.login-btn__normal {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  background-color: #ffffff;
+  color: #ccc;
+  border-color:#ccc;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  letter-spacing: 0.03rem;
+}
+
+.login__hover-action .login-btn__hover {
+  display: none;
+}
+
+.login__hover-action:hover .login-btn__normal {
+  display: none;
+}
+
+.login__hover-action:hover .login-btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgb(255, 248, 255);
+  color: rgb(220, 66, 228);
+  border-color: rgb(220, 66, 228);
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+/* ここまで、ログインホバーアクション！ */
+
+
+.sign-up-link__hover-action:hover {
+  text-decoration: underline;
+  color: rgb(154, 154, 154);
+}
+
+.sign-up-link {
+  text-decoration: none;
+  color: rgb(154, 154, 154);
+}
+
 .account-page .account-page__inner {
   width: 980px;
   margin: 60px auto;
