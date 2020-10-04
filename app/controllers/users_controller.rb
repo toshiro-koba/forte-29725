@@ -54,6 +54,7 @@ class UsersController < ApplicationController
 
   def gift_history
     @user = User.find(params[:id])
+    redirect_to root_path unless current_user == @user
     if user_signed_in?
       @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
       @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
