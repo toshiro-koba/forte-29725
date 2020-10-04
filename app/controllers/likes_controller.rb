@@ -15,7 +15,8 @@ class LikesController < ApplicationController
   end
 
   private
+
   def set_like
-      @like_room = Room.find(params[:room_id])
+    @like_room = Room.find(params[:room_id])
   end
 end
