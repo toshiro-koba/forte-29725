@@ -14,3 +14,6 @@
   <%= f.text_area :self_introduction, placeholder: '自由に自己紹介してね！' %>
   <%= f.submit '登録する', class: 'form-submit' %>
 <% end %>
+<div class="user-nickname-edit__hover-action">
+  <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+</div>
