@@ -51,6 +51,9 @@
         </div>
 
         <div class="like"></div>
+        <div id="like-btn-<%= question.id %>">
+          <%= render partial: "likes/like", locals: { room: question } %>
+        </div>
 
       <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
         <div class="question-lists">
@@ -109,6 +112,9 @@
         </div>
 
         <div class="like"></div>
+        <div id="like-btn-<%= question.id %>">
+          <%= render partial: "likes/like", locals: { room: question } %>
+        </div>
 
       <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
         <div class="question-lists">
@@ -169,7 +175,11 @@
           </div>
         </div>
 
-        <div class="like"></div>
+        <div class="like">
+          <div id="like-btn-<%= question.id %>">
+            <%= render partial: "likes/like", locals: { room: question } %>
+          </div>
+        </div>
 
       <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
         <div class="question-lists">
@@ -231,6 +241,9 @@
         </div>
 
         <div class="like"></div>
+        <div id="like-btn-<%= question.id %>">
+          <%= render partial: "likes/like", locals: { room: question } %>
+        </div>
       <% end %>
     </div>
   </div>
