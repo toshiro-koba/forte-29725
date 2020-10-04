@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       get 'search'
       get 'lets_gift'
     end
+    
+    post 'add' => 'likes#create'
+    delete '/add' => 'likes#destroy'
   end
   resources :messages, only: %i[index create]
 
