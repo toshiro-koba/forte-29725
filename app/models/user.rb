@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_one  :profile
+  has_many :likes, dependent: :destroy
+  has_many :like_rooms, through: :likes, source: :room
 
   def follow(other_user) # フォローする！！
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user # フォローしようとしているユーザーが自分自身か！

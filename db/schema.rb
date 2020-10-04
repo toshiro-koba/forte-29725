@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_922_053_117) do
+ActiveRecord::Schema.define(version: 20_201_004_010_025) do
   create_table 'bookmarks', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.bigint 'user_id'
     t.bigint 'game_tag_id'
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20_200_922_053_117) do
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['giver_id'], name: 'index_gifts_on_giver_id'
     t.index ['user_id'], name: 'index_gifts_on_user_id'
+  end
+
+  create_table 'likes', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'room_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['room_id'], name: 'index_likes_on_room_id'
+    t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
   create_table 'messages', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
@@ -110,6 +119,8 @@ ActiveRecord::Schema.define(version: 20_200_922_053_117) do
   add_foreign_key 'entries', 'users'
   add_foreign_key 'gifts', 'users'
   add_foreign_key 'gifts', 'users', column: 'giver_id'
+  add_foreign_key 'likes', 'rooms'
+  add_foreign_key 'likes', 'users'
   add_foreign_key 'messages', 'rooms'
   add_foreign_key 'messages', 'users'
   add_foreign_key 'profiles', 'users'

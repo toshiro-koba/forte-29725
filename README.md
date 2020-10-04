@@ -24,7 +24,8 @@
 - has_many :reverse_of_relationships, class_name: 'Relationship'
 - has_many :followers, through: :reverse_of_relationships, source: :user
 - has_one  :profile
-- has_one  :subscriber
+- has_many :likes, dependent: :destroy
+- has_many :like_rooms, through: :likes, source: :room
 - has_many :active_notifications, class_name: 'Notification'
 - has_many :passive_notifications, class_name: 'Notification'
 
@@ -55,6 +56,8 @@
 - has_many :messages
 - has_many :room_game_tags
 - has_many :game_tags, through: :room_game_tags
+- has_many :likes
+- has_many :likers, through: :likes, source: :user
 - has_one :notification
 
 
@@ -153,15 +156,17 @@
 - belongs_to :user
 
 
-## subscribers テーブル
+## likes テーブル
 
-| Column | Type       | Options     |
-| ------ | ---------- | ----------- |
-| user   | references | null: false |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
 
 ### Association 
 
 - belongs_to :user
+- belongs_to :room
 
 
 ## notifications テーブル
