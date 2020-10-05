@@ -2,8 +2,9 @@ module SignInSupport
   def sign_in(user)
     visit root_path
     click_on('ログイン')
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on('Log in')
+    fill_in 'メールアドレス', with: user.email
+    fill_in 'パスワード', with: user.password
+    find('.login__hover-action').hover
+    find('input[name="commit"]').click
   end
 end

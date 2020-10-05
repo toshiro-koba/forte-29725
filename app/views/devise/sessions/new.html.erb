@@ -15,15 +15,12 @@
 
   <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
     <%= devise_error_messages!%>
-    <div class="email-name__space">
-      メールアドレス
-    </div>
-    <%= f.email_field :email, autofocus: true, class:"email__space"%>
 
-    <div class="email-name__space">
-      パスワード
-    </div>
-    <%= f.password_field :password, autocomplete: "off", class:"email__space"%>
+    <label for="user-email", class="email-name__space">メールアドレス</label>
+    <%= f.email_field :email, autofocus: true, class:"email__space", id:"user-email"%>
+
+    <label for="user-password", class="email-name__space">パスワード</label>
+    <%= f.password_field :password, autocomplete: "off", class:"email__space", id:"user-password"%>
 
     <div class="login__hover-action">
       <span class='login-btn__normal'>ログイン</span>
