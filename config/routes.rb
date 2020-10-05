@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
     resources :gifts, only: %i[index new create]
     resources :profiles, only: %i[new create edit update]
-    resources :bookmarks, only: %i[index new create]
+    resources :bookmarks, only: %i[index new create destroy]
   end
   resources :rooms, only: %i[new create] do
     collection do
