@@ -16,8 +16,9 @@ RSpec.describe 'ギフティング', type: :system do
       # ユーザー詳細ページに遷移していることを確認する
       expect(current_path).to eq user_path(@receiver)
 
-      # 「ギフトする」ボタンを押して、ギフトページに遷移する
-      click_link 'ギフトする！'
+      # 「ギフト」ボタンを押して、ギフトページに遷移する
+      find('.gift__hover-action').hover
+      click_link 'ギフト'
 
       # ギフトページに遷移していることを確認する
       expect(current_path).to eq user_gifts_path(@receiver)
@@ -32,8 +33,9 @@ RSpec.describe 'ギフティング', type: :system do
 
       # 送信した値がDBに保存されていることを確認する
       expect  do
+        find('.confirmation-of-gift__hover-action').hover
         find('input[name="commit"]').click
-        sleep 1.0 # 指定した秒数だけ待ってくれる、神
+        sleep 2.0 # 指定した秒数だけ待ってくれる、神
       end.to change { Gift.count }.by(1)
 
       # トップページに遷移していることを確認する
@@ -42,6 +44,10 @@ RSpec.describe 'ギフティング', type: :system do
       # マイページに遷移する
       find('.more').hover
       find('.my-page').click
+
+      # ギフト情報ページに遷移する
+      find('.gift__hover-action').hover
+      click_link 'ギフト情報'
 
       # 送信した値がブラウザに表示されていることを確認する
       expect(page).to have_content(price)
@@ -61,13 +67,15 @@ RSpec.describe 'ギフティング', type: :system do
       expect(current_path).to eq user_path(@receiver)
 
       # 「ギフトする」ボタンを押して、ギフトページに遷移する
-      click_link 'ギフトする！'
+      find('.gift__hover-action').hover
+      click_link 'ギフト'
 
       # ギフトページに遷移していることを確認する
       expect(current_path).to eq user_gifts_path(@receiver)
 
-      # 送信した値がDBに保存されていることを確認する
+      # 送信した値がDBに保存されないことを確認する
       expect do
+        find('.confirmation-of-gift__hover-action').hover
         find('input[name="commit"]').click
         sleep 1.0
       end.not_to change { Gift.count }

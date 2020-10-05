@@ -58,9 +58,11 @@
             </div>
 
             <div class="confirmation-of-gift__hover-action">
-              <span class='confirmation-btn-of-gift__normal'>ギフトを確定</span>
-              <span><%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover" %></span>
+              <label for="gifting-btn", class='confirmation-btn-of-gift__normal'>ギフトを確定</label>
+              <%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover", id:"gifting-btn" %>
             </div>
+
+            
           <% end %>
         </div>
       </div>
