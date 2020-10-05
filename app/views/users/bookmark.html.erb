@@ -44,10 +44,9 @@
                 <% end %>
               </select>
             </div>
-            
             <div class="game-tag__hover-action">
-              <span class='game-tag__submit-btn__normal'>登録</span>
-              <span><%= f.submit value="登録", class: 'game-tag__submit-btn__hover'%></span>
+              <label for="bookmark-btn", class='game-tag__submit-btn__normal'>登録</label>
+              <%= f.submit value="登録", class: 'game-tag__submit-btn__hover', id:"bookmark-btn" %>
             </div>
           </div>
         <% end %>

@@ -16,25 +16,47 @@ RSpec.describe 'お気に入り登録', type: :system do
       find('.my-page').click
 
       # お気に入り登録ページに遷移する
-      click_link '好きなゲームをお気に入り登録する'
+      find('.game_tag__registration__hover-action').hover
+      click_link 'ゲームを登録する'
 
       # 登録したいゲームを選択する
       select @game_tag.game_title, from: 'game_tag_id'
 
       # 送信した値がDBに保存されていることを確認する
       expect do
+        find('.game-tag__hover-action').hover
         find('input[name="commit"]').click
       end.to change { Bookmark.count }.by(1)
 
-      # トップページに遷移していることを確認する
-      expect(current_path).to eq root_path
+      # マイページに遷移していることを確認する
+      expect(current_path).to eq user_path(@user)
+
+      # 送信した値がブラウザに表示されていることを確認する
+      expect(page).to have_content(@game_tag.game_title)
+    end
+  end
+
+  context 'お気に入り登録に失敗したとき' do
+    it '送る値が空の為、お気に入りに失敗すること' do
+      # サインインする
+      sign_in(@user)
 
       # マイページに遷移する
       find('.more').hover
       find('.my-page').click
 
-      # 送信した値がブラウザに表示されていることを確認する
-      expect(page).to have_content(@game_tag.game_title)
+      # お気に入り登録ページに遷移する
+      find('.game_tag__registration__hover-action').hover
+      click_link 'ゲームを登録する'
+
+      # 登録ボタンを押しても、ブックマークモデルのカウントは上がらないことを確認する
+      expect do
+        find('.game-tag__hover-action').hover
+        find('input[name="commit"]').click
+      end.not_to change { Bookmark.count }
+
+      # ギフトページにいることを確認する
+      expect(current_path).to eq bookmark_user_path(@user)
     end
   end
 end
