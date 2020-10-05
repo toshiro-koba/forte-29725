@@ -35,18 +35,18 @@
               </div>
             
               <div class="link-to-sns__space">
-                <div class="link-to-sns"><%= "ツイッターのURL" %></div>
-                <div><%= f.text_field :link_to_sns, class: 'form-message', placeholder: '例: https://twitter.com/' %></div>
+                <div class="link-to-sns"><%= "SNS" %></div>
+                <div><%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'https://' %></div>
               </div>
 
               <div class="link-to-webcast__space">
-                <div class="link-to-webcast"><%= "配信サイトのURL" %></div>
-                <div><%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '例: https://www.twitch.tv/' %></div>
+                <div class="link-to-webcast"><%= "配信サイト" %></div>
+                <div><%= f.text_field :link_to_webcast, class: 'form-message', placeholder: 'https://' %></div>
               </div>
 
               <div class="self-introduction__space">
-                <div class="self-introduction"><%= "自己紹介文" %></div>
-                <div><%= f.text_area :self_introduction, class: 'form-text-area', placeholder: '自由に自己紹介してね！' %></div>
+                <div class="self-introduction"><%= "自己紹介" %></div>
+                <div><%= f.text_area :self_introduction, class: 'form-text-area' %></div>
               </div>
 
               <div class="user-edit__hover-action">

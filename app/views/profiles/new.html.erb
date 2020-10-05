@@ -1,19 +1,70 @@
-プロフィールを新しく設定する
-<%= form_with(url: user_profiles_path(current_user), model: @profile, local: true, method: :post) do |f| %>
-  <div class="form-input">
-    <div class="click-upload">
-      <div id="image-list"></div>
-      <p>
-        クリックしてファイルをアップロード
-      </p>
-      <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id:"profile-image" %>
+<%= render partial: "rooms/navigation_menu" %>
+<div class="main__user-profile">
+  <%= render partial: "users/user-profile__left", locals: { user: @user } %>
+
+  <div class="user-question-contents">
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="gift-action-title"><%= "プロフィールを変更" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <div class="question-space">
+          <%= form_with(url: user_profiles_path(current_user), model: @profile, local: true, method: :post) do |f| %>
+            <div class="user-profile-edit-form__space">
+              <div class="click-upload">
+                <div id="image-list">
+                  <% unless current_user.profile == nil %>
+                    <% if @profile.image? %>
+                        <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
+                  <% end %>
+
+                </div>
+                <label for="profile-image", class="image-file-field-label">画像を選択
+                  <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id:"profile-image", class:"image-file-field" %>
+                </label>
+              </div>
+
+              <div class="user-nickname__space">
+                <span class="user-nickname__display"><%= current_user.nickname %></span>
+                <div class="user-nickname-edit__hover-action">
+                  <%= link_to "編集する", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                </div>
+              </div>
+            
+              <div class="link-to-sns__space">
+                <div class="link-to-sns"><%= "SNS" %></div>
+                <div><%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'https://' %></div>
+              </div>
+
+              <div class="link-to-webcast__space">
+                <div class="link-to-webcast"><%= "配信サイト" %></div>
+                <div><%= f.text_field :link_to_webcast, class: 'form-message', placeholder: 'https://' %></div>
+              </div>
+
+              <div class="self-introduction__space">
+                <div class="self-introduction"><%= "自己紹介" %></div>
+                <div><%= f.text_area :self_introduction, class: 'form-text-area' %></div>
+              </div>
+
+              <div class="user-edit__hover-action">
+                <span class='user-edit__normal'>登録</span>
+                <span><%= f.submit '登録', class: 'user-edit__hover' %></span>
+              </div>
+
+              <div class="user-nickname-edit__hover-action">
+                <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+              </div>
+            
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= f.text_field :link_to_sns, class: 'form-message', placeholder: 'SNSのURLを貼ってね！' %>
-    <%= f.text_field :link_to_webcast, class: 'form-message', placeholder: '配信しているサイトのURLを貼ってね！' %>
   </div>
-  <%= f.text_area :self_introduction, placeholder: '自由に自己紹介してね！' %>
-  <%= f.submit '登録する', class: 'form-submit' %>
-<% end %>
-<div class="user-nickname-edit__hover-action">
-  <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
 </div>

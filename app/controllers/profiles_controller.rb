@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def new
+    @user = User.find(params[:user_id])
     user = User.find(params[:user_id])
     redirect_to root_path unless current_user == user
   end
