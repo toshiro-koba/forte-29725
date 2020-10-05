@@ -18,14 +18,13 @@ RSpec.describe 'フォロー', type: :system do
       expect(current_path).to eq user_path(@another_user)
 
       # フォローがDBに保存されていることを確認する
-      # binding.pry
-      expect  do
+      expect do
         find('.follow__hover-action').hover
         click_button 'フォロー'
       end.to change { Relationship.count }.by(1)
 
       # 文字列「フォロー中」が、ブラウザに表示されていることを確認する
-      expect(page).to have_content("フォロー中")
+      expect(page).to have_content('フォロー中')
     end
   end
 
@@ -42,20 +41,19 @@ RSpec.describe 'フォロー', type: :system do
       expect(current_path).to eq user_path(@another_user)
 
       # フォローがDBに保存されていることを確認する
-      expect  do
+      expect do
         find('.follow__hover-action').hover
         click_button 'フォロー'
       end.to change { Relationship.count }.by(1)
 
       # フォローがDBから削除されていることを確認する
-      expect  do
+      expect do
         find('.unfollow__hover-action').hover
         click_button '解除'
       end.to change { Relationship.count }.by(-1)
 
       # 文字列「フォロー中」が、ブラウザに表示されていないことを確認する
-      expect(page).to have_no_content("フォロー中")
+      expect(page).to have_no_content('フォロー中')
     end
   end
 end
-

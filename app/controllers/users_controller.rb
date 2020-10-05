@@ -27,9 +27,8 @@ class UsersController < ApplicationController
   end
 
   def bookmark
-    unless user_signed_in?
-       return redirect_to root_path
-    end
+    return redirect_to root_path unless user_signed_in?
+
     @user = User.find(params[:id])
     redirect_to root_path unless @user == current_user
     @bookmarked_games = Bookmark.where(user_id: current_user.id)

@@ -55,7 +55,7 @@ RSpec.describe 'お気に入り登録', type: :system do
         find('input[name="commit"]').click
       end.not_to change { Bookmark.count }
 
-      # ギフトページにいることを確認する
+      # お気に入り登録ページにいることを確認する
       expect(current_path).to eq bookmark_user_path(@user)
     end
   end

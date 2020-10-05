@@ -22,7 +22,7 @@ RSpec.describe '検索', type: :system do
       # 送信した値がDBに保存されていることを確認する
       expect  do
         find('input[name="commit"]').click
-        sleep 0.1 # 指定した秒数だけ待ってくれる、神
+        sleep 0.1
       end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する

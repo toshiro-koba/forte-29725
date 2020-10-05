@@ -35,7 +35,7 @@ RSpec.describe 'ギフティング', type: :system do
       expect  do
         find('.confirmation-of-gift__hover-action').hover
         find('input[name="commit"]').click
-        sleep 2.0 # 指定した秒数だけ待ってくれる、神
+        sleep 2.0
       end.to change { Gift.count }.by(1)
 
       # トップページに遷移していることを確認する
