@@ -62,7 +62,10 @@
               <%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover", id:"gifting-btn" %>
             </div>
 
-            
+            <div class="confirmation-of-gift__hover-action">
+              <label for="gifting-btn", class='confirmation-btn-of-gift__normal'>簡単ギフト</label>
+              <%= link_to '簡単ギフト', testgifting_user_path(@reciver), method: :post, class:"confirmation-btn-of-gift__hover" %>
+            </div>
           <% end %>
         </div>
       </div>

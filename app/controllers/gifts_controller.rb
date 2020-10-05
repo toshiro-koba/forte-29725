@@ -22,6 +22,17 @@ class GiftsController < ApplicationController
     end
   end
 
+  def test_gifting
+    reciver = User.find(params[:id])
+    gift = Gift.create(
+      price: 500,
+      user_id: reciver.id,
+      giver_id: current_user.id,
+      token: "test"
+    )
+    redirect_to root_path
+  end
+
   private
 
   def order_params

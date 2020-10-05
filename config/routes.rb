@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'following'
       get 'followers'
       get 'gift_history'
+      post 'testgifting',to: 'gifts#test_gifting'
     end
     resources :gifts, only: %i[index new create]
     resources :profiles, only: %i[new create edit update]
