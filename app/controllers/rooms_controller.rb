@@ -42,14 +42,20 @@ class RoomsController < ApplicationController
 
   def search
     @rooms = Room.search(params[:keyword])
+    @another_questions = []
     if user_signed_in?
       @questions = []
       @rooms.each do |room|
         @questions << room if room.user_ids.include?(current_user.id)
       end
-      @another_questions = @rooms - @questions
+      @another_questions_pro = @rooms - @questions
+      @another_questions_pro.each do |room|
+        @another_questions << room if room.messages.size == 2
+      end
     else
-      @another_questions = @rooms
+      @rooms.each do |room|
+        @another_questions << room if room.messages.size == 2
+      end
     end
   end
 
