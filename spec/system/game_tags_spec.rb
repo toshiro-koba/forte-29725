@@ -20,7 +20,7 @@ RSpec.describe 'お気に入り登録', type: :system do
       click_link 'ゲームを登録する'
 
       # 登録したいゲームを選択する
-      select @game_tag.game_title, from: 'game_tag_id'
+      select @game_tag.game_title, from: 'bookmark[game_tag_id]'
 
       # 送信した値がDBに保存されていることを確認する
       expect do
@@ -56,7 +56,7 @@ RSpec.describe 'お気に入り登録', type: :system do
       end.not_to change { Bookmark.count }
 
       # お気に入り登録ページにいることを確認する
-      expect(current_path).to eq bookmark_user_path(@user)
+      expect(current_path).to eq user_bookmarks_path(@user)
     end
   end
 end
