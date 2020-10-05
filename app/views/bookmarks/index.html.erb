@@ -2,7 +2,7 @@
 
 <div class="main__user-profile">
 
-  <%= render partial: "user-profile__left", locals: { user: @user } %>
+  <%= render partial: "users/user-profile__left", locals: { user: @user } %>
 
   <div class="user-question-contents">
 
@@ -34,10 +34,10 @@
         <div class="index__triangle"></div>
       </div>
       <div class="room-name">
-        <%= form_with(url: bookmark_user_path(current_user), model: @bookmark, local: true, method: :get) do |f| %>
+        <%= form_with model: @bookmark, url: user_bookmarks_path(current_user), method: :post, local: true do |f|  %>
           <div class="game-tag__form-space">
             <div class="game-tag__choose-space">
-              <select name="game_tag_id" , class="game-tag__choose"> 
+              <select name="bookmark[game_tag_id]" , class="game-tag__choose"> 
                 <option value=""hidden disabled selected>---</option>
                 <% GameTag.all.where.not(id: @bookmarked_game_tags).each do |tag| %> <%#同じゲームはお気に入り登録できない！%>
                     <option value=<%=tag.id%>><%= tag.game_title %></option>
@@ -54,5 +54,3 @@
     </div>
   </div>
 </div>
-
-

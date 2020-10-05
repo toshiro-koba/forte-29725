@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'rooms#index'
   resources :users, only: %i[edit update show] do
     member do
-      get 'bookmark'
       get 'following'
       get 'followers'
       get 'gift_history'
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :gifts, only: %i[index new create]
     resources :profiles, only: %i[new create edit update]
+    resources :bookmarks, only: %i[index new create]
   end
   resources :rooms, only: %i[new create] do
     collection do

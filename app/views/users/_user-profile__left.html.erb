@@ -39,8 +39,13 @@
         <span class='profile-btn__normal'>プロフィールを登録</span>
         <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
     <% else %>
-      <span class='profile-btn__normal'>プロフィールを編集</span>
-      <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+      <% unless current_page?("/users/#{current_user.id}/bookmarks") || current_page?("/users/#{current_user.id}/bookmarks/new") %>
+        <span class='profile-btn__normal'>プロフィールを編集</span>
+        <span><%= link_to "プロフィールを編集", user_path(current_user), class: 'profile-btn__hover' %></span>
+      <% else %>
+        <span class='profile-btn__normal'>プロフィールを編集</span>
+        <span><%= link_to "プロフィールを編集", user_path(current_user), class: 'profile-btn__hover' %></span>
+      <% end %>
     <% end %>
     </div>
 

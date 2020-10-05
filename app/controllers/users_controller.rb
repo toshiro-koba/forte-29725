@@ -26,25 +26,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def bookmark
-    return redirect_to root_path unless user_signed_in?
-
-    @user = User.find(params[:id])
-    redirect_to root_path unless @user == current_user
-    @bookmarked_games = Bookmark.where(user_id: current_user.id)
-    @bookmarked_game_tags = [] # 現在のユーザーがすでにお気に入り登録した(bookmarkの)レコード一覧！！
-    @bookmarked_games.each do |tag|
-      @bookmarked_game_tags << tag.game_tag.id
-    end
-
-    @bookmark = Bookmark.new(bookmark_params)
-    if @bookmark.save
-      redirect_to user_path(@user)
-    else
-      render :bookmark
-    end
-  end
-
   def following
     @user = User.find(params[:id])
   end
@@ -67,9 +48,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :email)
-  end
-
-  def bookmark_params
-    params.permit(:game_tag_id).merge(user_id: current_user.id)
   end
 end
