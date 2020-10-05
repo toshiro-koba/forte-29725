@@ -13,12 +13,13 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'Nickname', with: @user.nickname
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
-      fill_in 'Password confirmation', with: @user.password_confirmation
+      fill_in 'ニックネーム', with: @user.nickname
+      fill_in 'メールアドレス', with: @user.email
+      fill_in 'パスワード(英数字6文字以上)', with: @user.password
+      fill_in 'パスワード確認', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
       expect  do
+        find('.login__hover-action').hover
         find('input[name="commit"]').click
       end.to change { User.count }.by(1)
       # トップページへ遷移する
@@ -41,12 +42,13 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'Nickname', with: ''
-      fill_in 'Email', with: ''
-      fill_in 'Password', with: ''
-      fill_in 'Password confirmation', with: ''
+      fill_in 'ニックネーム', with: ''
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード(英数字6文字以上)', with: ''
+      fill_in 'パスワード確認', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
       expect  do
+        find('.login__hover-action').hover
         find('input[name="commit"]').click
       end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
