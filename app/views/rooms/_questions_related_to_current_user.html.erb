@@ -50,9 +50,13 @@
           </div>
         </div>
 
-        <div class="like"></div>
-        <div id="like-btn-<%= question.id %>">
-          <%= render partial: "likes/like", locals: { room: question } %>
+        <div class="question-option__space">
+          <div class="like">
+            <div id="like-btn-<%= question.id %>">
+              <%= render partial: "likes/like", locals: { room: question } %>
+            </div>
+          </div>
+          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
         </div>
 
       <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
@@ -111,9 +115,13 @@
           <% end %>
         </div>
 
-        <div class="like"></div>
-        <div id="like-btn-<%= question.id %>">
-          <%= render partial: "likes/like", locals: { room: question } %>
+        <div class="question-option__space">
+          <div class="like">
+            <div id="like-btn-<%= question.id %>">
+              <%= render partial: "likes/like", locals: { room: question } %>
+            </div>
+          </div>
+          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
@@ -175,10 +183,13 @@
           </div>
         </div>
 
-        <div class="like">
-          <div id="like-btn-<%= question.id %>">
-            <%= render partial: "likes/like", locals: { room: question } %>
+        <div class="question-option__space">
+          <div class="like">
+            <div id="like-btn-<%= question.id %>">
+              <%= render partial: "likes/like", locals: { room: question } %>
+            </div>
           </div>
+          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
@@ -240,9 +251,13 @@
           </div>
         </div>
 
-        <div class="like"></div>
-        <div id="like-btn-<%= question.id %>">
-          <%= render partial: "likes/like", locals: { room: question } %>
+        <div class="question-option__space">
+          <div class="like">
+            <div id="like-btn-<%= question.id %>">
+              <%= render partial: "likes/like", locals: { room: question } %>
+            </div>
+          </div>
+          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
         </div>
       <% end %>
     </div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :profiles, only: %i[new create edit update]
     resources :bookmarks, only: %i[index new create destroy]
   end
-  resources :rooms, only: %i[new create] do
+  resources :rooms, only: %i[new create destroy] do
     collection do
       get 'search'
       get 'lets_gift'
