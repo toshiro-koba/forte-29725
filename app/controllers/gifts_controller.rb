@@ -28,7 +28,7 @@ class GiftsController < ApplicationController
       price: 500,
       user_id: reciver.id,
       giver_id: current_user.id,
-      token: "test"
+      token: 'test'
     )
     redirect_to root_path
   end
