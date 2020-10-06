@@ -77,7 +77,13 @@
         </div>
       </div>
 
-      <div class="like"></div>
+      <div class="question-option__space">
+        <div class="like">
+          <div id="like-btn-<%= question.id %>">
+            <%= render partial: "likes/like", locals: { room: question } %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
