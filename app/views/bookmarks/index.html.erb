@@ -18,7 +18,7 @@
           <% Bookmark.where(user_id: @user.id).each do |game| %>
             <div class="game_tag">
               <%= game.game_tag.game_title %>
-              <%= link_to '削除', user_bookmark_path(user_id: current_user.id, id: game.id), method: :delete %>
+              <%= link_to '×', user_bookmark_path(user_id: current_user.id, id: game.id), method: :delete, class: "game-tag__delete" %>
             </div>
           <% end %>
           <div class="game_tag__registration__hover-action">
