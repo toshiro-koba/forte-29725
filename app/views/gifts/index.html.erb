@@ -11,6 +11,39 @@
       </div>
       <div class="room-name">
         <div class="gift-form__space">
+
+        <div class="qiita-test">
+          <div class="qiita-test-sub">
+            <% if current_user.profile.image? %>
+              <%= image_tag(current_user.profile.image.thumb100.url, class: "user-profile-icon") %>
+            <% else %>
+              <%= image_tag "default.jpg", class: "user-profile-icon" %>
+            <% end %>
+
+            <div class="user-nickmane__space">
+              <span class="user-nickname"><%= "#{current_user.nickname}さん" %></span>
+            </div>
+          </div>
+
+          <div class="qiita-test-present animate__animated animate__backInLeft">
+          <div><%= image_tag "present-icon.png", class: "qiita-test-present-icon" %></div>
+              
+          </div>
+
+          <div class="qiita-test-sub">
+            <% if @reciver.profile.image? %>
+              <%= image_tag(@reciver.profile.image.thumb100.url, class: "user-profile-icon") %>
+            <% else %>
+              <%= image_tag "default.jpg", class: "user-profile-icon" %>
+            <% end %>
+
+            <div class="user-nickmane__space">
+              <span class="user-nickname"><%= "#{@reciver.nickname}さん" %></span>
+            </div>
+          </div>
+        </div>
+
+
           <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
             <%= render 'shared/error_messages', model: f.object %>
             <div class="gift-form__content">
