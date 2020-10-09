@@ -15,15 +15,12 @@ Rails.application.routes.draw do
   resources :rooms, only: %i[new create destroy] do
     collection do
       get 'search'
-      get 'lets_gift'
     end
 
     post 'add' => 'likes#create'
     delete '/add' => 'likes#destroy'
   end
   resources :messages, only: %i[index create]
-
   resources :relationships, only: %i[create destroy]
-
   resources :testsessions, only: :create
 end

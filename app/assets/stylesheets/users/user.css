@@ -59,27 +59,31 @@
   font-size: 14px;
 }
 
-/* ここから、フォロー解除ホバーアクション！ */
-.unfollow-btn__normal {
-  display: inline-block;
+.unfollow {
+  background-color: rgb(29, 161, 242);
+  color: #fff;
+  border-color: rgb(29, 161, 242);
   border: 2px solid #ccc;
+}
+
+.btn__normal {
+  display: inline-block;
   font-size: 1.4rem;
   padding: 4px 0;
   text-align: center;
   cursor: pointer;
   width: 100%;
-  background-color: rgb(29, 161, 242);
-  color: #fff;
-  border-color: rgb(29, 161, 242);
   font-weight: bold;
 }
+/* ここから、フォロー解除ホバーアクション！ */
+
 
 .unfollow__hover-action .unfollow-btn__hover {
   display: none;
 }
 
 
-.unfollow__hover-action:hover .unfollow-btn__normal {
+.unfollow__hover-action:hover .btn__normal {
   display: none;
 }
 

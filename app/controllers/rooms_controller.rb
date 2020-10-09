@@ -65,8 +65,6 @@ class RoomsController < ApplicationController
     end
   end
 
-  def lets_gift; end
-
   private
 
   def room_params

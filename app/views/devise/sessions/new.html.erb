@@ -12,10 +12,8 @@
   <div class="login__space">
     ログイン
   </div>
-
   <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
     <%= devise_error_messages!%>
-
     <label for="user-email", class="email-name__space">メールアドレス</label>
     <%= f.email_field :email, autofocus: true, class:"email__space", id:"user-email"%>
 
