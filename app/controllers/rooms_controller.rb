@@ -24,9 +24,6 @@ class RoomsController < ApplicationController
 
   def new
     redirect_to root_path unless user_signed_in?
-    if Gift.where(giver_id: current_user.id).size == 0 # 一度でもギフトしたことがあれば、質問できる！！このアプリの肝！！！
-      redirect_to lets_gift_rooms_path
-    end
     @room = RoomMessage.new
   end
 
