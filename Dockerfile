@@ -5,11 +5,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && apt-get install -y nodejs yarn \
     && mkdir /forte-29725
 WORKDIR /forte-29725
-ADD Gemfile /forte-29725/Gemfile
-ADD Gemfile.lock /forte-29725/Gemfile.lock
+COPY Gemfile /forte-29725/Gemfile
+COPY Gemfile.lock /forte-29725/Gemfile.lock
 RUN gem install bundler:2.1.4
 RUN bundle install
-ADD . /forte-29725
+COPY . /forte-29725
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
