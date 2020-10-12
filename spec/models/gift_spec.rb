@@ -27,13 +27,13 @@ RSpec.describe Gift, type: :model do
       it 'priceが299円以下では、ギフトできない' do
         @gift.price = 299
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("Price Out of setting range")
+        expect(@gift.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceが10,000,000円以上では、ギフトできない' do
-        @gift.price = 100000000
+        @gift.price = 100_000_000
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("Price Out of setting range")
+        expect(@gift.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceは全角数字では、ギフトできない' do
@@ -50,13 +50,13 @@ RSpec.describe Gift, type: :model do
       it 'giverが紐付いていないと保存できないこと' do
         @gift.giver = nil
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("Giver must exist", "Giver can't be blank")
+        expect(@gift.errors.full_messages).to include('Giver must exist', "Giver can't be blank")
       end
 
       it 'userが紐付いていないと保存できないこと' do
         @gift.user = nil
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("User must exist", "User can't be blank")
+        expect(@gift.errors.full_messages).to include('User must exist', "User can't be blank")
       end
     end
   end

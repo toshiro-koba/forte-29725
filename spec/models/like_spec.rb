@@ -6,7 +6,6 @@ RSpec.describe Like, type: :model do
       @like = FactoryBot.build(:like)
     end
 
-
     it 'roomが紐付いていないと保存できないこと' do
       @like.room = nil
       @like.valid?

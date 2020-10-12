@@ -6,8 +6,8 @@ RSpec.describe 'Profiles', type: :request do
     @user.profile = FactoryBot.create(:profile)
   end
 
-  describe "new" do
-    example "トップページへリダイレクトされること" do
+  describe 'new' do
+    example 'トップページへリダイレクトされること' do
       get new_user_profile_path(@user)
       expect(response).to redirect_to root_path
     end
@@ -26,6 +26,4 @@ RSpec.describe 'Profiles', type: :request do
   #     expect(response).to redirect_to root_path
   #   end
   # end
-
-
 end
