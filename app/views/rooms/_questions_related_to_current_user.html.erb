@@ -21,89 +21,99 @@
     <div class="question-space">
 
       <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
-      <div class="panel">
-        <div class="c-btn js-open-modal">
-            <div class="question-lists">
-              <div class="icons-space">
-              <%= link_to user_path(current_user) do %>
-                <% unless current_user.profile == nil %>
-                  <% if current_user.profile.image? %>
-                    <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+          <div class="panel"> <%# ↓モーダルに関する記述の始まり%>
+
+            <div class="c-btn js-open-modal"> <%# ↓モーダル画面を表示する判定の始まり%>
+
+              <div class="question-lists">
+                <div class="icons-space">
+                  <%= link_to user_path(current_user) do %>
+                    <% unless current_user.profile == nil %>
+                      <% if current_user.profile.image? %>
+                        <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                    <% end %>
                   <% end %>
-                <% else %>
-                  <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-                <% end %>
-              <% end %>
-              </div>
-              
-              <div class="question-message-set">
-                <div class="question-user-nickname">
-                  <%= current_user.nickname %>
                 </div>
-
-                <div class="question-sentence">
-                  <div class="question-sentence-Q">
-                    <%= "Q." %>
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                    <%= current_user.nickname %>
                   </div>
-                  <div class="question-sentence-message">
-                    <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                  <div class="question-sentence">
+                    <div class="question-sentence-Q">
+                      <%= "Q." %>
+                    </div>
+                    <div class="question-sentence-message">
+                      <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="question-option__space">
-              <div class="like">
-                <div id="like-btn-<%= question.id %>">
-                  <%= render partial: "likes/like", locals: { room: question } %>
+            </div> <%# ↑モーダル画面を表示する判定の終わり%>
+
+            <div class="modal-panel-back disable"> <%# ↓隠れているモーダル画面の始まり%>
+              <div class="modal-panel">
+
+                <div class="index">
+                  <div class="index__game_tag">
+                    <% unless question.game_tags[0] == nil %>
+                      <%= question.game_tags[0].game_title %>
+                    <% else %>
+                      <%= "test_tag" %>
+                    <% end %>
+                  </div>
+                  <div class="index__triangle"></div>
                 </div>
-              </div>
-              <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
-            </div>
-        </div>
+                <div class="question-title">
+                  <%= question.question_title %>
+                </div>
 
-        <div class="modal-panel-back disable">
-        <div class="modal-panel">
-          <div class="question-lists">
-          <div class="icons-space">
-          <%= link_to user_path(current_user) do %>
-            <% unless current_user.profile == nil %>
-              <% if current_user.profile.image? %>
-                <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
-              <% end %>
-            <% else %>
-              <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-            <% end %>
-          <% end %>
-          </div>
+                <div class="question-lists">
+                  <div class="icons-space">
+                  <%= link_to user_path(current_user) do %>
+                    <% unless current_user.profile == nil %>
+                      <% if current_user.profile.image? %>
+                        <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                    <% end %>
+                  <% end %>
+                  </div>
           
-          <div class="question-message-set">
-            <div class="question-user-nickname">
-              <%= current_user.nickname %>
-            </div>
+                  <div class="question-message-set">
+                    <div class="question-user-nickname">
+                      <%= current_user.nickname %>
+                    </div>
 
-            <div class="question-sentence">
-              <div class="question-sentence-Q">
-                <%= "Q." %>
+                    <div class="question-sentence">
+                      <div class="question-sentence-Q">
+                        <%= "Q." %>
+                      </div>
+                      <div class="question-sentence-message">
+                        <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <div class="question-sentence-message">
-                <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+            </div> <%# ↑隠れているモーダル画面の終わり%>
+
+          </div> <%# ↑モーダルに関する記述の終わり%>
+          
+          <div class="question-option__space">
+            <div class="like">
+              <div id="like-btn-<%= question.id %>">
+                <%= render partial: "likes/like", locals: { room: question } %>
               </div>
             </div>
+            <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
           </div>
         </div>
-
-        <div class="question-option__space">
-          <div class="like">
-            <div id="like-btn-<%= question.id %>">
-              <%= render partial: "likes/like", locals: { room: question } %>
-            </div>
-          </div>
-          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
-        </div>
-        </div>
-      </div> 
-      </div>
 
       <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
         <div class="question-lists">
@@ -118,12 +128,10 @@
               <% end %>
             <% end %>
           </div>
-
           <div class="question-message-set">
             <div class="question-user-nickname">
               <%= question.messages[0].user.nickname %>
             </div>
-
             <div class="question-sentence">
               <div class="question-sentence-Q">
                 <%= "Q." %>
@@ -171,63 +179,145 @@
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
-        <div class="question-lists">
-          <div class="icons-space">
-          <%= link_to user_path(question.messages[0].user) do %>
-            <% unless question.messages[0].user.profile == nil %>
-              <% if question.messages[0].user.profile.image? %>
-                <%= image_tag(question.messages[0].user.profile.image.thumb50.url, class: "question-user-icon")%>
-              <% end %>
-            <% else %>
-              <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-            <% end %>
-          <% end %>
-          </div>
-          
-          <div class="question-message-set">
-            <div class="question-user-nickname">
-              <%= question.messages[0].user.nickname %>
-            </div>
+          <div class="panel"> <%# ↓モーダルに関する記述の始まり%>
 
-            <div class="question-sentence">
-              <div class="question-sentence-Q">
-                <%= "Q." %>
-              </div>
-              <div class="question-sentence-message">
-                <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="c-btn js-open-modal"> <%# ↓モーダル画面を表示する判定の始まり%>
 
-        <div class="question-lists">
-          <div class="icons-space__answer">
-            <%= link_to user_path(question.messages[0].user) do %>
-              <% unless current_user.profile == nil %>
-                <% if current_user.profile.image? %>
-                  <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+              <div class="question-lists">
+                <div class="icons-space">
+                <%= link_to user_path(question.messages[0].user) do %>
+                  <% unless question.messages[0].user.profile == nil %>
+                    <% if question.messages[0].user.profile.image? %>
+                      <%= image_tag(question.messages[0].user.profile.image.thumb50.url, class: "question-user-icon")%>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="question-message-set">
-            <div class="question-user-nickname">
-              <%= question.messages[1].user.nickname %>
-            </div>
-
-            <div class="question-sentence">
-              <div class="question-sentence-A">
-                <%= "A." %>
+                </div>
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                    <%= question.messages[0].user.nickname %>
+                  </div>
+                  <div class="question-sentence">
+                    <div class="question-sentence-Q">
+                      <%= "Q." %>
+                    </div>
+                    <div class="question-sentence-message">
+                      <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="question-sentence-message">
-                <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+
+              <div class="question-lists">
+                <div class="icons-space__answer">
+                  <%= link_to user_path(question.messages[0].user) do %>
+                    <% unless current_user.profile == nil %>
+                      <% if current_user.profile.image? %>
+                        <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                    <% end %>
+                  <% end %>
+                </div>
+
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                    <%= question.messages[1].user.nickname %>
+                  </div>
+
+                  <div class="question-sentence">
+                    <div class="question-sentence-A">
+                      <%= "A." %>
+                    </div>
+                    <div class="question-sentence-message">
+                      <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+            </div> <%# ↑モーダル画面を表示する判定の終わり%>
+
+            <div class="modal-panel-back disable"> <%# ↓隠れているモーダル画面の始まり%>
+              <div class="modal-panel">
+
+                <div class="index">
+                  <div class="index__game_tag">
+                    <% unless question.game_tags[0] == nil %>
+                      <%= question.game_tags[0].game_title %>
+                    <% else %>
+                      <%= "test_tag" %>
+                    <% end %>
+                  </div>
+                  <div class="index__triangle"></div>
+                </div>
+                <div class="question-title">
+                  <%= question.question_title %>
+                </div>
+
+                <div class="question-lists">
+                  <div class="icons-space">
+                  <%= link_to user_path(question.messages[0].user) do %>
+                    <% unless question.messages[0].user.profile == nil %>
+                      <% if question.messages[0].user.profile.image? %>
+                        <%= image_tag(question.messages[0].user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                  <div class="question-message-set">
+                    <div class="question-user-nickname">
+                      <%= question.messages[0].user.nickname %>
+                    </div>
+                    <div class="question-sentence">
+                      <div class="question-sentence-Q">
+                        <%= "Q." %>
+                      </div>
+                      <div class="question-sentence-message">
+                        <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="question-lists">
+                  <div class="icons-space__answer">
+                    <%= link_to user_path(question.messages[0].user) do %>
+                      <% unless current_user.profile == nil %>
+                        <% if current_user.profile.image? %>
+                          <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+
+                  <div class="question-message-set">
+                    <div class="question-user-nickname">
+                      <%= question.messages[1].user.nickname %>
+                    </div>
+
+                    <div class="question-sentence">
+                      <div class="question-sentence-A">
+                        <%= "A." %>
+                      </div>
+                      <div class="question-sentence-message">
+                        <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div> <%# ↑隠れているモーダル画面の終わり%>
+
+          </div> <%# ↑モーダルに関する記述の終わり%>
 
         <div class="question-option__space">
           <div class="like">
@@ -239,63 +329,141 @@
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
-        <div class="question-lists">
-          <div class="icons-space">
-          <%= link_to user_path(current_user) do %>
-            <% unless current_user.profile == nil %>
-              <% if current_user.profile.image? %>
-                <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
-              <% end %>
-            <% else %>
-              <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
-            <% end %>
-          <% end %>
-          </div>
+          <div class="panel"> <%# ↓モーダルに関する記述の始まり%>
 
-          <div class="question-message-set">
-            <div class="question-user-nickname">
-              <%= question.messages[0].user.nickname %>
-            </div>
+            <div class="c-btn js-open-modal"> <%# ↓モーダル画面を表示する判定の始まり%>
 
-            <div class="question-sentence">
-              <div class="question-sentence-Q">
-                <%= "Q." %>
-              </div>
-              <div class="question-sentence-message">
-                <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="question-lists">
-          <div class="icons-space__answer">
-            <%= link_to user_path(question.messages[1].user) do %>
-              <% unless question.messages[1].user.profile == nil %>
-                <% if question.messages[1].user.profile.image? %>
-                  <%= image_tag(question.messages[1].user.profile.image.thumb50.url, class: "question-user-icon")%>
+              <div class="question-lists">
+                <div class="icons-space">
+                <%= link_to user_path(current_user) do %>
+                  <% unless current_user.profile == nil %>
+                    <% if current_user.profile.image? %>
+                      <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="question-message-set">
-            <div class="question-user-nickname">
-              <%= question.messages[1].user.nickname %>
-            </div>
-
-            <div class="question-sentence">
-              <div class="question-sentence-A">
-                <%= "A." %>
+                </div>
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                    <%= question.messages[0].user.nickname %>
+                  </div>
+                  <div class="question-sentence">
+                    <div class="question-sentence-Q">
+                      <%= "Q." %>
+                    </div>
+                    <div class="question-sentence-message">
+                      <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="question-sentence-message">
-                <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+
+              <div class="question-lists">
+                <div class="icons-space__answer">
+                  <%= link_to user_path(question.messages[1].user) do %>
+                    <% unless question.messages[1].user.profile == nil %>
+                      <% if question.messages[1].user.profile.image? %>
+                        <%= image_tag(question.messages[1].user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                    <%= question.messages[1].user.nickname %>
+                  </div>
+                  <div class="question-sentence">
+                    <div class="question-sentence-A">
+                      <%= "A." %>
+                    </div>
+                    <div class="question-sentence-message">
+                      <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+            </div> <%# ↑モーダル画面を表示する判定の終わり%>
+
+            <div class="modal-panel-back disable"> <%# ↓隠れているモーダル画面の始まり%>
+              <div class="modal-panel">
+
+                <div class="index">
+                  <div class="index__game_tag">
+                    <% unless question.game_tags[0] == nil %>
+                      <%= question.game_tags[0].game_title %>
+                    <% else %>
+                      <%= "test_tag" %>
+                    <% end %>
+                  </div>
+                  <div class="index__triangle"></div>
+                </div>
+                <div class="question-title">
+                  <%= question.question_title %>
+                </div>
+
+                <div class="question-lists">
+                  <div class="icons-space">
+                  <%= link_to user_path(current_user) do %>
+                    <% unless current_user.profile == nil %>
+                      <% if current_user.profile.image? %>
+                        <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                  <div class="question-message-set">
+                    <div class="question-user-nickname">
+                      <%= question.messages[0].user.nickname %>
+                    </div>
+                    <div class="question-sentence">
+                      <div class="question-sentence-Q">
+                        <%= "Q." %>
+                      </div>
+                      <div class="question-sentence-message">
+                        <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="question-lists">
+                  <div class="icons-space__answer">
+                    <%= link_to user_path(question.messages[1].user) do %>
+                      <% unless question.messages[1].user.profile == nil %>
+                        <% if question.messages[1].user.profile.image? %>
+                          <%= image_tag(question.messages[1].user.profile.image.thumb50.url, class: "question-user-icon")%>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="question-message-set">
+                    <div class="question-user-nickname">
+                      <%= question.messages[1].user.nickname %>
+                    </div>
+                    <div class="question-sentence">
+                      <div class="question-sentence-A">
+                        <%= "A." %>
+                      </div>
+                      <div class="question-sentence-message">
+                        <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div> <%# ↑隠れているモーダル画面の終わり%>
+
+          </div> <%# ↑モーダルに関する記述の終わり%>
 
         <div class="question-option__space">
           <div class="like">

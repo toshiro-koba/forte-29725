@@ -875,15 +875,8 @@
 }
 
 .panel {
-  width: 680px;
-  max-width: 90%;
-  margin: 100px auto;
-  padding: 20px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-          box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  background-color: white;
-  text-align: center;
 }
+
 .modal-panel-back {
   position: fixed;
   width: 100%;
@@ -899,9 +892,9 @@
 }
 .modal-panel {
   width: 600px;
+  height: calc(100vh - 60px);
   background-color: white;
-  padding: 30px;
-  margin: 100px auto;
+  margin: 30px auto;
 }
 
 
