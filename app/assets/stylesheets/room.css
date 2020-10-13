@@ -169,8 +169,16 @@ select {
 
 html {
   background-color: rgb(244, 244, 244);
+  height: fit-content; 
 }
 
+body {
+  height: fit-content; 
+}
+
+body.modal-open {
+  overflow: hidden;
+}
 
 
 main {

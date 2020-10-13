@@ -891,8 +891,10 @@
   display: none;
 }
 .modal-panel {
-  width: 600px;
-  height: calc(100vh - 60px);
+  max-width: 600px;
+  width: calc(100vw - 60px);
+  max-height: calc(100vh - 60px);
+  height: calc(fit-content);
   background-color: white;
   margin: 30px auto;
 }
