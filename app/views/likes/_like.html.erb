@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
 <% if room.liked_by?(current_user) %>
    <%= link_to(room_add_path(room), method: :delete, remote: true, id: :"like-button-#{room.id}") do %>
-       <i class="liked-btn">❤️</i>
+       <div class="liked-btn"><%= "❤️" %></div>
    <% end %>
 <% else %>
-   <%= link_to(room_add_path(room), method: :post, remote: true, id: :"like-button-#{room.id}") do %>
-       <i class="like-yet-btn">♡</i>
+   <%= link_to(room_add_path(room) , method: :post, remote: true, id: :"like-button-#{room.id}") do %>
+       <div class="like-yet-btn"><%= "♡" %></div>
    <% end %>
 <% end %>
 <% end %>
