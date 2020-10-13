@@ -185,14 +185,13 @@ main {
 
 header {
   height: 55px;
-  /* width:  100vw; */
-  /* background-color: rgb(206, 43, 214); */
   background-color: rgb(220, 66, 228);
   display: flex;
   justify-content: space-between;
   align-items: center;
   top: 0;
-  width: 1000px; 
+  width: 100vw;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
