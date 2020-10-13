@@ -60,6 +60,8 @@ select {
   border: none;
   border-radius: 5px;
   margin-left: 15px;
+  width: 25vw;
+  max-width: 200px;
 }
 
 /* ここから！　質問の一覧表示！ */
@@ -437,4 +439,22 @@ margin: auto 0;
   .question-game-tag__choose {
     width: 130px;
   }
+
+  .header-right__action {
+    padding: 0 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-right__action {
+    padding: 0 1px;
+    font-size: 14px;
+  }
+
+  .search-input {
+    margin-left: 5px;
+  }
+
+
 }
