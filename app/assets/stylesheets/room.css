@@ -400,11 +400,17 @@ margin: auto 0;
 
 .liked-btn {
   display: inline-block;
+  color: rgb(255, 74, 74);
 }
 
 .like-yet-btn{
   display: inline-block;
   color: #666;
+  padding: 1px 0 1px;
+}
+
+.like-yet-btn-mark {
+  margin-right: 4px;
 }
 
 
