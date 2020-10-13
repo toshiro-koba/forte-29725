@@ -899,4 +899,8 @@
     padding: 0 24px 0 15px;
     width: 100vw;
   }
+
+  .form-text-area {
+    width: 400px;
+  }
 }
