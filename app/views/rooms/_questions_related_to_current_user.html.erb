@@ -21,7 +21,50 @@
     <div class="question-space">
 
       <% if question.messages.size == 1 && question.messages[0].user == current_user %> <%# 自分が登録した質問%>
-        <div class="question-lists">
+      <div class="panel">
+        <div class="c-btn js-open-modal">
+            <div class="question-lists">
+              <div class="icons-space">
+              <%= link_to user_path(current_user) do %>
+                <% unless current_user.profile == nil %>
+                  <% if current_user.profile.image? %>
+                    <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                  <% end %>
+                <% else %>
+                  <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+                <% end %>
+              <% end %>
+              </div>
+              
+              <div class="question-message-set">
+                <div class="question-user-nickname">
+                  <%= current_user.nickname %>
+                </div>
+
+                <div class="question-sentence">
+                  <div class="question-sentence-Q">
+                    <%= "Q." %>
+                  </div>
+                  <div class="question-sentence-message">
+                    <%= safe_join("#{question.messages[0].content}".split("\n"),tag(:br))%>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="question-option__space">
+              <div class="like">
+                <div id="like-btn-<%= question.id %>">
+                  <%= render partial: "likes/like", locals: { room: question } %>
+                </div>
+              </div>
+              <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
+            </div>
+        </div>
+
+        <div class="modal-panel-back disable">
+        <div class="modal-panel">
+          <div class="question-lists">
           <div class="icons-space">
           <%= link_to user_path(current_user) do %>
             <% unless current_user.profile == nil %>
@@ -58,6 +101,9 @@
           </div>
           <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
         </div>
+        </div>
+      </div> 
+      </div>
 
       <% elsif question.messages.size == 1 %> <%# 自分宛ての質問だよ！%>
         <div class="question-lists">

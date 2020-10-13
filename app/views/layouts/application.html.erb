@@ -13,6 +13,24 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+
+    <script>
+        $(function(){
+            $('.js-open-modal').on('click', function(){
+                $(this).next().removeClass('disable');
+            });
+            $('.js-close-modal').on('click', function(e){
+                e.preventDefault();
+                $(this).parents('.modal-panel-back').addClass('disable');
+            })
+        })
+
+        $(function(){
+            $('.modal-panel-back').on('click', function(){
+                  $(this).addClass('disable');
+              })
+        })
+    </script>
   </head>
 
   <body>
