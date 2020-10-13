@@ -17,8 +17,6 @@
         <% @questions.each do |question| %>
           <%= render partial: "questions_related_to_current_user", locals: { question: question } %>
         <% end %>
-      <% else %>
-          <%= link_to "＼！！質問する！！／", new_user_session_path %>
       <% end %>
       <p><%= "新着の質問" %></p>
       <% @another_questions.each do |question| %>

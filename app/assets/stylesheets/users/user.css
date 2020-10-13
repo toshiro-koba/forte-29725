@@ -873,3 +873,52 @@
   margin: -3px 0px -4px;
   padding: 2px 0 4px 2px;
 }
+
+@media (max-width: 512px) {
+  main {
+    width: 90%; 
+
+  }
+  .user-session__space {
+    width: 90vw;
+    margin: 20px auto 0;
+    padding: 20px 20px;
+  }
+
+  .main__user-profile {
+    display: block;
+    margin-top: 0px ;
+  }
+
+  .user-profile {
+    width: 90vw;
+    margin: 0 20px;
+  }
+
+  .user-question-contents {
+    padding: 0 24px 0 15px;
+    width: 100vw;
+  }
+
+  .form-text-area {
+    width: 400px;
+  }
+
+  .confirmation-btn-of-gift__normal {
+    width: 200px;
+  }
+
+  .confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
+    width: 200px;
+  }
+
+  .test-btn-of-gift__normal {
+    width: 200px;
+  }
+
+  .test-gift__hover-action:hover .test-btn-of-gift__hover {
+    width: 200px;
+  }
+
+
+}

@@ -60,6 +60,8 @@ select {
   border: none;
   border-radius: 5px;
   margin-left: 15px;
+  width: 25vw;
+  max-width: 200px;
 }
 
 /* ここから！　質問の一覧表示！ */
@@ -185,14 +187,13 @@ main {
 
 header {
   height: 55px;
-  /* width:  100vw; */
-  /* background-color: rgb(206, 43, 214); */
   background-color: rgb(220, 66, 228);
   display: flex;
   justify-content: space-between;
   align-items: center;
   top: 0;
-  width: 1000px; 
+  width: 100vw;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -420,6 +421,39 @@ margin: auto 0;
 
   .search-input {
     width: 120px;
+  }
+
+  .question__room_name {
+    width: 300px;
+  }
+
+  .question__room_content {
+    width: 400px;
+  }
+
+  .question-answer__choose {
+    width: 180px;
+    margin: 15px 10px 15px 0;
+  }
+
+  .question-game-tag__choose {
+    width: 130px;
+  }
+
+  .header-right__action {
+    padding: 0 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-right__action {
+    padding: 0 1px;
+    font-size: 14px;
+  }
+
+  .search-input {
+    margin-left: 5px;
   }
 
 

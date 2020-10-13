@@ -26,7 +26,6 @@
           <% else %>
             <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
           <% end %>
-          <span><%= image_tag 'arrow_top.png' %></span>
         </div>
         <ul class="more_list">
             <li>
@@ -40,7 +39,7 @@
         </div>
       <% else %>
       <div class="header-right__hover-action">
-        <%= link_to 'かんたんログイン', testsessions_path, class:"header-right__action", method: :post %>
+        <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
       </div>
       <div class="header-right__hover-action">
         <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
