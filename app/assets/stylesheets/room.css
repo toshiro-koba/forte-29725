@@ -422,5 +422,20 @@ margin: auto 0;
     width: 120px;
   }
 
+  .question__room_name {
+    width: 300px;
+  }
 
+  .question__room_content {
+    width: 400px;
+  }
+
+  .question-answer__choose {
+    width: 180px;
+    margin: 15px 10px 15px 0;
+  }
+
+  .question-game-tag__choose {
+    width: 130px;
+  }
 }
