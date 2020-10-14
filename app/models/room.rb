@@ -6,6 +6,8 @@ class Room < ApplicationRecord
   has_many :game_tags, through: :room_game_tags, dependent: :destroy
   has_many :likes
   has_many :likers, through: :likes, source: :user, dependent: :destroy
+  #通知に関するアソシエーション
+  has_many :notifications, dependent: :destroy
 
   validates :question_title, presence: true
 

@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_one  :profile
   has_many :likes, dependent: :destroy
   has_many :like_rooms, through: :likes, source: :room
+  #通知に関するアソシエーション
+  has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def follow(other_user) # フォローする！！
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user # フォローしようとしているユーザーが自分自身か！
