@@ -1,0 +1,22 @@
+<div class="top-page__space">
+  <div class="top-page-image__space">
+    <%= image_tag "top-page-image.jpg", class: "top-page-image" %>
+  </div>
+  <div>
+    強い人、強くなりたい人のためのアプリです<br>
+    質問ができます<br>
+    ギフトすることができます<br>
+  </div>
+  <div class="header-right__hover-action">
+    <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
+  </div>
+  <div class="header-right__hover-action">
+    <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
+  </div>
+  <div class="header-right__hover-action">
+    <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+  </div>
+
+
+
+</div>

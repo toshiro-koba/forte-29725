@@ -413,6 +413,20 @@ margin: auto 0;
   margin-right: 4px;
 }
 
+.top-page__space {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+}
+
+.top-page-image__space {
+
+}
+
+.top-page-image {
+  width: 400px;
+}
+
 
 @media (max-width: 512px) {
   main {
