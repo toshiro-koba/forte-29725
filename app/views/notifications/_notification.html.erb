@@ -1,0 +1,26 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-md-6 mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+        <%= visitor.nickname %>
+      <% end %>
+      <%= 'さんが' %>
+
+      <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'like' then %>
+        <%= 'あなたの投稿にいいねしました' %>
+      <% when 'comment' then %>
+        <% if notification.room.messaages[0].user.id == visited.id %>
+          <%= 'あなた宛てに質問しました' %>
+        <% else %>
+          <%= 'あなた宛てに回答しました' %>
+        <% end %>
+      <% end %>
+    </span>
+    <hr>
+  </div>
+</div>
