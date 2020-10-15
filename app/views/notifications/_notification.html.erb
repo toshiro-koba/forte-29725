@@ -13,8 +13,8 @@
         <%= "あなたをフォローしました" %>
       <% when 'like' then %>
         <%= 'あなたの投稿にいいねしました' %>
-      <% when 'comment' then %>
-        <% if notification.room.messaages[0].user.id == visited.id %>
+      <% when 'message' then %>
+        <% if Room.find(notification.room_id).messages.size == 1 %>
           <%= 'あなた宛てに質問しました' %>
         <% else %>
           <%= 'あなた宛てに回答しました' %>

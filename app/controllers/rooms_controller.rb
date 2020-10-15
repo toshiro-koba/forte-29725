@@ -31,7 +31,11 @@ class RoomsController < ApplicationController
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save
-      @room.create_notification_comment!(current_user, @room.messages[0].id)
+      # 最新の質問に通知を送る
+      # todo 本当は、質問したuserが一番最近にした質問を取得したい、要改善
+      notification_room = Room.order(updated_at: :desc).limit(1)
+      # 各引数の説明。質問者、質問本文、回答者
+      notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
       render json: { room: @room, tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content }
     else
       render json: { title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0] }

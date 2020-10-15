@@ -52,7 +52,7 @@ class Room < ApplicationRecord
     end
   end
 
-  def create_notification_comment!(current_user, message_id)
+  def create_notification_comment!(current_user, message_id, user_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Message.select(:user_id).where(room_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
