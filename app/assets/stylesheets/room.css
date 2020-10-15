@@ -191,7 +191,8 @@ main {
 
 header {
   height: 55px;
-  background-color: rgb(220, 66, 228);
+  /* background-color: rgb(220, 66, 228); */
+  /* background-image: linear-gradient(260deg,rgb(236, 122, 242),  rgb(220, 66, 228)); */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -204,8 +205,9 @@ header {
 .header-line {
   height: 55px;
   width:  100vw;
-  background-color: rgb(220, 66, 228);
-
+  /* background-color: rgb(220, 66, 228); */
+  background-image: linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201));
+  /* border-bottom:bold 2px, linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201)); */
 }
 
 .header-left {
@@ -424,8 +426,66 @@ margin: auto 0;
 }
 
 .top-page-image {
-  width: 400px;
+  width: 100vw;
 }
+
+.top-title__space {
+  position: absolute;
+  top: 100px;
+  width: 100vw;
+  text-align: center;
+  font-size: 64px;
+  color:  rgb(191, 4, 201);
+}
+
+.top-content__space {
+  position: absolute;
+  top: 200px;
+  width: 100vw;
+  background-color: rgba(240, 255, 255, 0.324);
+  text-align: center;
+}
+
+.easy-login__space {
+  position: absolute;
+  top: 400px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.login-and-registration__space {
+  position: absolute;
+  top: 500px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.what-this-app__space {
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+  top: -60px;
+  padding-bottom: 10px;
+  background-color: rgba(240, 255, 255, 0.194);
+  color: #fff;
+}
+
+.top-function-descriptions__space {
+  height: 200px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.top-question-description__space {
+  margin: 10px;
+}
+
 
 .notification-header-font {
   color: rgb(227, 64, 64);

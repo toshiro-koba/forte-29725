@@ -2,21 +2,42 @@
   <div class="top-page-image__space">
     <%= image_tag "top-page-image.jpg", class: "top-page-image" %>
   </div>
-  <div>
+  <div class="top-title__space" >
+    Forte
+  </div>
+  <div class="top-content__space" >
     強い人、強くなりたい人のためのアプリです<br>
     質問ができます<br>
     ギフトすることができます<br>
   </div>
-  <div class="header-right__hover-action">
-    <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
+  <div class="easy-login__space" >
+    <div class="header-right__hover-action">
+      <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
+    </div>
   </div>
-  <div class="header-right__hover-action">
-    <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
-  </div>
-  <div class="header-right__hover-action">
-    <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+  <div class="login-and-registration__space" >
+    <div class="header-right__hover-action">
+      <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
+    </div>
+    <div class="header-right__hover-action">
+      <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+    </div>
   </div>
 
+  <div class="what-this-app__space">
+  What is Forte?
+  </div>
+  <div class="top-function-descriptions__space">
+   <div class="top-question-description__space">
+      質問したい人に質問できる
+   </div>
+   <div class="top-question-description__space">
+      ギフトできる
+   </div>
+   <div class="top-question-description__space">
+      いいねできる
+   </div>
+  </div>
 
 
 </div>
