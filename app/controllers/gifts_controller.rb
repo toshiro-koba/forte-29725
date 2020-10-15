@@ -16,6 +16,7 @@ class GiftsController < ApplicationController
     if @gift.valid?
       pay_item
       @gift.save
+      @reciver.create_notification_gift!(current_user)
       redirect_to root_path
     else
       render 'index'
