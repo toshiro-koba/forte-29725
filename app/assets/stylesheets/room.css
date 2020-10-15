@@ -427,6 +427,9 @@ margin: auto 0;
   width: 400px;
 }
 
+.notification-header-font {
+  color: rgb(227, 64, 64);
+}
 
 @media (max-width: 512px) {
   main {

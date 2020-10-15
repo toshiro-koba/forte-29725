@@ -5,6 +5,7 @@ class LikesController < ApplicationController
     user = current_user
     room = Room.find(params[:room_id])
     like = Like.create(user_id: user.id, room_id: room.id)
+    room.create_notification_like!(current_user)
   end
 
   def destroy

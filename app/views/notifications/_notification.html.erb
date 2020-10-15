@@ -1,0 +1,28 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-md-6 mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+        <%= visitor.nickname %>
+      <% end %>
+      <%= 'さんが' %>
+
+      <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'gift' then %>
+        <%= "あなたにギフトを送りました" %>
+      <% when 'like' then %>
+        <%= 'あなたの投稿にいいねしました' %>
+      <% when 'message' then %>
+        <% if Room.find(notification.room_id).messages.size == 1 %>
+          <%= 'あなた宛てに質問しました' %>
+        <% else %>
+          <%= 'あなた宛てに回答しました' %>
+        <% end %>
+      <% end %>
+    </span>
+    <hr>
+  </div>
+</div>

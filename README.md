@@ -254,13 +254,13 @@
 | ----------- | ------- | --------------------------- |
 | visitor_id  | integer | null: false                 |
 | visited_id  | integer | null: false                 |
+| room_id     | integer |                             |
 | message_id  | integer |                             |
-| gift_id     | integer |                             |
 | action      | string  | null: false, default: ''    |
 | checked     | boolean | null: false, default: false |
 
 ### Association 
 - belongs_to :visitor, class_name: 'User'
 - belongs_to :visited, class_name: 'User'
+- belongs_to :room
 - belongs_to :message
-- belongs_to :gift

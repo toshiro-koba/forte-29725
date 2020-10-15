@@ -15,6 +15,14 @@
 
     <div class="header-right">
       <% if user_signed_in? %>
+        <%= link_to(notifications_path) do %>
+          <% if unchecked_notifications.any? %>
+            <span class="notification-header-font"><%= "通知あり"%></span>
+          <% else %>
+            <span class="notification-header-font"><%= "通知なし"%></span>
+          <% end %>
+        <% end %>
+
         <div class="more-test">
         <span class="more-test-nickname"><%= current_user.nickname %></span>
       <div class="more">

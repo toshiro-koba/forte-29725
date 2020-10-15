@@ -23,6 +23,11 @@ class MessagesController < ApplicationController
     @message = @room.messages.new(message_params)
     if @message.valid?
       @message.save
+      # 最新の質問に通知を送る
+      # todo 本当は、質問したuserが一番最近にした質問を取得したい、要改善
+      notification_room = Room.order(updated_at: :desc).limit(1)
+      # 各引数の説明。回答者、質問本文、回答者
+      notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
       render json: { message: @message.content, user: User.find(@message.user_id) }
     else
       render json: { content_error: @message.errors[:content][0] }

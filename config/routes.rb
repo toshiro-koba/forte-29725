@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :messages, only: %i[index create]
   resources :relationships, only: %i[create destroy]
   resources :testsessions, only: :create
+  resources :notifications, only: :index
 end
