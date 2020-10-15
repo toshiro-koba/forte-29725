@@ -11,6 +11,8 @@
       <% case notification.action %>
       <% when 'follow' then %>
         <%= "あなたをフォローしました" %>
+      <% when 'gift' then %>
+        <%= "あなたにギフトを送りました" %>
       <% when 'like' then %>
         <%= 'あなたの投稿にいいねしました' %>
       <% when 'message' then %>

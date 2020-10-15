@@ -42,4 +42,13 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def create_notification_gift!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'gift'])
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: 'gift'
+    )
+    notification.save if notification.valid?
+  end
 end
