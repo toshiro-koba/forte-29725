@@ -191,7 +191,7 @@ main {
 
 header {
   height: 55px;
-  /* background-color: rgb(220, 66, 228); */
+  background-color: rgb(220, 66, 228);
   /* background-image: linear-gradient(260deg,rgb(236, 122, 242),  rgb(220, 66, 228)); */
   display: flex;
   justify-content: space-between;
@@ -205,8 +205,8 @@ header {
 .header-line {
   height: 55px;
   width:  100vw;
-  /* background-color: rgb(220, 66, 228); */
-  background-image: linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201));
+  background-color: rgb(220, 66, 228);
+  /* background-image: linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201)); */
   /* border-bottom:bold 2px, linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201)); */
 }
 
