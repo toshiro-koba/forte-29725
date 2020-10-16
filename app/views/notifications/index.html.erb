@@ -1,8 +1,23 @@
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<% if @notifications.exists? %>
-  <%# todo ナビゲーションバーをレンダーすると通知が無くなる。なぜ？ %>
-  <%= render partial: "notifications/notification", collection: @notifications %>
-<% else %>
-  <%= render partial: "rooms/navigation_menu" %>
-  <%= "通知はありません" %>
-<% end %>
+<%= render partial: "rooms/navigation_menu" %>
+<div class="main__user-profile">
+  <%= render partial: "users/user-profile__left", locals: { user: @user } %>
+  <div class="user-question-contents">
+    <div class="content">
+      <div class="index">
+        <div class="index__game_tag">
+          <span class="index-name__bookmark"><%= "通知一覧" %></span>
+        </div>
+        <div class="index__triangle"></div>
+      </div>
+      <div class="room-name">
+        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+        <% if @notifications.exists? %>
+          <%# todo ナビゲーションバーをレンダーすると通知が無くなる。なぜ？ %>
+          <%= render partial: "notifications/notification", collection: @notifications %>
+        <% else %>
+          <%= "通知はありません" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
