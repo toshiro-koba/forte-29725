@@ -15,11 +15,13 @@
 
     <div class="header-right">
       <% if user_signed_in? %>
-        <%= link_to(notifications_path) do %>
-          <% if unchecked_notifications.any? %>
-            <span class="notification-header-font"><%= "通知あり"%></span>
-          <% else %>
-            <span class="notification-header-font"><%= "通知なし"%></span>
+        <% unless current_page?(notifications_path) %>
+          <%= link_to(notifications_path) do %>
+            <% if unchecked_notifications.any? %>
+              <span class="notification-header-font"><%= "通知あり"%></span>
+            <% else %>
+              <span class="notification-header-font"><%= "通知なし"%></span>
+            <% end %>
           <% end %>
         <% end %>
 
