@@ -491,6 +491,10 @@ margin: auto 0;
   color: rgb(227, 64, 64);
 }
 
+.top-sample-image {
+  width: 200px;
+}
+
 @media (max-width: 512px) {
   main {
     width: 90%; 
