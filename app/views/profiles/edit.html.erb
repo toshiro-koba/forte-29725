@@ -16,11 +16,13 @@
             <div class="user-profile-edit-form__space">
               <div class="click-upload">
                 <div id="image-list">
-                  <% if @profile.image? %>
-                    <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
-                  <% else %> 
-                    <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
-                  <% end %> 
+                  <% unless @profile == nil %>
+                    <% if @profile.image? %>
+                      <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
+                    <% else %> 
+                      <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
+                    <% end %>
+                  <% end %>
                 </div>
                 <label for="profile-image", class="image-file-field-label">画像を選択
                   <%= f.file_field :image, id:"profile-image", class:"image-file-field" %>

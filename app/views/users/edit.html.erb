@@ -16,11 +16,13 @@
             <div class="user-profile-edit-form__space">
               <div class="click-upload">
                 <div id="image-list">
-                  <% if current_user.profile.image? %>
-                    <%= image_tag(current_user.profile.image.url, size: "100x100", id:"before_image")%> 
-                  <% else %> 
-                    <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
-                  <% end %> 
+                  <% unless current_user.profile == nil %>
+                    <% if current_user.profile.image? %>
+                      <%= image_tag(current_user.profile.image.url, size: "100x100", id:"before_image")%> 
+                    <% else %> 
+                      <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
 

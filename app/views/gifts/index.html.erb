@@ -14,11 +14,14 @@
 
         <div class="qiita-test">
           <div class="qiita-test-sub">
+          <%# binding.pry %>
+          <% unless current_user.profile == nil %>
             <% if current_user.profile.image? %>
               <%= image_tag(current_user.profile.image.thumb100.url, class: "user-profile-icon") %>
             <% else %>
               <%= image_tag "default.jpg", class: "user-profile-icon" %>
             <% end %>
+          <% end %>
 
             <div class="user-nickmane__space">
               <span class="user-nickname"><%= "#{current_user.nickname}さん" %></span>
@@ -30,10 +33,12 @@
           </div>
 
           <div class="qiita-test-sub">
-            <% if @reciver.profile.image? %>
-              <%= image_tag(@reciver.profile.image.thumb100.url, class: "user-profile-icon") %>
-            <% else %>
-              <%= image_tag "default.jpg", class: "user-profile-icon" %>
+            <% unless @reciver.profile == nil %>
+              <% if @reciver.profile.image? %>
+                <%= image_tag(@reciver.profile.image.thumb100.url, class: "user-profile-icon") %>
+              <% else %>
+                <%= image_tag "default.jpg", class: "user-profile-icon" %>
+              <% end %>
             <% end %>
             <div class="user-nickmane__space">
               <span class="user-nickname"><%= "#{@reciver.nickname}さん" %></span>
