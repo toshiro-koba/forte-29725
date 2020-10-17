@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   has_many :game_tags, through: :room_game_tags, dependent: :destroy
   has_many :likes
   has_many :likers, through: :likes, source: :user, dependent: :destroy
-  #通知に関するアソシエーション
+  # 通知に関するアソシエーション
   has_many :notifications, dependent: :destroy
 
   validates :question_title, presence: true
@@ -25,7 +25,7 @@ class Room < ApplicationRecord
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and room_id = ? and action = ? ", current_user.id, users[1].id, id, 'like'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and room_id = ? and action = ? ', current_user.id, users[1].id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       # 回答者への通知インスタンスを作成
@@ -71,9 +71,7 @@ class Room < ApplicationRecord
       action: 'message'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
 end

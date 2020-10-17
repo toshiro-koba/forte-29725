@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_one  :profile
   has_many :likes, dependent: :destroy
   has_many :like_rooms, through: :likes, source: :room
-  #通知に関するアソシエーション
+  # 通知に関するアソシエーション
   has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def create_notification_gift!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'gift'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'gift'])
     notification = current_user.active_notifications.new(
       visited_id: id,
       action: 'gift'
