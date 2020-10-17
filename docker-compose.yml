@@ -14,6 +14,11 @@ services:
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment: 
+      - PAYJP_SECRET_KEY
+      - PAYJP_PUBLIC_KEY
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
     volumes:
       - .:/forte-29725
     ports:
