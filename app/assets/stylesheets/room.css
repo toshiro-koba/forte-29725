@@ -495,6 +495,23 @@ margin: auto 0;
   width: 200px;
 }
 
+.pagination{
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.pagination span{
+  text-align: center;
+  width: fit-content;
+}
+.pagination span:hover{
+
+}
+.pagination span a:hover{
+
+}
+
 @media (max-width: 512px) {
   main {
     width: 90%; 
