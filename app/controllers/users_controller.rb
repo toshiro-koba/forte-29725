@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @questions = []
     @questions_related_to_current_user = Entry.where(user_id: @user.id).order('created_at DESC')
     @questions_related_to_current_user.each do |entry|
-      @questions << entry.room if entry.room.messages.size == 2
+      @questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == @user
     end
   end
 
