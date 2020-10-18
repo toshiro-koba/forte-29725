@@ -38,8 +38,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to root_path unless current_user == @user
     if user_signed_in?
-      @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
-      @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
+      @giftings = Gift.where(giver_id: current_user.id).page(params[:page]).per(5).order('created_at DESC')
+      @receivings = Gift.where(user_id: current_user.id).page(params[:page]).per(5).order('created_at DESC')
       # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
     end
   end
