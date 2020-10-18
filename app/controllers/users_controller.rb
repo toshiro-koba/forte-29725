@@ -11,11 +11,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if user_signed_in?
-      @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
-      @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
-      # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
-    end
     @room = RoomMessage.new
 
     @rooms = Room.all.order('created_at DESC')
@@ -24,22 +19,27 @@ class UsersController < ApplicationController
     @questions_related_to_current_user.each do |entry|
       @questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == @user
     end
+    @questions = Kaminari.paginate_array(@questions).page(params[:page]).per(5)
   end
 
   def following
     @user = User.find(params[:id])
+    @all_following = @user.followings
+    @all_following = Kaminari.paginate_array(@all_following).page(params[:page]).per(2)
   end
 
   def followers
     @user = User.find(params[:id])
+    @all_followers = @user.followers
+    @all_followers= Kaminari.paginate_array(@all_followers).page(params[:page]).per(2)
   end
 
   def gift_history
     @user = User.find(params[:id])
     redirect_to root_path unless current_user == @user
     if user_signed_in?
-      @giftings = Gift.where(giver_id: current_user.id).order('created_at DESC')
-      @receivings = Gift.where(user_id: current_user.id).order('created_at DESC')
+      @giftings = Gift.where(giver_id: current_user.id).page(params[:page]).per(5).order('created_at DESC')
+      @receivings = Gift.where(user_id: current_user.id).page(params[:page]).per(5).order('created_at DESC')
       # @receivings は右でも表せる！！→@user.gifts.order('created_at DESC')
     end
   end

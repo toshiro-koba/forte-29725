@@ -17,6 +17,7 @@
           <% @giftings.each do |gift| %>
             <%= render partial: "giftings", locals: { gift: gift, user: gift.user } %>
           <% end%>
+          <%= paginate @giftings %>
         </div>
       </div>
     </div>
@@ -35,6 +36,7 @@
           <% @receivings.each do |gift| %>
             <%= render partial: "giftings", locals: { gift: gift, user: gift.giver } %>
           <% end%>
+          <%= paginate @receivings %>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@
         <% @another_questions.each do |question| %>
           <%= render partial: "another_questions", locals: { question: question } %>
         <% end %>
+        <%= paginate @another_questions %>
       <% else %>
         <%= render partial: "top_page" %>
       <% end %>
