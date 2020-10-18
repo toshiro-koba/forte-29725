@@ -12,9 +12,10 @@
       </div>
       <div class="room-name">
         <div class="question-space">
-          <% @user.followers.each do |follower| %>
+          <% @all_followers.each do |follower| %>
             <%= render partial: "related_to_follow", locals: { user: follower } %>
           <% end %>
+          <%= paginate @all_followers %>
         </div>
       </div>
     </div>

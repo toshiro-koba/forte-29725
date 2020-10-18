@@ -28,10 +28,14 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
+    @all_following = @user.followings
+    @all_following = Kaminari.paginate_array(@all_following).page(params[:page]).per(2)
   end
 
   def followers
     @user = User.find(params[:id])
+    @all_followers = @user.followers
+    @all_followers= Kaminari.paginate_array(@all_followers).page(params[:page]).per(2)
   end
 
   def gift_history
