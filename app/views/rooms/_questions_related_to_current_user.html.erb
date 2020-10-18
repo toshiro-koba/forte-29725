@@ -212,10 +212,10 @@
 
               <div class="question-lists">
                 <div class="icons-space__answer">
-                  <%= link_to user_path(question.messages[0].user) do %>
-                    <% unless current_user.profile == nil %>
-                      <% if current_user.profile.image? %>
-                        <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                  <%= link_to user_path(question.messages[1].user) do %>
+                    <% unless question.messages[1].user.profile == nil %>
+                      <% if question.messages[1].user.profile.image? %>
+                        <%= image_tag(question.messages[1].user.profile.image.thumb50.url, class: "question-user-icon")%>
                       <% end %>
                     <% else %>
                       <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
@@ -230,7 +230,7 @@
 
                   <div class="question-sentence">
                     <div class="question-sentence-A">
-                      <%= "A." %>
+                      <%= "As." %>
                     </div>
                     <div class="question-sentence-message">
                       <%= safe_join("#{question.messages[1].content}".split("\n"),tag(:br))%>
@@ -287,10 +287,10 @@
 
                 <div class="question-lists">
                   <div class="icons-space__answer">
-                    <%= link_to user_path(question.messages[0].user) do %>
-                      <% unless current_user.profile == nil %>
-                        <% if current_user.profile.image? %>
-                          <%= image_tag(current_user.profile.image.thumb50.url, class: "question-user-icon")%>
+                    <%= link_to user_path(question.messages[1].user) do %>
+                      <% unless question.messages[1].user.profile == nil %>
+                        <% if question.messages[1].user.profile.image? %>
+                          <%= image_tag(question.messages[1].user.profile.image.thumb50.url, class: "question-user-icon")%>
                         <% end %>
                       <% else %>
                         <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
