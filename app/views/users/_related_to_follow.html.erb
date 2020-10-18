@@ -18,9 +18,11 @@
 
     <div class="question-sentence">
       <div class="question-sentence-message">
-        <% if user.profile.self_introduction? %>
-        <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
-      <% end %>
+        <% unless user.profile == nil %>
+          <% if user.profile.self_introduction? %>
+            <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

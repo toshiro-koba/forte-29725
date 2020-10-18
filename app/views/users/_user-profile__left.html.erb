@@ -27,8 +27,10 @@
     </div>
 
     <div class="self_introduction__space">
-      <% if user.profile.self_introduction? %>
-        <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+      <% unless user.profile == nil %>
+        <% if user.profile.self_introduction? %>
+          <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+        <% end %>
       <% end %>
     </div>
   <% end %>
