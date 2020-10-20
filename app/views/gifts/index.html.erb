@@ -51,8 +51,9 @@
             <div class="gift-form__content">
               <div class='gift-form-text__price-space'>
                 <label class="gift-form-text">ギフトする金額</label>
+                <span class="gift-price-range">(300~50000円)</span>
               </div>
-              <span><%= f.text_field :price, class:"input-default", id:"postal-code" %></span>
+              <span><%= f.text_field :price, class:"input-default price-setting", id:"postal-code", maxlength:"5" %></span>円
             </div>
             
             <div class="card-info">
@@ -63,7 +64,7 @@
                 <label class="gift-form-text">カード番号</label>
               </div>
               <span>
-                <%= f.text_field :number, class:"input-default", id:"card-number", maxlength:"16" %>
+                <%= f.text_field :number, class:"input-default card-number-setting", id:"card-number", maxlength:"16" %>
                 <div class='available-card'>
                   <%= image_tag 'card-visa.gif', class: 'card-logo'%>
                   <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
@@ -78,9 +79,10 @@
                 <label class="gift-form-text">有効期限</label>
               </div>
               <div class='gift-form_expiration_date__space'>
-                <%= f.text_field :exp_month, class:"input-expiration-month", id:"card-exp-month" %>
-                <p>月</p>
-                <%= f.text_field :exp_year, class:"input-expiration-year", id:"card-exp-year" %>
+                <%= f.text_field :exp_month, class:"input-expiration", id:"card-exp-month" %>
+                <p class="expiration-month__space">月</p>
+                <span>20</span>
+                <%= f.text_field :exp_year, class:"input-expiration", id:"card-exp-year" %>
                 <p>年</p>
               </div>
             </div>

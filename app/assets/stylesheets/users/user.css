@@ -408,6 +408,10 @@
   text-align: right;
 }
 
+.gift-price-range {
+  font-size: 14px;
+}
+
 .gift-form-text__price-space {
   width: 180px;
   text-align: right;
@@ -424,6 +428,10 @@
   width: 180px;
   text-align: right;
   padding: 15px 10px;
+}
+
+.expiration-month__space {
+  margin-right: 10px;
 }
 
 .gift-form-text__cvc-space {
@@ -444,10 +452,20 @@
   margin: 5px 10px 0px 0px;
 }
 
+.price-setting {
+  width: 70px;
+}
+
+.card-number-setting {
+  width: 200px;
+}
+
 .input-default {
   background-color: transparent;
-  width: 180px;
-  font-size: 14px;
+  
+  font-size: 16.6px;
+  color: rgb(154, 154, 154);
+  letter-spacing: 0.1rem;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
 }
@@ -464,38 +482,28 @@
 
 
 
-.input-expiration-month {
+.input-expiration {
   background-color: transparent;
   width: 30px;
-  font-size: 14px;
-  margin: 15px 0 15px 0;
+  font-size: 16.6px;
+  color: rgb(154, 154, 154);
+  letter-spacing: 0.1rem;
+  margin: 14px 0 15px 0;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
   text-align: center;
 }
 
-.input-expiration-month:focus {
-  outline: 0;
-}
-
-.input-expiration-year {
-  background-color: transparent;
-  width: 50px;
-  font-size: 14px;
-  margin: 15px 0 15px 10px;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0, 0.3);
-  text-align: center;
-}
-
-.input-expiration-year:focus {
+.input-expiration:focus {
   outline: 0;
 }
 
 .input-default-cvc {
   background-color: transparent;
   width: 40px;
-  font-size: 14px;
+  font-size: 16.6px;
+  color: rgb(154, 154, 154);
+  letter-spacing: 0.1rem;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
 }
