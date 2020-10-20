@@ -170,6 +170,7 @@ html {
 
 body {
   height: fit-content; 
+  margin: 0;
 }
 
 body.modal-open {
