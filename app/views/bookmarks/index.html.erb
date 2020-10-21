@@ -39,7 +39,7 @@
           <div class="game-tag__form-space">
             <div class="game-tag__choose-space">
               <select name="bookmark[game_tag_id]" , class="game-tag__choose"> 
-                <option value=""hidden disabled selected>---</option>
+                <option value=""hidden disabled selected></option>
                 <% GameTag.all.where.not(id: @bookmarked_game_tags).each do |tag| %> <%#同じゲームはお気に入り登録できない！%>
                     <option value=<%=tag.id%>><%= tag.game_title %></option>
                 <% end %>
