@@ -6,12 +6,12 @@ class RoomsController < ApplicationController
     if user_signed_in?
       @questions = []
       @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
-      @questions_related_to_current_user.each do |entry|
+      @questions_related_to_current_user.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
         @questions << entry.room
       end
       @another_questions_pro = @rooms - @questions
-      @another_questions_pro.each do |room|
-        @another_questions << room if room.messages.size == 2
+      @rooms.preload(messages: :user).each do |room|
+        @another_questions << room if room.messages.size == 2 && (room.messages[0].user == current_user || room.messages[1].user == current_user)
       end
       @another_questions = Kaminari.paginate_array(@another_questions).page(params[:page]).per(2)
     end
