@@ -30,13 +30,6 @@ RSpec.describe 'RoomsController', type: :request do
     end
   end
 
-  # describe "create" do
-  #   example "トップページへリダイレクトされること" do
-  #     post rooms_path, params: [:room_message][question_title: "title_test", content: "content_test", user_ids: [@user.id, @another_user.id], game_tag_ids: [@game_tag.id], user_id: @user.id]
-  #     expect(response).to redirect_to root_path
-  #   end
-  # end
-
   describe 'destroy' do
     example 'トップページへリダイレクトされること' do
       delete room_path(@room)

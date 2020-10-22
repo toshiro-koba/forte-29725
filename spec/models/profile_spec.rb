@@ -32,13 +32,4 @@ RSpec.describe Profile, type: :model do
     @profile = FactoryBot.build(:profile, image: File.open(image_path))
     expect(@profile).not_to be_valid
   end
-
-  # it 'resize to small size' do
-  #   image_path = File.join(Rails.root, 'spec/fixtures/sample.jpg')
-  #   @profile = FactoryBot.create(:profile, image: File.open(image_path))
-  #   expect(@profile.image).to be_no_larger_than(7000, 7000)
-  #   expect(@profile.image.thumb).to be_no_larger_than(200, 200)
-  #   expect(@profile.image.thumb100).to be_no_larger_than(100, 100)
-  #   expect(@profile.image.thumb50).to be_no_larger_than(50, 50)
-  # end
 end

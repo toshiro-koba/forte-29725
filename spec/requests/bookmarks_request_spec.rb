@@ -14,12 +14,6 @@ RSpec.describe 'Bookmarks', type: :request do
     end
   end
 
-  # describe "create" do
-  #   example "トップページへリダイレクトされること" do
-  #     post user_bookmarks_path(@user)
-  #     expect(response.status).to eq 200
-  #   end
-  # end
 
   describe 'destroy' do
     example 'ユーザー詳細ページへリダイレクトされること' do
