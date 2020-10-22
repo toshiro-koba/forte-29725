@@ -439,7 +439,7 @@ margin: auto 0;
 
 .top-title__space {
   position: absolute;
-  top: 100px;
+  top: calc(5vw + 7px);
   width: 100vw;
   text-align: center;
   font-size: 80px;
@@ -449,7 +449,7 @@ margin: auto 0;
 
 .top-content__space {
   position: absolute;
-  top: 200px;
+  top: calc(5vw + 90px);
   width: 100vw;
   background-color: rgba(240, 255, 255, 0.324);
   text-align: center;
@@ -457,7 +457,7 @@ margin: auto 0;
 
 .easy-login__space {
   position: absolute;
-  top: 400px;
+  top: calc(5vw + 180px);
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -471,14 +471,14 @@ margin: auto 0;
 
 .login-and-registration__space {
   position: absolute;
-  top: 480px;
+  top: calc(5vw + 240px);
   width: 100vw;
   display: flex;
   justify-content: center;
 }
 
 .normal-login__btn {
-  background-color: #ff8dff74;
+  background-color: #ff53ff74;
   border-radius: 3px;
   margin: 10px;
   font-size: 26px;
@@ -518,7 +518,7 @@ margin: auto 0;
 }
 
 .top-sample-image {
-  width: 30vw;
+  width: 48vw;
 }
 
 .pagination{
@@ -576,7 +576,6 @@ margin: auto 0;
 
   .question-answer__choose {
     width: 180px;
-    margin: 15px 10px 15px 0;
   }
 
   .question-game-tag__choose {
@@ -599,5 +598,38 @@ margin: auto 0;
     margin-left: 5px;
   }
 
+  .easy-login__space {
+    top: calc(5vw + 170px);
+    width: 100vw;
+    height: 25px;
+    padding-top: 5px;
+  }
 
+  .easy-login__btn {
+    font-size: 14px;
+  }
+
+  .login-and-registration__space {
+    top: calc(5vw + 220px);
+    width: 100vw;
+  }
+
+  .normal-login__btn {
+    font-size: 14px;
+  }
+
+  .what-this-app__space {
+    top: -6px;
+    background-color: #666;
+  }
+}
+
+@media (max-width: 1300px) {
+  .top-function-descriptions__space {
+    display: block;
+  }
+  .top-sample-image {
+    width: 90vw;
+    max-width: 800px;
+  }
 }
