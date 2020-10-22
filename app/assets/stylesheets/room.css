@@ -512,6 +512,10 @@ margin: auto 0;
   color: rgb(255, 255, 255);
 }
 
+.notification__margin-space {
+  height: 10px;
+}
+
 .top-sample-image {
   width: 30vw;
 }

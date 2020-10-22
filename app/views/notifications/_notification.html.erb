@@ -1,13 +1,21 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-auto">
-  <div class="form-inline">
-    <span>
-      <%= link_to user_path(visitor) do %>
-        <%= visitor.nickname %>
-      <% end %>
-      <%= 'さんが' %>
 
+<div class="question-lists">
+  <div class="icons-space">
+    <%= link_to user_path(visitor) do %>
+      <% unless visitor.profile == nil %>
+        <% if visitor.profile.image? %>
+          <%= image_tag(visitor.profile.image.thumb50.url, class: "question-user-icon")%>
+        <% end %>
+      <% else %>
+        <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="question-message-set">
+    <div class="question-user-nickname">
+      <%= "#{visitor.nickname}さんが、" %>
       <% case notification.action %>
       <% when 'follow' then %>
         <%= "あなたをフォローしました" %>
@@ -22,7 +30,8 @@
           <%= 'あなた宛てに回答しました' %>
         <% end %>
       <% end %>
-    </span>
-    <hr>
+    </div>
   </div>
+</div>
+<div class="notification__margin-space">
 </div>

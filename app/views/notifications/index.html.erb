@@ -10,13 +10,15 @@
         <div class="index__triangle"></div>
       </div>
       <div class="room-name">
-        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-        <% if @notifications.exists? %>
-          <%# todo ナビゲーションバーをレンダーすると通知が無くなる。なぜ？ %>
-          <%= render partial: "notifications/notification", collection: @notifications %>
-        <% else %>
-          <%= "通知はありません" %>
-        <% end %>
+        <div class="question-space">
+          <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+          <% if @notifications.exists? %>
+            <%# todo ナビゲーションバーをレンダーすると通知が無くなる。なぜ？ %>
+            <%= render partial: "notifications/notification", collection: @notifications %>
+          <% else %>
+            <%= "通知はありません" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
