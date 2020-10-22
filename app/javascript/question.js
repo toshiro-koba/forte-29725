@@ -34,7 +34,6 @@ function question() {
             <div class="question-space">
               <div class="question-lists">
                 <div class="icons-space">
-                  <img src="question_user_icon.png", class="question-user-icon" />
                 </div>
                 <div class="question-message-set">
                   <div class="question-user-nickname">
