@@ -293,11 +293,15 @@ header {
   height: 100px;
 }
 
+.question-form__label_style {
+  font-size: 14px;
+}
+
 .question-answer__choose {
   background-color: transparent;
   width: 200px;
   font-size: 14px;
-  margin: 15px 20px 15px 0;
+  margin: 0 10px 0 0;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
   color: #666;
@@ -314,7 +318,6 @@ header {
   background-color: transparent;
   width: 200px;
   font-size: 14px;
-  margin: 15px 0 15px 10px;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
   color: #666;

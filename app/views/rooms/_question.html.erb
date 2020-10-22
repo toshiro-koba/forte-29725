@@ -7,9 +7,10 @@
     <%= render 'error_messages', room: @room %> 
     <div class='question-form__pulldown'>
       <div class='question-form__field'>
+        <label for="user", class='question-form__label_style'>回答して欲しいユーザー</label>
         <div class='question-form__field--right'>
           <select name="room[user_ids][]", id="user", class="question-answer__choose">
-            <option value="">回答して欲しいユーザー</option>
+            <option value=""></option>
             <% User.all.where.not(id: current_user.id).each do |user| %>
               <option value=<%=user.id%>><%= user.nickname %></option>
             <% end %>
@@ -18,9 +19,10 @@
         </div>
       </div>
       <div class='question-form__field'>
+        <label for="game-tag", class='question-form__label_style'>ゲームタイトル</label>
         <div class='question-form__field--right'>
           <select name="room[game_tag_ids][]", id="game-tag", class="question-game-tag__choose">
-            <option value="">ゲームタイトル</option>
+            <option value=""></option>
             <% GameTag.all.each do |tag| %>
               <option value=<%=tag.id%>><%= tag.game_title %></option>
             <% end %>
@@ -29,13 +31,15 @@
       </div>
       </div>
       <div class='question-form__field'>
+        <label for="question_title", class='question-form__label_style'>質問タイトル</label>
         <div class='question-form__field--right'>
-          <%= f.text_field :question_title, class: 'question__room_name', placeholder: '質問タイトル', id: "question_title"%>
+          <%= f.text_field :question_title, class: 'question__room_name', id: "question_title"%>
         </div>
       </div>
       <div class='question-form__field'>
+        <label for="content", class='question-form__label_style'>質問本文</label>
         <div class='question-form__field--right'>
-          <%= f.text_area :content, class: 'question__room_content', placeholder: '質問本文' , id: "content"%>
+          <%= f.text_area :content, class: 'question__room_content', id: "content"%>
         </div>
       </div>
       <div class='question-form__field'>
