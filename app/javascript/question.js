@@ -21,15 +21,35 @@ function question() {
         const formUser = document.getElementById("user");
         const formTag = document.getElementById("game-tag");
         const HTML = `
+          <div class="index">
+            <div class="index__game_tag">
+              ${tag.game_title}
+            </div>
+            <div class="index__triangle"></div>
+          </div>
           <div class="room-name">
             <div class="question-title">
               ${room.question_title}
             </div>
-            [ゲームタイトル(タグ)]${tag.game_title}
-            <div class="question-contents">
-              <ul class="question-lists">
-                <li>[質問文][${user.nickname}]${content}</li>
-              </ul>
+            <div class="question-space">
+              <div class="question-lists">
+                <div class="icons-space">
+                  <img src="question_user_icon.png", class="question-user-icon" />
+                </div>
+                <div class="question-message-set">
+                  <div class="question-user-nickname">
+                  ${user.nickname}
+                  </div>
+                  <div class="question-sentence">
+                    <div class="question-sentence-Q">
+                      Q.
+                    </div>
+                    <div class="question-sentence-message">
+                    ${content}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>`;
         list.insertAdjacentHTML("afterend", HTML);
