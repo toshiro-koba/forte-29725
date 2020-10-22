@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/96856038-79718780-1498-11eb-8c7a-00e7b015cd66.jpg">
+<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/96875288-05dc7400-14b2-11eb-9684-3719516e8d3b.jpg">
 </p>
 <h2 align="center">Forte</h3>
 <p align="center">
