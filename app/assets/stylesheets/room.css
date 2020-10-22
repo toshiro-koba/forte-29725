@@ -331,7 +331,8 @@ header {
 .question__room_name{
   background-color: transparent;
   width: 400px;
-  font-size: 16px;
+  font-size: 14px;
+  color: #666;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
   padding-left: 7px;
@@ -347,6 +348,8 @@ header {
   min-height: 100px;
   /* height: fit-content; */
   width: 518px;
+  font-size: 14px;
+  color: #666;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 3px;
   padding: 6px;
@@ -438,8 +441,9 @@ margin: auto 0;
   top: 100px;
   width: 100vw;
   text-align: center;
-  font-size: 64px;
-  color:  rgb(191, 4, 201);
+  font-size: 80px;
+  color:  rgb(220, 66, 228);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .top-content__space {
@@ -458,12 +462,25 @@ margin: auto 0;
   justify-content: center;
 }
 
+.easy-login__btn {
+  background-color: #2bff0190;
+  border-radius: 3px;
+  font-size: 26px;
+}
+
 .login-and-registration__space {
   position: absolute;
-  top: 500px;
+  top: 480px;
   width: 100vw;
   display: flex;
   justify-content: center;
+}
+
+.normal-login__btn {
+  background-color: #ff8dff74;
+  border-radius: 3px;
+  margin: 10px;
+  font-size: 26px;
 }
 
 .what-this-app__space {
@@ -496,7 +513,7 @@ margin: auto 0;
 }
 
 .top-sample-image {
-  width: 200px;
+  width: 30vw;
 }
 
 .pagination{

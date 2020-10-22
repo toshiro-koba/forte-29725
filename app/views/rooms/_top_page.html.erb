@@ -6,20 +6,19 @@
     Forte
   </div>
   <div class="top-content__space" >
-    強い人、強くなりたい人のためのアプリです<br>
-    質問ができます<br>
-    ギフトすることができます<br>
+    「もっと強くなりたい」 <br>
+    強さを求めるゲーマーへ向けた、一問一答サービスです。<br>
   </div>
   <div class="easy-login__space" >
-    <div class="header-right__hover-action">
+    <div class="header-right__hover-action easy-login__btn">
       <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
     </div>
   </div>
   <div class="login-and-registration__space" >
-    <div class="header-right__hover-action">
+    <div class="header-right__hover-action normal-login__btn">
       <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
     </div>
-    <div class="header-right__hover-action">
+    <div class="header-right__hover-action normal-login__btn">
       <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
     </div>
   </div>
@@ -29,15 +28,12 @@
   </div>
   <div class="top-function-descriptions__space">
    <div class="top-question-description__space">
-      <div>質問したい人に質問できる</div>
+      <div>質問</div>
       <%= image_tag "top-sample-question.png", class: "top-sample-image" %>
    </div>
+   
    <div class="top-question-description__space">
-      <div>回答できる</div>
-      <%= image_tag "top-sample-answer.png", class: "top-sample-image" %>
-   </div>
-   <div class="top-question-description__space">
-      <div>ギフトできる</div>
+      <div>金銭的サポート</div>
       <%= image_tag "top-sample-gift.png", class: "top-sample-image" %>
    </div>
   </div>
