@@ -156,17 +156,19 @@
             <% end %>
           </div>
 
-          <div id="error-lists-answer">
-            <div id="error-answer">
+          <div>
+            <div id="error-lists-answer">
+              <div id="error-answer">
+              </div>
             </div>
+            <div id="list-answer">
+            </div>
+            <%= form_with(url: messages_path, model: @message, local: true, method: :post, id: 'form-answer') do |f| %>
+              <%= f.text_area :content, class: 'answer__room_content', id: "content-answer" %>
+              <input name="room_id" type="hidden" value=<%= question.id %>>
+              <%= f.submit '回答' , class: 'answer-btn', id: "submit-answer" %>
+            <% end %>
           </div>
-          <div id="list-answer">
-          </div>
-          <%= form_with(url: messages_path, model: @message, local: true, method: :post, id: 'form-answer') do |f| %>
-            <%= f.text_area :content, placeholder: 'type a message', id: "content-answer" %>
-            <input name="room_id" type="hidden" value=<%= question.id %>>
-            <%= f.submit '回答する!' , id: "submit-answer" %>
-          <% end %>
         </div>
 
         <div class="question-option__space">
