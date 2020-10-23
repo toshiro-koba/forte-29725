@@ -258,7 +258,7 @@ header {
   /* right: 0; */
   font-size: 12px;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 0px;
   display: none;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -278,7 +278,7 @@ header {
 }
 
 .more ul.more_list li {
-  background-color: #57C3E9;
+  background-color: rgb(244, 244, 244);
   color: #fff;
 }
 
@@ -292,6 +292,26 @@ header {
   top: 35px;
   left: 20px;
   height: 100px;
+}
+
+.my-page {
+  text-decoration: none;
+  color: #666;
+}
+
+.my-page:hover {
+  text-decoration: none;
+  color: rgb(220, 66, 228);
+}
+
+.log-out {
+  text-decoration: none;
+  color: #666;
+}
+
+.log-out:hover {
+  text-decoration: none;
+  color: rgb(220, 66, 228);
 }
 
 .question-form__label_style {
