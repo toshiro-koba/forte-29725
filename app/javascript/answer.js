@@ -16,8 +16,21 @@ function answer() {
         const list = document.getElementById("list-answer");
         const formText = document.getElementById("content-answer");
         const HTML = `
-                <li>[回答文][${user.nickname}]${message}</li>
-          `;
+          <div class="question-lists">
+            <div class="question-message-set">
+              <div class="question-user-nickname">
+              ${user.nickname}
+              </div>
+              <div class="question-sentence">
+                <div class="question-sentence-A">
+                  A.
+                </div>
+                <div class="question-sentence-message">
+                ${message}
+                </div>
+              </div>
+            </div>
+          </div>`;
         list.insertAdjacentHTML("afterend", HTML);
         formText.value = "";
         if (document.getElementById("errors") != null) {
