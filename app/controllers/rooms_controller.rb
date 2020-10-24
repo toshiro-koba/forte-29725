@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
       @another_questions_pro.each do |room|
         @another_questions << room if room.messages.size == 2
       end
-      @another_questions = Kaminari.paginate_array(@another_questions).page(params[:page]).per(2)
+      @another_questions = Kaminari.paginate_array(@another_questions).page(params[:page]).per(10)
     end
     @room = RoomMessage.new
     @message = Message.new
