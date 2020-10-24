@@ -15,11 +15,14 @@ class UsersController < ApplicationController
 
     @rooms = Room.all.order('created_at DESC')
     @questions = []
+    @questions_of_this_user_is_questioner = []
     @questions_related_to_current_user = Entry.where(user_id: @user.id).order('created_at DESC')
     @questions_related_to_current_user.each do |entry|
       @questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == @user
+      @questions_of_this_user_is_questioner << entry.room if entry.room.messages[0].user == @user
     end
     @questions = Kaminari.paginate_array(@questions).page(params[:page]).per(5)
+    @questions_of_this_user_is_questioner = Kaminari.paginate_array(@questions_of_this_user_is_questioner).page(params[:page]).per(5)
   end
 
   def following

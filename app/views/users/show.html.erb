@@ -35,5 +35,15 @@
           <%= render partial: "rooms/user_show_questions", locals: { question: question } %>
     <% end %>
     <%= paginate @questions %>
+
+    <% if  current_user == @user %>
+      <%= "自分の質問" %>
+    <% else %>
+      <%= "#{@user.nickname}さんの質問" %>
+    <% end%>
+    <% @questions_of_this_user_is_questioner.each do |question| %>
+          <%= render partial: "rooms/user_show_questions", locals: { question: question } %>
+    <% end %>
+    <%= paginate @questions_of_this_user_is_questioner %>
   </div>
 </div>
