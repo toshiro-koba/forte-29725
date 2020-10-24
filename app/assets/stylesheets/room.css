@@ -405,6 +405,10 @@ header {
   padding: 6px;
 }
 
+.answer__room_content:focus {
+  outline: 0;
+}
+
 .answer-btn {
   display: inline-block;
   padding: 2px 3px 1px 6px;
@@ -416,6 +420,10 @@ header {
   top: -7px;
   border-radius: 3px;
   margin-top: 5px;
+}
+
+.answer-btn:focus {
+  outline: 0;
 }
 
 
@@ -583,6 +591,10 @@ margin: auto 0;
 }
 .pagination span a:hover{
 
+}
+
+.test-space {
+  color: rgb(244, 244, 244);
 }
 
 @media (max-width: 512px) {
