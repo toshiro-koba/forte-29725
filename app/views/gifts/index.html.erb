@@ -14,7 +14,6 @@
 
         <div class="qiita-test">
           <div class="qiita-test-sub">
-          <%# binding.pry %>
           <% unless current_user.profile == nil %>
             <% if current_user.profile.image? %>
               <%= image_tag(current_user.profile.image.thumb100.url, class: "user-profile-icon") %>
@@ -81,7 +80,7 @@
               <div class='gift-form_expiration_date__space'>
                 <%= f.text_field :exp_month, class:"input-expiration", id:"card-exp-month" %>
                 <p class="expiration-month__space">月</p>
-                <span>20</span>
+                <span class="month-20__space">20</span>
                 <%= f.text_field :exp_year, class:"input-expiration", id:"card-exp-year" %>
                 <p>年</p>
               </div>
