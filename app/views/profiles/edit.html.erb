@@ -32,7 +32,9 @@
               <div class="user-nickname__space">
                 <span class="user-nickname__display"><%= current_user.nickname %></span>
                 <div class="user-nickname-edit__hover-action">
-                  <%= link_to "編集する", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                  <% unless current_user.email == "test_user@test.com" %>
+                    <%= link_to "編集する", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                  <% end %>
                 </div>
               </div>
 
@@ -63,7 +65,9 @@
               </div>
 
               <div class="user-nickname-edit__hover-action">
-                <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                <% unless current_user.email == "test_user@test.com" %>
+                  <%= link_to "メールアドレスを変更", edit_user_path(current_user), class:"user-nickname-edit__hover" %>
+                <% end %>
               </div>
             
             </div>
