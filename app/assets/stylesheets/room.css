@@ -239,8 +239,8 @@ header {
 .more {
   position: relative;
   cursor: pointer;
-  top: 30px;
-  left: 30px;
+  top: 25px;
+  left: -17px;
   /* z-index: 2; */
   height: 100px;
   width: 80px;
@@ -289,9 +289,11 @@ header {
 
 .more-test-nickname {
   position: relative;
-  top: 35px;
-  left: 20px;
+  top: 38px;
+  right: 29px;
   height: 100px;
+  width: fit-content;
+  text-align: right;
 }
 
 .my-page {
@@ -717,6 +719,15 @@ margin: auto 0;
     top: -6px;
     background-color: #666;
     margin-bottom: 100px;
+  }
+
+  .more-test-nickname {
+    font-size: 14px;
+    right: 19px;
+  }
+
+  .notification-header-font {
+    font-size: 14px;
   }
 }
 
