@@ -467,12 +467,12 @@
 
 .input-default {
   background-color: transparent;
-  
   font-size: 16.6px;
   color: rgb(154, 154, 154);
   letter-spacing: 0.1rem;
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.3);
+  text-align: right;
 }
 
 .input-default:focus {
