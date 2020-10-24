@@ -35,12 +35,5 @@
           <%= render partial: "rooms/user_show_questions", locals: { question: question } %>
     <% end %>
     <%= paginate @questions %>
-    
-    <% if user_signed_in? && current_user != @user %>
-      <%= render partial: "question" %>
-    <% end %>
-    <div id="list">
-    </div>
-
   </div>
 </div>
