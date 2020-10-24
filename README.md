@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/96875288-05dc7400-14b2-11eb-9684-3719516e8d3b.jpg">
+<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/97069832-d80c4200-160d-11eb-8384-493ae027130a.jpg">
 </p>
 <h2 align="center">Forte</h3>
 <p align="center">
@@ -12,7 +12,7 @@
 
 <h2> 🌐 URL </h2>
 
-[Forte](https://github.com/toshiro-koba/forte-29725)
+[https://www.forte2020.net/](https://www.forte2020.net/)
 　
  
 「簡単ログイン」ボタンからテストユーザーとしてログインできます。
@@ -38,6 +38,10 @@
 * ギフト機能
   * ユーザー同士で金銭的サポートができる
   * __「簡単ギフト」__ ボタンを押していただくことで、カード情報を入力せずにギフトが可能です。
+  * テストカードによる決済処理も可能です。
+    * カード番号 : 4242424242424242
+    * 有効期限　: 12/2024
+    * セキュリティコード : 123
 * ユーザー機能
 * プロフィール機能
   * プロフ画像、SNS、配信サイトなど登録できる
@@ -105,5 +109,5 @@
 現在24歳。新卒で1年弱、3Dソフトを使って航空宇宙機器設計をしておりました。2020年8月からエンジニアを目指して学習を継続しています。
 </p>
 
-[Qiita](https://qiita.com/kobachii) 　   [LAPRAS](https://lapras.com/public/BDGZDNO)  　  [connpass](https://connpass.com/user/Toshiro_Koba/) 　   [Twitter](https://twitter.com/KobaToshiro)
+[Wantedly](https://www.wantedly.com/users/140981045?profile)　[Qiita](https://qiita.com/kobachii) 　   [LAPRAS](https://lapras.com/public/BDGZDNO)  　  [connpass](https://connpass.com/user/Toshiro_Koba/) 　   [Twitter](https://twitter.com/KobaToshiro)
 
