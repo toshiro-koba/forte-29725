@@ -5,8 +5,8 @@
   <div class="top-title__space" >
     Forte
   </div>
-  <div class="top-content__space" >
-    「もっと強くなりたい」 <br>
+  <div class="top-content__space top-question-description-text-second__space" >
+    <span class="more-forte">「もっと強くなりたい」</span> <br>
     強さを求めるゲーマーへ向けた、一問一答サービスです<br>
   </div>
   <div class="easy-login__space" >
@@ -27,15 +27,25 @@
   What is Forte?
   </div>
   <div class="top-function-descriptions__space">
-   <div class="top-question-description__space">
-      <div>質問</div>
-      <%= image_tag "top-sample-question.png", class: "top-sample-image" %>
-   </div>
-   
-   <div class="top-question-description__space">
-      <div>金銭的サポート</div>
-      <%= image_tag "top-sample-gift.png", class: "top-sample-image" %>
-   </div>
+    <div class="top-question-description__space">
+      <div class="top-question-description-all-texts__space">
+        <div class="top-question-description-text__space">トッププレイヤーに質問できます。</div>
+          <div class="top-question-description-text-second__space">
+            <span class="more-forte">「もっと強くなりたい!」</span><br>あなたの熱意を応援します!
+          </div>
+      </div>
+      <div class="top-sample-image"><%= image_tag "top-sample-question.png", class: "top-sample-image" %></div>
+    </div>
+
+    <div class="top-question-description__space">
+      <div class="top-question-description-all-texts__space">
+        <div class="top-question-description-text__space">金銭的サポートも可能です。</div>
+          <div class="top-question-description-text-second__space">
+            <span class="more-forte">感謝を形に</span><br>プレイヤー同士で支援できます
+          </div>
+      </div>
+      <div class="top-sample-image"><%= image_tag "top-sample-gift.png", class: "top-sample-image" %></div>
+    </div>
   </div>
 
 
