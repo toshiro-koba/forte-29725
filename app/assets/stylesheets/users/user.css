@@ -74,6 +74,7 @@
   cursor: pointer;
   width: 100%;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 /* ここから、フォロー解除ホバーアクション！ */
 
@@ -99,6 +100,7 @@
   background-color: #c9302c;
   border-color: #c9302c;
   color: #fff;
+  margin-bottom: 10px;
 }
 /* ここまで、フォロー解除ホバーアクション！ */
 
