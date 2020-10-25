@@ -63,36 +63,45 @@
 
 ### フロントエンド
 - HTML/CSS
-- JavaScript, jQuery, Ajax
+- JavaScript
+- jQuery
 
 ### バックエンド
 - Ruby 2.6.5
 - Rails 6.0.3
 
-### 開発環境
-- Docker/Docker-compose
-- MySQL 5.6.47
+### Webサーバー
+- Nginx : 1.18.0
 
+### アプリケーションサーバー
+- （開発環境）Puma : 4.3.3
+- （本番環境）Unicorn : 5.4.1
 
-### 本番環境
-- AWS (VPC, EC2, S3, Route53, ALB, ACM)
-- MariaDB
-- Nginx, unicorn
-- circleci (自動テスト/自動デプロイ)
-- capistorano (自動デプロイ)
+### データベース
+- （開発環境）MySQL 5.6.47
+- （本番環境）MariaDB : 5.5.64
+
+### インフラ
+- （開発環境のみ）Docker : 19.03.13
+- docker-compose : 1.27.4
+- AWS (EC2, S3, VPC, Route53, ALB, ACM)
+- Git, GitHub
+- circleCI : 2.1
+- Capistrano : 3.14.1
 
 ### インフラ構成図
 <img width="800px" alt="forteインフラ図" src="https://user-images.githubusercontent.com/56726628/96541781-afb5d800-12db-11eb-81d6-7fd92e55ab9e.png">
 
 ### テスト
 - RSpec(単体/結合) 合計68個
-- circleciを用いてテスト環境のdockerコンテナを作成し、自動テスト
+- circleCIを用いてテスト環境のdockerコンテナを作成し、自動テスト
 
 ### その他技術
-- 質問、回答が一度のページ遷移不要かつ非同期で可能
+- 質問、回答をページ遷移せずに非同期で可能
 - 非同期通信(質問、回答、いいね、プレビュー画像表示)
 - AWS(Route53, ALB, ACM)を利用したHTTPS接続
 - 外部API(Payjp)を使った決済処理
+- Animate.cssを導入
 - モーダル表示
 - ページネーション
 - Git チーム開発を意識したissue, プルリクエスト, マイルストーンの活用
@@ -106,8 +115,8 @@
 <h2> 👀 About me </h2>
 
 <p >
-現在24歳。新卒で1年弱、3Dソフトを使って航空宇宙機器設計をしておりました。2020年8月からエンジニアを目指して学習を継続しています。
+現在24歳。新卒で1年弱、3Dソフトを使って航空宇宙機器設計をしておりました。
 </p>
 
-[Wantedly](https://www.wantedly.com/users/140981045?profile)　[Qiita](https://qiita.com/kobachii) 　   [LAPRAS](https://lapras.com/public/BDGZDNO)  　  [connpass](https://connpass.com/user/Toshiro_Koba/) 　   [Twitter](https://twitter.com/KobaToshiro)
+[Wantedly](https://www.wantedly.com/users/140981045)　[Qiita](https://qiita.com/kobachii) 　   [LAPRAS](https://lapras.com/public/BDGZDNO)  　  [connpass](https://connpass.com/user/Toshiro_Koba/) 　   [Twitter](https://twitter.com/KobaToshiro)
 
