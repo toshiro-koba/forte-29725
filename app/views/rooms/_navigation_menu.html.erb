@@ -14,11 +14,13 @@
       <% if user_signed_in? %>
         <% unless current_page?(notifications_path) %>
           <%= link_to(notifications_path) do %>
-            <% if unchecked_notifications.any? %>
-              <span class="notification-header-font"><%= "通知なし"%></span>
-            <% else %>
-              <span class="notification-header-font"><%= "通知あり"%></span>
-            <% end %>
+            <span class="fa-stack">
+              <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;" ></i>
+              <% if unchecked_notifications.any? %>
+              <% else %>
+                <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 0.8em;" ></i>
+              <% end %>
+            </span>
           <% end %>
         <% end %>
       <% end %>

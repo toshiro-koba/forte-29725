@@ -1,3 +1,16 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #26e109;
+  margin: 11px 0 0 2px;
+}
+
+.fa-bell {
+  color: antiquewhite;
+  margin: 7px 0 0 1px;
+}
