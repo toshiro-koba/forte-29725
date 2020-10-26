@@ -7,14 +7,17 @@
       <% end %>
       <div class="search-form">
         <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-          <%= form.text_field :keyword, placeholder: "🔍", class: "search-input" %>
+          <span class="fa-stack">
+            <%= form.text_field :keyword, class: "search-input fa-lg fa-stack-2x" ,style:"width: 25vw; font-size: 1.3em; text-align: left;" %>
+            <i class="fas fa-search fa-lg fa-stack-1x" style="font-size: 1em;"></i>
+          </span>
           <%= form.submit "検索", type: "hidden", class: "search-btn" %>
         <% end %>
       </div>
       <% if user_signed_in? %>
         <% unless current_page?(notifications_path) %>
           <%= link_to(notifications_path) do %>
-            <span class="fa-stack">
+            <span class="fa-stack bell-position">
               <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;" ></i>
               <% if unchecked_notifications.any? %>
               <% else %>

@@ -7,7 +7,7 @@
     <%= render 'error_messages', room: @room %> 
     <div class='question-form__pulldown'>
       <div class='question-form__field'>
-        <label for="user", class='question-form__label_style'>回答して欲しいユーザー</label>
+        <label for="user", class='question-form__label_style'><i class="fas fa-user"></i> 回答して欲しいユーザー</label>
         <div class='question-form__field--right'>
           <select name="room[user_ids][]", id="user", class="question-answer__choose">
             <option value=""></option>
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class='question-form__field'>
-        <label for="game-tag", class='question-form__label_style'>ゲームタイトル</label>
+        <label for="game-tag", class='question-form__label_style'><i class="fas fa-gamepad"></i> ゲームタイトル</label>
         <div class='question-form__field--right'>
           <select name="room[game_tag_ids][]", id="game-tag", class="question-game-tag__choose">
             <option value=""></option>
@@ -37,13 +37,13 @@
       </div>
       </div>
       <div class='question-form__field'>
-        <label for="question_title", class='question-form__label_style'>質問タイトル</label>
+        <label for="question_title", class='question-form__label_style'><i class="fab fa-quora"></i>. 質問タイトル</label>
         <div class='question-form__field--right'>
           <%= f.text_field :question_title, class: 'question__room_name', id: "question_title"%>
         </div>
       </div>
       <div class='question-form__field'>
-        <label for="content", class='question-form__label_style'>質問本文</label>
+        <label for="content", class='question-form__label_style'><i class="far fa-comment-dots"></i> 質問本文</label>
         <div class='question-form__field--right'>
           <%= f.text_area :content, class: 'question__room_content', id: "content"%>
         </div>

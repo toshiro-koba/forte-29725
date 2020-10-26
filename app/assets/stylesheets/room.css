@@ -60,8 +60,11 @@ select {
   border: none;
   border-radius: 5px;
   margin-left: 15px;
+  padding-left: 33px;
   width: 25vw;
   max-width: 200px;
+  text-align: left;
+  color: #666;
 }
 
 /* ここから！　質問の一覧表示！ */
