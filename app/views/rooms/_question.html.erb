@@ -23,7 +23,7 @@
         <div class='question-form__field--right'>
           <select name="room[game_tag_ids][]", id="game-tag", class="question-game-tag__choose">
             <option value=""></option>
-            <% GameTag.all.each do |tag| %>
+            <% GameTag.all.order("game_title").each do |tag| %>
               <option value=<%=tag.id%>><%= tag.game_title %></option>
             <% end %>
           </select>
