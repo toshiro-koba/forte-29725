@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/97069832-d80c4200-160d-11eb-8384-493ae027130a.jpg">
+<img width="100%" alt="forte" src="https://user-images.githubusercontent.com/56726628/97288428-2b3df900-1889-11eb-9371-c13b4daee026.jpg">
 </p>
 <h2 align="center">Forte</h3>
 <p align="center">
@@ -110,7 +110,7 @@
 
 
 ### ER図
-<img width="800px" alt="forteER図" src="https://user-images.githubusercontent.com/56726628/96457303-8e60d780-125a-11eb-8581-c0b3ef0aee8b.png">
+<img width="800px" alt="forteER図" src="https://user-images.githubusercontent.com/56726628/97287953-8b806b00-1888-11eb-9622-db0c6938d3b4.png">
 
 <h2> 👀 About me </h2>
 
