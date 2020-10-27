@@ -17,3 +17,49 @@
  * {
   box-sizing: border-box;
 }
+
+input[type="submit"],
+input[type="button"] {
+  border-radius: 3px;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+input[type="submit"]::-webkit-search-decoration,
+input[type="button"]::-webkit-search-decoration {
+  display: none;
+}
+input[type="submit"]::focus,
+input[type="button"]::focus {
+  outline-offset: -2px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+button,
+input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* padding: 0; */
+    border: none;
+    outline: none;
+    /* background: transparent; */
+}
+
+input[type="radio"] {
+    display: none;
+}
+input[type="radio"]:checked + label {
+    background: #ff0000;
+}
