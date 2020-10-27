@@ -111,7 +111,9 @@
                 <%= render partial: "likes/like", locals: { room: question } %>
               </div>
             </div>
-            <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
+            <%= link_to room_path(question), method: :delete , class: "question-delete-btn" do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
           </div>
         </div>
 
@@ -177,7 +179,9 @@
               <%= render partial: "likes/like", locals: { room: question } %>
             </div>
           </div>
-          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
+          <%= link_to room_path(question), method: :delete , class: "question-delete-btn" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[1].user == current_user %> <%# 自分が回答した質問！ えらい！天才！！%>
@@ -327,7 +331,9 @@
               <%= render partial: "likes/like", locals: { room: question } %>
             </div>
           </div>
-          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
+          <%= link_to room_path(question), method: :delete , class: "question-delete-btn" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </div>
 
       <% elsif question.messages.size == 2 && question.messages[0].user == current_user %> <%# 自分が登録した質問に回答がもらえた！ 感謝！ギフトしよう！！%>
@@ -473,7 +479,9 @@
               <%= render partial: "likes/like", locals: { room: question } %>
             </div>
           </div>
-          <%= link_to "×", room_path(question), method: :delete , class: "question-delete-btn"%>
+          <%= link_to room_path(question), method: :delete , class: "question-delete-btn" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </div>
       <% end %>
     </div>
