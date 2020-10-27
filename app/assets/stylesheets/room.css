@@ -177,7 +177,7 @@ select {
 html {
   background-color: rgb(244, 244, 244);
   height: fit-content; 
-  font-family: 'Ms Gothic';
+  font-family: sans-serif;
 }
 
 body {
