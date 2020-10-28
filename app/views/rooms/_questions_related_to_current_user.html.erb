@@ -5,10 +5,13 @@
       <%= question.question_title %>
     </div>
     <div class="panel"> <%# ↓モーダルに関する記述の始まり%>
-      <div class="c-btn js-open-modal"> <%# ↓モーダル画面を表示する判定の始まり%>
-        <%= render partial: "one_question", locals: { question: question } %>
-      </div> <%# ↑モーダル画面を表示する判定の終わり%>
-
+      <% if question.messages.size == 1 && question.messages[0].user != current_user %>
+          <%= render partial: "one_question", locals: { question: question } %>
+      <% else %>
+        <div class="c-btn js-open-modal"> <%# ↓モーダル画面を表示する判定の始まり%>
+          <%= render partial: "one_question", locals: { question: question } %>
+        </div> <%# ↑モーダル画面を表示する判定の終わり%>
+      <% end %>
       <% if question.messages.size == 1 && question.messages[0].user != current_user %> 
         <div class="question-lists">
           <div class="icons-space__answer">
