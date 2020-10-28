@@ -18,6 +18,7 @@ RSpec.describe 'ギフティング', type: :system do
 
       # 「ギフト」ボタンを押して、ギフトページに遷移する
       find('.gift__hover-action').hover
+      sleep 1.0
       click_link 'ギフト'
 
       # ギフトページに遷移していることを確認する
@@ -35,7 +36,7 @@ RSpec.describe 'ギフティング', type: :system do
       expect  do
         find('.confirmation-of-gift__hover-action').hover
         find('input[name="commit"]').click
-        sleep 2.0
+        sleep 5.0
       end.to change { Gift.count }.by(1)
 
       # トップページに遷移していることを確認する
@@ -68,6 +69,7 @@ RSpec.describe 'ギフティング', type: :system do
 
       # 「ギフトする」ボタンを押して、ギフトページに遷移する
       find('.gift__hover-action').hover
+      sleep 1.0
       click_link 'ギフト'
 
       # ギフトページに遷移していることを確認する
@@ -77,7 +79,7 @@ RSpec.describe 'ギフティング', type: :system do
       expect do
         find('.confirmation-of-gift__hover-action').hover
         find('input[name="commit"]').click
-        sleep 1.0
+        sleep 5.0
       end.not_to change { Gift.count }
 
       # ギフトページにいることを確認する
