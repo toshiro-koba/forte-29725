@@ -54,7 +54,7 @@ RSpec.describe '質問回答機能', type: :system do
       fill_in 'message[content]', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      within '.question-space' do # スコープを絞る
+      within '.room-name' do # スコープを絞る
         expect do
           find('input[name="commit"]').click
           sleep 0.1
