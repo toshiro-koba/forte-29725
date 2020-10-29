@@ -52,7 +52,7 @@
             </div>
 
             <div class="question-lists">
-              <div class="icons-space__answer">
+              <div class="icons-space">
                 <% if question.messages.size == 1 %>
                   <%= link_to user_path(question.entries[0].user) do %>
                     <% unless question.entries[0].user.profile == nil %>
@@ -156,7 +156,7 @@
               </div>
 
               <div class="question-lists">
-                <div class="icons-space__answer">
+                <div class="icons-space">
                   <% if question.messages.size == 1 %>
                     <%= link_to user_path(question.entries[0].user) do %>
                       <% unless question.entries[0].user.profile == nil %>

@@ -14,7 +14,7 @@
       <% end %>
       <% if question.messages.size == 1 && question.messages[0].user != current_user %> 
         <div class="question-lists">
-          <div class="icons-space__answer">
+          <div class="icons-space">
             <%= link_to user_path(current_user) do %>
               <% unless current_user.profile == nil %>
                 <% if current_user.profile.image? %>
