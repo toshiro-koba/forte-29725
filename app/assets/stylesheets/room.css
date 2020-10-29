@@ -407,7 +407,7 @@ header {
 .answer__room_content {
   resize: none;
   min-height: 100px;
-  width: 518px;
+  width: 400px;
   font-size: 14px;
   color: #666;
   border: 1px solid rgb(216, 216, 216);

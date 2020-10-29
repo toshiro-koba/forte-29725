@@ -32,7 +32,7 @@
 
     <%= "#{@user.nickname}さんが回答した質問" %>
     <% @questions.each do |question| %>
-          <%= render partial: "rooms/user_show_questions", locals: { question: question } %>
+          <%= render partial: "rooms/questions", locals: { question: question } %>
     <% end %>
     <%= paginate @questions %>
 
@@ -42,7 +42,7 @@
       <%= "#{@user.nickname}さんの質問" %>
     <% end%>
     <% @questions_of_this_user_is_questioner.each do |question| %>
-          <%= render partial: "rooms/user_show_questions", locals: { question: question } %>
+          <%= render partial: "rooms/questions", locals: { question: question } %>
     <% end %>
     <%= paginate @questions_of_this_user_is_questioner %>
   </div>

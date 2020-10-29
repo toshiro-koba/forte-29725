@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @room = RoomMessage.new
+    @message = Message.new
 
     @rooms = Room.all.order('created_at DESC')
     @questions = []
