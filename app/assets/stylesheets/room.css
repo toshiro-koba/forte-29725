@@ -481,10 +481,9 @@ margin: auto 0;
 .like-yet-btn{
   display: inline-block;
   color: #666;
-  padding: 1px 0 1px;
 }
 
-.like-yet-btn-mark {
+.like-mark {
   margin-right: 4px;
 }
 
