@@ -13,12 +13,12 @@
         <div id="list">
         </div>
         <% @questions.each do |question| %>
-          <%= render partial: "questions_related_to_current_user", locals: { question: question } %>
+          <%= render partial: "questions", locals: { question: question } %>
         <% end %>
       <% end %>
       <p><%= "新着の質問" %></p>
       <% @another_questions.each do |question| %>
-        <%= render partial: "another_questions", locals: { question: question } %>
+        <%= render partial: "questions", locals: { question: question } %>
       <% end %>
     </main>
   </body>
