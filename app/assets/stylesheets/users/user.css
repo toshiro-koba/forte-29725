@@ -334,16 +334,10 @@
 /* ここから、お気に入り登録ホバーアクション！ */
 .game-tag__submit-btn__normal {
   display: inline-block;
-  border: 2px solid #ccc;
-  padding: 6px 15px;
-  text-align: center;
-  cursor: pointer;
+  padding: 4px 8px;
   width: fit-content;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
   border-radius: 2px;
+  font-size: 16px;
 }
 
 .game-tag__hover-action .game-tag__submit-btn__hover {
@@ -356,18 +350,15 @@
 
 .game-tag__hover-action:hover .game-tag__submit-btn__hover {
   display: inline-block;
-  border: 2px solid #ccc;
-  padding: 6px 15px;
-  text-align: center;
-  cursor: pointer;
+  padding: 4px 8px;
   width: fit-content;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
   letter-spacing: 0.1em;
   text-decoration: none;
   border-radius: 2px;
+  font-size: 16px;
 }
 /* ここまで、お気に入り登録ホバーアクション！ */
 
