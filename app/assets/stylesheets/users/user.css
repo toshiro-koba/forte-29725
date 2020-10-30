@@ -498,16 +498,7 @@
 .confirmation-btn-of-gift__normal {
   display: block;
   margin: 0 auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
 }
 
 .confirmation-of-gift__hover-action .confirmation-btn-of-gift__hover {
@@ -521,16 +512,10 @@
 .confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
   display: block;
   margin: 0 auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  font-weight: bold;
-  background-color: rgb(255, 248, 255);
-  color: rgb(220, 66, 228);
-  border-color: rgb(220, 66, 228);
+  background-color: rgb(248, 255, 249);
+  color: #26e109;
+  border-color: #26e109;
   letter-spacing: 0.07em;
   text-decoration: none;
 }
