@@ -36,17 +36,17 @@
   <% end %>
 
   <% if user == current_user %>
-       <div class="profile__hover-action">
+       <div class="profile__hover-action hover-action">
     <% if user.profile == nil %>
-        <span class='profile-btn__normal'>プロフィールを登録</span>
-        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>プロフィールを登録</span>
+        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
     <% else %>
       <% unless current_page?("/users/#{current_user.id}/bookmarks") || current_page?("/users/#{current_user.id}/bookmarks/new") || current_page?("/notifications") %>
-        <span class='profile-btn__normal'>プロフィールを編集</span>
-        <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>プロフィールを編集</span>
+        <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
       <% else %>
-        <span class='profile-btn__normal'>マイページに戻る</span>
-        <span><%= link_to "マイページに戻る", user_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>マイページに戻る</span>
+        <span><%= link_to "マイページに戻る", user_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
       <% end %>
     <% end %>
     </div>
