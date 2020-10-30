@@ -59,9 +59,13 @@
   <% elsif user_signed_in? %>
     <%= render 'relationships/follow_button', user: user %>
 
-    <div class="gift__hover-action">
-      <span class='gift-btn__normal'>ギフト</span>
-      <span><%= link_to 'ギフト', user_gifts_path(user), class: 'gift-btn__hover' %></span>
+    <div class="gift__hover-action hover-action">
+      <span class='gift-btn__normal btn__normal'><i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i> ギフトする</span>
+      <span>
+        <%= link_to user_gifts_path(user), class: 'gift-btn__hover btn__hover' do %>
+          <i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i><%= ' ギフトする' %>
+        <% end %>
+      </span>
     </div>
     
   <% else %>
