@@ -526,16 +526,7 @@
 .test-btn-of-gift__normal {
   display: block;
   margin: 10px auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
 }
 
 .test-gift__hover-action .test-btn-of-gift__hover {
@@ -549,16 +540,10 @@
 .test-gift__hover-action:hover .test-btn-of-gift__hover {
   display: block;
   margin: 10px auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  font-weight: bold;
-  background-color: rgb(255, 255, 255);
-  color: rgb(228, 182, 66);
-  border-color: rgb(228, 182, 66);
+  background-color: rgb(255, 254, 242);
+  color: rgb(250, 191, 42);
+  border-color: rgb(250, 191, 42);
   letter-spacing: 0.07em;
   text-decoration: none;
 }
