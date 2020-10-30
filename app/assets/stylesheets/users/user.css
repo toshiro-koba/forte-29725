@@ -564,17 +564,21 @@
   font-weight: bold;
 }
 
+.user-nickname-edit__hover-action {
+  padding-top: 4px;
+}
+
 .user-nickname-edit__hover-action:hover {
   text-decoration: underline;
   color: rgb(154, 154, 154);
   font-size: 13px;
-  padding-top: 4px;
 }
 
 .user-nickname-edit__hover {
   text-decoration: none;
   color: rgb(154, 154, 154);
   font-size: 13px;
+  /* padding-top: 4px; */
 }
 .link-to-sns__space {
   padding: 20px 0;
@@ -631,15 +635,10 @@
   display: block;
   margin-bottom: 20px;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 20%;
   background-color: #ffffff;
   color: #ccc;
   border-color:#ccc;
-  font-weight: bold;
   letter-spacing: 0.5rem;
 }
 
@@ -654,13 +653,7 @@
 .user-edit__hover-action:hover .user-edit__hover {
   display: block;
   margin-bottom: 20px;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 20%;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
