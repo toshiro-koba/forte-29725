@@ -4,20 +4,26 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
+  # 質問に関するアソシエーション
   has_many :entries
   has_many :rooms, through: :entries
   has_many :messages
+  # ギフトに関するアソシエーション
   has_many :gifts
   has_many :receivers, through: :gifts, source: :giver
   has_many :reverse_of_gifts, class_name: 'Gift', foreign_key: 'giver_id'
   has_many :giftings, through: :reverse_of_gifts, source: :user
+  # ゲームお気に入り登録に関するアソシエーション
   has_many :bookmarks
   has_many :game_tags, through: :bookmarks
+  # フォローに関するアソシエーション
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
+  # プロフィールに関するアソシエーション
   has_one  :profile
+  # いいねに関するアソシエーション
   has_many :likes, dependent: :destroy
   has_many :like_rooms, through: :likes, source: :room
   # 通知に関するアソシエーション
