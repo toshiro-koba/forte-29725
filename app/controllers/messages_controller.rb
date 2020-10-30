@@ -3,12 +3,17 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:format])
     @messages = @room.messages.includes(:user)
-    unless @room.messages.size == 0 # 質問がroomsテーブルに既に存在していて、質問文がmessagesテーブルにある時、entriesテーブルから回答者の情報をインスタンス変数に代入している
+    # 質問がroomsテーブルに既に存在していて、質問文がmessagesテーブルにある時、entriesテーブルから回答者の情報をインスタンス変数に代入している
+    unless @room.messages.size == 0
       @entries = Entry.where(room_id: @room).where.not(user_id: @room.messages[0].user)
     end
-    if @room.messages.size == 0 # 質問する前(正常系)
-    elsif @room.messages.size == 1 && @entries[0].user == current_user # 質問が存在し、まだ回答する前かつ、質問者にお願いされた回答者が現在のユーザーと一致する(正常系)
-    else # 不適合なユーザーが直接リンクを踏んだ場合、トップページに遷移させる(異常系)
+
+    # 質問する前(正常系)
+    if @room.messages.size == 0
+    # 質問が存在し、まだ回答する前かつ、質問者にお願いされた回答者が現在のユーザーと一致する(正常系)
+    elsif @room.messages.size == 1 && @entries[0].user == current_user
+    # 不適合なユーザーが直接リンクを踏んだ場合、トップページに遷移させる(異常系)
+    else
       redirect_to root_path
     end
   end
@@ -23,10 +28,7 @@ class MessagesController < ApplicationController
     @message = @room.messages.new(message_params)
     if @message.valid?
       @message.save
-      # 最新の質問に通知を送る
-      # todo 本当は、質問したuserが一番最近にした質問を取得したい、要改善
       notification_room = Room.order(updated_at: :desc).limit(1)
-      # 各引数の説明。回答者、質問本文、回答者
       notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
       render json: { message: @message.content, user: User.find(@message.user_id) }
     else

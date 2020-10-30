@@ -23,7 +23,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
 
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
       expect  do
-        find('.login__hover-action').hover
+        find('.login__hover').hover
         find('input[name="commit"]').click
       end.to change { User.count }.by(1)
 
@@ -60,7 +60,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
 
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
       expect  do
-        find('.login__hover-action').hover
+        find('.login__hover').hover
         find('input[name="commit"]').click
       end.to change { User.count }.by(0)
 

@@ -18,10 +18,10 @@
           <%= render partial: "questions", locals: { question: question } %>
         <% end %>
         <p><%= "新着の質問" %></p>
-        <% @another_questions.each do |question| %>
+        <% @other_questions.each do |question| %>
           <%= render partial: "questions", locals: { question: question } %>
         <% end %>
-        <%= paginate @another_questions %>
+        <%= paginate @other_questions %>
       <% else %>
         <%= render partial: "top_page" %>
       <% end %>

@@ -17,7 +17,7 @@
         <% end %>
       <% end %>
       <p><%= "新着の質問" %></p>
-      <% @another_questions.each do |question| %>
+      <% @other_questions.each do |question| %>
         <%= render partial: "questions", locals: { question: question } %>
       <% end %>
     </main>

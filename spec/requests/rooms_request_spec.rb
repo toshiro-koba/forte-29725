@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'RoomsController', type: :request do
   before do
     @user = FactoryBot.create(:user)
-    @another_user = FactoryBot.create(:user)
+    @other_user = FactoryBot.create(:user)
     @game_tag = FactoryBot.create(:game_tag)
     @room = FactoryBot.create(:room)
     @entry = FactoryBot.create(:entry)
     @message = FactoryBot.create(:message)
-    @another_message = FactoryBot.create(:message)
+    @other_message = FactoryBot.create(:message)
   end
 
   describe 'GET #index' do

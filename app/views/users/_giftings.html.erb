@@ -1,4 +1,4 @@
-<div class="question-lists">
+<div class="main-content">
   <div class="icons-space">
     <%= link_to user_path(user) do %>
       <% unless user.profile == nil %>
@@ -11,13 +11,13 @@
     <% end %>
   </div>
         
-  <div class="question-message-set">
-    <div class="question-user-nickname">
+  <div class="question-texts">
+    <div class="question-nickname">
       <%= "#{user.nickname}さん" %>
     </div>
 
     <div class="question-sentence">
-      <div class="question-sentence-message">
+      <div class="question-content">
         <%= "#{gift.price}円"%>
       </div>
     </div>

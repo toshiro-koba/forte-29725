@@ -4,14 +4,14 @@
 
   <%= render partial: "users/user-profile__left", locals: { user: @user } %>
 
-  <div class="user-question-contents">
+  <div class="main-contents">
 
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="index-name__bookmark"><%= "好きなゲーム" %></span>
+        <div class="index-tag">
+          <span class="index-name"><%= "好きなゲーム" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="game_tag__space">
@@ -21,7 +21,7 @@
               <%= link_to '×', user_bookmark_path(user_id: current_user.id, id: game.id), method: :delete, class: "game-tag__delete" %>
             </div>
           <% end %>
-          <div class="game_tag__registration__hover-action">
+          <div class="game_tag__hover-action">
           </div>
         </div>
       </div>
@@ -29,10 +29,10 @@
 
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="bookmark-action-title"><%= "ゲームを登録する" %></span>
+        <div class="index-tag">
+          <span class="action-name"><%= "ゲームを登録する" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <%= form_with model: @bookmark, url: user_bookmarks_path(current_user), method: :post, local: true do |f|  %>
@@ -46,7 +46,7 @@
               </select>
             </div>
             <div class="game-tag__hover-action hover-action">
-              <label for="bookmark-btn", class='gift-btn__normal game-tag__submit-btn__normal btn__normal'>登録</label>
+              <label for="bookmark-btn", class='gift-btn__normal game-tag-btn__normal btn__normal'>登録</label>
               <%= f.submit value="登録", class: 'game-tag__submit-btn__hover btn__hover', id:"bookmark-btn" %>
             </div>
           </div>

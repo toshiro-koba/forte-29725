@@ -1,6 +1,6 @@
 <% unless question.messages[0] == nil %>
   <% question.messages.size.times do |i| %>
-    <div class="question-lists">
+    <div class="main-content">
       <div class="icons-space">
         <%= link_to user_path(question.messages[i].user) do %>
           <% unless question.messages[i].user.profile == nil %>
@@ -16,21 +16,21 @@
           <% end %>
         <% end %>
       </div>
-      <div class="question-message-set">
-        <div class="question-user-nickname">
+      <div class="question-texts">
+        <div class="question-nickname">
           <%= question.messages[i].user.nickname %>
         </div>
         <div class="question-sentence">
           <% if i == 0 %>
-            <div class="question-sentence-Q">
+            <div class="question-Q">
               <i class="fab fa-quora"></i>.
             </div>
           <% else %>
-            <div class="question-sentence-A">
+            <div class="question-A">
               <%= "A." %>
             </div>
           <% end %>
-          <div class="question-sentence-message">
+          <div class="question-content">
             <%= safe_join("#{question.messages[i].content}".split("\n"),tag(:br))%>
           </div>
         </div>

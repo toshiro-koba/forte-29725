@@ -34,7 +34,7 @@ RSpec.describe 'ギフティング', type: :system do
 
       # 送信した値がDBに保存されていることを確認する
       expect  do
-        find('.confirmation-of-gift__hover-action').hover
+        find('.gift-submit__hover-action').hover
         find('input[name="commit"]').click
         sleep 5.0
       end.to change { Gift.count }.by(1)
@@ -77,7 +77,7 @@ RSpec.describe 'ギフティング', type: :system do
 
       # 送信した値がDBに保存されないことを確認する
       expect do
-        find('.confirmation-of-gift__hover-action').hover
+        find('.gift-submit__hover-action').hover
         find('input[name="commit"]').click
         sleep 5.0
       end.not_to change { Gift.count }
