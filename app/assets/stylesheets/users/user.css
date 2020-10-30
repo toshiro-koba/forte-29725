@@ -66,6 +66,8 @@
   border: 2px solid #ccc;
 }
 
+/* ここから、ホバーアクション共通スタイル */
+
 .btn__normal {
   display: inline-block;
   font-size: 1.4rem;
@@ -76,19 +78,8 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
-/* ここから、フォロー解除ホバーアクション！ */
 
-
-.unfollow__hover-action .unfollow-btn__hover {
-  display: none;
-}
-
-
-.unfollow__hover-action:hover .btn__normal {
-  display: none;
-}
-
-.unfollow__hover-action:hover .unfollow-btn__hover {
+.hover-action:hover .btn__hover {
   display: inline-block;
   border: 2px solid #ccc;
   font-size: 1.4rem;
@@ -97,53 +88,52 @@
   cursor: pointer;
   width: 100%;
   font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ここまで、ホバーアクション共通スタイル */
+
+
+/* ここから、フォロー解除ホバーアクション！ */
+
+.unfollow__hover-action .unfollow-btn__hover {
+  display: none;
+}
+
+.unfollow__hover-action:hover .btn__normal {
+  display: none;
+}
+
+
+.unfollow__hover-action:hover .unfollow-btn__hover {
   background-color: #c9302c;
   border-color: #c9302c;
   color: #fff;
-  margin-bottom: 10px;
 }
 /* ここまで、フォロー解除ホバーアクション！ */
 
 
 /* ここから、フォローホバーアクション！ */
 .follow-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .follow__hover-action .follow-btn__hover {
   display: none;
 }
 
-
 .follow__hover-action:hover .follow-btn__normal {
   display: none;
 }
 
 .follow__hover-action:hover .follow-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
   background-color: rgba(29, 161, 242, 0.1);
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
   letter-spacing: 0.07em;
-  margin-bottom: 10px;
 }
 /* ここまで、フォローホバーアクション！ */
 
