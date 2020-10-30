@@ -25,10 +25,10 @@ RSpec.describe User, type: :model do
       end
       it 'emailがすでに登録してあるものと重複している場合、登録できない' do
         @user.save
-        another_user = FactoryBot.build(:user)
-        another_user.email = @user.email
-        another_user.valid?
-        expect(another_user.errors.full_messages).to include('Email has already been taken')
+        other_user = FactoryBot.build(:user)
+        other_user.email = @user.email
+        other_user.valid?
+        expect(other_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailに@が含まれていない場合、登録できない' do
         @user.email = 'aaa'

@@ -4,8 +4,8 @@ RSpec.describe Gift, type: :model do
   describe 'ギフティング' do
     before do
       @user = FactoryBot.create(:user)
-      @another_user = FactoryBot.create(:user)
-      @gift = FactoryBot.create(:gift, user: @user, giver: @another_user)
+      @other_user = FactoryBot.create(:user)
+      @gift = FactoryBot.create(:gift, user: @user, giver: @other_user)
     end
     context 'ギフティングがうまくいくとき' do
       it 'tokenとpriceが存在すれば、購入できる' do
