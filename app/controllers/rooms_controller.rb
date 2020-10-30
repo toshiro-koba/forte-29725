@@ -5,12 +5,12 @@ class RoomsController < ApplicationController
     @other_questions = []
     if user_signed_in?
       @questions = []
-      @questions_related_to_current_user = Entry.where(user_id: current_user.id).order('created_at DESC')
-      @questions_related_to_current_user.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
+      @temporary_questions = Entry.where(user_id: current_user.id).order('created_at DESC')
+      @temporary_questions.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
         @questions << entry.room
       end
-      @other_questions_pro = @rooms - @questions
-      @other_questions_pro.each do |room|
+      @temporary_other_questions = @rooms - @questions
+      @temporary_other_questions.each do |room|
         @other_questions << room if room.messages.size == 2
       end
       @other_questions = Kaminari.paginate_array(@other_questions).page(params[:page]).per(10)
@@ -28,8 +28,6 @@ class RoomsController < ApplicationController
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save
-      # 最新の質問に通知を送る
-      # todo 本当は、質問したuserが一番最近にした質問を取得したい、要改善
       notification_room = Room.order(updated_at: :desc).limit(1)
       # 各引数の説明。質問者、質問本文、回答者
       notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
@@ -53,8 +51,8 @@ class RoomsController < ApplicationController
       @rooms.each do |room|
         @questions << room if room.user_ids.include?(current_user.id)
       end
-      @other_questions_pro = @rooms - @questions
-      @other_questions_pro.each do |room|
+      @temporary_other_questions = @rooms - @questions
+      @temporary_other_questions.each do |room|
         @other_questions << room if room.messages.size == 2
       end
     else
