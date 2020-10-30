@@ -702,18 +702,10 @@
 
 /* ここから、ログインホバーアクション！ */
 .login-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: #ccc;
   border-color:#ccc;
-  font-weight: bold;
-  margin-bottom: 10px;
   margin-top: 20px;
   letter-spacing: 0.03rem;
 }
@@ -727,20 +719,12 @@
 }
 
 .login__hover-action:hover .login-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
   text-decoration: none;
-  margin-bottom: 10px;
   margin-top: 20px;
+  letter-spacing: 0.01rem;
 }
 /* ここまで、ログインホバーアクション！ */
 

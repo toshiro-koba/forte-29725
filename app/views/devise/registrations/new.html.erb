@@ -26,9 +26,9 @@
     <label for="user-password-confirmation", class="email-name__space">パスワード確認</label>
     <%= f.password_field :password_confirmation, autocomplete: "off", class:"email__space", id:"user-password-confirmation"%>
 
-    <div class="login__hover-action">
-      <span class='login-btn__normal'>登録する</span>
-      <span><%= f.submit "登録する", class: 'login-btn__hover'%></span>
+    <div class="login__hover-action hover-action">
+      <span class='login-btn__normal btn__normal'>登録する</span>
+      <span><%= f.submit "登録する", class: 'login-btn__hover btn__hover'%></span>
     </div>
   <% end %>
 
