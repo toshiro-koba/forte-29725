@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     if params[:bookmark].nil?
-      render :index
+      redirect_to controller: :bookmarks, action: :index
     else
       @bookmark = Bookmark.new(bookmark_params)
       @bookmark.save
