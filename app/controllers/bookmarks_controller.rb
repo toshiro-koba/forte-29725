@@ -1,7 +1,6 @@
 class BookmarksController < ApplicationController
   def index
     return redirect_to root_path unless user_signed_in?
-
     @user = User.find(params[:user_id])
     @profile = Profile.find_by(user: current_user) unless @user.profile.nil?
     redirect_to root_path unless @user == current_user

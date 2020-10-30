@@ -64,7 +64,6 @@
 ### フロントエンド
 - HTML/CSS
 - JavaScript
-- jQuery
 
 ### バックエンド
 - Ruby 2.6.5

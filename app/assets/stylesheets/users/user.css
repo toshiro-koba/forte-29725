@@ -67,7 +67,6 @@
 }
 
 /* ここから、ホバーアクション共通スタイル */
-
 .btn__normal {
   display: inline-block;
   font-size: 1.4rem;
@@ -90,12 +89,10 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
-
 /* ここまで、ホバーアクション共通スタイル */
 
 
 /* ここから、フォロー解除ホバーアクション！ */
-
 .unfollow__hover-action .unfollow-btn__hover {
   display: none;
 }
@@ -103,7 +100,6 @@
 .unfollow__hover-action:hover .btn__normal {
   display: none;
 }
-
 
 .unfollow__hover-action:hover .unfollow-btn__hover {
   background-color: #c9302c;
@@ -175,7 +171,6 @@
 .profile__hover-action .profile-btn__hover {
   display: none;
 }
-
 
 .profile__hover-action:hover .profile-btn__normal {
   display: none;
@@ -428,14 +423,11 @@
 
 .gift-form_expiration_date__space {
   display: flex;
-  /* line-height: 55px; */
-  /* padding-left: 24px; */
 }
 
 .month-20__space {
   padding: 15px 0px;
 }
-
 
 .input-expiration {
   background-color: transparent;
@@ -578,7 +570,6 @@
   text-decoration: none;
   color: rgb(154, 154, 154);
   font-size: 13px;
-  /* padding-top: 4px; */
 }
 .link-to-sns__space {
   padding: 20px 0;
@@ -619,7 +610,6 @@
 .form-text-area {
   resize: none;
   min-height: 100px;
-  /* height: fit-content; */
   width: 518px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 3px;
@@ -666,7 +656,6 @@
 .user-session__space {
   width: 800px;
   height: fit-content;
-  /* fit contentに変更予定！ */
   margin: 60px auto 0;
   background-color: rgb(255, 255, 255);
   padding: 20px 300px;
@@ -698,7 +687,6 @@
 .email__space:focus {
   outline: 0;
 }
-
 
 /* ここから、ログインホバーアクション！ */
 .login-btn__normal {
@@ -745,16 +733,19 @@
   border: 1px solid #ddd;
   border-radius: 2px;
 }
+
 #error_explanation h2 {
   margin-bottom: 10px;
   color: #d65f4c;
   font-size: 14px;
 }
+
 #error_explanation ul {
   margin: 0;
   padding-left: 17px;
   list-style: square;
 }
+
 #error_explanation li {
   margin: 0;
   padding: 0;
@@ -784,9 +775,6 @@
   padding: 2px 0 4px 2px;
 }
 
-.panel {
-}
-
 .modal-panel-back {
   position: fixed;
   width: 100%;
@@ -797,9 +785,11 @@
   left: 0;
   background-color: rgba(200,200,200,.5);
 }
+
 .modal-panel-back.disable {
   display: none;
 }
+
 .modal-panel {
   max-width: 600px;
   width: calc(100vw - 60px);
@@ -855,6 +845,4 @@
   .test-gift__hover-action:hover .test-btn-of-gift__hover {
     width: 200px;
   }
-
-
 }
