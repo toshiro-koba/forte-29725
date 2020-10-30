@@ -75,8 +75,13 @@
           <%= render partial: "likes/like", locals: { room: question } %>
         </div>
       </div>
-      <%= link_to room_path(question), method: :delete , class: "delete-btn" do %>
-        <i class="fas fa-trash"></i>
+      <% question.messages.size.times do |i| %>
+        <% if question.messages[i].user == current_user %>
+          <%= link_to room_path(question), method: :delete , class: "delete-btn" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+          <% break %>
+        <% end %>
       <% end %>
     </div>
   </div>
