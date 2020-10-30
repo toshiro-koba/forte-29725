@@ -1,19 +1,19 @@
 <%= render partial: "rooms/navigation_menu" %>
 <div class="main__user-profile">
   <%= render partial: "users/user-profile__left", locals: { user: @user } %>
-  <div class="user-question-contents">
+  <div class="main-contents">
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="bookmark-action-title"><%= "ギフトする" %></span>
+        <div class="index-tag">
+          <span class="action-name"><%= "ギフトする" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="gift-form__space">
 
-        <div class="qiita-test">
-          <div class="qiita-test-sub">
+        <div class="gift-users">
+          <div class="gift-image__space">
           <% unless current_user.profile == nil %>
             <% if current_user.profile.image? %>
               <%= image_tag(current_user.profile.image.thumb100.url, class: "user-profile-icon") %>
@@ -27,11 +27,11 @@
             </div>
           </div>
 
-          <div class="qiita-test-present animate__animated animate__backInLeft">
-            <div><%= image_tag "present-icon.png", class: "qiita-test-present-icon" %></div>
+          <div class="image__space-present animate__animated animate__backInLeft">
+            <div><%= image_tag "present-icon.png", class: "image__space-present-icon" %></div>
           </div>
 
-          <div class="qiita-test-sub">
+          <div class="gift-image__space">
             <% unless @reciver.profile == nil %>
               <% if @reciver.profile.image? %>
                 <%= image_tag(@reciver.profile.image.thumb100.url, class: "user-profile-icon") %>
@@ -47,8 +47,8 @@
 
           <%= form_with model: [@reciver, @gift], url: user_gifts_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f|  %>
             <%= render 'shared/error_messages', model: f.object %>
-            <div class="gift-form__content">
-              <div class='gift-form-text__price-space'>
+            <div class="gift-form">
+              <div class='price__space'>
                 <label class="gift-form-text">ギフトする金額</label>
                 <span class="gift-price-range">(300~50000円)</span>
               </div>
@@ -58,7 +58,7 @@
             <div class="card-info">
               <span>カード情報</span>
             </div>
-            <div class="gift-form__content">
+            <div class="gift-form">
               <div class='gift-form-text__card-space'>
                 <label class="gift-form-text">カード番号</label>
               </div>
@@ -73,11 +73,11 @@
               </span>
             </div>
 
-            <div class="gift-form__content">
-              <div class='gift-form-text__expiration-date-space'>
+            <div class="gift-form">
+              <div class='gift-expiration-date'>
                 <label class="gift-form-text">有効期限</label>
               </div>
-              <div class='gift-form_expiration_date__space'>
+              <div class='gift-expiration-date__space'>
                 <%= f.text_field :exp_month, class:"input-expiration", id:"card-exp-month" %>
                 <p class="expiration-month__space">月</p>
                 <span class="month-20__space">20</span>
@@ -86,21 +86,21 @@
               </div>
             </div>
 
-            <div class="gift-form__content">
-              <div class='gift-form-text__cvc-space'>
+            <div class="gift-form">
+              <div class='gift-cvc'>
                 <label class="gift-form-text">セキュリティコード</label>
               </div>
               <span><%= f.text_field :cvc,class:"input-default-cvc", id:"card-cvc", maxlength:"4" %></span>
             </div>
 
-            <div class="confirmation-of-gift__hover-action hover-action">
-              <label for="gifting-btn", class='gift-btn__normal confirmation-btn-of-gift__normal btn__normal'>ギフトを確定</label>
-              <%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover btn__hover", id:"gifting-btn" %>
+            <div class="gift-submit__hover-action hover-action">
+              <label for="gifting-btn", class='gift-btn__normal gift-submit__normal btn__normal'>ギフトを確定</label>
+              <%= f.submit "ギフトを確定" ,class:"gift-submit__hover btn__hover", id:"gifting-btn" %>
             </div>
 
             <div class="test-gift__hover-action hover-action">
-              <label for="gifting-btn", class='gift-btn__normal test-btn-of-gift__normal btn__normal'>簡単ギフト</label>
-              <%= link_to '簡単ギフト', testgifting_user_path(@reciver), method: :post, class:"test-btn-of-gift__hover btn__hover" %>
+              <label for="gifting-btn", class='gift-btn__normal test-gift__normal btn__normal'>簡単ギフト</label>
+              <%= link_to '簡単ギフト', testgifting_user_path(@reciver), method: :post, class:"test-submit__hover btn__hover" %>
             </div>
           <% end %>
         </div>

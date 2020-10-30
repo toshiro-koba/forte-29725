@@ -22,28 +22,28 @@ function question() {
         const formTag = document.getElementById("game-tag");
         const HTML = `
           <div class="index">
-            <div class="index__game_tag">
+            <div class="index-tag">
               ${tag.game_title}
             </div>
-            <div class="index__triangle"></div>
+            <div class="index-decoration"></div>
           </div>
           <div class="room-name">
             <div class="question-title">
               ${room.question_title}
             </div>
             <div class="question-space">
-              <div class="question-lists">
+              <div class="main-content">
                 <div class="icons-space">
                 </div>
-                <div class="question-message-set">
-                  <div class="question-user-nickname">
+                <div class="question-texts">
+                  <div class="question-nickname">
                   ${user.nickname}
                   </div>
                   <div class="question-sentence">
-                    <div class="question-sentence-Q">
+                    <div class="question-Q">
                       Q.
                     </div>
-                    <div class="question-sentence-message">
+                    <div class="question-content">
                     ${content}
                     </div>
                   </div>

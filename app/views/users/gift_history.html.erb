@@ -3,14 +3,14 @@
 
   <%= render partial: "user-profile__left", locals: { user: @user } %>
 
-  <div class="user-question-contents">
+  <div class="main-contents">
 <%# ここから、自分がしたギフト！ %>
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="gift-action-title"><%= "自分がしたギフト" %></span>
+        <div class="index-tag">
+          <span class="action-title"><%= "自分がしたギフト" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="question-space">
@@ -26,10 +26,10 @@
 <%# ここから、自分に送られたギフト！ %>
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="gift-action-title"><%= "自分に送られたギフト" %></span>
+        <div class="index-tag">
+          <span class="action-title"><%= "自分に送られたギフト" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="question-space">

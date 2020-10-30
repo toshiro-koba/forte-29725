@@ -1,13 +1,13 @@
 <%= render partial: "rooms/navigation_menu" %>
 <div class="main__user-profile">
   <%= render partial: "users/user-profile__left", locals: { user: @user } %>
-  <div class="user-question-contents">
+  <div class="main-contents">
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="index-name__bookmark"><%= "通知一覧" %></span>
+        <div class="index-tag">
+          <span class="index-name"><%= "通知一覧" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="question-space">

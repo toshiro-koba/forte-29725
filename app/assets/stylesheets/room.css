@@ -24,7 +24,7 @@ li {
   text-align: right;
 }
 
-.question-form__input {
+.form__input {
   float: left;
   width: 66%;
   padding: 5px 10px;
@@ -48,7 +48,7 @@ select {
   margin-right: 20px;
 }
 
-.question-form__pulldown {
+.question-form__space {
   display: flex;
 }
 
@@ -72,7 +72,7 @@ select {
   display: flex;
 }
 
-.index__game_tag {
+.index-tag {
   background-color: #fff;
   padding: 2px 10px 0px 10px;
   width: fit-content;
@@ -81,7 +81,7 @@ select {
   letter-spacing: 0.2em;
 }
 
-.index__triangle {
+.index-decoration {
   width: 20px;
   height: 20px;
   border-top: 10px solid transparent;
@@ -108,15 +108,15 @@ select {
   margin: 0 10px 0 20px;
 }
 
-.question-lists {
+.main-content {
   display: flex;
 }
 
-.question-message-set {
+.question-texts {
   min-height: 60px;
 }
 
-.question-user-nickname {
+.question-nickname {
   height: 50px;
   padding: 10px 0;
 }
@@ -125,18 +125,18 @@ select {
   display: flex;
 }
 
-.question-sentence-Q {
+.question-Q {
   font-size: 20px;
   margin-right: 10px;
 }
 
-.question-sentence-A {
+.question-A {
   font-size: 20px;
   margin-right: 10px;
   color: rgb(220, 66, 228);
 }
 
-.question-sentence-message {
+.question-content {
   font-size: 14px;
   padding-top: 7px;
   padding-bottom: 10px;
@@ -213,7 +213,7 @@ header {
   align-items: center;
 }
 
-.link-to__top-page {
+.top-page {
   text-decoration: none;
 }
 .app-name {
@@ -309,11 +309,11 @@ header {
   color: rgb(220, 66, 228);
 }
 
-.question-form__label_style {
+.question__label {
   font-size: 14px;
 }
 
-.question-answer__choose {
+.answer__choose {
   background-color: transparent;
   width: 200px;
   font-size: 14px;
@@ -324,7 +324,7 @@ header {
   padding-left: 3px;
 }
 
-.question-answer__choose:focus {
+.answer__choose:focus {
   outline: none;
 }
 
@@ -342,7 +342,7 @@ header {
   outline: none;
 }
 
-.question__room_name{
+.question__room-name{
   background-color: transparent;
   width: 400px;
   font-size: 14px;
@@ -352,7 +352,7 @@ header {
   padding-left: 7px;
 }
 
-.question__room_name:focus {
+.question__room-name:focus {
   outline: 0;
 }
 
@@ -418,11 +418,11 @@ header {
   outline: 0;
 }
 
-.question-option__space {
+.question-option {
   display: flex;
 }
 
-.question-delete-btn {
+.delete-btn {
   margin: 0 4px 0 auto;
   text-decoration: none;
   color: rgb(244, 114, 114);
@@ -430,22 +430,22 @@ header {
   font-weight: bold;
 }
 
-.qiita-test {
+.gift-users {
   display: flex;
   justify-content: space-around;
   margin: 10px 50px;
 }
 
-.qiita-test-sub {
+.gift-image__space {
   text-align: center;
 }
 
-.qiita-test-present {
+.image__space-present {
 display: inline-block;
 margin: auto 0;
 }
 
-.qiita-test-present-icon {
+.image__space-present-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -486,7 +486,7 @@ margin: auto 0;
   font-family: 'Courier New', Courier, monospace;
 }
 
-.top-content__space {
+.top-content {
   position: absolute;
   top: calc(5vw + 90px);
   width: 100vw;
@@ -508,7 +508,7 @@ margin: auto 0;
   font-size: 26px;
 }
 
-.login-and-registration__space {
+.user-action__space {
   position: absolute;
   top: calc(5vw + 240px);
   width: 100vw;
@@ -523,7 +523,7 @@ margin: auto 0;
   font-size: 26px;
 }
 
-.what-this-app__space {
+.app-descriprion {
   height: 60px;
   width: 100vw;
   display: flex;
@@ -536,7 +536,7 @@ margin: auto 0;
   color: #fff;
 }
 
-.top-function-descriptions__space {
+.all-descriptions__space {
   top: -60px;
   height: 200px;
   width: 100vw;
@@ -545,16 +545,16 @@ margin: auto 0;
   margin-top: 40px;
 }
 
-.top-question-description__space {
+.top-question__space {
   margin: 10px 0 70px;
   display: flex;
 }
 
-.top-question-description-all-texts__space {
+.question-texts__space {
   margin-top: calc(5vw + 30px);
 }
 
-.top-question-description-text__space {
+.question-text__space {
   width: 50vw;
   text-align: center;
   font-weight: bolder;
@@ -563,7 +563,7 @@ margin: auto 0;
   margin: 0 auto;
 }
 
-.top-question-description-text-second__space {
+.description__space {
   margin: 14px 0;
   text-align: center;
   font-size: 1.3rem;
@@ -582,11 +582,11 @@ margin: auto 0;
   color: rgb(255, 255, 255);
 }
 
-.notification__margin-space {
+.margin-space {
   height: 10px;
 }
 
-.top-sample-image {
+.sample-image {
   width: 48vw;
   max-width: 700px;
 }
@@ -628,7 +628,7 @@ margin: auto 0;
     width: 120px;
   }
 
-  .question__room_name {
+  .question__room-name {
     width: 300px;
   }
 
@@ -640,7 +640,7 @@ margin: auto 0;
     width: 334px;
   }
 
-  .question-answer__choose {
+  .answer__choose {
     width: 180px;
   }
 
@@ -648,7 +648,7 @@ margin: auto 0;
     width: 130px;
   }
 
-  .header-right__action {
+  .header-action {
     padding: 0 5px;
     font-size: 14px;
   }
@@ -656,7 +656,7 @@ margin: auto 0;
 
 
 @media (max-width: 600px) {
-  .header-right__action {
+  .header-action {
     padding: 0 1px;
     font-size: 14px;
   }
@@ -676,7 +676,7 @@ margin: auto 0;
     font-size: 14px;
   }
 
-  .login-and-registration__space {
+  .user-action__space {
     top: calc(5vw + 250px);
     width: 100vw;
   }
@@ -685,7 +685,7 @@ margin: auto 0;
     font-size: 14px;
   }
 
-  .what-this-app__space {
+  .app-descriprion {
     top: -6px;
     background-color: #666;
     margin-bottom: 100px;
@@ -703,22 +703,22 @@ margin: auto 0;
 
 
 @media (max-width: 1000px) {
-  .top-question-description__space {
+  .top-question__space {
     display: block;
   }
 
-  .top-sample-image {
+  .sample-image {
     width: 90vw;
     max-width: 800px;
     margin: 0 auto;
   }
 
-  .top-question-description-text__space {
+  .question-text__space {
     width: 90vw;
     font-size: 30px;
   }
 
-  .top-sample-image{
+  .sample-image{
     margin: 0 auto;
     max-width: 700px;
   }

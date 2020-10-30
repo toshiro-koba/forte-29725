@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="question-lists">
+<div class="main-content">
   <div class="icons-space">
     <%= link_to user_path(visitor) do %>
       <% unless visitor.profile == nil %>
@@ -13,8 +13,8 @@
       <% end %>
     <% end %>
   </div>
-  <div class="question-message-set">
-    <div class="question-user-nickname">
+  <div class="question-texts">
+    <div class="question-nickname">
       <%= "#{visitor.nickname}さんが、" %>
       <% case notification.action %>
       <% when 'follow' then %>
@@ -33,5 +33,5 @@
     </div>
   </div>
 </div>
-<div class="notification__margin-space">
+<div class="margin-space">
 </div>

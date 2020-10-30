@@ -16,7 +16,7 @@ RSpec.describe 'お気に入り登録', type: :system do
       find('.my-page').click
 
       # お気に入り登録ページに遷移する
-      find('.game_tag__registration__hover-action').hover
+      find('.game_tag__hover-action').hover
       click_link 'ゲームを登録する'
 
       # 登録したいゲームを選択する
@@ -46,7 +46,7 @@ RSpec.describe 'お気に入り登録', type: :system do
       find('.my-page').click
 
       # お気に入り登録ページに遷移する
-      find('.game_tag__registration__hover-action').hover
+      find('.game_tag__hover-action').hover
       click_link 'ゲームを登録する'
 
       # 登録ボタンを押しても、ブックマークモデルのカウントは上がらないことを確認する

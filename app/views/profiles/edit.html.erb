@@ -2,18 +2,18 @@
 <div class="main__user-profile">
   <%= render partial: "users/user-profile__left", locals: { user: @user } %>
 
-  <div class="user-question-contents">
+  <div class="main-contents">
     <div class="content">
       <div class="index">
-        <div class="index__game_tag">
-          <span class="gift-action-title"><%= "プロフィールを変更" %></span>
+        <div class="index-tag">
+          <span class="action-title"><%= "プロフィールを変更" %></span>
         </div>
-        <div class="index__triangle"></div>
+        <div class="index-decoration"></div>
       </div>
       <div class="room-name">
         <div class="question-space">
           <%= form_with(url: user_profile_path(current_user), model: @profile, local: true, method: :patch) do |f| %>
-            <div class="user-profile-edit-form__space">
+            <div class="user-profile-edit-form">
               <div class="click-upload">
                 <div id="image-list">
                   <% unless @profile == nil %>
@@ -24,8 +24,8 @@
                     <% end %>
                   <% end %>
                 </div>
-                <label for="profile-image", class="image-file-field-label">画像を選択
-                  <%= f.file_field :image, id:"profile-image", class:"image-file-field" %>
+                <label for="profile-image", class="image-label">画像を選択
+                  <%= f.file_field :image, id:"profile-image", class:"image-file" %>
                 </label>
               </div>
 

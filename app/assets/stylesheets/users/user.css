@@ -185,7 +185,7 @@
 }
 /* ここまで、プロフィール登録、編集ホバーアクション！ */
 
-.follow-related__space {
+.follow__space {
   display: flex;
   justify-content: space-around;
   margin: 20px;
@@ -223,7 +223,7 @@
   color: rgb(154, 154, 154);
 }
 
-.gift-action-title {
+.action-title {
   padding: 2px 10px 5px 10px;
   width: fit-content;
   height: 20px;
@@ -231,13 +231,13 @@
   letter-spacing: 0.2em;
 }
 
-.user-question-contents {
+.main-contents {
   color: rgb(154, 154, 154);
   padding: 0 24px;
   width: 624px;
 }
 
-.index-name__bookmark {
+.index-name {
   padding: 2px 10px 5px 3px;
   width: fit-content;
   color: rgb(128, 128, 128);
@@ -263,12 +263,12 @@
   border-radius: 5px;
 }
 
-.game_tag__registration__hover-action {
+.game_tag__hover-action {
   padding: 5px 3px;
   min-height: 31px;
 }
 
-.game_tag__registration__hover-action:hover {
+.game_tag__hover-action:hover {
   text-decoration: underline;
   color: rgb(154, 154, 154);
 }
@@ -278,7 +278,7 @@
   color: rgb(154, 154, 154);
 }
 
-.bookmark-action-title {
+.action-name {
   width: fit-content;
   color: rgb(128, 128, 128);
   font-size: 16px;
@@ -310,7 +310,7 @@
 
 
 /* ここから、お気に入り登録ホバーアクション！ */
-.game-tag__submit-btn__normal {
+.game-tag-btn__normal {
   display: inline-block;
   padding: 4px 8px;
   width: fit-content;
@@ -322,7 +322,7 @@
   display: none;
 }
 
-.game-tag__hover-action:hover .game-tag__submit-btn__normal {
+.game-tag__hover-action:hover .game-tag-btn__normal {
   display: none;
 }
 
@@ -345,7 +345,7 @@
   padding: 20px;
 }
 
-.gift-form__content {
+.gift-form {
   display: flex;
   padding: 10px 0;
 }
@@ -359,7 +359,7 @@
   font-size: 14px;
 }
 
-.gift-form-text__price-space {
+.price__space {
   width: 180px;
   text-align: right;
   padding: 2px 10px;
@@ -371,7 +371,7 @@
   padding: 2px 10px;
 }
 
-.gift-form-text__expiration-date-space {
+.gift-expiration-date {
   width: 180px;
   text-align: right;
   padding: 15px 10px;
@@ -381,7 +381,7 @@
   margin-right: 10px;
 }
 
-.gift-form-text__cvc-space {
+.gift-cvc {
   width: 180px;
   text-align: right;
   padding: 2px 10px;
@@ -421,7 +421,7 @@
   outline: 0;
 }
 
-.gift-form_expiration_date__space {
+.gift-expiration-date__space {
   display: flex;
 }
 
@@ -461,21 +461,21 @@
 
 
 /* ここから、ギフト確定ホバーアクション！ */
-.confirmation-btn-of-gift__normal {
+.gift-submit__normal {
   display: block;
   margin: 0 auto;
   width: 30%;
 }
 
-.confirmation-of-gift__hover-action .confirmation-btn-of-gift__hover {
+.gift-submit__hover-action .gift-submit__hover {
   display: none;
 }
 
-.confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__normal {
+.gift-submit__hover-action:hover .gift-submit__normal {
   display: none;
 }
 
-.confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
+.gift-submit__hover-action:hover .gift-submit__hover {
   display: block;
   margin: 0 auto;
   width: 30%;
@@ -489,21 +489,21 @@
 
 
 /* ここから、かんたんギフトホバーアクション！ */
-.test-btn-of-gift__normal {
+.test-gift__normal {
   display: block;
   margin: 10px auto;
   width: 30%;
 }
 
-.test-gift__hover-action .test-btn-of-gift__hover {
+.test-gift__hover-action .test-submit__hover {
   display: none;
 }
 
-.test-gift__hover-action:hover .test-btn-of-gift__normal {
+.test-gift__hover-action:hover .test-gift__normal {
   display: none;
 }
 
-.test-gift__hover-action:hover .test-btn-of-gift__hover {
+.test-gift__hover-action:hover .test-submit__hover {
   display: block;
   margin: 10px auto;
   width: 30%;
@@ -515,7 +515,7 @@
 }
 /* ここまで、かんたんギフトホバーアクション！ */
 
-.user-profile-edit-form__space {
+.user-profile-edit-form {
   padding: 24px;
 }
 
@@ -523,7 +523,7 @@
   padding: 10px 0;
 }
 
-.image-file-field-label {
+.image-label {
   display: block;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -540,7 +540,7 @@
   border-radius: 3px;
 }
 
-.image-file-field {
+.image-file {
   display: none;
 }
 
@@ -698,15 +698,15 @@
   letter-spacing: 0.03rem;
 }
 
-.login__hover-action .login-btn__hover {
+.login__hover .login-btn__hover {
   display: none;
 }
 
-.login__hover-action:hover .login-btn__normal {
+.login__hover:hover .login-btn__normal {
   display: none;
 }
 
-.login__hover-action:hover .login-btn__hover {
+.login__hover:hover .login-btn__hover {
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
@@ -717,12 +717,12 @@
 /* ここまで、ログインホバーアクション！ */
 
 
-.sign-up-link__hover-action:hover {
+.sign-up__hover:hover {
   text-decoration: underline;
   color: rgb(154, 154, 154);
 }
 
-.sign-up-link {
+.sign-up {
   text-decoration: none;
   color: rgb(154, 154, 154);
 }
@@ -757,7 +757,7 @@
   color: rgb(255, 255, 255);
 }
 
-.header-right__action {
+.header-action {
   text-decoration: none;
   color: rgb(255, 255, 255);
   padding: 0 10px;
@@ -821,7 +821,7 @@
     margin: 0 20px;
   }
 
-  .user-question-contents {
+  .main-contents {
     padding: 0 24px 0 15px;
     width: 100vw;
   }
@@ -830,19 +830,19 @@
     width: 400px;
   }
 
-  .confirmation-btn-of-gift__normal {
+  .gift-submit__normal {
     width: 200px;
   }
 
-  .confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
+  .gift-submit__hover-action:hover .gift-submit__hover {
     width: 200px;
   }
 
-  .test-btn-of-gift__normal {
+  .test-gift__normal {
     width: 200px;
   }
 
-  .test-gift__hover-action:hover .test-btn-of-gift__hover {
+  .test-gift__hover-action:hover .test-submit__hover {
     width: 200px;
   }
 }

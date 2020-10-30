@@ -5,46 +5,46 @@
   <div class="top-title__space" >
     Forte
   </div>
-  <div class="top-content__space top-question-description-text-second__space" >
+  <div class="top-content description__space" >
     <span class="more-forte">「もっと強くなりたい」</span> <br>
     強さを求めるゲーマーへ向けた、一問一答サービスです<br>
   </div>
   <div class="easy-login__space" >
-    <div class="header-right__hover-action easy-login__btn">
-      <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
+    <div class="header__hover-action easy-login__btn">
+      <%= link_to '簡単ログイン', testsessions_path, class:"header-action", method: :post %>
     </div>
   </div>
-  <div class="login-and-registration__space" >
-    <div class="header-right__hover-action normal-login__btn">
-      <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
+  <div class="user-action__space" >
+    <div class="header__hover-action normal-login__btn">
+      <%= link_to 'ログイン', new_user_session_path, class:"header-action" %>
     </div>
-    <div class="header-right__hover-action normal-login__btn">
-      <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+    <div class="header__hover-action normal-login__btn">
+      <%= link_to '新規登録', new_user_registration_path, class:"header-action" %>
     </div>
   </div>
 
-  <div class="what-this-app__space">
+  <div class="app-descriprion">
   What is Forte?
   </div>
-  <div class="top-function-descriptions__space">
-    <div class="top-question-description__space">
-      <div class="top-question-description-all-texts__space">
-        <div class="top-question-description-text__space">トッププレイヤーに質問できます。</div>
-          <div class="top-question-description-text-second__space">
+  <div class="all-descriptions__space">
+    <div class="top-question__space">
+      <div class="question-texts__space">
+        <div class="question-text__space">トッププレイヤーに質問できます。</div>
+          <div class="description__space">
             <span class="more-forte">「もっと強くなりたい!」</span><br>あなたの熱意を応援します!
           </div>
       </div>
-      <div class="top-sample-image"><%= image_tag "top-sample-question.png", class: "top-sample-image" %></div>
+      <div class="sample-image"><%= image_tag "top-sample-question.png", class: "sample-image" %></div>
     </div>
 
-    <div class="top-question-description__space">
-      <div class="top-question-description-all-texts__space">
-        <div class="top-question-description-text__space">金銭的サポートも可能です。</div>
-          <div class="top-question-description-text-second__space">
+    <div class="top-question__space">
+      <div class="question-texts__space">
+        <div class="question-text__space">金銭的サポートも可能です。</div>
+          <div class="description__space">
             <span class="more-forte">感謝を形に</span><br>プレイヤー同士で支援できます
           </div>
       </div>
-      <div class="top-sample-image"><%= image_tag "top-sample-gift.png", class: "top-sample-image" %></div>
+      <div class="sample-image"><%= image_tag "top-sample-gift.png", class: "sample-image" %></div>
     </div>
   </div>
 

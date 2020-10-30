@@ -1,7 +1,7 @@
 <div class="header-line">
   <header>
     <div class="header-left">
-      <%= link_to root_path, class: "link-to__top-page" do %>
+      <%= link_to root_path, class: "top-page" do %>
         <div class="app-name">Forte</div>
       <% end %>
     </div>
@@ -26,14 +26,14 @@
     <label for="user-password-confirmation", class="email-name__space">パスワード確認</label>
     <%= f.password_field :password_confirmation, autocomplete: "off", class:"email__space", id:"user-password-confirmation"%>
 
-    <div class="login__hover-action hover-action">
+    <div class="login__hover hover-action">
       <span class='login-btn__normal btn__normal'>登録する</span>
       <span><%= f.submit "登録する", class: 'login-btn__hover btn__hover'%></span>
     </div>
   <% end %>
 
-  <div class="sign-up-link__hover-action">
-    <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: 'sign-up-link' %>
+  <div class="sign-up__hover">
+    <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: 'sign-up' %>
   </div>
 </div>
 

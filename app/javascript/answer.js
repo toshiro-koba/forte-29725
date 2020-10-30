@@ -16,16 +16,16 @@ function answer() {
         const list = document.getElementById("list-answer");
         const formText = document.getElementById("content-answer");
         const HTML = `
-          <div class="question-lists">
-            <div class="question-message-set">
-              <div class="question-user-nickname">
+          <div class="main-content">
+            <div class="question-texts">
+              <div class="question-nickname">
               ${user.nickname}
               </div>
               <div class="question-sentence">
-                <div class="question-sentence-A">
+                <div class="question-A">
                   A.
                 </div>
-                <div class="question-sentence-message">
+                <div class="question-content">
                 ${message}
                 </div>
               </div>

@@ -2,7 +2,7 @@
   <header>
 
     <div class="header-left">
-      <%= link_to root_path, class: "link-to__top-page" do %>
+      <%= link_to root_path, class: "top-page" do %>
         <div class="app-name">Forte</div>
       <% end %>
       <% if user_signed_in? %>
@@ -56,14 +56,14 @@
         </div>
         </div>
       <% else %>
-      <div class="header-right__hover-action">
-        <%= link_to '簡単ログイン', testsessions_path, class:"header-right__action", method: :post %>
+      <div class="header__hover-action">
+        <%= link_to '簡単ログイン', testsessions_path, class:"header-action", method: :post %>
       </div>
-      <div class="header-right__hover-action">
-        <%= link_to 'ログイン', new_user_session_path, class:"header-right__action" %>
+      <div class="header__hover-action">
+        <%= link_to 'ログイン', new_user_session_path, class:"header-action" %>
       </div>
-      <div class="header-right__hover-action">
-        <%= link_to '新規登録', new_user_registration_path, class:"header-right__action" %>
+      <div class="header__hover-action">
+        <%= link_to '新規登録', new_user_registration_path, class:"header-action" %>
       </div>
       <% end %>
     </div>
