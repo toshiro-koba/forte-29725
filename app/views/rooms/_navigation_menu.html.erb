@@ -5,16 +5,17 @@
       <%= link_to root_path, class: "link-to__top-page" do %>
         <div class="app-name">Forte</div>
       <% end %>
-      <div class="search-form">
-        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-          <span class="fa-stack">
-            <%= form.text_field :keyword, placeholder:"キーワードを入力", class: "search-input fa-lg fa-stack-2x" ,style:"width: 25vw; padding: 5px 5px 5px 32px; font-size: 1em; text-align: left;" %>
-            <i class="fas fa-search fa-lg fa-stack-1x" style="font-size: 1em;"></i>
-          </span>
-          <%= form.submit "検索", type: "hidden", class: "search-btn" %>
-        <% end %>
-      </div>
       <% if user_signed_in? %>
+        <div class="search-form">
+          <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+            <span class="fa-stack">
+              <%= form.text_field :keyword, placeholder:"キーワードを入力", class: "search-input fa-lg fa-stack-2x" ,style:"width: 25vw; padding: 5px 5px 5px 32px; font-size: 1em; text-align: left;" %>
+              <i class="fas fa-search fa-lg fa-stack-1x" style="font-size: 1em;"></i>
+            </span>
+            <%= form.submit "検索", type: "hidden", class: "search-btn" %>
+          <% end %>
+        </div>
+      
         <% unless current_page?(notifications_path) %>
           <%= link_to(notifications_path) do %>
             <span class="fa-stack bell-position">

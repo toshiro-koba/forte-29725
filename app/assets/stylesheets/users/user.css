@@ -66,6 +66,7 @@
   border: 2px solid #ccc;
 }
 
+/* ここから、ホバーアクション共通スタイル */
 .btn__normal {
   display: inline-block;
   font-size: 1.4rem;
@@ -76,92 +77,69 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+.hover-action:hover .btn__hover {
+  display: inline-block;
+  border: 2px solid #ccc;
+  font-size: 1.4rem;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* ここまで、ホバーアクション共通スタイル */
+
+
 /* ここから、フォロー解除ホバーアクション！ */
-
-
 .unfollow__hover-action .unfollow-btn__hover {
   display: none;
 }
-
 
 .unfollow__hover-action:hover .btn__normal {
   display: none;
 }
 
 .unfollow__hover-action:hover .unfollow-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
   background-color: #c9302c;
   border-color: #c9302c;
   color: #fff;
-  margin-bottom: 10px;
 }
 /* ここまで、フォロー解除ホバーアクション！ */
 
 
 /* ここから、フォローホバーアクション！ */
 .follow-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .follow__hover-action .follow-btn__hover {
   display: none;
 }
 
-
 .follow__hover-action:hover .follow-btn__normal {
   display: none;
 }
 
 .follow__hover-action:hover .follow-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
   background-color: rgba(29, 161, 242, 0.1);
   color: rgb(29, 161, 242);
   border-color: rgb(29, 161, 242);
   letter-spacing: 0.07em;
-  margin-bottom: 10px;
 }
 /* ここまで、フォローホバーアクション！ */
 
 
 /* ここから、ギフトホバーアクション！ */
 .gift-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: #ccc;
   border-color:#ccc;
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .gift__hover-action .gift-btn__hover {
@@ -173,63 +151,36 @@
 }
 
 .gift__hover-action:hover .gift-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
-  background-color: rgb(255, 248, 255);
-  color: rgb(220, 66, 228);
-  border-color: rgb(220, 66, 228);
+  background-color: rgb(248, 255, 249);
+  color: #26e109;
+  border-color: #26e109;
   letter-spacing: 0.07em;
   text-decoration: none;
-  margin-bottom: 10px;
 }
 /* ここまで、ギフトホバーアクション！ */
 
 
 /* ここから、プロフィール登録、編集ホバーアクション！ */
 .profile-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: rgb(181, 181, 181);
   border-color:rgb(181, 181, 181);
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .profile__hover-action .profile-btn__hover {
   display: none;
 }
 
-
 .profile__hover-action:hover .profile-btn__normal {
   display: none;
 }
 
 .profile__hover-action:hover .profile-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
-  background-color: rgba(198, 198, 198, 0.219);
+  background-color: rgba(223, 223, 223, 0.219);
   color: rgb(181, 181, 181);
   border-color: rgb(181, 181, 181);
   letter-spacing: 0.07em;
-  margin-bottom: 10px;
   text-decoration: none;
 }
 /* ここまで、プロフィール登録、編集ホバーアクション！ */
@@ -361,16 +312,10 @@
 /* ここから、お気に入り登録ホバーアクション！ */
 .game-tag__submit-btn__normal {
   display: inline-block;
-  border: 2px solid #ccc;
-  padding: 6px 15px;
-  text-align: center;
-  cursor: pointer;
+  padding: 4px 8px;
   width: fit-content;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
   border-radius: 2px;
+  font-size: 16px;
 }
 
 .game-tag__hover-action .game-tag__submit-btn__hover {
@@ -383,18 +328,15 @@
 
 .game-tag__hover-action:hover .game-tag__submit-btn__hover {
   display: inline-block;
-  border: 2px solid #ccc;
-  padding: 6px 15px;
-  text-align: center;
-  cursor: pointer;
+  padding: 4px 8px;
   width: fit-content;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
   letter-spacing: 0.1em;
   text-decoration: none;
   border-radius: 2px;
+  font-size: 16px;
 }
 /* ここまで、お気に入り登録ホバーアクション！ */
 
@@ -481,14 +423,11 @@
 
 .gift-form_expiration_date__space {
   display: flex;
-  /* line-height: 55px; */
-  /* padding-left: 24px; */
 }
 
 .month-20__space {
   padding: 15px 0px;
 }
-
 
 .input-expiration {
   background-color: transparent;
@@ -525,16 +464,7 @@
 .confirmation-btn-of-gift__normal {
   display: block;
   margin: 0 auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
 }
 
 .confirmation-of-gift__hover-action .confirmation-btn-of-gift__hover {
@@ -548,16 +478,10 @@
 .confirmation-of-gift__hover-action:hover .confirmation-btn-of-gift__hover {
   display: block;
   margin: 0 auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  font-weight: bold;
-  background-color: rgb(255, 248, 255);
-  color: rgb(220, 66, 228);
-  border-color: rgb(220, 66, 228);
+  background-color: rgb(248, 255, 249);
+  color: #26e109;
+  border-color: #26e109;
   letter-spacing: 0.07em;
   text-decoration: none;
 }
@@ -568,16 +492,7 @@
 .test-btn-of-gift__normal {
   display: block;
   margin: 10px auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  background-color: #ffffff;
-  color: #ccc;
-  border-color:#ccc;
-  font-weight: bold;
 }
 
 .test-gift__hover-action .test-btn-of-gift__hover {
@@ -591,16 +506,10 @@
 .test-gift__hover-action:hover .test-btn-of-gift__hover {
   display: block;
   margin: 10px auto;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 30%;
-  font-weight: bold;
-  background-color: rgb(255, 255, 255);
-  color: rgb(228, 182, 66);
-  border-color: rgb(228, 182, 66);
+  background-color: rgb(255, 254, 242);
+  color: rgb(250, 191, 42);
+  border-color: rgb(250, 191, 42);
   letter-spacing: 0.07em;
   text-decoration: none;
 }
@@ -647,11 +556,14 @@
   font-weight: bold;
 }
 
+.user-nickname-edit__hover-action {
+  padding-top: 4px;
+}
+
 .user-nickname-edit__hover-action:hover {
   text-decoration: underline;
   color: rgb(154, 154, 154);
   font-size: 13px;
-  padding-top: 4px;
 }
 
 .user-nickname-edit__hover {
@@ -698,7 +610,6 @@
 .form-text-area {
   resize: none;
   min-height: 100px;
-  /* height: fit-content; */
   width: 518px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 3px;
@@ -714,15 +625,10 @@
   display: block;
   margin-bottom: 20px;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 20%;
   background-color: #ffffff;
   color: #ccc;
   border-color:#ccc;
-  font-weight: bold;
   letter-spacing: 0.5rem;
 }
 
@@ -737,13 +643,7 @@
 .user-edit__hover-action:hover .user-edit__hover {
   display: block;
   margin-bottom: 20px;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
   width: 20%;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
@@ -756,7 +656,6 @@
 .user-session__space {
   width: 800px;
   height: fit-content;
-  /* fit contentに変更予定！ */
   margin: 60px auto 0;
   background-color: rgb(255, 255, 255);
   padding: 20px 300px;
@@ -789,21 +688,12 @@
   outline: 0;
 }
 
-
 /* ここから、ログインホバーアクション！ */
 .login-btn__normal {
-  display: inline-block;
   border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
   background-color: #ffffff;
   color: #ccc;
   border-color:#ccc;
-  font-weight: bold;
-  margin-bottom: 10px;
   margin-top: 20px;
   letter-spacing: 0.03rem;
 }
@@ -817,20 +707,12 @@
 }
 
 .login__hover-action:hover .login-btn__hover {
-  display: inline-block;
-  border: 2px solid #ccc;
-  font-size: 1.4rem;
-  padding: 4px 0;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
   background-color: rgb(255, 248, 255);
   color: rgb(220, 66, 228);
   border-color: rgb(220, 66, 228);
   text-decoration: none;
-  margin-bottom: 10px;
   margin-top: 20px;
+  letter-spacing: 0.01rem;
 }
 /* ここまで、ログインホバーアクション！ */
 
@@ -851,16 +733,19 @@
   border: 1px solid #ddd;
   border-radius: 2px;
 }
+
 #error_explanation h2 {
   margin-bottom: 10px;
   color: #d65f4c;
   font-size: 14px;
 }
+
 #error_explanation ul {
   margin: 0;
   padding-left: 17px;
   list-style: square;
 }
+
 #error_explanation li {
   margin: 0;
   padding: 0;
@@ -890,9 +775,6 @@
   padding: 2px 0 4px 2px;
 }
 
-.panel {
-}
-
 .modal-panel-back {
   position: fixed;
   width: 100%;
@@ -903,9 +785,11 @@
   left: 0;
   background-color: rgba(200,200,200,.5);
 }
+
 .modal-panel-back.disable {
   display: none;
 }
+
 .modal-panel {
   max-width: 600px;
   width: calc(100vw - 60px);
@@ -961,6 +845,4 @@
   .test-gift__hover-action:hover .test-btn-of-gift__hover {
     width: 200px;
   }
-
-
 }

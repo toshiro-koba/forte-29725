@@ -31,7 +31,7 @@ RSpec.describe Gift, type: :model do
       end
 
       it 'priceが50,000円超過では、ギフトできない' do
-        @gift.price = 50001
+        @gift.price = 50_001
         @gift.valid?
         expect(@gift.errors.full_messages).to include('Price Out of setting range')
       end

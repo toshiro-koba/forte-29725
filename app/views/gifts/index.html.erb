@@ -93,14 +93,14 @@
               <span><%= f.text_field :cvc,class:"input-default-cvc", id:"card-cvc", maxlength:"4" %></span>
             </div>
 
-            <div class="confirmation-of-gift__hover-action">
-              <label for="gifting-btn", class='confirmation-btn-of-gift__normal'>ギフトを確定</label>
-              <%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover", id:"gifting-btn" %>
+            <div class="confirmation-of-gift__hover-action hover-action">
+              <label for="gifting-btn", class='gift-btn__normal confirmation-btn-of-gift__normal btn__normal'>ギフトを確定</label>
+              <%= f.submit "ギフトを確定" ,class:"confirmation-btn-of-gift__hover btn__hover", id:"gifting-btn" %>
             </div>
 
-            <div class="test-gift__hover-action">
-              <label for="gifting-btn", class='test-btn-of-gift__normal'>簡単ギフト</label>
-              <%= link_to '簡単ギフト', testgifting_user_path(@reciver), method: :post, class:"test-btn-of-gift__hover" %>
+            <div class="test-gift__hover-action hover-action">
+              <label for="gifting-btn", class='gift-btn__normal test-btn-of-gift__normal btn__normal'>簡単ギフト</label>
+              <%= link_to '簡単ギフト', testgifting_user_path(@reciver), method: :post, class:"test-btn-of-gift__hover btn__hover" %>
             </div>
           <% end %>
         </div>

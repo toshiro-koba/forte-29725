@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def followers
     @user = User.find(params[:id])
     @all_followers = @user.followers
-    @all_followers= Kaminari.paginate_array(@all_followers).page(params[:page]).per(10)
+    @all_followers = Kaminari.paginate_array(@all_followers).page(params[:page]).per(10)
   end
 
   def gift_history

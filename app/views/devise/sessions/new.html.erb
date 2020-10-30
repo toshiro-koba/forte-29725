@@ -20,9 +20,9 @@
     <label for="user-password", class="email-name__space">パスワード</label>
     <%= f.password_field :password, autocomplete: "off", class:"email__space", id:"user-password"%>
 
-    <div class="login__hover-action">
-      <span class='login-btn__normal'>ログイン</span>
-      <span><%= f.submit "ログイン", class: 'login-btn__hover' %></span>
+    <div class="login__hover-action hover-action">
+      <span class='login-btn__normal btn__normal'>ログイン</span>
+      <span><%= f.submit "ログイン", class: 'login-btn__hover btn__hover' %></span>
     </div>
   <% end %>
 

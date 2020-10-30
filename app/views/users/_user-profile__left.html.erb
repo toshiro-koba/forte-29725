@@ -36,32 +36,40 @@
   <% end %>
 
   <% if user == current_user %>
-       <div class="profile__hover-action">
+       <div class="profile__hover-action hover-action">
     <% if user.profile == nil %>
-        <span class='profile-btn__normal'>プロフィールを登録</span>
-        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>プロフィールを登録</span>
+        <span><%= link_to "プロフィールを登録", new_user_profile_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
     <% else %>
       <% unless current_page?("/users/#{current_user.id}/bookmarks") || current_page?("/users/#{current_user.id}/bookmarks/new") || current_page?("/notifications") %>
-        <span class='profile-btn__normal'>プロフィールを編集</span>
-        <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>プロフィールを編集</span>
+        <span><%= link_to "プロフィールを編集", edit_user_profile_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
       <% else %>
-        <span class='profile-btn__normal'>マイページに戻る</span>
-        <span><%= link_to "マイページに戻る", user_path(current_user), class: 'profile-btn__hover' %></span>
+        <span class='profile-btn__normal btn__normal'>マイページに戻る</span>
+        <span><%= link_to "マイページに戻る", user_path(current_user), class: 'profile-btn__hover btn__hover' %></span>
       <% end %>
     <% end %>
     </div>
 
-    <div class="gift__hover-action">
-      <span class='gift-btn__normal'>ギフト情報</span>
-      <span><%= link_to 'ギフト情報', gift_history_user_path(user), class: 'gift-btn__hover' %></span>
+    <div class="gift__hover-action hover-action">
+      <span class='gift-btn__normal btn__normal'><i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i> ギフト情報</span>
+      <span>
+        <%= link_to gift_history_user_path(user), class: 'gift-btn__hover btn__hover' do %>
+          <i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i><%= ' ギフト情報' %>
+        <% end %>
+      </span>
     </div>
 
   <% elsif user_signed_in? %>
     <%= render 'relationships/follow_button', user: user %>
 
-    <div class="gift__hover-action">
-      <span class='gift-btn__normal'>ギフト</span>
-      <span><%= link_to 'ギフト', user_gifts_path(user), class: 'gift-btn__hover' %></span>
+    <div class="gift__hover-action hover-action">
+      <span class='gift-btn__normal btn__normal'><i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i> ギフトする</span>
+      <span>
+        <%= link_to user_gifts_path(user), class: 'gift-btn__hover btn__hover' do %>
+          <i class="fas fa-gift" style="color: rgb(255, 62, 62);"></i><%= ' ギフトする' %>
+        <% end %>
+      </span>
     </div>
     
   <% else %>

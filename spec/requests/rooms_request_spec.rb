@@ -16,11 +16,6 @@ RSpec.describe 'RoomsController', type: :request do
       get root_path
       expect(response.status).to eq 200
     end
-
-    it 'indexアクションにリクエストするとレスポンスに質問検索フォームが存在する' do
-      get root_path
-      expect(response.body).to include 'キーワードを入力'
-    end
   end
 
   describe 'new' do

@@ -27,14 +27,10 @@ li {
 .question-form__input {
   float: left;
   width: 66%;
-  /* line-height: 30px; */
   padding: 5px 10px;
-  /* box-sizing: border-box; */
   border-color: rgb(240, 240, 240);
   resize: none;
 }
-
-
 
 .question-form__field {
   margin-bottom: 10px;
@@ -112,7 +108,6 @@ select {
   margin: 0 10px 0 20px;
 }
 
-
 .question-lists {
   display: flex;
 }
@@ -154,20 +149,19 @@ select {
 .question-user-icon {
   width: 50px;
   height: 50px;
-  border-radius: 50%; /*画像を丸くする！！*/
+  border-radius: 50%;
   border: rgb(222, 222, 222) solid thin;
 }
 
 .answer-user-icon {
   width: 50px;
   height: 50px;
-  border-radius: 50%; /*画像を丸くする！！*/
+  border-radius: 50%;
 }
 
 .fa-trash {
   font-size: 1em;
 }
-
 /* ここまで！　質問の一覧表示！ */
 
 html {
@@ -186,7 +180,6 @@ body.modal-open {
   padding-right: 15px;
 }
 
-
 main {
   width: 800px; 
   margin: 0 auto;
@@ -197,12 +190,9 @@ main {
   min-height: 100vh;
 }
 
-
-
 header {
   height: 55px;
   background-color: rgb(220, 66, 228);
-  /* background-image: linear-gradient(260deg,rgb(236, 122, 242),  rgb(220, 66, 228)); */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -216,8 +206,6 @@ header {
   height: 55px;
   width:  100vw;
   background-color: rgb(220, 66, 228);
-  /* background-image: linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201)); */
-  /* border-bottom:bold 2px, linear-gradient(260deg,rgb(254, 95, 230),  rgb(191, 4, 201)); */
 }
 
 .header-left {
@@ -249,7 +237,6 @@ header {
   cursor: pointer;
   top: 27px;
   left: -17px;
-  /* z-index: 2; */
   height: 100px;
   width: 80px;
   text-align: right;
@@ -260,10 +247,8 @@ header {
 }
 
 .more ul.more_list {
-  /* position: absolute; */
   text-align: left;
   width: 80px;
-  /* right: 0; */
   font-size: 12px;
   background-color: #fff;
   border: 0px;
@@ -343,8 +328,6 @@ header {
   outline: none;
 }
 
-
-
 .question-game-tag__choose {
   background-color: transparent;
   width: 200px;
@@ -372,7 +355,6 @@ header {
 .question__room_name:focus {
   outline: 0;
 }
-
 
 .question__room_content {
   resize: none;
@@ -436,8 +418,6 @@ header {
   outline: 0;
 }
 
-
-
 .question-option__space {
   display: flex;
 }
@@ -457,7 +437,6 @@ header {
 }
 
 .qiita-test-sub {
-  /* display: flex; */
   text-align: center;
 }
 
@@ -491,10 +470,6 @@ margin: auto 0;
   position: absolute;
   width: 100vw;
   left: 0;
-}
-
-.top-page-image__space {
-
 }
 
 .top-page-image {
@@ -582,7 +557,6 @@ margin: auto 0;
 .top-question-description-text__space {
   width: 50vw;
   text-align: center;
-  /* font-size: 20px; */
   font-weight: bolder;
   font-size: 2.5rem;
   letter-spacing: 0.2rem;
@@ -604,7 +578,6 @@ margin: auto 0;
   margin-bottom: 7px;
 }
 
-
 .notification-header-font {
   color: rgb(255, 255, 255);
 }
@@ -624,36 +597,24 @@ margin: auto 0;
   display: flex;
   justify-content: flex-start;
 }
+
 .pagination span{
   text-align: center;
   width: fit-content;
-}
-.pagination span:hover{
-
-}
-.pagination span a:hover{
-
 }
 
 .test-space {
   color: rgb(244, 244, 244);
 }
 
+
 @media (max-width: 512px) {
   main {
-    width: 90%; 
-    /* margin: 0 auto;
-    letter-spacing: 0.1em;
-    font-size: 16px;
-    color: #666;
-    flex: 1; 
-    min-height: 100vh; */
+    width: 90%;
   }
 
   header {
     height: 55px;
-    /* width:  100vw; */
-    /* background-color: rgb(206, 43, 214); */
     background-color: rgb(220, 66, 228);
     display: flex;
     justify-content: space-between;
@@ -692,6 +653,7 @@ margin: auto 0;
     font-size: 14px;
   }
 }
+
 
 @media (max-width: 600px) {
   .header-right__action {
@@ -739,6 +701,7 @@ margin: auto 0;
   }
 }
 
+
 @media (max-width: 1000px) {
   .top-question-description__space {
     display: block;
@@ -759,5 +722,4 @@ margin: auto 0;
     margin: 0 auto;
     max-width: 700px;
   }
-
 }

@@ -14,7 +14,6 @@ RSpec.describe 'Bookmarks', type: :request do
     end
   end
 
-
   describe 'destroy' do
     example 'ユーザー詳細ページへリダイレクトされること' do
       delete user_bookmark_path(@user, @bookmark)
