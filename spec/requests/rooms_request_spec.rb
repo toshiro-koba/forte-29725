@@ -32,10 +32,4 @@ RSpec.describe 'RoomsController', type: :request do
     end
   end
 
-  describe 'search' do
-    example 'リクエストが成功すること' do
-      get search_rooms_path
-      expect(response.status).to eq 200
-    end
-  end
 end
