@@ -1,20 +1,14 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
-    @users = User.all
-    @other_questions = []
     if user_signed_in?
-      @questions = []
-      @temporary_questions = Entry.where(user_id: current_user.id).order('created_at DESC')
-      @temporary_questions.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
-        @questions << entry.room
-      end
-      @temporary_other_questions = @rooms - @questions
-      @temporary_other_questions.each do |room|
-        @other_questions << room if room.messages.size == 2
-      end
-      @other_questions = Kaminari.paginate_array(@other_questions).page(params[:page]).per(10)
+      rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
+      @users = User.all
+      @questions = Room.questions(current_user, rooms)
+      other_questions = Room.other_questions
+      @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(10)
     end
+
+    # 質問フォーム用の変数
     @room = RoomMessage.new
     @message = Message.new
   end
@@ -44,22 +38,9 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.search(params[:keyword])
-    @other_questions = []
-    if user_signed_in?
-      @questions = []
-      @rooms.each do |room|
-        @questions << room if room.user_ids.include?(current_user.id)
-      end
-      @temporary_other_questions = @rooms - @questions
-      @temporary_other_questions.each do |room|
-        @other_questions << room if room.messages.size == 2
-      end
-    else
-      @rooms.each do |room|
-        @other_questions << room if room.messages.size == 2
-      end
-    end
+    @questions = Room.search(current_user, params[:keyword])
+    other_questions = Room.search_other_questions
+    @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(10)
   end
 
   private
