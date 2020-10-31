@@ -4,11 +4,7 @@ class BookmarksController < ApplicationController
     @user = User.find(params[:user_id])
     @profile = Profile.find_by(user: current_user) unless @user.profile.nil?
     redirect_to root_path unless @user == current_user
-    @bookmarked_games = Bookmark.where(user_id: current_user.id)
-    @bookmarked_game_tags = [] # 現在のユーザーがすでにお気に入り登録した(bookmarkの)レコード一覧！！
-    @bookmarked_games.each do |tag|
-      @bookmarked_game_tags << tag.game_tag.id
-    end
+    @bookmarked_games = Bookmark.games(current_user)
   end
 
   def new; end
