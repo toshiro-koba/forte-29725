@@ -14,12 +14,63 @@ class Room < ApplicationRecord
 
   validates :question_title, presence: true
 
-  def self.search(search)
-    if search != ''
-      Room.where('question_title LIKE(?)', "%#{search}%")
-    else
-      Room.all
+  # 質問一覧表示
+  def self.questions(current_user,rooms)
+    @rooms = rooms
+    @questions = []
+    temporary_questions = Entry.where(user_id: current_user.id).order('created_at DESC')
+    temporary_questions.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
+      @questions << entry.room
     end
+    return @questions
+  end
+
+  def self.other_questions
+    other_questions = []
+    temporary_other_questions = @rooms - @questions
+    temporary_other_questions.each do |room|
+      other_questions << room if room.messages.size == 2
+    end
+    return other_questions
+  end
+
+  # 質問検索
+  def self.search(current_user, search)
+    @search_questions = []
+    if search != ''
+      @rooms = Room.where('question_title LIKE(?)', "%#{search}%")
+    else
+      @rooms = Room.all
+    end
+    @rooms.each do |room|
+      @search_questions << room if room.user_ids.include?(current_user.id)
+    end
+      return @search_questions
+  end
+
+  def self.search_other_questions
+    other_questions = []
+    temporary_other_questions = @rooms - @search_questions
+    temporary_other_questions.each do |room|
+      other_questions << room if room.messages.size == 2
+    end
+    return other_questions
+  end
+
+  # ユーザー詳細ページにおける、質問一覧表示
+  def self.user_questions(user,rooms)
+    questions = []
+    @user_other_questions = []
+    temporary_questions = Entry.where(user_id: user.id).order('created_at DESC')
+    temporary_questions.each do |entry|
+      questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == user
+      @user_other_questions << entry.room if entry.room.messages[0].user == user
+    end
+    return questions
+  end
+
+  def self.user_other_questions
+    return @user_other_questions
   end
 
   def liked_by?(user)

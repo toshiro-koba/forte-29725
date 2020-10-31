@@ -1,8 +1,9 @@
 class GiftsController < ApplicationController
+  before_action :check_sign_in,    only: [:index]
+
   def index
-    redirect_to new_user_session_path unless user_signed_in?
-    @reciver = User.find(params[:user_id])
     @user = User.find(params[:user_id])
+    @reciver = User.find(params[:user_id])
     redirect_to root_path if @reciver == current_user
     @gift = Gift.new
   end
@@ -47,5 +48,9 @@ class GiftsController < ApplicationController
       card: params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+  def check_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

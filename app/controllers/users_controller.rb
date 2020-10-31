@@ -11,19 +11,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @room = RoomMessage.new
-    @message = Message.new
-
-    @rooms = Room.all.order('created_at DESC')
-    @questions = []
-    @other_questions = []
-    @temporary_questions = Entry.where(user_id: @user.id).order('created_at DESC')
-    @temporary_questions.each do |entry|
-      @questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == @user
-      @other_questions << entry.room if entry.room.messages[0].user == @user
-    end
-    @questions = Kaminari.paginate_array(@questions).page(params[:page]).per(5)
-    @other_questions = Kaminari.paginate_array(@other_questions).page(params[:page]).per(5)
+    rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
+    questions = Room.user_questions(@user, rooms)
+    other_questions = Room.user_other_questions
+    @questions = Kaminari.paginate_array(questions).page(params[:page]).per(5)
+    @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(5)
   end
 
   def following
