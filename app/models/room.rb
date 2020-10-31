@@ -57,6 +57,22 @@ class Room < ApplicationRecord
     return other_questions
   end
 
+  # ユーザー詳細ページにおける、質問一覧表示
+  def self.user_questions(user,rooms)
+    questions = []
+    @user_other_questions = []
+    temporary_questions = Entry.where(user_id: user.id).order('created_at DESC')
+    temporary_questions.each do |entry|
+      questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == user
+      @user_other_questions << entry.room if entry.room.messages[0].user == user
+    end
+    return questions
+  end
+
+  def self.user_other_questions
+    return @user_other_questions
+  end
+
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
