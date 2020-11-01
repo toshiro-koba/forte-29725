@@ -193,6 +193,7 @@
 
 .followings__space {
   display: flex;
+  align-items: center;
 }
 
 .followings__hover-action {
@@ -211,6 +212,7 @@
 
 .followers__space {
   display: flex;
+  align-items: center;
 }
 
 .followers__hover-action:hover {
