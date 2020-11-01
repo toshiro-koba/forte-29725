@@ -2,7 +2,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
   document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById('image-list');
     document.getElementById('profile-image').addEventListener('change', function(e){
-      const imageContent = document.querySelector('img');
+      const imageContent = document.getElementById('before_image');
       if (imageContent){
         imageContent.remove();
       }
