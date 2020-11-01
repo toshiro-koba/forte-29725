@@ -55,6 +55,7 @@
           </ul>
         </div>
         </div>
+      <% elsif current_page?(root_path) %>
       <% else %>
       <div class="header__hover-action">
         <%= link_to '簡単ログイン', testsessions_path, class:"header-action", method: :post %>
