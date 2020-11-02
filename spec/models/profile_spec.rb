@@ -23,7 +23,7 @@ RSpec.describe Profile, type: :model do
     it 'userが紐付いていないと保存できないこと' do
       @profile.user = nil
       @profile.valid?
-      expect(@profile.errors.full_messages).to include('User must exist')
+      expect(@profile.errors.full_messages).to include('ユーザーを入力してください')
     end
   end
 

@@ -13,7 +13,7 @@ RSpec.describe GameTag, type: :model do
     it 'game_titleが空では登録できないこと' do
       @game_tag.game_title = nil
       @game_tag.valid?
-      expect(@game_tag.errors.full_messages).to include("Game title can't be blank")
+      expect(@game_tag.errors.full_messages).to include("ゲームタイトルを入力してください")
     end
   end
 end

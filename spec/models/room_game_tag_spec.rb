@@ -13,13 +13,13 @@ RSpec.describe RoomGameTag, type: :model do
     it 'roomが紐付いていないと保存できないこと' do
       @room_game_tag.room = nil
       @room_game_tag.valid?
-      expect(@room_game_tag.errors.full_messages).to include('Room must exist')
+      expect(@room_game_tag.errors.full_messages).to include('質問を入力してください')
     end
 
     it 'game_tagが紐付いていないと保存できないこと' do
       @room_game_tag.game_tag = nil
       @room_game_tag.valid?
-      expect(@room_game_tag.errors.full_messages).to include('Game tag must exist')
+      expect(@room_game_tag.errors.full_messages).to include('ゲームタイトルを入力してください')
     end
   end
 end
