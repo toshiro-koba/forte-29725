@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      gift:
+        price: 金額
+        token: カード情報
+        giver: ギフトを受け取る人
+        user: ギフトを贈る人
+      game_tag:
+        game_title: ゲームタイトル
+      bookmark:
+        game_tag: ゲームタグ
+        user: ユーザー
+      like:
+        room: 質問
+        user: いいねした人
+      message:
+        content: ''
+        room: 質問
+        user: 質問者または回答者
+      profile:
+        user: ユーザー
+      relationship:
+        follow: フォローする人
+      room_game_tag:
+        room: 質問
+        game_tag: ゲームタイトル
+      room:
+        question_title: 質問タイトル
