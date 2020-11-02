@@ -17,6 +17,6 @@ RSpec.describe Relationship, type: :model do
   it 'followが紐付いていないとフォローできないこと' do
     active.follow = nil
     active.valid?
-    expect(active.errors.full_messages).to include('Follow must exist')
+    expect(active.errors.full_messages).to include('フォローする人を入力してください')
   end
 end

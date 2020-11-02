@@ -13,13 +13,13 @@ RSpec.describe Bookmark, type: :model do
     it 'game_tagが紐付いていないと保存できないこと' do
       @bookmark.game_tag = nil
       @bookmark.valid?
-      expect(@bookmark.errors.full_messages).to include('Game tag must exist')
+      expect(@bookmark.errors.full_messages).to include('ゲームタグを入力してください')
     end
 
     it 'userが紐付いていないと保存できないこと' do
       @bookmark.user = nil
       @bookmark.valid?
-      expect(@bookmark.errors.full_messages).to include('User must exist')
+      expect(@bookmark.errors.full_messages).to include('ユーザーを入力してください')
     end
   end
 end
