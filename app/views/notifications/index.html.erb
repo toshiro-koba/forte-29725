@@ -15,6 +15,7 @@
           <% @notifications.each do |notification| %>
             <%= render partial: "notifications/notification", locals: { notification: notification } %>
           <% end %>
+          <%= paginate @notifications %>
           <% else %>
             <%= "通知はありません" %>
           <% end %>
