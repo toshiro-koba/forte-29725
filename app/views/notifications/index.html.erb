@@ -11,9 +11,11 @@
       </div>
       <div class="room-name">
         <div class="question-space">
-          <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-          <% if @notifications.exists? %>
-            <%= render partial: "notifications/notification", collection: @notifications %>
+          <% if @notifications != nil %>
+          <% @notifications.each do |notification| %>
+            <%= render partial: "notifications/notification", locals: { notification: notification } %>
+          <% end %>
+          <%= paginate @notifications %>
           <% else %>
             <%= "通知はありません" %>
           <% end %>
