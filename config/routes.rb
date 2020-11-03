@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
   resources :testsessions, only: :create
   resources :notifications, only: :index
+  resources :game_tags, only: %i[] do
+    collection do
+      get 'tag_search'
+    end
+  end
 end
