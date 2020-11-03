@@ -17,7 +17,9 @@
         <div class="game_tag__space">
           <% Bookmark.where(user_id: @user.id).each do |game| %>
             <div class="game_tag">
-              <%= game.game_tag.game_title %>
+              <%= link_to tag_search_game_tag_path(game.game_tag.id), class: 'game_tag__registration' do %>
+                <%= game.game_tag.game_title %>
+              <% end %>
             </div>
           <% end %>
 
