@@ -1,0 +1,2 @@
+module GameTagsHelper
+end
