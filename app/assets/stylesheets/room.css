@@ -18,6 +18,10 @@ li {
   box-sizing: border-box;
 }
 
+.lets-question {
+  color: #26E10E;
+}
+
 .question-form__label {
   line-height: 50px;
   font-weight: bold;
