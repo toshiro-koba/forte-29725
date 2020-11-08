@@ -95,7 +95,7 @@
 <img width="800px" alt="forteインフラ図" src="https://user-images.githubusercontent.com/56726628/96541781-afb5d800-12db-11eb-81d6-7fd92e55ab9e.png">
 
 ### テスト
-- RSpec(単体/結合) 合計68個
+- RSpec(単体/結合) 合計74個
 - circleCIを用いてテスト環境のdockerコンテナを作成し、自動テスト
 
 ### その他技術
