@@ -3,9 +3,10 @@
     <div class="main-content">
       <div class="icons-space">
         <%= link_to user_path(question.messages[i].user) do %>
-          <% unless question.messages[i].user.profile == nil %>
-            <% if question.messages[i].user.profile.image? %>
-              <%= image_tag(question.messages[i].user.profile.image.thumb50.url, class: "question-user-icon")%>
+          <% profile = question.messages[i].user.profile %>
+          <% if profile %>
+            <% if profile.image? %>
+              <%= image_tag(profile.image.thumb50.url, class: "question-user-icon")%>
             <% end %>
           <% else %>
             <% if question.messages.size == 1 %>
