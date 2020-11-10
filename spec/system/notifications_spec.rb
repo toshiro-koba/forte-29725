@@ -20,7 +20,9 @@ RSpec.describe "Notifications", type: :system do
 
       # 値をテキストフォームに入力する
       post = '質問テスト'
-      select @user.nickname, from: 'room[user_ids][]'
+      within '.question-form' do # スコープを絞る
+        select @user.nickname, from: 'room[user_ids][]', match: :first
+      end
       select @game_tag.game_title, from: 'room[game_tag_ids][]'
       fill_in 'room_message[question_title]', with: post
       fill_in 'room_message[content]', with: post
@@ -40,6 +42,7 @@ RSpec.describe "Notifications", type: :system do
       # 回答して欲しいユーザーでログインし直す
       sign_out(@entry.user)
       sign_in(@user)
+      sleep 1.0
 
       # 値をテキストフォームに入力する
       post = '回答テスト'
@@ -67,7 +70,7 @@ RSpec.describe "Notifications", type: :system do
       expect(page).to have_content("#{@other_user.nickname}の詳細ページ")
 
       # フォローする相手のユーザー詳細ページに遷移する
-      click_link "#{@other_user.nickname}の詳細ページ"
+      click_link "#{@other_user.nickname}の詳細ページ", match: :first
 
       # ユーザー詳細ページに遷移していることを確認する
       expect(current_path).to eq user_path(@other_user)
@@ -86,7 +89,6 @@ RSpec.describe "Notifications", type: :system do
       # サインインする
       sign_in(@user)
       sleep 1.0
-      expect(page).to have_content("#{@other_user.nickname}の詳細ページ")
 
       # フォローする相手のユーザー詳細ページに遷移する
       click_link "#{@other_user.nickname}の詳細ページ"
