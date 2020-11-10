@@ -42,6 +42,7 @@ RSpec.describe "Notifications", type: :system do
       # 回答して欲しいユーザーでログインし直す
       sign_out(@entry.user)
       sign_in(@user)
+      sleep 1.0
 
       # 値をテキストフォームに入力する
       post = '回答テスト'
@@ -88,7 +89,6 @@ RSpec.describe "Notifications", type: :system do
       # サインインする
       sign_in(@user)
       sleep 1.0
-      expect(page).to have_content("#{@other_user.nickname}の詳細ページ")
 
       # フォローする相手のユーザー詳細ページに遷移する
       click_link "#{@other_user.nickname}の詳細ページ"
