@@ -16,9 +16,10 @@
         <div class="main-content">
           <div class="icons-space">
             <%= link_to user_path(question.entries[0].user) do %>
-              <% unless question.entries[0].user.profile == nil %>
-                <% if question.entries[0].user.profile.image? %>
-                  <%= image_tag(question.entries[0].user.profile.image.thumb50.url, class: "question-user-icon")%>
+              <% profile_0 = question.entries[0].user.profile %>
+              <% if profile_0 %>
+                <% if profile_0.image? %>
+                  <%= image_tag(profile_0.image.thumb50.url, class: "question-user-icon")%>
                 <% end %>
               <% else %>
                 <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
