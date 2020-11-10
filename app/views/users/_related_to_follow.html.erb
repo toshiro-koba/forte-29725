@@ -1,9 +1,10 @@
 <div class="main-content">
+  <% profile = user.profile %>
   <div class="icons-space">
     <%= link_to user_path(user) do %>
-      <% unless user.profile == nil %>
-        <% if user.profile.image? %>
-          <%= image_tag(user.profile.image.thumb50.url, class: "question-user-icon")%>
+      <% if profile %>
+        <% if profile.image? %>
+          <%= image_tag(profile.image.thumb50.url, class: "question-user-icon")%>
         <% end %>
       <% else %>
         <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
@@ -18,9 +19,9 @@
 
     <div class="question-sentence">
       <div class="question-content">
-        <% unless user.profile == nil %>
-          <% if user.profile.self_introduction? %>
-            <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
+        <% if profile %>
+          <% if profile.self_introduction? %>
+            <span class="self_introduction"><%= safe_join(profile.self_introduction.split("\n"),tag(:br))%></span>
           <% end %>
         <% end %>
       </div>
