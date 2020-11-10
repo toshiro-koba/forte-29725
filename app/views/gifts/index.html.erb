@@ -14,9 +14,10 @@
 
         <div class="gift-users">
           <div class="gift-image__space">
-          <% unless current_user.profile == nil %>
-            <% if current_user.profile.image? %>
-              <%= image_tag(current_user.profile.image.thumb100.url, class: "user-profile-icon") %>
+          <% profile_giver = current_user.profile %>
+          <% if profile_giver %>
+            <% if profile_giver.image? %>
+              <%= image_tag(profile_giver.image.thumb100.url, class: "user-profile-icon") %>
             <% else %>
               <%= image_tag "default.jpg", class: "user-profile-icon" %>
             <% end %>
@@ -32,9 +33,10 @@
           </div>
 
           <div class="gift-image__space">
-            <% unless @reciver.profile == nil %>
-              <% if @reciver.profile.image? %>
-                <%= image_tag(@reciver.profile.image.thumb100.url, class: "user-profile-icon") %>
+            <% profile_reciver = @reciver.profile %>
+            <% if profile_reciver %>
+              <% if profile_reciver.image? %>
+                <%= image_tag(profile_reciver.image.thumb100.url, class: "user-profile-icon") %>
               <% else %>
                 <%= image_tag "default.jpg", class: "user-profile-icon" %>
               <% end %>
