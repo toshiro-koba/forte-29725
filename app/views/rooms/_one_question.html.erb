@@ -1,15 +1,16 @@
-<% unless question.messages[0] == nil %>
-  <% question.messages.size.times do |i| %>
+<% messages = question.messages %>
+<% if messages[0] %>
+  <% messages.size.times do |i| %>
     <div class="main-content">
       <div class="icons-space">
-        <%= link_to user_path(question.messages[i].user) do %>
-          <% profile = question.messages[i].user.profile %>
+        <%= link_to user_path(messages[i].user) do %>
+          <% profile = messages[i].user.profile %>
           <% if profile %>
             <% if profile.image? %>
               <%= image_tag(profile.image.thumb50.url, class: "question-user-icon")%>
             <% end %>
           <% else %>
-            <% if question.messages.size == 1 %>
+            <% if messages.size == 1 %>
               <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
             <% else %>
               <%= image_tag "answer_user_icon.png", class:"answer-user-icon" %>
@@ -19,7 +20,7 @@
       </div>
       <div class="question-texts">
         <div class="question-nickname">
-          <%= question.messages[i].user.nickname %>
+          <%= messages[i].user.nickname %>
         </div>
         <div class="question-sentence">
           <% if i == 0 %>
@@ -32,7 +33,7 @@
             </div>
           <% end %>
           <div class="question-content">
-            <%= safe_join("#{question.messages[i].content}".split("\n"),tag(:br))%>
+            <%= safe_join("#{messages[i].content}".split("\n"),tag(:br))%>
           </div>
         </div>
       </div>
