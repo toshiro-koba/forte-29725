@@ -16,9 +16,10 @@
             <div class="user-profile-edit-form">
               <div class="click-upload">
                 <div id="image-list">
-                  <% unless current_user.profile == nil %>
-                    <% if @profile.image? %>
-                        <%= image_tag(@profile.image.url, size: "100x100", id:"before_image")%> 
+                  <% profile = current_user.profile %>
+                  <% if profile %>
+                    <% if profile.image? %>
+                        <%= image_tag(profile.image.url, size: "100x100", id:"before_image")%> 
                     <% end %>
                   <% else %>
                     <%= image_tag "/assets/default.jpg", :size => '100x100', id:"before_image" %> 
