@@ -20,7 +20,9 @@ RSpec.describe "Notifications", type: :system do
 
       # 値をテキストフォームに入力する
       post = '質問テスト'
-      select @user.nickname, from: 'room[user_ids][]'
+      within '.question-form' do # スコープを絞る
+        select @user.nickname, from: 'room[user_ids][]'
+      end
       select @game_tag.game_title, from: 'room[game_tag_ids][]'
       fill_in 'room_message[question_title]', with: post
       fill_in 'room_message[content]', with: post
