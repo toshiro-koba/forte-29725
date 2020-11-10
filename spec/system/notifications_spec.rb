@@ -91,7 +91,7 @@ RSpec.describe "Notifications", type: :system do
       sleep 1.0
 
       # フォローする相手のユーザー詳細ページに遷移する
-      click_link "#{@other_user.nickname}の詳細ページ"
+      click_link "#{@other_user.nickname}の詳細ページ", match: :first
 
       # ユーザー詳細ページに遷移していることを確認する
       expect(current_path).to eq user_path(@other_user)
@@ -118,7 +118,7 @@ RSpec.describe "Notifications", type: :system do
       expect(page).to have_content("#{@receiver.nickname}の詳細ページ")
 
       # ギフトを送る相手のユーザー詳細ページに遷移する
-      click_link "#{@receiver.nickname}の詳細ページ"
+      click_link "#{@receiver.nickname}の詳細ページ", match: :first
 
       # ユーザー詳細ページに遷移していることを確認する
       expect(current_path).to eq user_path(@receiver)
