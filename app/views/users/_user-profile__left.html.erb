@@ -1,7 +1,8 @@
 <div class="user-profile">
-  <% unless user.profile == nil %>
-    <% if user.profile.image? %>
-      <%= image_tag(user.profile.image.thumb100.url, class: "user-profile-icon") %>
+  <% profile = user.profile %>
+  <% if profile %>
+    <% if profile.image? %>
+      <%= image_tag(profile.image.thumb100.url, class: "user-profile-icon") %>
     <% else %>
       <%= image_tag "default.jpg", class: "user-profile-icon" %>
     <% end %>
@@ -11,26 +12,24 @@
     </div>
 
     <div class="link-icons">
-      <% if user.profile.link_to_sns? %>
-        <%= link_to user.profile.link_to_sns, target: "_blank" do %>
+      <% if profile.link_to_sns? %>
+        <%= link_to profile.link_to_sns, target: "_blank" do %>
           <%= image_tag "twitter_icon.png", class:"twitter-icon" %>
         <% end %>
       <% end %>
     </div>
 
     <div class="link-icons">
-      <% if user.profile.link_to_webcast? %>
-        <%= link_to user.profile.link_to_webcast, target: "_blank" do %>
+      <% if profile.link_to_webcast? %>
+        <%= link_to profile.link_to_webcast, target: "_blank" do %>
           <%= image_tag "webcast_icon.png", class:"webcast-icon" %>
         <% end %>
       <% end %>
     </div>
 
     <div class="self_introduction__space">
-      <% unless user.profile == nil %>
-        <% if user.profile.self_introduction? %>
-          <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
-        <% end %>
+      <% if user.profile.self_introduction? %>
+        <span class="self_introduction"><%= safe_join(user.profile.self_introduction.split("\n"),tag(:br))%></span>
       <% end %>
     </div>
   <% end %>

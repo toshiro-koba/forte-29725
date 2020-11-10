@@ -1,8 +1,9 @@
 <div class="index">
   <div class="index-tag">
-    <% unless question.game_tags[0] == nil %>
-      <%= link_to tag_search_game_tag_path(question.game_tags[0].id), class: 'game_tag__registration' do %>
-        <%= question.game_tags[0].game_title %>
+    <% tag = question.game_tags[0] %>
+    <% if tag %>
+      <%= link_to tag_search_game_tag_path(tag.id), class: 'game_tag__registration' do %>
+        <%= tag.game_title %>
       <% end %>
     <% end %>
   </div>

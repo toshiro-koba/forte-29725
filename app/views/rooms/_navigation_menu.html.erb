@@ -36,9 +36,10 @@
         <span class="more-test-nickname"><%= current_user.nickname %></span>
       <div class="more">
         <div class="hover-icons">
-          <% unless current_user.profile == nil %>
-            <% if current_user.profile.image? %>
-                <%= image_tag(current_user.profile.image.thumb50.url)%>
+          <% profile = current_user.profile %>
+          <% if profile %>
+            <% if profile.image? %>
+                <%= image_tag(profile.image.thumb50.url)%>
             <% end %>
           <% else %>
             <%= image_tag "question_user_icon.png", class:"question-user-icon" %>
