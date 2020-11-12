@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
+  before_action :check_if_user_signed_in
+
   def index
-    return redirect_to root_path unless user_signed_in?
     @user = User.find(params[:user_id])
     @profile = Profile.find_by(user: current_user) unless @user.profile.nil?
     redirect_to root_path unless @user == current_user
@@ -31,5 +32,9 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:game_tag_id).merge(user_id: current_user.id)
+  end
+
+  def check_if_user_signed_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

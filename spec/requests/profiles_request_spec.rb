@@ -9,7 +9,7 @@ RSpec.describe 'Profiles', type: :request do
   describe 'new' do
     example 'トップページへリダイレクトされること' do
       get new_user_profile_path(@user)
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end

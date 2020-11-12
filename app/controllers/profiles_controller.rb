@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :check_if_user_signed_in
+
   def new
     @user = User.find(params[:user_id])
     user = User.find(params[:user_id])
@@ -37,5 +39,9 @@ class ProfilesController < ApplicationController
 
   def edit_profile_params
     params.require(:profile).permit(:link_to_sns, :link_to_webcast, :self_introduction, :image).merge(user_id: current_user.id)
+  end
+
+  def check_if_user_signed_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
