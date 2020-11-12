@@ -180,7 +180,6 @@ body {
 
 body.modal-open {
   overflow: hidden;
-  padding-right: 15px;
 }
 
 main {
