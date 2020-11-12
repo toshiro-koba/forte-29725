@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :check_if_user_signed_in,  only: [ :new, :create, :search, :destroy ]
+
   def index
     if user_signed_in?
       rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
@@ -14,7 +16,6 @@ class RoomsController < ApplicationController
   end
 
   def new
-    redirect_to root_path unless user_signed_in?
     @room = RoomMessage.new
   end
 
@@ -47,5 +48,9 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room_message).permit(:question_title, :content).merge(user_ids: params[:room][:user_ids], game_tag_ids: params[:room][:game_tag_ids], user_id: current_user.id)
+  end
+
+  def check_if_user_signed_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
