@@ -21,14 +21,14 @@ RSpec.describe 'RoomsController', type: :request do
   describe 'new' do
     example 'トップページへリダイレクトされること' do
       get new_room_path
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to new_user_session_path
     end
   end
 
   describe 'destroy' do
     example 'トップページへリダイレクトされること' do
       delete room_path(@room)
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to new_user_session_path
     end
   end
 
