@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_if_user_signed_in
   def edit; end
 
   def update
@@ -43,5 +44,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :email)
+  end
+
+  def check_if_user_signed_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
