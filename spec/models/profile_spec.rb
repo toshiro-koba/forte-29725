@@ -11,6 +11,21 @@ RSpec.describe Profile, type: :model do
       expect(@profile).to be_valid
     end
 
+    it '\'link_to_sns\'が空でも保存できること' do
+      link_to_sns = nil
+      expect(@profile).to be_valid
+    end
+
+    it '\'link_to_webcast\'が空でも保存できること' do
+      link_to_webcast = nil
+      expect(@profile).to be_valid
+    end
+
+    it '\'self_introduction\'が空でも保存できること' do
+      self_introduction = nil
+      expect(@profile).to be_valid
+    end
+
     it 'imageの形式がjpg, jpeg, gif, pngであれば、保存できる' do
       formats = %w[jpg jpeg gif png]
       formats.each do |format|
