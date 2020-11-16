@@ -29,3 +29,6 @@ ja:
         game_tag: ゲームタイトル
       room:
         question_title: 質問タイトル
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
