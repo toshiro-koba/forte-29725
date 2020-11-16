@@ -68,8 +68,14 @@
       <div class="modal-panel-back disable"> <%# ↓隠れているモーダル画面の始まり%>
         <div class="modal-panel">
           <%= render partial: "rooms/one_game_tag", locals: { question: question } %>
-          <div class="question-title">
-            <%= question.question_title %>
+          <div class="title-line">
+            <div class="question-title">
+              <%= question.question_title %>
+            </div>
+            <div class="question-birth">
+              <% birth = question.created_at%>
+              <%= "#{birth.year}/#{birth.month}/#{birth.day}"%>
+            </div>
           </div>
           <%= render partial: "rooms/one_question", locals: { question: question } %>
         </div>
