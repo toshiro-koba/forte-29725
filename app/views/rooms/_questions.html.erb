@@ -1,15 +1,7 @@
 <div class="content">
   <%= render partial: "rooms/one_game_tag", locals: { question: question } %>
   <div class="room-name">
-    <div class="title-line">
-      <div class="question-title">
-        <%= question.question_title %>
-      </div>
-      <div class="question-birth">
-        <% birth = question.created_at%>
-        <%= "#{birth.year}/#{birth.month}/#{birth.day}"%>
-      </div>
-    </div>
+    <%= render partial: "rooms/title_line", locals: { question: question } %>
     <div class="panel"> <%# ↓モーダルに関する記述の始まり%>
       <% if question.messages.size == 1 && question.messages[0].user != current_user %>
           <%= render partial: "rooms/one_question", locals: { question: question } %>
@@ -68,15 +60,7 @@
       <div class="modal-panel-back disable"> <%# ↓隠れているモーダル画面の始まり%>
         <div class="modal-panel">
           <%= render partial: "rooms/one_game_tag", locals: { question: question } %>
-          <div class="title-line">
-            <div class="question-title">
-              <%= question.question_title %>
-            </div>
-            <div class="question-birth">
-              <% birth = question.created_at%>
-              <%= "#{birth.year}/#{birth.month}/#{birth.day}"%>
-            </div>
-          </div>
+          <%= render partial: "rooms/title_line", locals: { question: question } %>
           <%= render partial: "rooms/one_question", locals: { question: question } %>
         </div>
       </div> <%# ↑隠れているモーダル画面の終わり%>

@@ -1,0 +1,9 @@
+<div class="title-line">
+  <div class="question-title">
+    <%= question.question_title %>
+  </div>
+  <div class="question-birth">
+    <% birth = question.created_at%>
+    <%= "#{birth.year}/#{birth.month}/#{birth.day}"%>
+  </div>
+</div>
