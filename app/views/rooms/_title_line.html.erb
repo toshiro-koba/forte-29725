@@ -3,7 +3,6 @@
     <%= question.question_title %>
   </div>
   <div class="question-birth">
-    <% birth = question.created_at%>
-    <%= "#{birth.year}/#{birth.month}/#{birth.day}"%>
+    <%= l question.created_at %>
   </div>
 </div>
