@@ -102,9 +102,18 @@ select {
   margin-left: 36px;
 }
 
+.title-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
 .question-title {
   color: #26e109;
-  padding: 5px;
+}
+
+.question-birth {
+  font-size: 14px;
 }
 
 .icons-space {

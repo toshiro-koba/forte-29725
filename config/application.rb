@@ -11,6 +11,7 @@ module Forte29725
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.i18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
     config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
     config.autoload_paths += Dir["#{config.root}/app/validators"]
     # Settings in config/environments/* take precedence over those specified here.
