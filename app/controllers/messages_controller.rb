@@ -9,8 +9,8 @@ class MessagesController < ApplicationController
     @message = @room.messages.new(message_params)
     if @message.valid?
       @message.save
-      notification_room = Room.order(updated_at: :desc).limit(1)
-      notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
+      n = Room.order(updated_at: :desc).limit(1)
+      n[0].create_notification_comment!(current_user, n[0].messages[0].id, n[0].entries[0].user_id)
       render json: { message: @message.content, user: User.find(@message.user_id) }
     else
       render json: { content_error: @message.errors[:content][0] }
