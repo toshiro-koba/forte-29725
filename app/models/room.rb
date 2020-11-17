@@ -84,15 +84,15 @@ class Room < ApplicationRecord
     if temp.blank?
       # 回答者への通知インスタンスを作成
       notification_answer = current_user.active_notifications.new(
-        room_id: id,
+        room_id:    id,
         visited_id: users[1].id,
-        action: 'like'
+        action:     'like'
       )
       # 質問者への通知インスタンスを作成
       notification_questioner = current_user.active_notifications.new(
-        room_id: id,
+        room_id:    id,
         visited_id: users[0].id,
-        action: 'like'
+        action:     'like'
       )
       # 自分自身の投稿に対するいいねの場合は、通知済みとする
       if notification_answer.visitor_id == current_user.id || notification_answer.visited_id == current_user.id
@@ -119,10 +119,10 @@ class Room < ApplicationRecord
   def save_notification_comment!(current_user, message_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-      room_id: id,
+      room_id:    id,
       message_id: message_id,
       visited_id: visited_id,
-      action: 'message'
+      action:     'message'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visitor_id == notification.visited_id

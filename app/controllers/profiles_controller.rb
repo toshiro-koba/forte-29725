@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    user = User.find(params[:user_id])
+    user =  User.find(params[:user_id])
     redirect_to root_path unless current_user == user
   end
 
@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find_by(user: current_user)
-    @user = User.find(params[:id])
+    @user =    User.find(params[:id])
     redirect_to root_path unless current_user == @user
   end
 

@@ -2,7 +2,7 @@ class GiftsController < ApplicationController
   before_action :check_if_user_signed_in
 
   def index
-    @user = User.find(params[:user_id])
+    @user =    User.find(params[:user_id])
     @reciver = User.find(params[:user_id])
     redirect_to root_path if @reciver == current_user
     @gift = Gift.new
@@ -12,8 +12,8 @@ class GiftsController < ApplicationController
 
   def create
     @reciver = User.find(params[:user_id])
-    @user = User.find(params[:user_id])
-    @gift = Gift.new(order_params)
+    @user =    User.find(params[:user_id])
+    @gift =    Gift.new(order_params)
     if @gift.valid?
       pay_item
       @gift.save
@@ -27,10 +27,10 @@ class GiftsController < ApplicationController
   def test_gifting
     reciver = User.find(params[:id])
     gift = Gift.create(
-      price: 500,
-      user_id: reciver.id,
+      price:    500,
+      user_id:  reciver.id,
       giver_id: current_user.id,
-      token: 'test'
+      token:    'test'
     )
     redirect_to root_path
   end
@@ -44,8 +44,8 @@ class GiftsController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: order_params[:price], # 商品の値段
-      card: params[:token], # カードトークン
+      amount:   order_params[:price], # 商品の値段
+      card:     params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類(日本円)
     )
   end

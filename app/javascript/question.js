@@ -11,15 +11,15 @@ function question() {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       } else if (XHR.response.room != null) {
-        const room = XHR.response.room;
-        const tag = XHR.response.tag;
-        const user = XHR.response.user;
-        const content = XHR.response.content;
-        const list = document.getElementById("list");
+        const room =      XHR.response.room;
+        const tag =       XHR.response.tag;
+        const user =      XHR.response.user;
+        const content =   XHR.response.content;
+        const list =      document.getElementById("list");
         const formTitle = document.getElementById("question_title");
-        const formText = document.getElementById("content");
-        const formUser = document.getElementById("user");
-        const formTag = document.getElementById("game-tag");
+        const formText =  document.getElementById("content");
+        const formUser =  document.getElementById("user");
+        const formTag =   document.getElementById("game-tag");
         const HTML = `
           <div class="index">
             <div class="index-tag">

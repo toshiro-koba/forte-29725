@@ -11,9 +11,9 @@ function answer() {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       } else if (XHR.response.message != null) {
-        const message = XHR.response.message;
-        const user = XHR.response.user;
-        const list = document.getElementById("list-answer");
+        const message =  XHR.response.message;
+        const user =     XHR.response.user;
+        const list =     document.getElementById("list-answer");
         const formText = document.getElementById("content-answer");
         const HTML = `
           <div class="main-content">
