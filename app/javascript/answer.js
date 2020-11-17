@@ -41,7 +41,7 @@ function answer() {
         formAnswer.remove()
       } else {
         const HTML = `
-          <div id='errors'>${XHR.response.content_error}</div>
+          <div id='errors'>${XHR.response.content_err}</div>
           `;
         const error = document.getElementById("error-answer");
         if (document.getElementById("errors") != null) {

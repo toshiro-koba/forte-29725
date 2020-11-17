@@ -63,10 +63,10 @@ function question() {
       } else {
         const HTML = `
         <ul id='errors'>
-          <li>${XHR.response.title_error}</li>
-          <li>${XHR.response.user_error}</li>
-          <li>${XHR.response.tag_error}</li>
-          <li>${XHR.response.content_error}</li>
+          <li>${XHR.response.title_err}</li>
+          <li>${XHR.response.user_err}</li>
+          <li>${XHR.response.tag_err}</li>
+          <li>${XHR.response.content_err}</li>
         </ul>`;
         const error = document.getElementById("error");
         if (document.getElementById("errors") != null) {

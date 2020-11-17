@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       n[0].create_notification_comment!(current_user, n[0].messages[0].id, n[0].entries[0].user_id)
       render json: { message: @message.content, user: User.find(@message.user_id) }
     else
-      render json: { content_error: @message.errors[:content][0] }
+      render json: { content_err: @message.errors[:content][0] }
     end
   end
 
