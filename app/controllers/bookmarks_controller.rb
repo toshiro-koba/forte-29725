@@ -22,7 +22,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    @user =    User.find(params[:user_id])
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
     redirect_to user_path(@user)

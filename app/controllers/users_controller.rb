@@ -12,10 +12,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
-    questions = Room.user_questions(@user, rooms)
-    other_questions = Room.user_other_questions
-    @questions = Kaminari.paginate_array(questions).page(params[:page]).per(5)
+    rooms =            Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
+    questions =        Room.user_questions(@user, rooms)
+    other_questions =  Room.user_other_questions
+    @questions =       Kaminari.paginate_array(questions).page(params[:page]).per(5)
     @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(5)
   end
 
@@ -35,8 +35,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to root_path unless current_user == @user
     if user_signed_in?
-      @giftings = Gift.where(giver_id: current_user.id).page(params[:page]).per(8).order('created_at DESC')
-      @receivings = Gift.where(user_id: current_user.id).page(params[:page]).per(8).order('created_at DESC')
+      @giftings   = Gift.where(giver_id: current_user.id).page(params[:page]).per(8).order('created_at DESC')
+      @receivings = Gift.where(user_id:  current_user.id).page(params[:page]).per(8).order('created_at DESC')
     end
   end
 

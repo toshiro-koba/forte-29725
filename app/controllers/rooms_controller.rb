@@ -3,10 +3,10 @@ class RoomsController < ApplicationController
 
   def index
     if user_signed_in?
-      rooms = Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
-      @users = User.all
-      @questions = Room.questions(current_user, rooms)
-      other_questions = Room.other_questions
+      rooms =            Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
+      @users =           User.all
+      @questions =       Room.questions(current_user, rooms)
+      other_questions =  Room.other_questions
       @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(10)
     end
 
@@ -23,12 +23,22 @@ class RoomsController < ApplicationController
     @room = RoomMessage.new(room_params)
     if @room.valid?
       @room.save
-      notification_room = Room.order(updated_at: :desc).limit(1)
+      n = Room.order(updated_at: :desc).limit(1)
       # 各引数の説明。質問者、質問本文、回答者
-      notification_room[0].create_notification_comment!(current_user, notification_room[0].messages[0].id, notification_room[0].entries[0].user_id)
-      render json: { room: @room, tag: GameTag.find(@room.game_tag_ids[0]), user: User.find(@room.user_id), content: @room.content }
+      n[0].create_notification_comment!(current_user, n[0].messages[0].id, n[0].entries[0].user_id)
+      render json: {
+                     room:    @room,
+                     tag:     GameTag.find(@room.game_tag_ids[0]),
+                     user:    User.find(@room.user_id),
+                     content: @room.content
+                    }
     else
-      render json: { title_error: @room.errors.messages[:question_title][0], user_error: @room.errors.messages[:user_ids][0], tag_error: @room.errors.messages[:game_tag_ids][0], content_error: @room.errors.messages[:content][0] }
+      render json: {
+                     title_err:   @room.errors.messages[:question_title][0], 
+                     user_err:    @room.errors.messages[:user_ids][0],
+                     tag_err:     @room.errors.messages[:game_tag_ids][0],
+                     content_err: @room.errors.messages[:content][0]
+                    }
     end
   end
 
@@ -39,8 +49,8 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @questions = Room.search(current_user, params[:keyword])
-    other_questions = Room.search_other_questions
+    @questions =       Room.search(current_user, params[:keyword])
+    other_questions =  Room.search_other_questions
     @other_questions = Kaminari.paginate_array(other_questions).page(params[:page]).per(10)
   end
 

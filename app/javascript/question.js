@@ -11,15 +11,15 @@ function question() {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       } else if (XHR.response.room != null) {
-        const room = XHR.response.room;
-        const tag = XHR.response.tag;
-        const user = XHR.response.user;
-        const content = XHR.response.content;
-        const list = document.getElementById("list");
+        const room =      XHR.response.room;
+        const tag =       XHR.response.tag;
+        const user =      XHR.response.user;
+        const content =   XHR.response.content;
+        const list =      document.getElementById("list");
         const formTitle = document.getElementById("question_title");
-        const formText = document.getElementById("content");
-        const formUser = document.getElementById("user");
-        const formTag = document.getElementById("game-tag");
+        const formText =  document.getElementById("content");
+        const formUser =  document.getElementById("user");
+        const formTag =   document.getElementById("game-tag");
         const HTML = `
           <div class="index">
             <div class="index-tag">
@@ -63,10 +63,10 @@ function question() {
       } else {
         const HTML = `
         <ul id='errors'>
-          <li>${XHR.response.title_error}</li>
-          <li>${XHR.response.user_error}</li>
-          <li>${XHR.response.tag_error}</li>
-          <li>${XHR.response.content_error}</li>
+          <li>${XHR.response.title_err}</li>
+          <li>${XHR.response.user_err}</li>
+          <li>${XHR.response.tag_err}</li>
+          <li>${XHR.response.content_err}</li>
         </ul>`;
         const error = document.getElementById("error");
         if (document.getElementById("errors") != null) {

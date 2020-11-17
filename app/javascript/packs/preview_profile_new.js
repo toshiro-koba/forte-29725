@@ -11,7 +11,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const blob = window.URL.createObjectURL(file);
 
       const imageElement = document.createElement('div');
-      const blobImage = document.createElement('img');
+      const blobImage =    document.createElement('img');
       blobImage.setAttribute('src', blob);
       blobImage.setAttribute('height', 100);
       imageElement.appendChild(blobImage);
