@@ -61,7 +61,7 @@ class Room < ApplicationRecord
   def self.user_questions(user,rooms)
     questions = []
     @user_other_questions = []
-    temporary_questions = Entry.where(user_id: user.id).order('created_at DESC')
+    temporary_questions = Entry.preload(room: [:likes, :game_tags ,messages: :user]).where(user_id: user.id).order('created_at DESC')
     temporary_questions.each do |entry|
       questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == user
       @user_other_questions << entry.room if entry.room.messages[0].user == user

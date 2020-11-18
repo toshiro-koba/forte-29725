@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 
   def index
     if user_signed_in?
-      rooms =            Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
+      rooms =            Room.preload(:game_tags, messages: :user).all.order('created_at DESC')
       @users =           User.all
       @questions =       Room.questions(current_user, rooms)
       other_questions =  Room.other_questions
