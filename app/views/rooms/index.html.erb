@@ -26,7 +26,7 @@
         <%= render partial: "top_page" %>
       <% end %>
     </main>
-    <footer>
+    <div>
       <% if user_signed_in? %>
         <% num = 0 %>
         <% @users.where.not(id: current_user.id).each do |user| %>
@@ -35,6 +35,6 @@
           <% break if num == 4 %>
         <% end %>
       <% end %>
-    </footer>
+    </div>
   </body>
 </html>
