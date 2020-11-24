@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Likes", type: :system do
+RSpec.describe 'Likes', type: :system do
   before do
     # 中間テーブルを作成して、usersテーブルとroomsテーブルのレコードを作成する
     @entry = FactoryBot.create(:entry)

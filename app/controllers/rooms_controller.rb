@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :check_if_user_signed_in,  only: [ :new, :create, :search, :destroy ]
+  before_action :check_if_user_signed_in, only: %i[new create search destroy]
 
   def index
     if user_signed_in?

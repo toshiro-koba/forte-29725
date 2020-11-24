@@ -43,7 +43,7 @@ class User < ApplicationRecord
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
-        action:     'follow'
+        action: 'follow'
       )
       notification.save if notification.valid?
     end
@@ -53,7 +53,7 @@ class User < ApplicationRecord
     temp = Notification.where(['visitor_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'gift'])
     notification = current_user.active_notifications.new(
       visited_id: id,
-      action:     'gift'
+      action: 'gift'
     )
     notification.save if notification.valid?
   end

@@ -12,6 +12,6 @@ class Notification < ApplicationRecord
       notification.update_attributes(checked: true)
     end
     notifications = notifications.where.not(visitor_id: user.id)
-    return notifications
+    notifications
   end
 end
