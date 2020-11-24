@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Notifications", type: :system do
+RSpec.describe 'Notifications', type: :system do
   before do
     # 中間テーブルを作成して、usersテーブルとroomsテーブルのレコードを作成する
     @entry = FactoryBot.create(:entry)
     @user = FactoryBot.create(:user)
     @game_tag = FactoryBot.create(:game_tag)
 
-    #followに関するインスタンス
+    # followに関するインスタンス
     @other_user = FactoryBot.create(:user)
     @giver = FactoryBot.create(:user)
     @receiver = FactoryBot.create(:user)
@@ -58,7 +58,6 @@ RSpec.describe "Notifications", type: :system do
 
       # 投稿一覧画面に遷移していることを確認する
       expect(current_path).to eq root_path
-
     end
   end
 
@@ -80,7 +79,6 @@ RSpec.describe "Notifications", type: :system do
         find('.follow__hover-action').hover
         click_button 'フォロー'
       end.to change { Notification.count }.by(1)
-
     end
   end
 
@@ -107,7 +105,6 @@ RSpec.describe "Notifications", type: :system do
         find('.unfollow__hover-action').hover
         click_button '解除'
       end.to change { Notification.count }.by(0)
-
     end
   end
 
@@ -148,7 +145,6 @@ RSpec.describe "Notifications", type: :system do
 
       # トップページに遷移していることを確認する
       expect(current_path).to eq root_path
-
     end
   end
 

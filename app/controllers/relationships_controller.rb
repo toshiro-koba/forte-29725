@@ -3,9 +3,7 @@ class RelationshipsController < ApplicationController
 
   def create
     following = current_user.follow(@user)
-    if following.save
-      @user.create_notification_follow!(current_user)
-    end
+    @user.create_notification_follow!(current_user) if following.save
     redirect_to @user
   end
 

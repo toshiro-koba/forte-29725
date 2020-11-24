@@ -74,7 +74,7 @@
       </div>
       <% question.messages.size.times do |i| %>
         <% if question.messages[i].user == current_user %>
-          <%= link_to room_path(question), method: :delete , class: "delete-btn" do %>
+          <%= link_to room_path(question), method: :delete , class: "delete-btn", data: { confirm: "本当に削除しますか？"}  do %>
             <i class="fas fa-trash"></i>
           <% end %>
           <% break %>

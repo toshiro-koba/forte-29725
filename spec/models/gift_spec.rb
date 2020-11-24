@@ -16,12 +16,12 @@ RSpec.describe Gift, type: :model do
       it 'tokenが空では、購入できない' do
         @gift.token = ''
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("カード情報を入力してください")
+        expect(@gift.errors.full_messages).to include('カード情報を入力してください')
       end
       it 'priceが空では、ギフトできない' do
         @gift.price = ''
         @gift.valid?
-        expect(@gift.errors.full_messages).to include("金額を入力してください")
+        expect(@gift.errors.full_messages).to include('金額を入力してください')
       end
 
       it 'priceが300円未満では、ギフトできない' do

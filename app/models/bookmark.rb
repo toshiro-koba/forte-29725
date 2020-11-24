@@ -8,6 +8,6 @@ class Bookmark < ApplicationRecord
     games.each do |tag|
       game_tags << tag.game_tag.id
     end
-    return game_tags
+    game_tags
   end
 end

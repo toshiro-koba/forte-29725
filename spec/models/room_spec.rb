@@ -13,7 +13,7 @@ RSpec.describe Room, type: :model do
     it 'nameが空では登録できないこと' do
       @room.question_title = nil
       @room.valid?
-      expect(@room.errors.full_messages).to include("質問タイトルを入力してください")
+      expect(@room.errors.full_messages).to include('質問タイトルを入力してください')
     end
   end
 end

@@ -15,14 +15,14 @@ class Room < ApplicationRecord
   validates :question_title, presence: true
 
   # 質問一覧表示
-  def self.questions(current_user,rooms)
+  def self.questions(current_user, rooms)
     @rooms = rooms
     @questions = []
     temporary_questions = Entry.where(user_id: current_user.id).order('created_at DESC')
     temporary_questions.preload(room: [:likes, :game_tags, messages: :user]).each do |entry|
       @questions << entry.room
     end
-    return @questions
+    @questions
   end
 
   def self.other_questions
@@ -31,21 +31,21 @@ class Room < ApplicationRecord
     temporary_other_questions.each do |room|
       other_questions << room if room.messages.size == 2
     end
-    return other_questions
+    other_questions
   end
 
   # 質問検索
   def self.search(current_user, search)
     @search_questions = []
-    if search != ''
-      @rooms = Room.where('question_title LIKE(?)', "%#{search}%")
-    else
-      @rooms = Room.all
-    end
+    @rooms = if search != ''
+               Room.where('question_title LIKE(?)', "%#{search}%")
+             else
+               Room.all
+             end
     @rooms.each do |room|
       @search_questions << room if room.user_ids.include?(current_user.id)
     end
-      return @search_questions
+    @search_questions
   end
 
   def self.search_other_questions
@@ -54,23 +54,23 @@ class Room < ApplicationRecord
     temporary_other_questions.each do |room|
       other_questions << room if room.messages.size == 2
     end
-    return other_questions
+    other_questions
   end
 
   # ユーザー詳細ページにおける、質問一覧表示
-  def self.user_questions(user,rooms)
+  def self.user_questions(user, _rooms)
     questions = []
     @user_other_questions = []
-    temporary_questions = Entry.preload(room: [:likes, :game_tags ,messages: :user]).where(user_id: user.id).order('created_at DESC')
+    temporary_questions = Entry.preload(room: [:likes, :game_tags, messages: :user]).where(user_id: user.id).order('created_at DESC')
     temporary_questions.each do |entry|
       questions << entry.room if entry.room.messages.size == 2 && entry.room.messages[1].user == user
       @user_other_questions << entry.room if entry.room.messages[0].user == user
     end
-    return questions
+    questions
   end
 
-  def self.user_other_questions
-    return @user_other_questions
+  class << self
+    attr_reader :user_other_questions
   end
 
   def liked_by?(user)
@@ -84,15 +84,15 @@ class Room < ApplicationRecord
     if temp.blank?
       # 回答者への通知インスタンスを作成
       notification_answer = current_user.active_notifications.new(
-        room_id:    id,
+        room_id: id,
         visited_id: users[1].id,
-        action:     'like'
+        action: 'like'
       )
       # 質問者への通知インスタンスを作成
       notification_questioner = current_user.active_notifications.new(
-        room_id:    id,
+        room_id: id,
         visited_id: users[0].id,
-        action:     'like'
+        action: 'like'
       )
       # 自分自身の投稿に対するいいねの場合は、通知済みとする
       if notification_answer.visitor_id == current_user.id || notification_answer.visited_id == current_user.id
@@ -119,10 +119,10 @@ class Room < ApplicationRecord
   def save_notification_comment!(current_user, message_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-      room_id:    id,
+      room_id: id,
       message_id: message_id,
       visited_id: visited_id,
-      action:     'message'
+      action: 'message'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visitor_id == notification.visited_id

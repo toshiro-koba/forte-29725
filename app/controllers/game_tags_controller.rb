@@ -6,9 +6,7 @@ class GameTagsController < ApplicationController
     rooms =    Room.preload(:likes, :game_tags, messages: :user).all.order('created_at DESC')
     @questions = []
     rooms.each do |room|
-      if room.game_tags[0]
-        @questions << room if room.game_tags[0].id == game_tag
-      end
+      @questions << room if room.game_tags[0] && room.game_tags[0].id == game_tag
     end
   end
 
