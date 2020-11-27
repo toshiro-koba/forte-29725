@@ -27,7 +27,7 @@
       <% end %>
     </main>
     <div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && Rails.env.test? %>
         <% num = 0 %>
         <% @users.where.not(id: current_user.id).each do |user| %>
           <p><%= link_to "#{user.nickname}の詳細ページ", user_path(user), class:"test-space" %></p>
