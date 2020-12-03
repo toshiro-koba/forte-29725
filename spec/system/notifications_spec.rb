@@ -30,7 +30,7 @@ RSpec.describe 'Notifications', type: :system do
       # 送信した値がDBに保存されていることを確認する
       expect  do
         find('input[name="commit"]').click
-        sleep 0.1
+        sleep 1.0
       end.to change { Notification.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
@@ -52,7 +52,7 @@ RSpec.describe 'Notifications', type: :system do
       within '.room-name' do # スコープを絞る
         expect do
           find('input[name="commit"]').click
-          sleep 0.1
+          sleep 1.0
         end.to change { Notification.count }.by(1)
       end
 
@@ -163,7 +163,7 @@ RSpec.describe 'Notifications', type: :system do
       # 送信した値がDBに保存されていることを確認する
       expect  do
         find('input[name="commit"]').click
-        sleep 0.1
+        sleep 1.0
       end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
@@ -193,7 +193,7 @@ RSpec.describe 'Notifications', type: :system do
       within '.room-name' do # スコープを絞る
         expect do
           find('.like-yet-btn').click
-          sleep 0.1
+          sleep 1.0
         end.to change { Notification.count }.by(2)
       end
     end
