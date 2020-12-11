@@ -14,6 +14,7 @@
 
 [https://www.forte2020.net/](https://www.forte2020.net/)
 　
+ :warning: 2020/12/11から公開停止
  
 「簡単ログイン」ボタンからテストユーザーとしてログインできます。
 
