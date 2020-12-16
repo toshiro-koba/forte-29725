@@ -12,9 +12,9 @@
 
 <h2> 🌐 URL </h2>
 
-[https://www.forte2020.net/](https://www.forte2020.net/)
+[https://forte-29725.herokuapp.com/](https://forte-29725.herokuapp.com/)
 　
- :warning: 2020/12/11から公開停止
+ :warning: デプロイ先をherokuに変更しました
  
 「簡単ログイン」ボタンからテストユーザーとしてログインできます。
 
