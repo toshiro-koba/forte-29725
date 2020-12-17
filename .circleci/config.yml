@@ -62,24 +62,24 @@ jobs:
               --format progress \
               $TEST_FILES
 
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+#       - store_test_results:
+#           path: /tmp/test-results
+#       - store_artifacts:
+#           path: /tmp/test-results
+#           destination: test-results
 
-      - add_ssh_keys:
-          fingerprints:
-            - "13:79:35:18:70:4c:a4:9c:c2:7c:eb:65:b9:97:a6:07"
+#       - add_ssh_keys:
+#           fingerprints:
+#             - "13:79:35:18:70:4c:a4:9c:c2:7c:eb:65:b9:97:a6:07"
 
-      - deploy:
-          name: Capistrano deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production unicorn:stop
-            bundle exec cap production deploy
+#       - deploy:
+#           name: Capistrano deploy
+#           command: |
+#             if [ "${CIRCLE_BRANCH}" != "master" ]; then
+#               exit 0
+#             fi
+#             bundle exec cap production unicorn:stop
+#             bundle exec cap production deploy
 
 workflows:
   build:
